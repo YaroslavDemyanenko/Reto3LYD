@@ -23,8 +23,8 @@ public class Login {
 	private JTextField textFieldDNI;
 	private JComboBox textFieldSexo;
 	private JTextField textFieldDNILogin;
-	private JTextField textFieldContraseñaLogin;
-	private JTextField textFieldContraseña;
+	private JTextField textFieldContraseniaLogin;
+	private JTextField textFieldContrasenia;
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -98,20 +98,20 @@ public class Login {
 		lblContraseaLogin.setBounds(468, 170, 81, 39);
 		panelLogin.add(lblContraseaLogin);
 		
-		textFieldContraseñaLogin = new JTextField();
-		textFieldContraseñaLogin.setBounds(559, 170, 180, 39);
-		panelLogin.add(textFieldContraseñaLogin);
-		textFieldContraseñaLogin.setColumns(10);
+		textFieldContraseniaLogin = new JTextField();
+		textFieldContraseniaLogin.setBounds(559, 170, 180, 39);
+		panelLogin.add(textFieldContraseniaLogin);
+		textFieldContraseniaLogin.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblContrasea.setBounds(43, 364, 92, 39);
 		panelLogin.add(lblContrasea);
 		
-		textFieldContraseña = new JTextField();
-		textFieldContraseña.setBounds(135, 364, 192, 39);
-		panelLogin.add(textFieldContraseña);
-		textFieldContraseña.setColumns(10);
+		textFieldContrasenia = new JTextField();
+		textFieldContrasenia.setBounds(135, 364, 192, 39);
+		panelLogin.add(textFieldContrasenia);
+		textFieldContrasenia.setColumns(10);
 		
 		JButton btnConfirmarRegistro = new JButton("Confirmar Registro");
 		btnConfirmarRegistro.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
