@@ -1,9 +1,8 @@
 /clases/
 /conexion/
-/testCliente.class
+/controlador/
 /interfaces/
 /testClases/
-/testConexion/
-/testFuncionesYMetodos/
-/funcionesYMetodos/
-/controlador/
+/testCliente.class
+/imagenesInterfaz/
+/imagenes/
