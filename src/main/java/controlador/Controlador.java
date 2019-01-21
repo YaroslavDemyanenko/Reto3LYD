@@ -2,9 +2,30 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 
+import clases.Modelo;
+import interfaces.Vista;
+
 
 
 public class Controlador {
+	
+	public Modelo mod;
+	public Vista vis;
+	
+	public Controlador(Modelo modelo,Vista vista) {
+		this.mod=modelo;
+		this.vis=vista;
+		inicializar_eventos();
+	}
+	
+	public void inicializar_eventos() {
+		//Listeners
+	}
+	
+	
+	
+	
+	
 	/**
 	private VentanaPrincipal vista;
 	private Cliente modelo;
