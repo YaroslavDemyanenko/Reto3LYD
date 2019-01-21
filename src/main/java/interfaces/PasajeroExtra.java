@@ -17,7 +17,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Login2 {
+public class PasajeroExtra {
 	
 	JPanel panelRegistro2 = new JPanel();
 	private JTextField textFieldNombre;

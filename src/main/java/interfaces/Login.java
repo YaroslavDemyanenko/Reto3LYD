@@ -18,13 +18,9 @@ public class Login {
 
 	
 	JPanel panelLogin = new JPanel();
-	private JTextField textFieldNombre;
-	private JTextField textFieldApellido;
-	private JTextField textFieldDNI;
+	JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin, textFieldContraseniaLogin, textFieldContrasenia;
 	private JComboBox textFieldSexo;
-	private JTextField textFieldDNILogin;
-	private JTextField textFieldContraseniaLogin;
-	private JTextField textFieldContrasenia;
+	JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblLogin, ;
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -33,12 +29,12 @@ public class Login {
 		panelLogin.setLayout(null);
 		panelLogin.setBounds(0,0,800,600);
 		
-		JLabel lblRegistroUsuario = new JLabel("Registro:");
+		lblRegistroUsuario = new JLabel("Registro:");
 		lblRegistroUsuario.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		lblRegistroUsuario.setBounds(47, 35, 269, 48);
 		panelLogin.add(lblRegistroUsuario);
 		
-		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNombre.setBounds(47, 106, 78, 39);
 		panelLogin.add(lblNombre);
@@ -48,7 +44,7 @@ public class Login {
 		panelLogin.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
-		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido = new JLabel("Apellido:");
 		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblApellido.setBounds(47, 170, 78, 41);
 		panelLogin.add(lblApellido);
@@ -58,7 +54,7 @@ public class Login {
 		textFieldApellido.setBounds(135, 170, 192, 39);
 		panelLogin.add(textFieldApellido);
 		
-		JLabel lblDni = new JLabel("DNI:");
+		lblDni = new JLabel("DNI:");
 		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDni.setBounds(47, 238, 65, 43);
 		panelLogin.add(lblDni);
@@ -68,7 +64,7 @@ public class Login {
 		textFieldDNI.setBounds(137, 238, 190, 43);
 		panelLogin.add(textFieldDNI);
 		
-		JLabel lblSexo = new JLabel("Sexo:");
+		lblSexo = new JLabel("Sexo:");
 		lblSexo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblSexo.setBounds(47, 304, 65, 41);
 		panelLogin.add(lblSexo);
@@ -78,7 +74,7 @@ public class Login {
 		textFieldSexo.setBounds(135, 304, 192, 39);
 		panelLogin.add(textFieldSexo);
 		
-		JLabel lblLogin = new JLabel("Login:");
+		lblLogin = new JLabel("Login:");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		lblLogin.setBounds(474, 35, 237, 48);
 		panelLogin.add(lblLogin);
