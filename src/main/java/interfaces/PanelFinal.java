@@ -13,20 +13,21 @@ import javax.swing.ImageIcon;
 public class PanelFinal {
 
 	JPanel panelProcesar = new JPanel();	
+	JLabel lblImpresion, lblEspereUnMomento;
 
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public void Login() {
+	public void Impresion() {
 		panelProcesar.setLayout(null);
 		panelProcesar.setBounds(0,0,800,600);
 		
-		JLabel lblNewLabel = new JLabel("Imprimiendo billete/s...");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(249, 183, 443, 83);
-		panelProcesar.add(lblNewLabel);
+		lblImpresion = new JLabel("Imprimiendo billete/s...");
+		lblImpresion.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblImpresion.setBounds(249, 183, 443, 83);
+		panelProcesar.add(lblImpresion);
 		
-		JLabel lblEspereUnMomento = new JLabel("Espere un momento");
+		lblEspereUnMomento = new JLabel("Espere un momento");
 		lblEspereUnMomento.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblEspereUnMomento.setBounds(249, 277, 443, 48);
 		panelProcesar.add(lblEspereUnMomento);

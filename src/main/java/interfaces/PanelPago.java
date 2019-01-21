@@ -28,21 +28,7 @@ public class PanelPago {
 	JButton btnSiguiente;
 	JButton btnCancelar;
 
-	JButton btn500;
-	JButton btn200;
-	JButton btn100;
-	JButton btn50;
-	JButton btn20;
-	JButton btn10;
-	JButton btn5;
-	JButton btn2;
-	JButton btn1;
-	JButton btn050;
-	JButton btn020;
-	JButton btn010;
-	JButton btn005;
-	JButton btn002;
-	JButton btn001;
+	JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001;
 	JButton[] arrayBtn= new JButton[15];
 	private JLabel label;
 	private JLabel label_1;
@@ -52,6 +38,7 @@ public class PanelPago {
 	private JButton btnLogOut;
 	private JTextField textDineroMetido;
 	private JTextField textVueltas;
+	JList list;
 
 
 	/**
@@ -246,7 +233,7 @@ public class PanelPago {
 		panelPago.add(textField);
 		textField.setColumns(10);
 		
-		JList list = new JList();
+		list = new JList();
 		list.setBounds(484, 192, 254, 268);
 		panelPago.add(list);
 		

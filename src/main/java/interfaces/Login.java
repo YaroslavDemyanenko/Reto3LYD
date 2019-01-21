@@ -15,17 +15,17 @@ import javax.swing.JTextField;
 import com.sun.glass.ui.Cursor;
 
 public class Login {
-
 	
 	JPanel panelLogin = new JPanel();
 	JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin, textFieldContraseniaLogin, textFieldContrasenia;
-	private JComboBox textFieldSexo;
-	JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblLogin, ;
+	JComboBox textFieldSexo;
+	JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblLogin, lblDniLogin, lblContraseaLogin, lblContrasea;
+	JButton btnConfirmarRegistro, btnConfirmarLogin, btnCancelar;
 
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public void Login() {
+	public void ParadasLineas2() {
 		panelLogin.setLayout(null);
 		panelLogin.setBounds(0,0,800,600);
 		
@@ -79,7 +79,7 @@ public class Login {
 		lblLogin.setBounds(474, 35, 237, 48);
 		panelLogin.add(lblLogin);
 		
-		JLabel lblDniLogin = new JLabel("DNI:");
+		lblDniLogin = new JLabel("DNI:");
 		lblDniLogin.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDniLogin.setBounds(468, 106, 65, 39);
 		panelLogin.add(lblDniLogin);
@@ -89,7 +89,7 @@ public class Login {
 		panelLogin.add(textFieldDNILogin);
 		textFieldDNILogin.setColumns(10);
 		
-		JLabel lblContraseaLogin = new JLabel("Contrase\u00F1a:");
+		lblContraseaLogin = new JLabel("Contrase\u00F1a:");
 		lblContraseaLogin.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblContraseaLogin.setBounds(468, 170, 81, 39);
 		panelLogin.add(lblContraseaLogin);
@@ -99,7 +99,7 @@ public class Login {
 		panelLogin.add(textFieldContraseniaLogin);
 		textFieldContraseniaLogin.setColumns(10);
 		
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
+		lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblContrasea.setBounds(43, 364, 92, 39);
 		panelLogin.add(lblContrasea);
@@ -109,17 +109,17 @@ public class Login {
 		panelLogin.add(textFieldContrasenia);
 		textFieldContrasenia.setColumns(10);
 		
-		JButton btnConfirmarRegistro = new JButton("Confirmar Registro");
+		btnConfirmarRegistro = new JButton("Confirmar Registro");
 		btnConfirmarRegistro.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 		btnConfirmarRegistro.setBounds(94, 497, 141, 48);
 		panelLogin.add(btnConfirmarRegistro);
 		
-		JButton btnConfirmarLogin = new JButton("Confirmar Login");
+		btnConfirmarLogin = new JButton("Confirmar Login");
 		btnConfirmarLogin.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 		btnConfirmarLogin.setBounds(564, 497, 141, 48);
 		panelLogin.add(btnConfirmarLogin);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 		btnCancelar.setBounds(329, 497, 141, 48);
 		panelLogin.add(btnCancelar);
