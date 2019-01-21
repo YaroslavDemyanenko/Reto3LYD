@@ -34,10 +34,10 @@ public class Cliente {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public String getContraseña() {
+	public String getContrasenia() {
 		return contrasenia;
 	}
-	public void setContraseña(String contraseña) {
+	public void setContrasenia(String contraseña) {
 		this.contrasenia = contraseña;
 	}
 }
