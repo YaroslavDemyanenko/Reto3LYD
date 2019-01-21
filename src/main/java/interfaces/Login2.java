@@ -17,7 +17,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Regis2 {
+public class Login2 {
 	
 	JPanel panelRegistro2 = new JPanel();
 	private JTextField textFieldNombre;
@@ -30,64 +30,65 @@ public class Regis2 {
 	 */
 	public void HacerRegistro2() {
 		panelRegistro2.setLayout(null);
+		panelRegistro2.setBounds(0,0,800,600);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addMouseListener(new MouseAdapter() {
 		});
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnCancelar.setBounds(47, 478, 214, 61);
+		btnCancelar.setBounds(128, 458, 214, 61);
 		panelRegistro2.add(btnCancelar);
 		
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addMouseListener(new MouseAdapter() {
 		});
 		btnConfirmar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnConfirmar.setBounds(372, 478, 200, 61);
+		btnConfirmar.setBounds(470, 458, 200, 61);
 		panelRegistro2.add(btnConfirmar);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(253, 106, 259, 39);
+		textFieldNombre.setBounds(347, 124, 259, 39);
 		panelRegistro2.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		textFieldApellido = new JTextField();
 		textFieldApellido.setColumns(10);
-		textFieldApellido.setBounds(253, 168, 259, 39);
+		textFieldApellido.setBounds(347, 188, 259, 39);
 		panelRegistro2.add(textFieldApellido);
 		
 		textFieldDNI = new JTextField();
 		textFieldDNI.setColumns(10);
-		textFieldDNI.setBounds(253, 242, 259, 39);
+		textFieldDNI.setBounds(347, 260, 259, 39);
 		panelRegistro2.add(textFieldDNI);
 		
-		JLabel lblSexo = new JLabel("Sexo");
+		JLabel lblSexo = new JLabel("Sexo:");
 		lblSexo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSexo.setBounds(47, 297, 170, 48);
+		lblSexo.setBounds(215, 315, 83, 48);
 		panelRegistro2.add(lblSexo);
 		
 		textFieldSexo = new JComboBox();
 		textFieldSexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
-		textFieldSexo.setBounds(253, 306, 259, 39);
+		textFieldSexo.setBounds(347, 322, 259, 39);
 		panelRegistro2.add(textFieldSexo);
 		
-		JLabel lblDni = new JLabel("DNI");
+		JLabel lblDni = new JLabel("DNI:");
 		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDni.setBounds(47, 238, 130, 43);
+		lblDni.setBounds(215, 256, 130, 43);
 		panelRegistro2.add(lblDni);
 		
-		JLabel lblApellido = new JLabel("Apellido");
+		JLabel lblApellido = new JLabel("Apellido:");
 		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblApellido.setBounds(47, 163, 130, 48);
+		lblApellido.setBounds(215, 181, 130, 48);
 		panelRegistro2.add(lblApellido);
 		
-		JLabel lblNombre = new JLabel("Nombre");
+		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNombre.setBounds(47, 106, 109, 39);
+		lblNombre.setBounds(215, 122, 109, 39);
 		panelRegistro2.add(lblNombre);
 		
 		JLabel lblRegistroUsuario = new JLabel("Registro usuario 2");
 		lblRegistroUsuario.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblRegistroUsuario.setBounds(189, 30, 269, 48);
+		lblRegistroUsuario.setBounds(282, 30, 269, 48);
 		panelRegistro2.add(lblRegistroUsuario);
 	
 	}
