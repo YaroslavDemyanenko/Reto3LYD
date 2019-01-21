@@ -37,7 +37,7 @@ public class Cliente {
 	public String getContrasenia() {
 		return contrasenia;
 	}
-	public void setContrasenia(String contraseña) {
-		this.contrasenia = contraseña;
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 }
