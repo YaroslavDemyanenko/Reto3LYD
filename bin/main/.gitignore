@@ -1,9 +1,10 @@
 /clases/
 /conexion/
-/testCliente.class
-/interfaces/
-/testClases/
-/testConexion/
-/testFuncionesYMetodos/
-/funcionesYMetodos/
 /controlador/
+/interfaces/
+<<<<<<< HEAD
+/testClases/
+/testCliente.class
+=======
+/controlador/
+>>>>>>> 3adef68962bb866b590d7ba8b975cebda60272c7

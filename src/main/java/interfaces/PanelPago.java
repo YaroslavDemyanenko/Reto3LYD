@@ -1,48 +1,30 @@
 package interfaces;
 
+import java.awt.EventQueue;
+import java.awt.Font;
+
 import javax.swing.DropMode;
 import javax.swing.JButton;
-import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.awt.Color;
+
+import com.sun.prism.paint.Color;
 import javax.swing.ImageIcon;
+import java.awt.Cursor;
 
 public class PanelPago {
 
+
 	JPanel panelPago = new JPanel();
-
-	JTextField txfDineroMetido;
-	JTextField txfTotalAPagar;
-
-	JLabel lblDineroMetido;
-	JLabel lblTotalAPagar;
-	JLabel lblHazClickEn;
-
-	JButton btnSiguiente;
-	JButton btnCancelar;
-
-	JButton btn500;
-	JButton btn200;
-	JButton btn100;
-	JButton btn50;
-	JButton btn20;
-	JButton btn10;
-	JButton btn5;
-	JButton btn2;
-	JButton btn1;
-	JButton btn050;
-	JButton btn020;
-	JButton btn010;
-	JButton btn005;
-	JButton btn002;
-	JButton btn001;
+	JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001, btnLogOut, btnSiguiente, btnCancelar;
 	JButton[] arrayBtn= new JButton[15];
-	private JLabel label;
-	private JLabel label_1;
+	JLabel label, label_1, label_2, lblAPagar, lblUsuario, lblTitulo, lblPagado, lblDineroMetido;
+	JTextField textField, textDineroMetido, textVueltas;
+	JList list;
 
 
 	/**
@@ -52,140 +34,149 @@ public class PanelPago {
 		panelPago.setLayout(null);
 		panelPago.setVisible(false);
 
+		panelPago.setBounds(0,0,800,600);
 		btnSiguiente = new JButton("Siguiente");
+		btnSiguiente.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnSiguiente.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnSiguiente.setBounds(600, 486, 130, 65);
+		btnSiguiente.setBounds(457, 511, 229, 59);
 		panelPago.add(btnSiguiente);
 
-		lblDineroMetido = new JLabel("Dinero metido:      ");
+		lblDineroMetido = new JLabel("Dinero metido:");
 		lblDineroMetido.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblDineroMetido.setBounds(490, 194, 219, 35);
+		lblDineroMetido.setBounds(309, 75, 169, 35);
 		panelPago.add(lblDineroMetido);
+		
+		textDineroMetido = new JTextField();
+		textDineroMetido.setBounds(309, 110, 130, 41);
+		panelPago.add(textDineroMetido);
+		textDineroMetido.setColumns(10);
 
-		lblTotalAPagar = new JLabel("Total a pagar:   ");
-		lblTotalAPagar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblTotalAPagar.setBounds(490, 272, 186, 35);
-		panelPago.add(lblTotalAPagar);
+		lblPagado = new JLabel("Vueltas:");
+		lblPagado.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPagado.setBounds(581, 75, 112, 35);
+		panelPago.add(lblPagado);
+		
+		textVueltas = new JTextField();
+		textVueltas.setBounds(581, 108, 104, 41);
+		panelPago.add(textVueltas);
+		textVueltas.setColumns(10);
 
 		btn5 = new JButton("5");
-		btn5.setFont(btn5.getFont().deriveFont(0f));
+		btn5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn5.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5euros.jpg")));
-		btn5.setBounds(37, 222, 123, 54);
+		btn5.setFont(btn5.getFont().deriveFont(0f));
+		btn5.setBounds(39, 279, 59, 51);
 		panelPago.add(btn5);
 
 		btn2 = new JButton("2");
-		btn2.setFont(btn2.getFont().deriveFont(0f));
+		btn2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn2.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2euros.png")));
-		btn2.setBounds(197, 222, 123, 54);
+		btn2.setFont(btn2.getFont().deriveFont(0f));
+		btn2.setBounds(127, 279, 59, 54);
 		panelPago.add(btn2);
 
 		btn10 = new JButton("10");
-		btn10.setFont(btn10.getFont().deriveFont(0f));
+		btn10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn10.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10euros.jpg")));
-		btn10.setBounds(357, 158, 123, 54);
+		btn10.setFont(btn10.getFont().deriveFont(0f));
+		btn10.setBounds(210, 233, 60, 35);
 		panelPago.add(btn10);
 
 		btn200 = new JButton("200");
-		btn200.setFont(btn200.getFont().deriveFont(0f));
+		btn200.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn200.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/200euros.jpg")));
-		btn200.setBounds(197, 94, 123, 54);
+		btn200.setFont(btn200.getFont().deriveFont(0f));
+		btn200.setBounds(128, 187, 59, 35);
 		panelPago.add(btn200);
 
 		btn20 = new JButton("20");
-		btn20.setFont(btn20.getFont().deriveFont(0f));
+		btn20.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn20.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20euros.jpg")));
-		btn20.setBounds(197, 158, 123, 54);
+		btn20.setFont(btn20.getFont().deriveFont(0f));
+		btn20.setBounds(127, 233, 59, 35);
 		panelPago.add(btn20);
 
 		btn500 = new JButton("500");
-		btn500.setFont(btn500.getFont().deriveFont(0f));
+		btn500.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn500.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/500euros.jpg")));
-		btn500.setBounds(37, 94, 123, 54);
+		btn500.setFont(btn500.getFont().deriveFont(0f));
+		btn500.setBounds(40, 187, 59, 35);
 		panelPago.add(btn500);
 
-		lblHazClickEn = new JLabel("Haz clic en un botón para introducir dinero o haz clic derecho para quitar esa cantidad");
-		lblHazClickEn.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblHazClickEn.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHazClickEn.setBounds(0, 29, 788, 35);
-		panelPago.add(lblHazClickEn);
+		lblTitulo = new JLabel("Pago");
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(10, 37, 679, 35);
+		panelPago.add(lblTitulo);
 
 		btn100 = new JButton("100");
-		btn100.setFont(btn100.getFont().deriveFont(0f));
+		btn100.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn100.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/100euros.jpg")));
-		btn100.setBounds(357, 94, 123, 54);
+		btn100.setFont(btn100.getFont().deriveFont(0f));
+		btn100.setBounds(211, 187, 59, 35);
 		panelPago.add(btn100);
 
 		btn50 = new JButton("50");
-		btn50.setFont(btn50.getFont().deriveFont(0f));
+		btn50.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn50.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50euros.jpg")));
-		btn50.setBounds(37, 158, 123, 54);
+		btn50.setFont(btn50.getFont().deriveFont(0f));
+		btn50.setBounds(39, 233, 59, 35);
 		panelPago.add(btn50);
 
 		btn1 = new JButton("1");
-		btn1.setFont(btn1.getFont().deriveFont(0f));
+		btn1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn1.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1euro.png")));
-		btn1.setBounds(357, 222, 123, 54);
+		btn1.setFont(btn1.getFont().deriveFont(0f));
+		btn1.setBounds(210, 277, 65, 54);
 		panelPago.add(btn1);
 
 		btn050 = new JButton("0.50");
-		btn050.setFont(btn050.getFont().deriveFont(0f));
+		btn050.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn050.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50centimos.png")));
-		btn050.setBounds(37, 284, 123, 54);
+		btn050.setFont(btn050.getFont().deriveFont(0f));
+		btn050.setBounds(39, 341, 59, 54);
 		panelPago.add(btn050);
 
 		btn020 = new JButton("0.20");
-		btn020.setFont(btn020.getFont().deriveFont(0f));
+		btn020.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn020.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20centimos.png")));
-		btn020.setBounds(197, 284, 123, 54);
+		btn020.setFont(btn020.getFont().deriveFont(0f));
+		btn020.setBounds(127, 341, 59, 54);
 		panelPago.add(btn020);
 
 		btn010 = new JButton("0.10");
-		btn010.setFont(btn010.getFont().deriveFont(0f));
+		btn010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn010.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10centimos.png")));
-		btn010.setBounds(357, 284, 123, 54);
+		btn010.setFont(btn010.getFont().deriveFont(0f));
+		btn010.setBounds(210, 341, 65, 54);
 		panelPago.add(btn010);
 
 		btn005 = new JButton("0.05");
-		btn005.setFont(btn005.getFont().deriveFont(0f));
+		btn005.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn005.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5centimos.png")));
-		btn005.setBounds(37, 349, 123, 54);
+		btn005.setFont(btn005.getFont().deriveFont(0f));
+		btn005.setBounds(39, 406, 60, 54);
 		panelPago.add(btn005);
 
 		btn002 = new JButton("0.02");
-		btn002.setFont(btn002.getFont().deriveFont(0f));
+		btn002.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn002.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2centimos.png")));
-		btn002.setBounds(197, 349, 123, 54);
+		btn002.setFont(btn002.getFont().deriveFont(0f));
+		btn002.setBounds(127, 406, 59, 54);
 		panelPago.add(btn002);
 
 		btn001 = new JButton("0.01");
-		btn001.setFont(btn001.getFont().deriveFont(0f));
+		btn001.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn001.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1centimo.png")));
-		btn001.setBounds(357, 349, 123, 54);
+		btn001.setFont(btn001.getFont().deriveFont(0f));
+		btn001.setBounds(210, 406, 65, 54);
 		panelPago.add(btn001);
 
-		txfTotalAPagar = new JTextField();
-		txfTotalAPagar.setEditable(false);
-		txfTotalAPagar.setBackground(Color.WHITE);
-		txfTotalAPagar.setHorizontalAlignment(SwingConstants.CENTER);
-		txfTotalAPagar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txfTotalAPagar.setDropMode(DropMode.INSERT);
-		txfTotalAPagar.setColumns(10);
-		txfTotalAPagar.setBounds(632, 263, 112, 54);
-		panelPago.add(txfTotalAPagar);
-
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCancelar.setBounds(68, 486, 130, 65);
+		btnCancelar.setBounds(114, 511, 229, 59);
 		panelPago.add(btnCancelar);
-
-		txfDineroMetido = new JTextField();
-		txfDineroMetido.setBackground(Color.WHITE);
-		txfDineroMetido.setEditable(false);
-		txfDineroMetido.setHorizontalAlignment(SwingConstants.CENTER);
-		txfDineroMetido.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txfDineroMetido.setBounds(632, 185, 112, 54);
-		panelPago.add(txfDineroMetido);
-		txfDineroMetido.setColumns(10);
 
 		arrayBtn[0]=btn500;
 		arrayBtn[1]=btn200;
@@ -203,42 +194,44 @@ public class PanelPago {
 		arrayBtn[13]=btn002;
 		arrayBtn[14]=btn001;
 		
-		JLabel lblAdvertenciaCuandoLa = new JLabel("Advertencia: cuando la cantidad introducida supere a la que has \r\nde pagar ");
-		lblAdvertenciaCuandoLa.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAdvertenciaCuandoLa.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblAdvertenciaCuandoLa.setBounds(26, 409, 512, 38);
-		panelPago.add(lblAdvertenciaCuandoLa);
-		
-		JLabel lblYaNoPodrs = new JLabel("no podr\u00E1s sacar m\u00E1s dinero, se te dar\u00E1 en los \r\ncambios si pulsas \"Siguiente\"");
-		lblYaNoPodrs.setHorizontalAlignment(SwingConstants.CENTER);
-		lblYaNoPodrs.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblYaNoPodrs.setBounds(26, 436, 525, 38);
-		panelPago.add(lblYaNoPodrs);
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLUE);
-		panel.setBounds(0, 0, 810, 29);
-		panelPago.add(panel);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.BLUE);
-		panel_1.setBounds(0, 553, 810, 29);
-		panelPago.add(panel_1);
-		
-		label = new JLabel("€");
+		label = new JLabel("\u20AC");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		label.setBounds(754, 272, 43, 35);
+		label.setBounds(695, 121, 43, 35);
 		panelPago.add(label);
 		
-		label_1 = new JLabel("€");
+		label_1 = new JLabel("\u20AC");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		label_1.setBounds(754, 194, 29, 35);
+		label_1.setBounds(449, 121, 29, 35);
 		panelPago.add(label_1);
 		
+		label_2 = new JLabel("\u20AC");
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label_2.setBounds(166, 121, 29, 35);
+		panelPago.add(label_2);
+		
+		lblAPagar = new JLabel("A pagar:");
+		lblAPagar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAPagar.setBounds(52, 75, 98, 25);
+		panelPago.add(lblAPagar);
+		
+		textField = new JTextField();
+		textField.setBounds(52, 107, 104, 42);
+		panelPago.add(textField);
+		textField.setColumns(10);
+		
+		list = new JList();
+		list.setBounds(484, 192, 254, 268);
+		panelPago.add(list);
+		
+		lblUsuario = new JLabel("USUARIO");
+		lblUsuario.setBounds(577, 11, 112, 35);
+		panelPago.add(lblUsuario);
+		
+		btnLogOut = new JButton("Log out");
+		btnLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnLogOut.setBounds(686, 11, 104, 35);
+		panelPago.add(btnLogOut);
+		
 				
-	}
-
-	public JComponent PasarPanelPago() {
-		return panelPago;
 	}
 }

@@ -5,7 +5,7 @@ public class Cliente {
 	private String nombre;
 	private String apellido;
 	private String sexo;
-	private String contraseña;
+	private String contrasenia;
 	
 	
 	
@@ -34,10 +34,10 @@ public class Cliente {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasenia() {
+		return contrasenia;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 }
