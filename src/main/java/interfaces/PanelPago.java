@@ -20,24 +20,10 @@ public class PanelPago {
 
 
 	JPanel panelPago = new JPanel();
-
-	JLabel lblDineroMetido;
-	JLabel lblPagado;
-	JLabel lblTitulo;
-
-	JButton btnSiguiente;
-	JButton btnCancelar;
-
-	JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001;
+	JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001, btnLogOut, btnSiguiente, btnCancelar;
 	JButton[] arrayBtn= new JButton[15];
-	private JLabel label;
-	private JLabel label_1;
-	private JLabel lblAPagar;
-	private JTextField textField;
-	private JLabel lblUsuario;
-	private JButton btnLogOut;
-	private JTextField textDineroMetido;
-	private JTextField textVueltas;
+	JLabel label, label_1, label_2, lblAPagar, lblUsuario, lblTitulo, lblPagado, lblDineroMetido;
+	JTextField textField, textDineroMetido, textVueltas;
 	JList list;
 
 
@@ -218,7 +204,7 @@ public class PanelPago {
 		label_1.setBounds(449, 121, 29, 35);
 		panelPago.add(label_1);
 		
-		JLabel label_2 = new JLabel("\u20AC");
+		label_2 = new JLabel("\u20AC");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		label_2.setBounds(166, 121, 29, 35);
 		panelPago.add(label_2);
