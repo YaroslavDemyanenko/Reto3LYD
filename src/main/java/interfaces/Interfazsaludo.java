@@ -10,8 +10,8 @@ import javax.swing.SwingConstants;
 
 public class Interfazsaludo extends JPanel {
 	JPanel InterfazSaludo;
-	JTextField txtTocaParaContinuar;
-	JTextField txtBienvenidoATermibus;
+	
+	JLabel lblBienvenidoATermibus,lblTocaParaContinuar;
 
 	
 	JLabel lblUsuario;
@@ -39,22 +39,23 @@ public class Interfazsaludo extends JPanel {
 		InterfazSaludo.add(btnSignUP);
 		
 		
-		txtTocaParaContinuar = new JTextField();
-		txtTocaParaContinuar.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTocaParaContinuar.setText("Toca para continuar");
-		txtTocaParaContinuar.setBounds(260, 428, 270, 20);
-		InterfazSaludo.add(txtTocaParaContinuar);
-		txtTocaParaContinuar.setColumns(10);
+		lblTocaParaContinuar = new JLabel();
+		lblTocaParaContinuar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblTocaParaContinuar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTocaParaContinuar.setText("Toca para continuar");
+		lblTocaParaContinuar.setBounds(260, 428, 270, 20);
+		InterfazSaludo.add(lblTocaParaContinuar);
 		
 		
-		txtBienvenidoATermibus = new JTextField();
-		txtBienvenidoATermibus.setForeground(new Color(153, 0, 102));
-		txtBienvenidoATermibus.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		txtBienvenidoATermibus.setHorizontalAlignment(SwingConstants.CENTER);
-		txtBienvenidoATermibus.setText("Bienvenid@\r\na Termibus");
-		txtBienvenidoATermibus.setBounds(163, 180, 471, 159);
-		InterfazSaludo.add(txtBienvenidoATermibus);
-		txtBienvenidoATermibus.setColumns(10);
+		
+		lblBienvenidoATermibus = new JLabel();
+		lblBienvenidoATermibus.setForeground(new Color(153, 0, 102));
+		lblBienvenidoATermibus.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblBienvenidoATermibus.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBienvenidoATermibus.setText("Bienvenid@\r\na Termibus");
+		lblBienvenidoATermibus.setBounds(163, 180, 471, 159);
+		InterfazSaludo.add(lblBienvenidoATermibus);
+		
 		
 		
 

@@ -11,11 +11,11 @@ import javax.swing.JList;
 import java.awt.Font;
 
 public class PanelLineas1 {
-	JTextField txtLinea;
-	JTextField txtParadaInicio;
+	
+	
 	JPanel panelLineas1;
 	JButton btnSingUp;
-	JLabel lblUsuario;
+	JLabel lblUsuario, lblLinea, lblParadaInicio;
 	JRadioButton rdbtnIda;
 	JRadioButton rdbtnIdayVuelta;
 	
@@ -48,13 +48,13 @@ public class PanelLineas1 {
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		panelLineas1.add(lblUsuario);
 		
-		txtLinea = new JTextField();
-		txtLinea.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		txtLinea.setHorizontalAlignment(SwingConstants.CENTER);
-		txtLinea.setText("Linea");
-		txtLinea.setBounds(100, 167, 86, 20);
-		panelLineas1.add(txtLinea);
-		txtLinea.setColumns(10);
+		lblLinea = new JLabel();
+		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblLinea.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLinea.setText("Linea");
+		lblLinea.setBounds(100, 167, 86, 20);
+		panelLineas1.add(lblLinea);
+		
 		
 		rdbtnIda = new JRadioButton("Ida");
 		rdbtnIda.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -70,13 +70,13 @@ public class PanelLineas1 {
 		grupo.add(rdbtnIda);
 		grupo.add(rdbtnIdayVuelta);
 		
-		txtParadaInicio = new JTextField();
-		txtParadaInicio.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		txtParadaInicio.setHorizontalAlignment(SwingConstants.CENTER);
-		txtParadaInicio.setText("Parada inicio");
-		txtParadaInicio.setBounds(433, 167, 86, 20);
-		panelLineas1.add(txtParadaInicio);
-		txtParadaInicio.setColumns(10);
+		lblParadaInicio = new JLabel();
+		lblParadaInicio.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblParadaInicio.setHorizontalAlignment(SwingConstants.CENTER);
+		lblParadaInicio.setText("Parada inicio");
+		lblParadaInicio.setBounds(433, 167, 86, 20);
+		panelLineas1.add(lblParadaInicio);
+		
 		
 		listLineas = new JList();
 		listLineas.setBounds(462, 215, 258, 274);
