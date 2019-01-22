@@ -35,7 +35,7 @@ public class Login {
 		panelLogin.add(lblRegistroUsuario);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNombre.setBounds(47, 106, 78, 39);
 		panelLogin.add(lblNombre);
 		
@@ -45,7 +45,7 @@ public class Login {
 		textFieldNombre.setColumns(10);
 		
 		lblApellido = new JLabel("Apellido:");
-		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblApellido.setBounds(47, 170, 78, 41);
 		panelLogin.add(lblApellido);
 		
@@ -55,7 +55,7 @@ public class Login {
 		panelLogin.add(textFieldApellido);
 		
 		lblDni = new JLabel("DNI:");
-		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblDni.setBounds(47, 238, 65, 43);
 		panelLogin.add(lblDni);
 		
@@ -65,7 +65,7 @@ public class Login {
 		panelLogin.add(textFieldDNI);
 		
 		lblSexo = new JLabel("Sexo:");
-		lblSexo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSexo.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblSexo.setBounds(47, 304, 65, 41);
 		panelLogin.add(lblSexo);
 		
@@ -100,7 +100,7 @@ public class Login {
 		textFieldContraseniaLogin.setColumns(10);
 		
 		lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblContrasea.setBounds(43, 364, 92, 39);
 		panelLogin.add(lblContrasea);
 		
@@ -110,16 +110,19 @@ public class Login {
 		textFieldContrasenia.setColumns(10);
 		
 		btnConfirmarRegistro = new JButton("Confirmar Registro");
+		btnConfirmarRegistro.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnConfirmarRegistro.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 		btnConfirmarRegistro.setBounds(94, 497, 141, 48);
 		panelLogin.add(btnConfirmarRegistro);
 		
 		btnConfirmarLogin = new JButton("Confirmar Login");
+		btnConfirmarLogin.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnConfirmarLogin.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 		btnConfirmarLogin.setBounds(564, 497, 141, 48);
 		panelLogin.add(btnConfirmarLogin);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCancelar.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 		btnCancelar.setBounds(329, 497, 141, 48);
 		panelLogin.add(btnCancelar);

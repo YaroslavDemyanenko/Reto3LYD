@@ -20,7 +20,8 @@ public class ParadaLineas2 {
 	JLabel lblLlegada;
 	JList<Parada> listaDestinos;
 	DefaultListModel<Parada> modeloListaDestinos;
-
+	JButton btnLogIn, btnCancelar, btnConfirmar;
+	JSpinner spnNumeroDeBilletes;
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -30,11 +31,11 @@ public class ParadaLineas2 {
 		panelLineas2.setLayout(null);
 
 		lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(538, 34, 46, 14);
+		lblUsuario.setBounds(593, 12, 86, 25);
 		panelLineas2.add(lblUsuario);
 
-		JButton btnLogIn = new JButton("Log in");
-		btnLogIn.setBounds(622, 30, 89, 23);
+		btnLogIn = new JButton("Log in");
+		btnLogIn.setBounds(689, 12, 89, 23);
 		panelLineas2.add(btnLogIn);
 
 		lblLinea = new JLabel("Linea:");
@@ -50,11 +51,11 @@ public class ParadaLineas2 {
 		panelLineas2.add(lblFechaIda);
 
 		lblFechaVuelta = new JLabel("Fecha Vuelta");
-		lblFechaVuelta.setBounds(76, 301, 89, 14);
+		lblFechaVuelta.setBounds(79, 301, 89, 14);
 		panelLineas2.add(lblFechaVuelta);
 
 		lblNumeroDeBilletes = new JLabel("Numero de billetes");
-		lblNumeroDeBilletes.setBounds(78, 383, 100, 14);
+		lblNumeroDeBilletes.setBounds(79, 383, 100, 14);
 		panelLineas2.add(lblNumeroDeBilletes);
 
 		calendarioIda = new JDateChooser(null, null, null, new JSpinnerDateEditor());
@@ -65,15 +66,15 @@ public class ParadaLineas2 {
 		calendarioVuelta.setBounds(163, 301, 137, 27);
 		panelLineas2.add(calendarioVuelta);
 		
-		JSpinner spnNumeroDeBilletes = new JSpinner();
+		spnNumeroDeBilletes = new JSpinner();
 		spnNumeroDeBilletes.setBounds(183, 370, 70, 40);
 		panelLineas2.add(spnNumeroDeBilletes);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(109, 519, 89, 23);
 		panelLineas2.add(btnCancelar);
 		
-		JButton btnConfirmar = new JButton("Confirmar");
+		btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setBounds(572, 519, 89, 23);
 		panelLineas2.add(btnConfirmar);
 		

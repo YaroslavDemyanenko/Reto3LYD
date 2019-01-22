@@ -106,7 +106,7 @@ public class PanelPago {
 		lblTitulo = new JLabel("Pago");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setBounds(10, 37, 679, 35);
+		lblTitulo.setBounds(255, 12, 223, 35);
 		panelPago.add(lblTitulo);
 
 		btn100 = new JButton("100");
@@ -223,13 +223,13 @@ public class PanelPago {
 		list.setBounds(484, 192, 254, 268);
 		panelPago.add(list);
 		
-		lblUsuario = new JLabel("USUARIO");
-		lblUsuario.setBounds(577, 11, 112, 35);
+		lblUsuario = new JLabel("Usuario");
+		lblUsuario.setBounds(593, 12, 86, 25);
 		panelPago.add(lblUsuario);
 		
 		btnLogOut = new JButton("Log out");
 		btnLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnLogOut.setBounds(686, 11, 104, 35);
+		btnLogOut.setBounds(689, 12, 89, 23);
 		panelPago.add(btnLogOut);
 		
 				

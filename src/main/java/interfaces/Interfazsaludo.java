@@ -1,40 +1,49 @@
 package interfaces;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.awt.Color;
 
 public class Interfazsaludo extends JPanel {
-	private JTextField txtTocaParaContinuar;
-	private JTextField txtBienvenidoATermibus;
+	JPanel InterfazSaludo;
+	JTextField txtTocaParaContinuar;
+	JTextField txtBienvenidoATermibus;
 
+	
+	JLabel lblUsuario;
+	JButton btnSignUP;
 	/**
-	 * Create the panel.
+	 * @wbp.parser.entryPoint
 	 */
-	public Interfazsaludo() {
-		setLayout(null);
+	public void crearInterfazsaludo() {
 		
-		JLabel lblUsuario = new JLabel("Usuario");
+		InterfazSaludo = new JPanel();
+		InterfazSaludo.setBounds(0, 0, 800, 600);
+		
+		InterfazSaludo.setLayout(null);
+		
+		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario.setBounds(494, 12, 86, 25);
-		add(lblUsuario);
+		lblUsuario.setBounds(593, 12, 86, 25);
+		InterfazSaludo.add(lblUsuario);
 		
 		
 		
-		JButton btnSignUP = new JButton("Sign UP");
+		btnSignUP = new JButton("Sign UP");
 		btnSignUP.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnSignUP.setBounds(588, 12, 89, 23);
-		add(btnSignUP);
+		btnSignUP.setBounds(689, 12, 89, 23);
+		InterfazSaludo.add(btnSignUP);
 		
 		
 		txtTocaParaContinuar = new JTextField();
 		txtTocaParaContinuar.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTocaParaContinuar.setText("Toca para continuar");
-		txtTocaParaContinuar.setBounds(215, 432, 270, 20);
-		add(txtTocaParaContinuar);
+		txtTocaParaContinuar.setBounds(260, 428, 270, 20);
+		InterfazSaludo.add(txtTocaParaContinuar);
 		txtTocaParaContinuar.setColumns(10);
 		
 		
@@ -43,8 +52,8 @@ public class Interfazsaludo extends JPanel {
 		txtBienvenidoATermibus.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		txtBienvenidoATermibus.setHorizontalAlignment(SwingConstants.CENTER);
 		txtBienvenidoATermibus.setText("Bienvenid@\r\na Termibus");
-		txtBienvenidoATermibus.setBounds(123, 160, 471, 159);
-		add(txtBienvenidoATermibus);
+		txtBienvenidoATermibus.setBounds(163, 180, 471, 159);
+		InterfazSaludo.add(txtBienvenidoATermibus);
 		txtBienvenidoATermibus.setColumns(10);
 		
 		

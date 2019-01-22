@@ -30,11 +30,11 @@ public class PanelBilleteFinal {
 		
 		btnLogIn = new JButton("Log out");
 		btnLogIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnLogIn.setBounds(686, 11, 104, 35);
+		btnLogIn.setBounds(689, 12, 89, 23);
 		panelBilleteFinal.add(btnLogIn);
 		
-		lblUsuario = new JLabel("USUARIO");
-		lblUsuario.setBounds(576, 11, 112, 35);
+		lblUsuario = new JLabel("Usuario");
+		lblUsuario.setBounds(593, 12, 86, 25);
 		panelBilleteFinal.add(lblUsuario);
 		
 		listPersonas = new JList();
