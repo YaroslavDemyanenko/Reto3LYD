@@ -57,7 +57,7 @@ public class PanelPago {
 		panelPago.add(lblPagado);
 		
 		textVueltas = new JTextField();
-		textVueltas.setBounds(581, 108, 104, 41);
+		textVueltas.setBounds(581, 110, 104, 41);
 		panelPago.add(textVueltas);
 		textVueltas.setColumns(10);
 
@@ -65,7 +65,7 @@ public class PanelPago {
 		btn5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn5.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5euros.jpg")));
 		btn5.setFont(btn5.getFont().deriveFont(0f));
-		btn5.setBounds(39, 279, 59, 51);
+		btn5.setBounds(40, 289, 59, 35);
 		panelPago.add(btn5);
 
 		btn2 = new JButton("2");
@@ -211,11 +211,11 @@ public class PanelPago {
 		
 		lblAPagar = new JLabel("A pagar:");
 		lblAPagar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAPagar.setBounds(52, 75, 98, 25);
+		lblAPagar.setBounds(52, 80, 98, 25);
 		panelPago.add(lblAPagar);
 		
 		textField = new JTextField();
-		textField.setBounds(52, 107, 104, 42);
+		textField.setBounds(52, 110, 104, 42);
 		panelPago.add(textField);
 		textField.setColumns(10);
 		
