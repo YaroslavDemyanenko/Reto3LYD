@@ -12,7 +12,8 @@ public class Ventana extends JFrame {
 	public PanelConfirmacion panelConfirmacion;
 	public PanelFinal panelFinal;
 	public PanelLineas1 panelLineas1;
-	public PanelLineas2 panelLineas2;
+	public PanelLineas2 panelLineas2
+	
 	public PanelPasajeroExtra panelPasajeroExtra;
 	public PanelLogin panelLogin;
 	public PanelPago panelPago;
@@ -24,6 +25,7 @@ public class Ventana extends JFrame {
 		panelFinal=new PanelFinal();
 		panelLineas1=new PanelLineas1();
 		panelLineas2=new PanelLineas2();
+		
 		panelPasajeroExtra=new PanelPasajeroExtra();
 		panelLogin=new PanelLogin();
 		panelPago=new PanelPago();
