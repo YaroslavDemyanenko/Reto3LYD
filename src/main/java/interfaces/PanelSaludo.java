@@ -18,7 +18,7 @@ public class PanelSaludo extends JPanel {
 	public PanelSaludo() {
 
 		setBounds(0, 0, 800, 600);
-		
+		setVisible(true);
 		setLayout(null);
 		
 		lblUsuario = new JLabel("Usuario");

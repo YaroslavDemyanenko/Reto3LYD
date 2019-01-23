@@ -26,6 +26,7 @@ public class PanelLogin extends JPanel {
 	 */
 	public PanelLogin() {
 		setLayout(null);
+		setVisible(false);
 		setBounds(0,0,800,600);
 		
 		lblRegistroUsuario = new JLabel("Registro:");

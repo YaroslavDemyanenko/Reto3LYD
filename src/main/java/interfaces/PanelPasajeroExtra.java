@@ -29,6 +29,7 @@ public class PanelPasajeroExtra extends JPanel{
 	 */
 	public PanelPasajeroExtra() {
 		setLayout(null);
+		setVisible(false);
 		setBounds(0,0,800,600);
 		
 		btnCancelar = new JButton("Cancelar");

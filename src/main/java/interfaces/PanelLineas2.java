@@ -27,6 +27,7 @@ public class PanelLineas2 extends JPanel{
 	public PanelLineas2() {
 	
 		setBounds(0, 0, 800, 600);
+		setVisible(false);
 		setLayout(null);
 
 		lblUsuario = new JLabel("Usuario");

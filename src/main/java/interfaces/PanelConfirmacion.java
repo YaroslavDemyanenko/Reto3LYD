@@ -30,6 +30,7 @@ public class PanelConfirmacion extends JPanel {
 	public PanelConfirmacion() {
 		setLayout(null);
 		setBounds(0,0,800,600);
+		setVisible(false);
 		
 		btnLogIn = new JButton("Log out");
 		btnLogIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

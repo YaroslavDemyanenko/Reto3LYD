@@ -26,7 +26,7 @@ public class PanelLineas1 extends JPanel {
 	public PanelLineas1() {
 		
 		setBounds(0, 0, 800, 600);
-		
+		setVisible(false);
 		setLayout(null);
 	
 		btnSingUp = new JButton("Sing Up");
