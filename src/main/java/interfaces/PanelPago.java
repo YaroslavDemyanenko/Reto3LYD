@@ -215,21 +215,20 @@ public class PanelPago extends JPanel{
 		
 		lblAPagar = new JLabel("A pagar:");
 		lblAPagar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-<<<<<<< HEAD
+
 		lblAPagar.setBounds(52, 80, 98, 25);
-		panelPago.add(lblAPagar);
+		add(lblAPagar);
 		
 		textField = new JTextField();
 		textField.setBounds(52, 110, 104, 42);
-		panelPago.add(textField);
-=======
+		add(textField);
+
 		lblAPagar.setBounds(52, 75, 98, 25);
 		add(lblAPagar);
 		
 		textField = new JTextField();
 		textField.setBounds(52, 107, 104, 42);
 		add(textField);
->>>>>>> 48ea7067b98e35c4d8173a884b8e544a3a7a9791
 		textField.setColumns(10);
 		
 		list = new JList();
