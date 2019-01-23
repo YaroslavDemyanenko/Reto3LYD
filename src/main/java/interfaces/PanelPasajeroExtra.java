@@ -16,17 +16,17 @@ import java.awt.Font;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * @wbp.parser.entryPoint
+ */
 public class PanelPasajeroExtra extends JPanel{
 	
-	JTextField textFieldNombre, textFieldApellido, textFieldDNI;
-	JComboBox textFieldSexo;
-	JButton btnCancelar, btnConfirmar;
-	JLabel lblSexo, lblDni, lblApellido, lblNombre, lblRegistroUsuario;
+	public JTextField textFieldNombre, textFieldApellido, textFieldDNI;
+	public JComboBox textFieldSexo;
+	public JButton btnCancelar, btnConfirmar;
+	public JLabel lblSexo, lblDni, lblApellido, lblNombre, lblRegistroUsuario;
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
+	
 	public PanelPasajeroExtra() {
 		setLayout(null);
 		setVisible(false);

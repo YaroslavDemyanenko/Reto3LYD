@@ -14,16 +14,17 @@ import javax.swing.JTextField;
 
 import com.sun.glass.ui.Cursor;
 
+/**
+ * @wbp.parser.entryPoint
+ */
 public class PanelLogin extends JPanel {
 	
-	JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin, textFieldContraseniaLogin, textFieldContrasenia;
-	JComboBox textFieldSexo;
-	JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblLogin, lblDniLogin, lblContraseaLogin, lblContrasea;
-	JButton btnConfirmarRegistro, btnConfirmarLogin, btnCancelar;
+	public JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin, textFieldContraseniaLogin, textFieldContrasenia;
+	public JComboBox textFieldSexo;
+	public JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblLogin, lblDniLogin, lblContraseaLogin, lblContrasea;
+	public JButton btnConfirmarRegistro, btnConfirmarLogin, btnCancelar;
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
+	
 	public PanelLogin() {
 		setLayout(null);
 		setVisible(false);
@@ -35,7 +36,7 @@ public class PanelLogin extends JPanel {
 		add(lblRegistroUsuario);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNombre.setBounds(47, 106, 78, 39);
 		add(lblNombre);
 		
@@ -45,7 +46,7 @@ public class PanelLogin extends JPanel {
 		textFieldNombre.setColumns(10);
 		
 		lblApellido = new JLabel("Apellido:");
-		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblApellido.setBounds(47, 170, 78, 41);
 		add(lblApellido);
 		
@@ -55,7 +56,7 @@ public class PanelLogin extends JPanel {
 		add(textFieldApellido);
 		
 		lblDni = new JLabel("DNI:");
-		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblDni.setBounds(47, 238, 65, 43);
 		add(lblDni);
 		
@@ -65,7 +66,7 @@ public class PanelLogin extends JPanel {
 		add(textFieldDNI);
 		
 		lblSexo = new JLabel("Sexo:");
-		lblSexo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblSexo.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblSexo.setBounds(47, 304, 65, 41);
 		add(lblSexo);
 		
@@ -112,19 +113,19 @@ public class PanelLogin extends JPanel {
 		btnConfirmarRegistro = new JButton("Confirmar Registro");
 		btnConfirmarRegistro.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnConfirmarRegistro.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
-		btnConfirmarRegistro.setBounds(94, 497, 141, 48);
+		btnConfirmarRegistro.setBounds(169, 452, 158, 35);
 		add(btnConfirmarRegistro);
 		
 		btnConfirmarLogin = new JButton("Confirmar Login");
 		btnConfirmarLogin.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnConfirmarLogin.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
-		btnConfirmarLogin.setBounds(564, 497, 141, 48);
+		btnConfirmarLogin.setBounds(610, 268, 129, 35);
 		add(btnConfirmarLogin);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCancelar.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
-		btnCancelar.setBounds(329, 497, 141, 48);
+		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 
