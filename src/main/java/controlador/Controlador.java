@@ -1,20 +1,22 @@
 package controlador;
 
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
 
 import clases.Modelo;
-import interfaces.Vista;
+import interfaces.Ventana;
 
 
 
 public class Controlador {
 	
 	public Modelo mod;
-	public Vista vis;
+	public Ventana vis;
 	
-	public Controlador(Modelo modelo,Vista vista) {
+	public Controlador(Modelo modelo,Ventana vista) {
 		this.mod=modelo;
 		this.vis=vista;
+		vista.setContentPane(vista.panelSaludo);
 		inicializar_eventos();
 	}
 	

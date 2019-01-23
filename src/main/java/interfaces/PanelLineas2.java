@@ -12,9 +12,8 @@ import clases.Parada;
 import javax.swing.JSpinner;
 import javax.swing.JList;
 
-public class ParadaLineas2 {
+public class PanelLineas2 extends JPanel{
 
-	JPanel panelLineas2;
 	JLabel lblUsuario, lblSalida,lblLinea,lblNumeroDeBilletes,lblNombreLinea,lblFechaIda,lblFechaVuelta,lblLleg,lblSal;
 	JDateChooser calendarioIda,calendarioVuelta;
 	JLabel lblLlegada;
@@ -25,76 +24,77 @@ public class ParadaLineas2 {
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public void HacerParadaLineas2() {
-		panelLineas2 = new JPanel();
-		panelLineas2.setBounds(0, 0, 800, 600);
-		panelLineas2.setLayout(null);
+	public PanelLineas2() {
+	
+		setBounds(0, 0, 800, 600);
+		setVisible(false);
+		setLayout(null);
 
 		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBounds(593, 12, 86, 25);
-		panelLineas2.add(lblUsuario);
+		add(lblUsuario);
 
 		btnLogIn = new JButton("Log in");
 		btnLogIn.setBounds(689, 12, 89, 23);
-		panelLineas2.add(btnLogIn);
+		add(btnLogIn);
 
 		lblLinea = new JLabel("Linea:");
 		lblLinea.setBounds(79, 144, 46, 14);
-		panelLineas2.add(lblLinea);
+		add(lblLinea);
 
 		lblNombreLinea = new JLabel("x");
 		lblNombreLinea.setBounds(191, 144, 46, 14);
-		panelLineas2.add(lblNombreLinea);
+		add(lblNombreLinea);
 
 		lblFechaIda = new JLabel("Fecha Ida");
 		lblFechaIda.setBounds(79, 212, 119, 14);
-		panelLineas2.add(lblFechaIda);
+		add(lblFechaIda);
 
 		lblFechaVuelta = new JLabel("Fecha Vuelta");
 		lblFechaVuelta.setBounds(79, 301, 89, 14);
-		panelLineas2.add(lblFechaVuelta);
+		add(lblFechaVuelta);
 
 		lblNumeroDeBilletes = new JLabel("Numero de billetes");
 		lblNumeroDeBilletes.setBounds(79, 383, 100, 14);
-		panelLineas2.add(lblNumeroDeBilletes);
+		add(lblNumeroDeBilletes);
 
 		calendarioIda = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		calendarioIda.setBounds(163, 212, 137, 27);
-		panelLineas2.add(calendarioIda);
+		add(calendarioIda);
 		
 		calendarioVuelta = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		calendarioVuelta.setBounds(163, 301, 137, 27);
-		panelLineas2.add(calendarioVuelta);
+		add(calendarioVuelta);
 		
 		spnNumeroDeBilletes = new JSpinner();
 		spnNumeroDeBilletes.setBounds(183, 370, 70, 40);
-		panelLineas2.add(spnNumeroDeBilletes);
+		add(spnNumeroDeBilletes);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(109, 519, 89, 23);
-		panelLineas2.add(btnCancelar);
+		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setBounds(572, 519, 89, 23);
-		panelLineas2.add(btnConfirmar);
+		add(btnConfirmar);
 		
 		lblSalida = new JLabel("Salida:");
 		lblSalida.setBounds(489, 144, 137, 14);
-		panelLineas2.add(lblSalida);
+		add(lblSalida);
 		
 		
 		lblSal = new JLabel("yyyyyyyyyyy");
 		lblSal.setBounds(604, 144, 107, 14);
-		panelLineas2.add(lblSal);
+		add(lblSal);
 		
 		modeloListaDestinos= new DefaultListModel<Parada>();
 		
 		lblLlegada = new JLabel("Llegada:");
 		lblLlegada.setBounds(489, 197, 46, 14);
-		panelLineas2.add(lblLlegada);
+		add(lblLlegada);
 		
 		listaDestinos = new JList<Parada>(modeloListaDestinos);
 		listaDestinos.setBounds(489, 237, 231, 199);
-		panelLineas2.add(listaDestinos);
+		add(listaDestinos);
 	}
 }
