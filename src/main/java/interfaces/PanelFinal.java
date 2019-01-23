@@ -11,29 +11,29 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-public class PanelFinal {
+public class PanelFinal extends JPanel {
 
-	JPanel panelProcesar = new JPanel();	
 	JLabel lblImpresion, lblEspereUnMomento;
 
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public void Impresion() {
-		panelProcesar.setLayout(null);
-		panelProcesar.setBounds(0,0,800,600);
+	public PanelFinal() {
+		setLayout(null);
+		setVisible(false);
+		setBounds(0,0,800,600);
 		
 		lblImpresion = new JLabel("Imprimiendo billete/s...");
 		lblImpresion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImpresion.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblImpresion.setBounds(184, 183, 443, 83);
-		panelProcesar.add(lblImpresion);
+		add(lblImpresion);
 		
 		lblEspereUnMomento = new JLabel("Espere un momento");
 		lblEspereUnMomento.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEspereUnMomento.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblEspereUnMomento.setBounds(184, 328, 443, 48);
-		panelProcesar.add(lblEspereUnMomento);
+		add(lblEspereUnMomento);
 
 	}
 }
