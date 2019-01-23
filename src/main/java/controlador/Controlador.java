@@ -1,6 +1,9 @@
 package controlador;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 
 import clases.Modelo;
@@ -8,7 +11,7 @@ import interfaces.Ventana;
 
 
 
-public class Controlador {
+public class Controlador{
 	
 	public Modelo mod;
 	public Ventana vis;
@@ -21,8 +24,63 @@ public class Controlador {
 	}
 	
 	public void inicializar_eventos() {
-		//Listeners
+		this.vis.panelSaludo.addMouseListener(new MseListener());
 	}
+
+	
+	private class BtnListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+        	if (e.getSource() == vis.panelSaludo){
+        		vis.setContentPane(vis.panelConfirmacion);
+        		
+        	}
+        }
+    }
+	
+	private class MseListener implements MouseListener
+    {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			if (e.getSource() == vis.panelSaludo){
+        		vis.setContentPane(vis.panelLineas1);
+        	}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+
 	
 	
 	
