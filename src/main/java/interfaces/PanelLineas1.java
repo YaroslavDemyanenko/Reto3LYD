@@ -2,79 +2,96 @@ package interfaces;
 
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JList;
+import java.awt.Font;
+/**
+ * @wbp.parser.entryPoint 
+ */
+public class PanelLineas1 extends JPanel {
+	
 
-public class PanelLineas1 {
-	private JTextField txtLinea;
-	private JTextField txtParadaInicio;
-
-	/**
-	 * @wbp.parser.entryPoint 
-	 */
+	public JButton btnSingUp;
+	public JLabel lblUsuario, lblLinea, lblParadaInicio;
+	public JRadioButton rdbtnIda, rdbtnIdayVuelta;
+	public ButtonGroup grupo;
+	public JList listLineas,listParadas;
+	public DefaultListModel<String> modeloLineas,modeloParadas;
+	public JButton btnCancelar, btnConfirmar;
+	
+	
 	public PanelLineas1() {
-		JPanel panelLineas1 = new JPanel();
 		
-		panelLineas1.setBounds(0, 0, 800, 600);
+		setBounds(0, 0, 800, 600);
+		setLayout(null);
+	
+		btnSingUp = new JButton("Sing Up");
+		btnSingUp.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSingUp.setBounds(689, 12, 89, 23);
+		add(btnSingUp);
 		
-		panelLineas1.setLayout(null);
-		
-		
-		
-		JButton btnSingUp = new JButton("Sing Up");
-		btnSingUp.setBounds(676, 31, 95, 23);
-		panelLineas1.add(btnSingUp);
-		
-		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(604, 31, 62, 23);
+		lblUsuario = new JLabel("Usuario");
+		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblUsuario.setBounds(593, 12, 86, 25);
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		panelLineas1.add(lblUsuario);
+		add(lblUsuario);
 		
-		txtLinea = new JTextField();
-		txtLinea.setHorizontalAlignment(SwingConstants.CENTER);
-		txtLinea.setText("Linea");
-		txtLinea.setBounds(100, 167, 86, 20);
-		panelLineas1.add(txtLinea);
-		txtLinea.setColumns(10);
+		lblLinea = new JLabel();
+		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblLinea.setHorizontalAlignment(SwingConstants.LEFT);
+		lblLinea.setText("Linea");
+		lblLinea.setBounds(83, 97, 86, 20);
+		add(lblLinea);
 		
-		JRadioButton rdbtnIda = new JRadioButton("Ida");
-		rdbtnIda.setBounds(56, 493, 109, 23);
-		panelLineas1.add(rdbtnIda);
 		
-		JRadioButton rdbtnIdayVuelta = new JRadioButton("Ida y vuelta");
-		rdbtnIdayVuelta.setBounds(216, 493, 109, 23);
-		panelLineas1.add(rdbtnIdayVuelta);
+		rdbtnIda = new JRadioButton("Ida");
+		rdbtnIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		rdbtnIda.setBounds(83, 468, 109, 23);
+		add(rdbtnIda);
 		
-		ButtonGroup grupo = new ButtonGroup();
+		rdbtnIdayVuelta = new JRadioButton("Ida y vuelta");
+		rdbtnIdayVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		rdbtnIdayVuelta.setBounds(267, 468, 109, 23);
+		add(rdbtnIdayVuelta);
+		
+		grupo = new ButtonGroup();
 		grupo.add(rdbtnIda);
 		grupo.add(rdbtnIdayVuelta);
 		
-		txtParadaInicio = new JTextField();
-		txtParadaInicio.setText("Parada inicio");
-		txtParadaInicio.setBounds(433, 167, 86, 20);
-		panelLineas1.add(txtParadaInicio);
-		txtParadaInicio.setColumns(10);
+		lblParadaInicio = new JLabel();
+		lblParadaInicio.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblParadaInicio.setHorizontalAlignment(SwingConstants.LEFT);
+		lblParadaInicio.setText("Parada inicio");
+		lblParadaInicio.setBounds(433, 97, 129, 20);
+		add(lblParadaInicio);
 		
-		JList listLineas = new JList();
-		listLineas.setBounds(462, 215, 258, 274);
-		panelLineas1.add(listLineas);
 		
-		JList listParadas = new JList();
-		listParadas.setBounds(136, 215, 200, 233);
-		panelLineas1.add(listParadas);
+		modeloLineas = new DefaultListModel();
+		listLineas = new JList(modeloLineas);
+		listLineas.setBounds(83, 153, 200, 233);
+		add(listLineas);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		modeloParadas = new DefaultListModel();
+		listParadas = new JList(modeloParadas);
+		listParadas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		listParadas.setBounds(433, 153, 258, 274);
+		add(listParadas);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setToolTipText("");
-		btnCancelar.setBounds(36, 551, 129, 35);
-		panelLineas1.add(btnCancelar);
+		btnCancelar.setBounds(56, 527, 129, 35);
+		add(btnCancelar);
 		
-		JButton btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBounds(655, 551, 116, 35);
-		panelLineas1.add(btnConfirmar);
+		btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnConfirmar.setBounds(655, 527, 129, 35);
+		add(btnConfirmar);
 		
 		
 	}

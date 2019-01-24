@@ -2,25 +2,40 @@ package conexion;
 
 import java.sql.*;
 
-class ConexionAMySQL {
-	public Connection conectarABase(String baseDatos,String user,String pass) {
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
+import clases.Modelo;
+
+public class ConexionAMySQL {
+	private Connection conexion;
+	
+	public ConexionAMySQL(String baseDatos,String user,String pass) {
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+baseDatos+"?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass);
-			return con;
+			this.conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/"+baseDatos+"?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass);
 		} catch (SQLException e) {
-			
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
-		return null;
 	}
-	public ResultSet hacerPeticion(Connection con,String peticionString) {
+	
+
+	public ResultSet hacerPeticion(String peticionString) {
 		try {
-			Statement peticion = con.createStatement();
+			Statement peticion = conexion.createStatement();
 			ResultSet resultadoPeticion = peticion.executeQuery(peticionString);
 			return resultadoPeticion;
 		} catch (SQLException e) {
-			System.out.println(e);
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 		return null;
+	}
+	
+
+	public void meterAModelo (DefaultListModel<String> model,String peticion,Modelo mod) throws SQLException {
+		ResultSet resul = mod.db.hacerPeticion(peticion);
+		while (resul.next()) {
+			model.addElement(resul.getString("Cod_Linea")+" "+resul.getString("Nombre"));
+		}
 	}
 	/**
 	 * Statement stmt = con.createStatement();

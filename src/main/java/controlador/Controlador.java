@@ -1,26 +1,97 @@
 package controlador;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import com.mysql.cj.protocol.Resultset;
+
+import clases.Linea;
 import clases.Modelo;
-import interfaces.Vista;
+import interfaces.Ventana;
 
 
 
-public class Controlador {
+public class Controlador{
 	
 	public Modelo mod;
-	public Vista vis;
+	public Ventana vis;
 	
-	public Controlador(Modelo modelo,Vista vista) {
+	public Controlador(Modelo modelo,Ventana vista) {
 		this.mod=modelo;
 		this.vis=vista;
+		vista.setContentPane(vista.panelSaludo);
 		inicializar_eventos();
 	}
 	
 	public void inicializar_eventos() {
-		//Listeners
+		this.vis.panelSaludo.addMouseListener(new MseListener());
 	}
+
+	
+	private class BtnListener implements ActionListener
+    {
+		public void actionPerformed(ActionEvent e)
+        {
+        	if (e.getSource() == vis.panelSaludo){
+
+        	}
+        }
+    }
+	
+	private class MseListener implements MouseListener
+    {
+		ArrayList<Linea> lineas = new ArrayList<Linea>();
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			if (e.getSource() == vis.panelSaludo){
+        		vis.setContentPane(vis.panelLineas1);
+        		try {
+					mod.db.meterAModelo(vis.panelLineas1.modeloLineas, "SELECT * FROM `linea`", mod);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+        	}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+
 	
 	
 	

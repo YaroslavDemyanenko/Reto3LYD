@@ -9,28 +9,31 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+/**
+ * @wbp.parser.entryPoint
+ */
+public class PanelFinal extends JPanel {
 
-public class PanelFinal {
+	public JLabel lblImpresion, lblEspereUnMomento;
 
-	JPanel panelProcesar = new JPanel();	
-	JLabel lblImpresion, lblEspereUnMomento;
-
-	/**
-	 * @wbp.parser.entryPoint
-	 */
-	public void Impresion() {
-		panelProcesar.setLayout(null);
-		panelProcesar.setBounds(0,0,800,600);
+	
+	public PanelFinal() {
+		setLayout(null);
+		setVisible(false);
+		setBounds(0,0,800,600);
 		
 		lblImpresion = new JLabel("Imprimiendo billete/s...");
-		lblImpresion.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblImpresion.setBounds(249, 183, 443, 83);
-		panelProcesar.add(lblImpresion);
+		lblImpresion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblImpresion.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblImpresion.setBounds(184, 183, 443, 83);
+		add(lblImpresion);
 		
 		lblEspereUnMomento = new JLabel("Espere un momento");
+		lblEspereUnMomento.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEspereUnMomento.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblEspereUnMomento.setBounds(249, 277, 443, 48);
-		panelProcesar.add(lblEspereUnMomento);
+		lblEspereUnMomento.setBounds(184, 328, 443, 48);
+		add(lblEspereUnMomento);
 
 	}
 }
