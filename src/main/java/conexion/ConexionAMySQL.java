@@ -2,7 +2,10 @@ package conexion;
 
 import java.sql.*;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+
+import clases.Modelo;
 
 public class ConexionAMySQL {
 	private Connection conexion;
@@ -25,6 +28,14 @@ public class ConexionAMySQL {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 		return null;
+	}
+	
+
+	public void meterAModelo (DefaultListModel<String> model,String peticion,Modelo mod) throws SQLException {
+		ResultSet resul = mod.db.hacerPeticion(peticion);
+		while (resul.next()) {
+			model.addElement(resul.getString("Cod_Linea")+" "+resul.getString("Nombre"));
+		}
 	}
 	/**
 	 * Statement stmt = con.createStatement();

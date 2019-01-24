@@ -5,7 +5,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import com.mysql.cj.protocol.Resultset;
+
+import clases.Linea;
 import clases.Modelo;
 import interfaces.Ventana;
 
@@ -30,21 +36,26 @@ public class Controlador{
 	
 	private class BtnListener implements ActionListener
     {
-        public void actionPerformed(ActionEvent e)
+		public void actionPerformed(ActionEvent e)
         {
         	if (e.getSource() == vis.panelSaludo){
-        		vis.setContentPane(vis.panelConfirmacion);
-        		
+
         	}
         }
     }
 	
 	private class MseListener implements MouseListener
     {
+		ArrayList<Linea> lineas = new ArrayList<Linea>();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource() == vis.panelSaludo){
         		vis.setContentPane(vis.panelLineas1);
+        		try {
+					mod.db.meterAModelo(vis.panelLineas1.modeloLineas, "SELECT * FROM `linea`", mod);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
         	}
 		}
 

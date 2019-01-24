@@ -2,6 +2,7 @@ package interfaces;
 
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -20,6 +21,7 @@ public class PanelLineas1 extends JPanel {
 	public JRadioButton rdbtnIda, rdbtnIdayVuelta;
 	public ButtonGroup grupo;
 	public JList listLineas,listParadas;
+	public DefaultListModel<String> modeloLineas,modeloParadas;
 	public JButton btnCancelar, btnConfirmar;
 	
 	
@@ -69,13 +71,15 @@ public class PanelLineas1 extends JPanel {
 		add(lblParadaInicio);
 		
 		
-		listLineas = new JList();
-		listLineas.setBounds(433, 153, 258, 274);
+		modeloLineas = new DefaultListModel();
+		listLineas = new JList(modeloLineas);
+		listLineas.setBounds(83, 153, 200, 233);
 		add(listLineas);
 		
-		listParadas = new JList();
+		modeloParadas = new DefaultListModel();
+		listParadas = new JList(modeloParadas);
 		listParadas.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		listParadas.setBounds(83, 153, 200, 233);
+		listParadas.setBounds(433, 153, 258, 274);
 		add(listParadas);
 		
 		btnCancelar = new JButton("Cancelar");
