@@ -35,7 +35,7 @@ public class Métodos {
 			
 				con = MySQLConexion.getConexion();
 			
-				String sql = "select*from tb_usuario where usuario = ? and clave =  ? ";
+				String sql = "select*from tb_usuario where Nombre = ?, Apellido =  ?, Dni = ?, Sexo =  ? AND Contrasenia = ?  ";
 				
 				pst = con.prepareStatement(sql);
 				
@@ -65,11 +65,11 @@ public class Métodos {
 	
 	public void ingresar() {
 
-		String nombre = textFieldNombre.getText();
-		String apellido = textFieldApellido.getText();
-		String dni = textFieldDNI.getText();
-		String sexo = textFieldSexo.getText();
-		String contrasenia = textFieldContrasenia.getText();
+		String nombre = interfaces.Login.textFieldNombre.getText();
+		String apellido = interfaces.Login.textFieldApellido.getText();
+		String dni = interfaces.Login.textFieldDNI.getText();
+		String sexo = interfaces.Login.textFieldSexo.getText();
+		String contrasenia = interfaces.Login.textFieldContrasenia.getText();
 
 		GestionUsuario gestionUsuario = new GestionUsuario();
 
@@ -80,20 +80,49 @@ public class Métodos {
 		cliente.setSexo(sexo);
 		cliente.setContrasenia(contrasenia);
 
-		Cliente usu = gestionUsuario.obtenerUsuario(usuario2);
+		Cliente usu = gestionUsuario.obtenerUsuario(cliente);
 
-		if (usu != null) {
-			JOptionPane.showMessageDialog(contentPane, "Bienvenido");
-
-			this.dispose();
-			
-			frmBienvenida bienvenida = new frmBienvenida();
-			bienvenida.setVisible(true);
-
-		} else {
-			JOptionPane.showMessageDialog(contentPane, "Datos invalidos", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
+	public void Login(Cliente usu, Cliente cliente) {
+
+		Boolean registro = false;
+		String dniLogin = interfaces.Login.textFieldDNILogin.getText();
+		String contraseniaLogin = interfaces.Login.textFieldContrasenia.getText();
+
+		GestionUsuario gestionUsuario = new GestionUsuario();
+
+
+		try {
+			
+			Connection con = null;
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+			
+			con = MySQLConexion.getConexion();
+		
+			String sql = "select*from tb_usuario where dni = ? and contrasenia =  ? ";
+			
+			pst = con.prepareStatement(sql);
+			
+			pst.setString(1, usu.getDni());
+			pst.setString(2, usu.getContrasenia());
+			
+			rs = pst.executeQuery();
+			
+		
+			while (dniLogin==usu.getDni()&&contraseniaLogin==usu.getContrasenia()) {
+				registro = true;
+			}
+			
+			
+		} catch (Exception e) {
+		System.out.println("Error en obtener usuario");
+		}
+		
+
+		}
+	
 	}
 	
 	/**
