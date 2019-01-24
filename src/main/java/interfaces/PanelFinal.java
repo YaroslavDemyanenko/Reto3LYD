@@ -34,6 +34,5 @@ public class PanelFinal extends JPanel {
 		lblEspereUnMomento.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblEspereUnMomento.setBounds(184, 328, 443, 48);
 		add(lblEspereUnMomento);
-
 	}
 }
