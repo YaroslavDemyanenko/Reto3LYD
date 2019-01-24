@@ -19,14 +19,14 @@ import javax.swing.JTextField;
  * @wbp.parser.entryPoint
  */
 
-public class ResumenDeTrayecto extends JPanel {
+public class PanelResumen extends JPanel {
 
 	public JLabel lblUsuario,lblResumen, lblLinea, lblPardaInicio, lblPardaFin, lblTipoDeTrayecto, lblNombreLinea, lblNombrePardaInicio, lblNombreParadaFin, lblIdaIda, lblNumeroDeBilletes, lblX, lblFechaIda, lblFechaVuelta, lblPrecio ;
 	public JButton btnSingUp, btnCancelar, btnConfirmar ;
 	public JDateChooser calendarioIda, calendarioVuelta;
-	public JTextField textField;
+	public JTextField textPrecio;
 	
-	public ResumenDeTrayecto() {
+	public PanelResumen() {
 		
 		setBounds(0, 0, 800, 600);
 		setVisible(false);
@@ -143,11 +143,11 @@ public class ResumenDeTrayecto extends JPanel {
 		lblPrecio.setBounds(584, 410, 77, 28);
 		add(lblPrecio);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textField.setBounds(563, 448, 119, 41);
-		add(textField);
-		textField.setColumns(10);
+		textPrecio = new JTextField();
+		textPrecio.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textPrecio.setBounds(563, 448, 119, 41);
+		add(textPrecio);
+		textPrecio.setColumns(10);
 
 	}
 }
