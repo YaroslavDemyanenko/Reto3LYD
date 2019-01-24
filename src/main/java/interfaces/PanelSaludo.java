@@ -7,14 +7,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
+/**
+ * @wbp.parser.entryPoint
+ */
 public class PanelSaludo extends JPanel {
 
-	JLabel lblBienvenidoATermibus,lblTocaParaContinuar, lblUsuario;
-	JButton btnSignUP;
-	/**
-	 * @wbp.parser.entryPoint
-	 */
+	public JLabel lblBienvenidoATermibus,lblTocaParaContinuar, lblUsuario;
+	public JButton btnSignUP;
+	
 	public PanelSaludo() {
 
 		setBounds(0, 0, 800, 600);

@@ -11,19 +11,19 @@ import clases.Parada;
 
 import javax.swing.JSpinner;
 import javax.swing.JList;
-
+/**
+ * @wbp.parser.entryPoint
+ */
 public class PanelLineas2 extends JPanel{
 
-	JLabel lblUsuario, lblSalida,lblLinea,lblNumeroDeBilletes,lblNombreLinea,lblFechaIda,lblFechaVuelta,lblLleg,lblSal;
-	JDateChooser calendarioIda,calendarioVuelta;
-	JLabel lblLlegada;
-	JList<Parada> listaDestinos;
-	DefaultListModel<Parada> modeloListaDestinos;
-	JButton btnLogIn, btnCancelar, btnConfirmar;
-	JSpinner spnNumeroDeBilletes;
-	/**
-	 * @wbp.parser.entryPoint
-	 */
+	public JLabel lblUsuario, lblSalida,lblLinea,lblNumeroDeBilletes,lblNombreLinea,lblFechaIda,lblFechaVuelta,lblLleg,lblSal;
+	public JDateChooser calendarioIda,calendarioVuelta;
+	public JLabel lblLlegada;
+	public JList<Parada> listaDestinos;
+	public DefaultListModel<Parada> modeloListaDestinos;
+	public JButton btnLogIn, btnCancelar, btnConfirmar;
+	public JSpinner spnNumeroDeBilletes;
+	
 	public PanelLineas2() {
 	
 		setBounds(0, 0, 800, 600);
@@ -71,11 +71,11 @@ public class PanelLineas2 extends JPanel{
 		add(spnNumeroDeBilletes);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(109, 519, 89, 23);
+		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBounds(572, 519, 89, 23);
+		btnConfirmar.setBounds(655, 527, 129, 35);
 		add(btnConfirmar);
 		
 		lblSalida = new JLabel("Salida:");

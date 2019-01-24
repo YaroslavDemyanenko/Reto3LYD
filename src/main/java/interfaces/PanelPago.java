@@ -15,29 +15,29 @@ import javax.swing.SwingConstants;
 import com.sun.prism.paint.Color;
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
-
+/**
+ * @wbp.parser.entryPoint
+ */
 public class PanelPago extends JPanel{
 
-	JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001, btnLogOut, btnSiguiente, btnCancelar;
-	JButton[] arrayBtn= new JButton[15];
-	JLabel label, label_1, label_2, lblAPagar, lblUsuario, lblTitulo, lblPagado, lblDineroMetido;
-	JTextField textField, textDineroMetido, textVueltas;
-	JList list;
+	public JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001, btnLogOut, btnConfirmar, btnCancelar;
+	public JButton[] arrayBtn= new JButton[15];
+	public JLabel label, label_1, label_2, lblAPagar, lblUsuario, lblTitulo, lblPagado, lblDineroMetido;
+	public JTextField textFieldAPagar, textDineroMetido, textVueltas;
+	public JList list;
 
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
+	
 	public PanelPago() {
 		setLayout(null);
 		setVisible(false);
 
 		setBounds(0,0,800,600);
-		btnSiguiente = new JButton("Siguiente");
-		btnSiguiente.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnSiguiente.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnSiguiente.setBounds(457, 511, 229, 59);
-		add(btnSiguiente);
+		btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnConfirmar.setBounds(655, 527, 129, 35);
+		add(btnConfirmar);
 
 		lblDineroMetido = new JLabel("Dinero metido:");
 		lblDineroMetido.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -68,8 +68,7 @@ public class PanelPago extends JPanel{
 		btn5.setFont(btn5.getFont().deriveFont(0f));
 		btn5.setBounds(40, 289, 59, 35);
 		add(btn5);
-		btn5.setBounds(39, 279, 59, 51);
-		add(btn5);
+		
 
 
 		btn2 = new JButton("2");
@@ -178,8 +177,8 @@ public class PanelPago extends JPanel{
 
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCancelar.setBounds(114, 511, 229, 59);
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 
 		arrayBtn[0]=btn500;
@@ -218,18 +217,14 @@ public class PanelPago extends JPanel{
 
 		lblAPagar.setBounds(52, 80, 98, 25);
 		add(lblAPagar);
-		
-		textField = new JTextField();
-		textField.setBounds(52, 110, 104, 42);
-		add(textField);
 
 		lblAPagar.setBounds(52, 75, 98, 25);
 		add(lblAPagar);
 		
-		textField = new JTextField();
-		textField.setBounds(52, 107, 104, 42);
-		add(textField);
-		textField.setColumns(10);
+		textFieldAPagar = new JTextField();
+		textFieldAPagar.setBounds(52, 109, 104, 42);
+		add(textFieldAPagar);
+		textFieldAPagar.setColumns(10);
 		
 		list = new JList();
 		list.setBounds(484, 192, 254, 268);

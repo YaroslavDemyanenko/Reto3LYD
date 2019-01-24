@@ -15,18 +15,19 @@ import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JCalendar;
 import java.util.Date;
 import com.toedter.calendar.IDateEditor;
-
+import javax.swing.SwingConstants;
+/**
+ * @wbp.parser.entryPoint
+ */
 public class PanelConfirmacion extends JPanel {
 
-	JTextField textFieldCodigo, textFieldNombre, textFieldApellidos, textFieldDNI, textFieldParadaFin, textFieldParadaInicio, textFieldLinea, textFieldTipoTrayecto, textFieldPrecioBillete;
-	JButton btnLogIn, btnCancelar, btnImprimir;
-	JLabel lblUsuario, lblCdigo, lblNombre, lblApellidos, lblDni, lblLnea, lblSalida, lblLlegada, lblTipoDeTrayecto, lblFechaIda, lblFechaVuelta, lblPrecioBillete, lblPasajerosas;
-	JDateChooser fechaIda,fechaVuelta;
-	JComboBox comboBoxPasajeros;
+	public JTextField textFieldCodigo, textFieldNombre, textFieldApellidos, textFieldDNI, textFieldParadaFin, textFieldParadaInicio, textFieldLinea, textFieldTipoTrayecto, textFieldPrecioBillete;
+	public JButton btnLogIn, btnCancelar, btnImprimir;
+	public JLabel lblUsuario, lblCdigo, lblNombre, lblApellidos, lblDni, lblLnea, lblSalida, lblLlegada, lblTipoDeTrayecto, lblFechaIda, lblFechaVuelta, lblPrecioBillete, lblPasajerosas;
+	public JDateChooser fechaIda,fechaVuelta;
+	public JComboBox comboBoxPasajeros;
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
+	
 	public PanelConfirmacion() {
 		setLayout(null);
 		setBounds(0,0,800,600);
@@ -38,11 +39,13 @@ public class PanelConfirmacion extends JPanel {
 		add(btnLogIn);
 		
 		lblUsuario = new JLabel("Usuario");
+		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblUsuario.setBounds(593, 12, 86, 25);
 		add(lblUsuario);
 		
 		lblCdigo = new JLabel("C\u00F3digo:");
-		lblCdigo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCdigo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCdigo.setBounds(53, 158, 132, 35);
 		add(lblCdigo);
 		
@@ -52,7 +55,7 @@ public class PanelConfirmacion extends JPanel {
 		textFieldCodigo.setColumns(10);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNombre.setBounds(53, 249, 112, 23);
 		add(lblNombre);
 		
@@ -62,7 +65,7 @@ public class PanelConfirmacion extends JPanel {
 		textFieldNombre.setColumns(10);
 		
 		lblApellidos = new JLabel("Apellidos:");
-		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblApellidos.setBounds(53, 327, 104, 29);
 		add(lblApellidos);
 		
@@ -72,7 +75,7 @@ public class PanelConfirmacion extends JPanel {
 		textFieldApellidos.setColumns(10);
 		
 		lblDni = new JLabel("DNI:");
-		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblDni.setBounds(53, 411, 112, 23);
 		add(lblDni);
 		
@@ -82,7 +85,7 @@ public class PanelConfirmacion extends JPanel {
 		textFieldDNI.setColumns(10);
 		
 		lblLnea = new JLabel("L\u00EDnea");
-		lblLnea.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblLnea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblLnea.setBounds(297, 161, 138, 29);
 		add(lblLnea);
 		
@@ -92,7 +95,7 @@ public class PanelConfirmacion extends JPanel {
 		textFieldLinea.setColumns(10);
 		
 		lblSalida = new JLabel("Salida:");
-		lblSalida.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSalida.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblSalida.setBounds(297, 249, 118, 23);
 		add(lblSalida);
 		
@@ -102,7 +105,7 @@ public class PanelConfirmacion extends JPanel {
 		textFieldParadaInicio.setColumns(10);
 		
 		lblLlegada = new JLabel("Llegada:");
-		lblLlegada.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblLlegada.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblLlegada.setBounds(297, 330, 167, 23);
 		add(lblLlegada);
 		
@@ -112,8 +115,8 @@ public class PanelConfirmacion extends JPanel {
 		textFieldParadaFin.setColumns(10);
 		
 		lblTipoDeTrayecto = new JLabel("Tipo de Trayecto:");
-		lblTipoDeTrayecto.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTipoDeTrayecto.setBounds(297, 411, 118, 23);
+		lblTipoDeTrayecto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTipoDeTrayecto.setBounds(297, 411, 138, 23);
 		add(lblTipoDeTrayecto);
 		
 		textFieldTipoTrayecto = new JTextField();
@@ -122,17 +125,17 @@ public class PanelConfirmacion extends JPanel {
 		textFieldTipoTrayecto.setColumns(10);
 		
 		lblFechaIda = new JLabel("Fecha Ida:");
-		lblFechaIda.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFechaIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFechaIda.setBounds(549, 164, 104, 23);
 		add(lblFechaIda);
 		
 		lblFechaVuelta = new JLabel("Fecha Vuelta:");
-		lblFechaVuelta.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFechaVuelta.setBounds(549, 249, 84, 23);
+		lblFechaVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFechaVuelta.setBounds(549, 249, 130, 23);
 		add(lblFechaVuelta);
 		
 		lblPrecioBillete = new JLabel("Precio Billete:");
-		lblPrecioBillete.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPrecioBillete.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblPrecioBillete.setBounds(603, 372, 112, 23);
 		add(lblPrecioBillete);
 		
@@ -142,22 +145,24 @@ public class PanelConfirmacion extends JPanel {
 		add(textFieldPrecioBillete);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancelar.setBounds(118, 511, 229, 59);
 		add(btnCancelar);
 		
 		btnImprimir = new JButton("Imprimir Billete");
+		btnImprimir.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnImprimir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnImprimir.setBounds(465, 511, 217, 64);
 		add(btnImprimir);
 		
 		lblPasajerosas = new JLabel("Pasajeros/as:");
-		lblPasajerosas.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPasajerosas.setBounds(53, 64, 91, 25);
+		lblPasajerosas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblPasajerosas.setBounds(53, 64, 138, 25);
 		add(lblPasajerosas);
 		
 		comboBoxPasajeros = new JComboBox();
-		comboBoxPasajeros.setBounds(53, 100, 132, 47);
+		comboBoxPasajeros.setBounds(53, 100, 132, 35);
 		add(comboBoxPasajeros);
 		
 		fechaIda = new JDateChooser((JCalendar) null, (Date) null, (String) null, (IDateEditor) null);
