@@ -1,19 +1,26 @@
 package clases;
 
 public class Cliente {
-	private int dni;
+	private String dni;
 	private String nombre;
 	private String apellido;
 	private String sexo;
 	private String contrasenia;
 	
+
 	
+	public Cliente(String string, String string2, String string3, String string4, String string5) {
+		// TODO Auto-generated constructor stub
+	}
 	
-	
-	public int getDni() {
+	public Cliente() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getDni() {
 		return dni;
 	}
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	public String getNombre() {
