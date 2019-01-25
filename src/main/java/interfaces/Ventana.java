@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.border.BevelBorder;
 
 public class Ventana extends JFrame {
 	public PanelSaludo panelSaludo;
@@ -28,6 +30,12 @@ public class Ventana extends JFrame {
 		panelResumen=new PanelResumen();
 		panelPasajeroExtra=new PanelPasajeroExtra();
 		panelLogin=new PanelLogin();
+		panelLogin.btnConfirmarRegistro.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, new Color(0, 0, 0), new Color(0, 0, 0)));
+		panelLogin.btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, new Color(0, 0, 0), new Color(0, 0, 0)));
+		panelLogin.btnConfirmarLogin.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, new Color(0, 0, 0), new Color(0, 0, 0)));
+		panelLogin.btnConfirmarRegistro.setBackground(new Color(192, 192, 192));
+		panelLogin.btnCancelar.setBackground(new Color(192, 192, 192));
+		panelLogin.btnConfirmarLogin.setBackground(new Color(192, 192, 192));
 		panelPago=new PanelPago();
 		getContentPane().add(panelSaludo);
 		getContentPane().add(panelLineas1);

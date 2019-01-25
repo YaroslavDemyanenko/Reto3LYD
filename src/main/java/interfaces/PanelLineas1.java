@@ -6,11 +6,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JList;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 /**
  * @wbp.parser.entryPoint 
@@ -33,7 +35,9 @@ public class PanelLineas1 extends JPanel {
 		setLayout(null);
 	
 		btnSingUp = new JButton("Sign Up");
-		btnSingUp.setBackground(new Color(0, 0, 0));
+		btnSingUp.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnSingUp.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnSingUp.setBackground(new Color(192, 192, 192));
 		btnSingUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSingUp.setBounds(689, 12, 89, 23);
 		add(btnSingUp);
@@ -86,14 +90,18 @@ public class PanelLineas1 extends JPanel {
 		add(listParadas);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(new Color(0, 0, 0));
+		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnCancelar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnCancelar.setBackground(new Color(192, 192, 192));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setToolTipText("");
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBackground(new Color(0, 0, 0));
+		btnConfirmar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnConfirmar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnConfirmar.setBackground(new Color(192, 192, 192));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setBounds(655, 527, 129, 35);
 		add(btnConfirmar);
