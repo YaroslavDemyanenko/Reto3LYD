@@ -12,9 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import com.sun.prism.paint.Color;
+
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 /**
  * @wbp.parser.entryPoint
  */
@@ -22,7 +26,7 @@ public class PanelPago extends JPanel{
 
 	public JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001, btnLogOut, btnConfirmar, btnCancelar;
 	public JButton[] arrayBtn= new JButton[15];
-	public JLabel label, label_1, label_2, lblAPagar, lblUsuario, lblTitulo, lblPagado, lblDineroMetido;
+	public JLabel label, label_1, label_2, lblAPagar, lblUsuario, lblPagado, lblDineroMetido;
 	public JTextField textFieldAPagar, textDineroMetido, textVueltas;
 	public JList list;
 
@@ -31,9 +35,12 @@ public class PanelPago extends JPanel{
 	public PanelPago() {
 		setLayout(null);
 		setVisible(false);
+		setBounds(0, 0, 800, 600);
+		setBackground(new Color(193, 240, 240));
 
 		setBounds(0,0,800,600);
 		btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.setBackground(new Color(0, 0, 0));
 		btnConfirmar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setBounds(655, 527, 129, 35);
@@ -63,119 +70,127 @@ public class PanelPago extends JPanel{
 		textVueltas.setColumns(10);
 
 		btn5 = new JButton("5");
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btn5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn5.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5euros.jpg")));
 		btn5.setFont(btn5.getFont().deriveFont(0f));
-		btn5.setBounds(40, 289, 59, 35);
+		btn5.setBounds(86, 439, 59, 35);
 		add(btn5);
 		
 
 
 		btn2 = new JButton("2");
+		btn2.setBackground(new Color(0, 0, 0));
 		btn2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn2.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2euros.png")));
 		btn2.setFont(btn2.getFont().deriveFont(0f));
-		btn2.setBounds(127, 279, 59, 54);
+		btn2.setBounds(296, 197, 59, 54);
 		add(btn2);
 
 		btn10 = new JButton("10");
 		btn10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn10.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10euros.jpg")));
 		btn10.setFont(btn10.getFont().deriveFont(0f));
-		btn10.setBounds(210, 233, 60, 35);
+		btn10.setBounds(128, 370, 59, 35);
 		add(btn10);
 
 		btn200 = new JButton("200");
 		btn200.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn200.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/200euros.jpg")));
 		btn200.setFont(btn200.getFont().deriveFont(0f));
-		btn200.setBounds(128, 187, 59, 35);
+		btn200.setBounds(128, 207, 59, 35);
 		add(btn200);
 
 		btn20 = new JButton("20");
 		btn20.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn20.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20euros.jpg")));
 		btn20.setFont(btn20.getFont().deriveFont(0f));
-		btn20.setBounds(127, 233, 59, 35);
+		btn20.setBounds(40, 370, 59, 35);
 		add(btn20);
 
 		btn500 = new JButton("500");
 		btn500.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn500.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/500euros.jpg")));
 		btn500.setFont(btn500.getFont().deriveFont(0f));
-		btn500.setBounds(40, 187, 59, 35);
+		btn500.setBounds(40, 207, 59, 35);
 		add(btn500);
-
-		lblTitulo = new JLabel("Pago");
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setBounds(255, 12, 223, 35);
-		add(lblTitulo);
 
 		btn100 = new JButton("100");
 		btn100.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn100.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/100euros.jpg")));
 		btn100.setFont(btn100.getFont().deriveFont(0f));
-		btn100.setBounds(211, 187, 59, 35);
+		btn100.setBounds(40, 279, 59, 35);
 		add(btn100);
 
 		btn50 = new JButton("50");
 		btn50.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn50.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50euros.jpg")));
 		btn50.setFont(btn50.getFont().deriveFont(0f));
-		btn50.setBounds(39, 233, 59, 35);
+		btn50.setBounds(128, 279, 59, 35);
 		add(btn50);
 
 		btn1 = new JButton("1");
+		btn1.setBackground(new Color(0, 0, 0));
 		btn1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn1.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1euro.png")));
 		btn1.setFont(btn1.getFont().deriveFont(0f));
-		btn1.setBounds(210, 277, 65, 54);
+		btn1.setBounds(374, 197, 59, 54);
 		add(btn1);
 
 		btn050 = new JButton("0.50");
+		btn050.setBackground(new Color(0, 0, 0));
 		btn050.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn050.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50centimos.png")));
 		btn050.setFont(btn050.getFont().deriveFont(0f));
-		btn050.setBounds(39, 341, 59, 54);
+		btn050.setBounds(374, 279, 59, 54);
 		add(btn050);
 
 		btn020 = new JButton("0.20");
+		btn020.setBackground(new Color(0, 0, 0));
 		btn020.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn020.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20centimos.png")));
 		btn020.setFont(btn020.getFont().deriveFont(0f));
-		btn020.setBounds(127, 341, 59, 54);
+		btn020.setBounds(296, 279, 59, 54);
 		add(btn020);
 
 		btn010 = new JButton("0.10");
+		btn010.setBackground(new Color(0, 0, 0));
 		btn010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn010.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10centimos.png")));
 		btn010.setFont(btn010.getFont().deriveFont(0f));
-		btn010.setBounds(210, 341, 65, 54);
+		btn010.setBounds(374, 360, 59, 54);
 		add(btn010);
 
 		btn005 = new JButton("0.05");
+		btn005.setBackground(new Color(0, 0, 0));
 		btn005.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn005.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5centimos.png")));
 		btn005.setFont(btn005.getFont().deriveFont(0f));
-		btn005.setBounds(39, 406, 60, 54);
+		btn005.setBounds(296, 360, 59, 54);
 		add(btn005);
 
 		btn002 = new JButton("0.02");
+		btn002.setBackground(new Color(0, 0, 0));
 		btn002.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn002.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2centimos.png")));
 		btn002.setFont(btn002.getFont().deriveFont(0f));
-		btn002.setBounds(127, 406, 59, 54);
+		btn002.setBounds(374, 439, 59, 54);
 		add(btn002);
 
 		btn001 = new JButton("0.01");
+		btn001.setBackground(new Color(0, 0, 0));
 		btn001.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn001.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1centimo.png")));
 		btn001.setFont(btn001.getFont().deriveFont(0f));
-		btn001.setBounds(210, 406, 65, 54);
+		btn001.setBounds(296, 439, 59, 54);
 		add(btn001);
 
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(new Color(0, 0, 0));
+		btnCancelar.setBackground(new Color(0, 0, 0));
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setBounds(56, 527, 129, 35);
@@ -227,7 +242,7 @@ public class PanelPago extends JPanel{
 		textFieldAPagar.setColumns(10);
 		
 		list = new JList();
-		list.setBounds(484, 192, 254, 268);
+		list.setBounds(524, 185, 254, 268);
 		add(list);
 		
 		lblUsuario = new JLabel("Usuario");
@@ -236,6 +251,7 @@ public class PanelPago extends JPanel{
 		add(lblUsuario);
 		
 		btnLogOut = new JButton("Log out");
+		btnLogOut.setBackground(new Color(0, 0, 0));
 		btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLogOut.setBounds(689, 12, 89, 23);

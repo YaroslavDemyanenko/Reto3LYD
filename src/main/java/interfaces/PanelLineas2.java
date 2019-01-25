@@ -11,6 +11,8 @@ import clases.Parada;
 
 import javax.swing.JSpinner;
 import javax.swing.JList;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 /**
@@ -31,6 +33,7 @@ public class PanelLineas2 extends JPanel{
 		setBounds(0, 0, 800, 600);
 		setVisible(false);
 		setLayout(null);
+		setBackground(new Color(193, 240, 240));
 
 		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));

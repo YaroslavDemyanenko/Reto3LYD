@@ -2,12 +2,15 @@ package interfaces;
 
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JList;
+
+import java.awt.Color;
 import java.awt.Font;
 /**
  * @wbp.parser.entryPoint 
@@ -24,12 +27,13 @@ public class PanelLineas1 extends JPanel {
 	
 	
 	public PanelLineas1() {
-		
+		setBackground(new Color(193, 240, 240));
 		setBounds(0, 0, 800, 600);
 		setVisible(false);
 		setLayout(null);
 	
 		btnSingUp = new JButton("Sign Up");
+		btnSingUp.setBackground(new Color(0, 0, 0));
 		btnSingUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSingUp.setBounds(689, 12, 89, 23);
 		add(btnSingUp);
@@ -49,11 +53,13 @@ public class PanelLineas1 extends JPanel {
 		
 		
 		rdbtnIda = new JRadioButton("Ida");
+		rdbtnIda.setBackground(new Color(46, 139, 87));
 		rdbtnIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		rdbtnIda.setBounds(83, 468, 109, 23);
 		add(rdbtnIda);
 		
 		rdbtnIdayVuelta = new JRadioButton("Ida y vuelta");
+		rdbtnIdayVuelta.setBackground(new Color(32, 178, 170));
 		rdbtnIdayVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		rdbtnIdayVuelta.setBounds(267, 468, 109, 23);
 		add(rdbtnIdayVuelta);
@@ -80,16 +86,16 @@ public class PanelLineas1 extends JPanel {
 		add(listParadas);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(new Color(0, 0, 0));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setToolTipText("");
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.setBackground(new Color(0, 0, 0));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setBounds(655, 527, 129, 35);
 		add(btnConfirmar);
-		
-		
 	}
 }

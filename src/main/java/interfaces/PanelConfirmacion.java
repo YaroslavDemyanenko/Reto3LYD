@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JList;
 import java.awt.Font;
+import java.awt.Color;
 import java.awt.Cursor;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JCalendar;
@@ -32,8 +33,11 @@ public class PanelConfirmacion extends JPanel {
 		setLayout(null);
 		setBounds(0,0,800,600);
 		setVisible(false);
+		setBackground(new Color(193, 240, 240));
 		
 		btnLogIn = new JButton("Log out");
+		btnLogIn.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnLogIn.setBackground(new Color(0, 0, 0));
 		btnLogIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLogIn.setBounds(689, 12, 89, 23);
 		add(btnLogIn);
@@ -145,12 +149,14 @@ public class PanelConfirmacion extends JPanel {
 		add(textFieldPrecioBillete);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(new Color(0, 0, 0));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnImprimir = new JButton("Imprimir Billete");
+		btnImprimir.setBackground(new Color(0, 0, 0));
 		btnImprimir.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnImprimir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnImprimir.setBounds(603, 527, 181, 35);

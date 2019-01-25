@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JComboBox;
@@ -23,6 +24,7 @@ public class PanelFinal extends JPanel {
 		setLayout(null);
 		setVisible(false);
 		setBounds(0,0,800,600);
+		setBackground(new Color(193, 240, 240));
 		
 		lblImpresion = new JLabel("Imprimiendo billete/s...");
 		lblImpresion.setHorizontalAlignment(SwingConstants.CENTER);

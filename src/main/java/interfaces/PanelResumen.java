@@ -14,6 +14,8 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JTextField;
 /**
  * @wbp.parser.entryPoint
@@ -31,6 +33,7 @@ public class PanelResumen extends JPanel {
 		setBounds(0, 0, 800, 600);
 		setVisible(false);
 		setLayout(null);
+		setBackground(new Color(193, 240, 240));
 		
 		btnSingUp = new JButton("Sign Up");
 		btnSingUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
