@@ -1,10 +1,13 @@
 package conexion;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+import clases.Linea;
 import clases.Modelo;
 
 public class ConexionAMySQL {
@@ -31,10 +34,19 @@ public class ConexionAMySQL {
 	}
 	
 
-	public void meterAModelo (DefaultListModel<String> model,String peticion,Modelo mod) throws SQLException {
+	public void meterLineaEnListaYArray (DefaultListModel<String> model,String peticion,Modelo mod,ArrayList<Linea> lineas) throws SQLException {
 		ResultSet resul = mod.db.hacerPeticion(peticion);
 		while (resul.next()) {
-			model.addElement(resul.getString("Cod_Linea")+" "+resul.getString("Nombre"));
+			String codLinea=resul.getString("Cod_Linea");
+			model.addElement(codLinea+" "+resul.getString("Nombre"));
+			Linea lin = new Linea(codLinea);
+			lineas.add(lin);
+		}
+	}
+	public void meterParadasAModelo (DefaultListModel<String> model,String lista,String peticion,Modelo mod) throws SQLException {
+		ResultSet resul = mod.db.hacerPeticion(peticion);
+		while (resul.next()) {
+			model.addElement(resul.getString("Nombre"));
 		}
 	}
 	/**

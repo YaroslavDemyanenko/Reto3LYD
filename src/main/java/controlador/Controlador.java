@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import com.mysql.cj.protocol.Resultset;
 
 import clases.Linea;
@@ -31,6 +34,7 @@ public class Controlador{
 	
 	public void inicializar_eventos() {
 		this.vis.panelSaludo.addMouseListener(new MseListener());
+		this.vis.panelLineas1.listLineas.addListSelectionListener(new lstListener());
 	}
 
 	
@@ -52,7 +56,7 @@ public class Controlador{
 			if (e.getSource() == vis.panelSaludo){
         		vis.setContentPane(vis.panelLineas1);
         		try {
-					mod.db.meterAModelo(vis.panelLineas1.modeloLineas, "SELECT * FROM `linea`", mod);
+					mod.db.meterLineaEnListaYArray(vis.panelLineas1.modeloLineas, "SELECT * FROM `linea`", mod,lineas);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -82,9 +86,29 @@ public class Controlador{
 			// TODO Auto-generated method stub
 			
 		}
+    
+    
     }
 	
-	
+	private class lstListener implements ListSelectionListener{
+
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			if (e.getSource() == vis.panelLineas1.listLineas) {
+				String nombreLinea= vis.panelLineas1.listLineas.getSelectedValue().toString();
+				nombreLinea=nombreLinea.substring(0,2);
+    			String query="select nombre,longitud, latitud,sqrt(power((longitud-(SELECT Longitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)+power((latitud-(SELECT Latitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)) distancia from parada WHERE Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\""+nombreLinea+"\") order by distancia;";
+				try {
+					vis.panelLineas1.modeloParadas.clear();
+					mod.db.meterParadasAModelo(vis.panelLineas1.modeloParadas,nombreLinea, query, mod);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+			
+		}
+    	
+    }
 	
 	
 	
