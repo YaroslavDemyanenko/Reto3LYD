@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JList;
 import java.awt.Font;
+import java.awt.Color;
 import java.awt.Cursor;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JCalendar;
@@ -21,27 +22,30 @@ import javax.swing.SwingConstants;
  */
 public class PanelConfirmacion extends JPanel {
 
-	public JTextField textFieldCodigo, textFieldNombre, textFieldApellidos, textFieldDNI, textFieldParadaFin, textFieldParadaInicio, textFieldLinea, textFieldTipoTrayecto, textFieldPrecioBillete;
+	public JLabel lblFieldCodigo, lblFieldNombre, lblFieldApellidos, lblFieldDNI, lblFieldParadaFin, lblFieldParadaInicio, lblFieldLinea, lblFieldTipoTrayecto, lblFieldPrecioBillete;
 	public JButton btnLogIn, btnCancelar, btnImprimir;
 	public JLabel lblUsuario, lblCdigo, lblNombre, lblApellidos, lblDni, lblLnea, lblSalida, lblLlegada, lblTipoDeTrayecto, lblFechaIda, lblFechaVuelta, lblPrecioBillete, lblPasajerosas;
 	public JDateChooser fechaIda,fechaVuelta;
 	public JComboBox comboBoxPasajeros;
-
+	public JTextField textFieldPrecioBillete;
 	
 	public PanelConfirmacion() {
 		setLayout(null);
 		setBounds(0,0,800,600);
 		setVisible(false);
+		setBackground(new Color(193, 240, 240));
 		
 		btnLogIn = new JButton("Log out");
+		btnLogIn.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnLogIn.setBackground(new Color(0, 0, 0));
 		btnLogIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLogIn.setBounds(689, 12, 89, 23);
 		add(btnLogIn);
 		
 		lblUsuario = new JLabel("Usuario");
-		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario.setBounds(593, 12, 86, 25);
+		lblUsuario.setBounds(506, 12, 173, 25);
 		add(lblUsuario);
 		
 		lblCdigo = new JLabel("C\u00F3digo:");
@@ -49,80 +53,80 @@ public class PanelConfirmacion extends JPanel {
 		lblCdigo.setBounds(53, 158, 132, 35);
 		add(lblCdigo);
 		
-		textFieldCodigo = new JTextField();
-		textFieldCodigo.setBounds(49, 193, 201, 35);
-		add(textFieldCodigo);
-		textFieldCodigo.setColumns(10);
+		lblFieldCodigo = new JLabel();
+		lblFieldCodigo.setBounds(49, 193, 201, 35);
+		add(lblFieldCodigo);
+		
 		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNombre.setBounds(53, 249, 112, 23);
 		add(lblNombre);
 		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(48, 278, 201, 35);
-		add(textFieldNombre);
-		textFieldNombre.setColumns(10);
+		lblFieldNombre = new JLabel();
+		lblFieldNombre.setBounds(48, 278, 201, 35);
+		add(lblFieldNombre);
+		
 		
 		lblApellidos = new JLabel("Apellidos:");
 		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblApellidos.setBounds(53, 327, 104, 29);
 		add(lblApellidos);
 		
-		textFieldApellidos = new JTextField();
-		textFieldApellidos.setBounds(49, 360, 201, 35);
-		add(textFieldApellidos);
-		textFieldApellidos.setColumns(10);
+		lblFieldApellidos = new JLabel();
+		lblFieldApellidos.setBounds(49, 360, 201, 35);
+		add(lblFieldApellidos);
+		
 		
 		lblDni = new JLabel("DNI:");
 		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblDni.setBounds(53, 411, 112, 23);
 		add(lblDni);
 		
-		textFieldDNI = new JTextField();
-		textFieldDNI.setBounds(49, 445, 201, 35);
-		add(textFieldDNI);
-		textFieldDNI.setColumns(10);
+		lblFieldDNI = new JLabel();
+		lblFieldDNI.setBounds(49, 445, 201, 35);
+		add(lblFieldDNI);
+		
 		
 		lblLnea = new JLabel("L\u00EDnea");
 		lblLnea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblLnea.setBounds(297, 161, 138, 29);
 		add(lblLnea);
 		
-		textFieldLinea = new JTextField();
-		textFieldLinea.setBounds(299, 193, 201, 35);
-		add(textFieldLinea);
-		textFieldLinea.setColumns(10);
+		lblFieldLinea = new JLabel();
+		lblFieldLinea.setBounds(299, 193, 201, 35);
+		add(lblFieldLinea);
+		
 		
 		lblSalida = new JLabel("Salida:");
 		lblSalida.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblSalida.setBounds(297, 249, 118, 23);
 		add(lblSalida);
 		
-		textFieldParadaInicio = new JTextField();
-		textFieldParadaInicio.setBounds(297, 278, 201, 35);
-		add(textFieldParadaInicio);
-		textFieldParadaInicio.setColumns(10);
+		lblFieldParadaInicio = new JLabel();
+		lblFieldParadaInicio.setBounds(297, 278, 201, 35);
+		add(lblFieldParadaInicio);
+		
 		
 		lblLlegada = new JLabel("Llegada:");
 		lblLlegada.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblLlegada.setBounds(297, 330, 167, 23);
 		add(lblLlegada);
 		
-		textFieldParadaFin = new JTextField();
-		textFieldParadaFin.setBounds(299, 360, 201, 35);
-		add(textFieldParadaFin);
-		textFieldParadaFin.setColumns(10);
+		lblFieldParadaFin = new JLabel();
+		lblFieldParadaFin.setBounds(299, 360, 201, 35);
+		add(lblFieldParadaFin);
+		
 		
 		lblTipoDeTrayecto = new JLabel("Tipo de Trayecto:");
 		lblTipoDeTrayecto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblTipoDeTrayecto.setBounds(297, 411, 138, 23);
 		add(lblTipoDeTrayecto);
 		
-		textFieldTipoTrayecto = new JTextField();
-		textFieldTipoTrayecto.setBounds(299, 445, 201, 35);
-		add(textFieldTipoTrayecto);
-		textFieldTipoTrayecto.setColumns(10);
+		lblFieldTipoTrayecto = new JLabel();
+		lblFieldTipoTrayecto.setBounds(299, 445, 201, 35);
+		add(lblFieldTipoTrayecto);
+		
 		
 		lblFechaIda = new JLabel("Fecha Ida:");
 		lblFechaIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -145,15 +149,17 @@ public class PanelConfirmacion extends JPanel {
 		add(textFieldPrecioBillete);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(new Color(0, 0, 0));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnCancelar.setBounds(118, 511, 229, 59);
+		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnImprimir = new JButton("Imprimir Billete");
+		btnImprimir.setBackground(new Color(0, 0, 0));
 		btnImprimir.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnImprimir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnImprimir.setBounds(465, 511, 217, 64);
+		btnImprimir.setBounds(603, 527, 181, 35);
 		add(btnImprimir);
 		
 		lblPasajerosas = new JLabel("Pasajeros/as:");
