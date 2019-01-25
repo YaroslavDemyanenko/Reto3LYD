@@ -23,23 +23,24 @@ public class PanelSaludo extends JPanel {
 		setLayout(null);
 		
 		lblUsuario = new JLabel("Usuario");
+		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario.setBounds(593, 12, 86, 25);
+		lblUsuario.setBounds(506, 12, 173, 25);
 		add(lblUsuario);
 		
 		
 		
 		btnSignUP = new JButton("Sign UP");
-		btnSignUP.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnSignUP.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSignUP.setBounds(689, 12, 89, 23);
 		add(btnSignUP);
 		
 		
 		lblTocaParaContinuar = new JLabel();
-		lblTocaParaContinuar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblTocaParaContinuar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblTocaParaContinuar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTocaParaContinuar.setText("Toca para continuar");
-		lblTocaParaContinuar.setBounds(260, 428, 270, 20);
+		lblTocaParaContinuar.setBounds(254, 404, 293, 44);
 		add(lblTocaParaContinuar);
 		
 		

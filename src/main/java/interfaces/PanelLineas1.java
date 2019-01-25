@@ -29,14 +29,14 @@ public class PanelLineas1 extends JPanel {
 		setVisible(false);
 		setLayout(null);
 	
-		btnSingUp = new JButton("Sing Up");
-		btnSingUp.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSingUp = new JButton("Sign Up");
+		btnSingUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSingUp.setBounds(689, 12, 89, 23);
 		add(btnSingUp);
 		
 		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario.setBounds(593, 12, 86, 25);
+		lblUsuario.setBounds(506, 12, 173, 25);
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblUsuario);
 		

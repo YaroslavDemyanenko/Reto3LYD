@@ -34,7 +34,7 @@ public class PanelLineas2 extends JPanel{
 
 		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario.setBounds(593, 12, 86, 25);
+		lblUsuario.setBounds(506, 12, 173, 25);
 		add(lblUsuario);
 
 		btnLogIn = new JButton("Log in");

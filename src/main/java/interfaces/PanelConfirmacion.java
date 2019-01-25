@@ -39,9 +39,9 @@ public class PanelConfirmacion extends JPanel {
 		add(btnLogIn);
 		
 		lblUsuario = new JLabel("Usuario");
-		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario.setBounds(593, 12, 86, 25);
+		lblUsuario.setBounds(506, 12, 173, 25);
 		add(lblUsuario);
 		
 		lblCdigo = new JLabel("C\u00F3digo:");

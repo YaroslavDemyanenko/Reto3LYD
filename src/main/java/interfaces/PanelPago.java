@@ -40,7 +40,7 @@ public class PanelPago extends JPanel{
 		add(btnConfirmar);
 
 		lblDineroMetido = new JLabel("Dinero metido:");
-		lblDineroMetido.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblDineroMetido.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblDineroMetido.setBounds(309, 75, 169, 35);
 		add(lblDineroMetido);
 		
@@ -50,7 +50,7 @@ public class PanelPago extends JPanel{
 		textDineroMetido.setColumns(10);
 
 		lblPagado = new JLabel("Vueltas:");
-		lblPagado.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPagado.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblPagado.setBounds(581, 75, 112, 35);
 		add(lblPagado);
 		
@@ -213,7 +213,7 @@ public class PanelPago extends JPanel{
 		add(label_2);
 		
 		lblAPagar = new JLabel("A pagar:");
-		lblAPagar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAPagar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		lblAPagar.setBounds(52, 80, 98, 25);
 		add(lblAPagar);
@@ -231,10 +231,12 @@ public class PanelPago extends JPanel{
 		add(list);
 		
 		lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(593, 12, 86, 25);
+		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblUsuario.setBounds(506, 12, 173, 25);
 		add(lblUsuario);
 		
 		btnLogOut = new JButton("Log out");
+		btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLogOut.setBounds(689, 12, 89, 23);
 		add(btnLogOut);
