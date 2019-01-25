@@ -41,6 +41,7 @@ public class PanelLineas2 extends JPanel{
 		add(lblUsuario);
 
 		btnLogIn = new JButton("Log in");
+		btnLogIn.setBackground(new Color(0, 0, 0));
 		btnLogIn.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLogIn.setBounds(689, 12, 89, 23);
 		add(btnLogIn);
@@ -84,11 +85,13 @@ public class PanelLineas2 extends JPanel{
 		add(spnNumeroDeBilletes);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(new Color(0, 0, 0));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.setBackground(new Color(0, 0, 0));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setBounds(655, 527, 129, 35);
 		add(btnConfirmar);

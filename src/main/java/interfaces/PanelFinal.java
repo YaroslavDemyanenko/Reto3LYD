@@ -37,7 +37,7 @@ public class PanelFinal extends JPanel {
 		lblEspereUnMomento.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEspereUnMomento.setIcon(new ImageIcon(PanelFinal.class.getResource("/imagenes/cargando.gif")));
 		lblEspereUnMomento.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblEspereUnMomento.setBounds(219, 250, 369, 260);
+		lblEspereUnMomento.setBounds(115, 250, 578, 311);
 		add(lblEspereUnMomento);
 	}
 }

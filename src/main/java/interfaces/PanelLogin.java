@@ -43,6 +43,7 @@ public class PanelLogin extends JPanel {
 		add(lblNombre);
 		
 		textFieldNombre = new JTextField();
+		textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldNombre.setBounds(135, 108, 192, 39);
 		add(textFieldNombre);
 		textFieldNombre.setColumns(10);
@@ -53,6 +54,7 @@ public class PanelLogin extends JPanel {
 		add(lblApellido);
 		
 		textFieldApellido = new JTextField();
+		textFieldApellido.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldApellido.setColumns(10);
 		textFieldApellido.setBounds(135, 170, 192, 39);
 		add(textFieldApellido);
@@ -63,6 +65,7 @@ public class PanelLogin extends JPanel {
 		add(lblDni);
 		
 		textFieldDNI = new JTextField();
+		textFieldDNI.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldDNI.setColumns(10);
 		textFieldDNI.setBounds(141, 313, 190, 43);
 		add(textFieldDNI);
@@ -73,6 +76,7 @@ public class PanelLogin extends JPanel {
 		add(lblSexo);
 		
 		textFieldSexo = new JComboBox();
+		textFieldSexo.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldSexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
 		textFieldSexo.setBounds(139, 379, 192, 39);
 		add(textFieldSexo);
@@ -88,6 +92,7 @@ public class PanelLogin extends JPanel {
 		add(lblDniLogin);
 		
 		textFieldDNILogin = new JTextField();
+		textFieldDNILogin.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldDNILogin.setBounds(559, 108, 180, 39);
 		add(textFieldDNILogin);
 		textFieldDNILogin.setColumns(10);
@@ -98,6 +103,7 @@ public class PanelLogin extends JPanel {
 		add(lblContraseaLogin);
 		
 		textFieldContraseniaLogin = new JTextField();
+		textFieldContraseniaLogin.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldContraseniaLogin.setBounds(559, 170, 180, 39);
 		add(textFieldContraseniaLogin);
 		textFieldContraseniaLogin.setColumns(10);
@@ -108,6 +114,7 @@ public class PanelLogin extends JPanel {
 		add(lblContrasea);
 		
 		textFieldContrasenia = new JTextField();
+		textFieldContrasenia.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldContrasenia.setBounds(139, 439, 192, 39);
 		add(textFieldContrasenia);
 		textFieldContrasenia.setColumns(10);
@@ -139,6 +146,7 @@ public class PanelLogin extends JPanel {
 		add(lblFechaNacimiento);
 		
 		txtFechanacimiento = new JTextField();
+		txtFechanacimiento.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtFechanacimiento.setBounds(193, 243, 190, 43);
 		add(txtFechanacimiento);
 		txtFechanacimiento.setColumns(10);

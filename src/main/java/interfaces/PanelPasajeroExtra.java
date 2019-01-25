@@ -36,28 +36,33 @@ public class PanelPasajeroExtra extends JPanel{
 		setBackground(new Color(193, 240, 240));
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(new Color(0, 0, 0));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.setBackground(new Color(0, 0, 0));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnConfirmar.setBounds(655, 527, 129, 35);
 		add(btnConfirmar);
 		
 		textFieldNombre = new JTextField();
+		textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textFieldNombre.setBounds(348, 153, 259, 39);
 		add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		textFieldApellido = new JTextField();
+		textFieldApellido.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textFieldApellido.setColumns(10);
 		textFieldApellido.setBounds(348, 217, 259, 39);
 		add(textFieldApellido);
 		
 		textFieldDNI = new JTextField();
+		textFieldDNI.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textFieldDNI.setColumns(10);
 		textFieldDNI.setBounds(348, 289, 259, 39);
 		add(textFieldDNI);

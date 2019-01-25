@@ -52,6 +52,7 @@ public class PanelPago extends JPanel{
 		add(lblDineroMetido);
 		
 		textDineroMetido = new JTextField();
+		textDineroMetido.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textDineroMetido.setBounds(309, 110, 130, 41);
 		add(textDineroMetido);
 		textDineroMetido.setColumns(10);
@@ -62,6 +63,7 @@ public class PanelPago extends JPanel{
 		add(lblPagado);
 		
 		textVueltas = new JTextField();
+		textVueltas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textVueltas.setBounds(581, 110, 104, 41);
 		add(textVueltas);
 
@@ -70,14 +72,10 @@ public class PanelPago extends JPanel{
 		textVueltas.setColumns(10);
 
 		btn5 = new JButton("5");
-		btn5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btn5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn5.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5euros.jpg")));
 		btn5.setFont(btn5.getFont().deriveFont(0f));
-		btn5.setBounds(86, 439, 59, 35);
+		btn5.setBounds(84, 423, 59, 35);
 		add(btn5);
 		
 
@@ -94,7 +92,7 @@ public class PanelPago extends JPanel{
 		btn10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn10.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10euros.jpg")));
 		btn10.setFont(btn10.getFont().deriveFont(0f));
-		btn10.setBounds(128, 370, 59, 35);
+		btn10.setBounds(128, 360, 59, 35);
 		add(btn10);
 
 		btn200 = new JButton("200");
@@ -108,7 +106,7 @@ public class PanelPago extends JPanel{
 		btn20.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn20.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20euros.jpg")));
 		btn20.setFont(btn20.getFont().deriveFont(0f));
-		btn20.setBounds(40, 370, 59, 35);
+		btn20.setBounds(40, 360, 59, 35);
 		add(btn20);
 
 		btn500 = new JButton("500");
@@ -237,12 +235,14 @@ public class PanelPago extends JPanel{
 		add(lblAPagar);
 		
 		textFieldAPagar = new JTextField();
+		textFieldAPagar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textFieldAPagar.setBounds(52, 109, 104, 42);
 		add(textFieldAPagar);
 		textFieldAPagar.setColumns(10);
 		
 		list = new JList();
-		list.setBounds(524, 185, 254, 268);
+		list.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		list.setBounds(524, 185, 254, 308);
 		add(list);
 		
 		lblUsuario = new JLabel("Usuario");

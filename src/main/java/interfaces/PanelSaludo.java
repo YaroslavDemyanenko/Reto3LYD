@@ -37,6 +37,7 @@ public class PanelSaludo extends JPanel {
 		
 		
 		btnSignUP = new JButton("Sign UP");
+		btnSignUP.setBackground(new Color(0, 0, 0));
 		btnSignUP.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSignUP.setBounds(689, 12, 89, 23);
 		add(btnSignUP);
@@ -60,9 +61,9 @@ public class PanelSaludo extends JPanel {
 		add(lblBienvenidoATermibus);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(504, 413, 296, 135);
+		lblNewLabel.setBounds(506, 438, 296, 135);
 		add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(PanelSaludo.class.getResource("/imagenes/termibus.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(PanelSaludo.class.getResource("/imagenes/logo-termibus.png")));
 		
 		
 		

@@ -53,13 +53,13 @@ public class PanelLineas1 extends JPanel {
 		
 		
 		rdbtnIda = new JRadioButton("Ida");
-		rdbtnIda.setBackground(new Color(46, 139, 87));
+		rdbtnIda.setBackground(new Color(193, 240, 240));
 		rdbtnIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		rdbtnIda.setBounds(83, 468, 109, 23);
 		add(rdbtnIda);
 		
 		rdbtnIdayVuelta = new JRadioButton("Ida y vuelta");
-		rdbtnIdayVuelta.setBackground(new Color(32, 178, 170));
+		rdbtnIdayVuelta.setBackground(new Color(193, 240, 240));
 		rdbtnIdayVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		rdbtnIdayVuelta.setBounds(267, 468, 109, 23);
 		add(rdbtnIdayVuelta);
