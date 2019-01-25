@@ -10,188 +10,159 @@ import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-import bean.Usuario;
 import clases.Cliente;
-import formularios.frmBienvenida;
-import funcionesYObjetos.Producto;
-import manejoPanelesYBotones.Datos;
-import mantenimientos.GestionUsuario;
-import utils.MySQLConexion;
+import clases.Modelo;
+import interfaces.PanelLogin;
+import conexion.ConexionAMySQL;
+import controlador.Controlador;
 
 public class Métodos {
 
-	public class GestionUsuario {
+	public Cliente ingresar(String nombre, String apellido, String dni, String sexo, String contrasenia) {
 		
-
-		public Cliente obtenerUsuario(Cliente usu){
-			
-			Cliente usuario = null;
-			
-			Connection con = null;
-			PreparedStatement pst = null;
-			ResultSet rs = null;
-			
-			try {
-			
-				con = MySQLConexion.getConexion();
-			
-				String sql = "select*from tb_usuario where Nombre = ?, Apellido =  ?, Dni = ?, Sexo =  ? AND Contrasenia = ?  ";
-				
-				pst = con.prepareStatement(sql);
-				
-				pst.setString(1, usu.getNombre());
-				pst.setString(2, usu.getApellido());
-				pst.setString(3, usu.getDni());
-				pst.setString(4, usu.getSexo());
-				pst.setString(5, usu.getContrasenia());
-				
-				rs = pst.executeQuery();
-				
-				while (rs.next()) {
-					usuario = new Cliente(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-					
-				}
-				
-				
-				
-			} catch (Exception e) {
-			System.out.println("Error en obtener usuario");
-			}
-			
-			
-			return usuario;
-			
-		}
-	
-	public void ingresar() {
-
-		String nombre = interfaces.Login.textFieldNombre.getText();
-		String apellido = interfaces.Login.textFieldApellido.getText();
-		String dni = interfaces.Login.textFieldDNI.getText();
-		String sexo = interfaces.Login.textFieldSexo.getText();
-		String contrasenia = interfaces.Login.textFieldContrasenia.getText();
-
-		GestionUsuario gestionUsuario = new GestionUsuario();
-
 		Cliente cliente = new Cliente();
 		cliente.setNombre(nombre);
 		cliente.setApellido(apellido);
 		cliente.setDni(dni);
 		cliente.setSexo(sexo);
 		cliente.setContrasenia(contrasenia);
+		return cliente;
 
-		Cliente usu = gestionUsuario.obtenerUsuario(cliente);
+	}
 
-		}
+	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) {
 
-	public void Login(Cliente usu, Cliente cliente) {
-
-		Boolean registro = false;
-		String dniLogin = interfaces.Login.textFieldDNILogin.getText();
-		String contraseniaLogin = interfaces.Login.textFieldContrasenia.getText();
-
-		GestionUsuario gestionUsuario = new GestionUsuario();
-
-
+		ResultSet rs = null;
+		boolean estaRegistrado = true;
+		
+		/*Comparamos si el DNI insertado consta en la base de datos o no y hay que añadirlo*/
 		try {
-			
-			Connection con = null;
-			PreparedStatement pst = null;
-			ResultSet rs = null;
-			
-			con = MySQLConexion.getConexion();
-		
-			String sql = "select*from tb_usuario where dni = ? and contrasenia =  ? ";
-			
-			pst = con.prepareStatement(sql);
-			
-			pst.setString(1, usu.getDni());
-			pst.setString(2, usu.getContrasenia());
-			
-			rs = pst.executeQuery();
-			
-		
-			while (dniLogin==usu.getDni()&&contraseniaLogin==usu.getContrasenia()) {
-				registro = true;
-			}
-			
+			String sql = "select DNI from cliente where DNI = " + cliente.getDni();
+			rs = mod.db.hacerPeticion(sql);
+			/* Si ya existe en la base de datos devuelve un true*/
+			if (rs.next()) {
+				estaRegistrado = true;
+			} 
+			/* Si no está en la base de datos devuelve un false y lo mete en la base de datos  */
+			else estaRegistrado = false;
+			String sql1 = "insert into DNI values (" + estaRegistrado + ")";
 			
 		} catch (Exception e) {
-		System.out.println("Error en obtener usuario");
+			System.out.println("Error en obtener usuario");
 		}
 		
-
-		}
-	
+		return estaRegistrado;
+		
 	}
 	
-	/**
-	---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	*/
-	
-	/**
-	 * Funciones y metodos relacionados con el pago de los productos.
-	 * 
-	 *
-	 */
-	public class FuncionesPago {
+	public void registrarEnBD(Modelo mod, Cliente cliente) {
+		/* Registramos todos los parámetros menos el DNI que lo hemos insertado anteriormente*/
+		String sql1 = "insert into Nombre, Apellidos, Sexo, Contraseña, Fecha_nac values ('" + cliente.getNombre() + "','" + 
+					cliente.getApellido() + "','"+ cliente.getSexo()+ "','"+ cliente.getContrasenia() + "','" + 
+					cliente.getFecha_nac() + ")";
+	}
 
-		NumberFormat nf = NumberFormat.getNumberInstance(Locale.UK);
-		private DecimalFormat dosDec = (DecimalFormat) nf;
+	public void Login(Modelo mod,String dni, String contrasenia) {
+		
+		Boolean login = false;
+		String dniLogin = "";
+		String contraseniaLogin = "";
 
-		/**
-		 * Comprueba todas las cantidades del parametro inventario y si es mayor que 0.
-		 * Calcula el precio a pagar.
-		 * 
-		 * @param inventario Array de objetos de tipo Producto.
-		 * @return devuelve el precio total sin IVA (Dinero que debe pagar el cliente).
-		 */
-		public float PrecioAPagar(Producto[] inventario) {
-			float resultado = 0;
-			for (int i = 0; i < inventario.length; i++) {
-				if (inventario[i].cantidad > 0) {
-					resultado = resultado + inventario[i].cantidad * inventario[i].precio;
-				}
-			}
-			return resultado;
-		}
+		try {
 
-		/**
-		 * Dandole un numero y un modelo de lista nos hace una lista del cambio de la forma mas optima (menor numero de monedas).
-		 * @param model		El modelo en el cual se guarda la lista de cambios.
-		 * @param dinero	El numero con el cual tiene que calcular el cambio.
-		 */
-		public void Cambios(DefaultListModel model, float dinero) {
-			int euros = (int) dinero;
-			int decimales = Math.round((dinero - euros) * 100);
-			int[] billetesMonedas = { 500, 200, 100, 50, 20, 10, 5, 2, 1 };
-			Datos.dosDecFormato(dosDec);
+			ResultSet rs;
 			
-			for (int i = 0, f = 0,fake=1; i < billetesMonedas.length+fake;i++,f++) {
-				//Mira si tiene que pasar a calcular los decimales
-				if (f==9) {
-					i=3;
-					fake=0;
+			/*llamamos a la base de datos el DNI y la contraseña del cliente*/
+			dniLogin = "select DNI,Contraseña from cliente";
+
+			rs = mod.db.hacerPeticion(dniLogin);
+
+			/*Comparamos los datos de la base de datos con los que ha introducido en el login el cliente*/
+			if (rs.getString("DNI") == dni){
+				/*Este es el caso óptimo donde tanto el DNI y la contraseña existen y corresponden al mismo usuario*/
+				if(contraseniaLogin == contrasenia) {
+				login = true;
 				}
-				//Calcula los euros
-				if (euros >= billetesMonedas[i] && f < 9) {
-					model.addElement(billetesMonedas[i] + " €: " + (euros / billetesMonedas[i]));
-					euros = euros % billetesMonedas[i];
-				}
-				//Calcula los centimos si ha acabado con los euros
-				else if (decimales >= billetesMonedas[i] && f >= 9) {
-					model.addElement((dosDec.format(billetesMonedas[i]/100f)) + " €: " + (decimales / billetesMonedas[i]));
-					decimales = decimales % billetesMonedas[i];
+				/*En este caso el DNI es correcto pero la contraseña que corresponde a ese usuario es errónea*/
+				else {
+					System.out.println("Contraseña incorrecta");
+					login = false;
 				}
 			}
+			/*En este caso el DNI que ha metido no está registrado en la BD*/
+			else {
+				System.out.println(" Usuario inexistente");
+				login = false;
+			}
+
+		} catch (Exception e) {
+			System.out.println("Error en obtener usuario");
 		}
 
-	}	
-	
-	/**
-	---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	*/
-	
-	
-	
+	}
+
 }
+
+/**
+ * ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ */
+
+/**
+ * Funciones y metodos relacionados con el pago de los productos.
+ * 
+ *
+ */
+
+/*
+ * public class FuncionesPago {
+ * 
+ * NumberFormat nf = NumberFormat.getNumberInstance(Locale.UK); private
+ * DecimalFormat dosDec = (DecimalFormat) nf;
+ * 
+ * 
+ **/
+
+/**
+ * Comprueba todas las cantidades del parametro inventario y si es mayor que 0.
+ * Calcula el precio a pagar.
+ * 
+ * @param inventario Array de objetos de tipo Producto.
+ * @return devuelve el precio total sin IVA (Dinero que debe pagar el cliente).
+ */
+
+/*
+ * public float PrecioAPagar(Producto[] inventario) { float resultado = 0; for
+ * (int i = 0; i < inventario.length; i++) { if (inventario[i].cantidad > 0) {
+ * resultado = resultado + inventario[i].cantidad * inventario[i].precio; } }
+ * return resultado; }
+ **/
+
+/**
+ * Dandole un numero y un modelo de lista nos hace una lista del cambio de la
+ * forma mas optima (menor numero de monedas).
+ * 
+ * @param model  El modelo en el cual se guarda la lista de cambios.
+ * @param dinero El numero con el cual tiene que calcular el cambio.
+ */
+
+/*
+ * public void Cambios(DefaultListModel model, float dinero) { int euros = (int)
+ * dinero; int decimales = Math.round((dinero - euros) * 100); int[]
+ * billetesMonedas = { 500, 200, 100, 50, 20, 10, 5, 2, 1 };
+ * Datos.dosDecFormato(dosDec);
+ * 
+ * for (int i = 0, f = 0,fake=1; i < billetesMonedas.length+fake;i++,f++) {
+ * //Mira si tiene que pasar a calcular los decimales if (f==9) { i=3; fake=0; }
+ * //Calcula los euros if (euros >= billetesMonedas[i] && f < 9) {
+ * model.addElement(billetesMonedas[i] + " €: " + (euros / billetesMonedas[i]));
+ * euros = euros % billetesMonedas[i]; } //Calcula los centimos si ha acabado
+ * con los euros else if (decimales >= billetesMonedas[i] && f >= 9) {
+ * model.addElement((dosDec.format(billetesMonedas[i]/100f)) + " €: " +
+ * (decimales / billetesMonedas[i])); decimales = decimales %
+ * billetesMonedas[i]; } } }
+ * 
+ **/
+
+/**
+ * ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ */

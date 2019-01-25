@@ -19,8 +19,8 @@ import com.sun.glass.ui.Cursor;
  */
 public class PanelLogin extends JPanel {
 	
-	public JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin, textFieldContraseniaLogin, textFieldContrasenia;
-	public JComboBox textFieldSexo;
+	public static JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin, textFieldContraseniaLogin, textFieldContrasenia;
+	public static JComboBox comboBoxSexo;
 	public JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblLogin, lblDniLogin, lblContraseaLogin, lblContrasea;
 	public JButton btnConfirmarRegistro, btnConfirmarLogin, btnCancelar;
 
@@ -70,10 +70,10 @@ public class PanelLogin extends JPanel {
 		lblSexo.setBounds(47, 304, 65, 41);
 		add(lblSexo);
 		
-		textFieldSexo = new JComboBox();
-		textFieldSexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
-		textFieldSexo.setBounds(135, 304, 192, 39);
-		add(textFieldSexo);
+		comboBoxSexo = new JComboBox();
+		comboBoxSexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
+		comboBoxSexo.setBounds(135, 304, 192, 39);
+		add(comboBoxSexo);
 		
 		lblLogin = new JLabel("Login:");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 28));

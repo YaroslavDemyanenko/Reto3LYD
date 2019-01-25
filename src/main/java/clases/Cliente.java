@@ -4,6 +4,7 @@ public class Cliente {
 	private String dni;
 	private String nombre;
 	private String apellido;
+	private String fecha_nac;
 	private String sexo;
 	private String contrasenia;
 	
@@ -35,6 +36,12 @@ public class Cliente {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	public String getFecha_nac() {
+		return fecha_nac;
+	}
+	public void setFecha_nac(String fecha_nac) {
+		this.fecha_nac = fecha_nac;
+	}
 	public String getSexo() {
 		return sexo;
 	}
@@ -47,4 +54,5 @@ public class Cliente {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
+
 }
