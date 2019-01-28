@@ -28,15 +28,8 @@ public class Ventana extends JFrame {
 		panelLineas1=new PanelLineas1();
 		panelLineas2=new PanelLineas2();
 		panelResumen=new PanelResumen();
-		panelResumen.lblNumeroDeBilletes.setBounds(76, 435, 148, 41);
 		panelPasajeroExtra=new PanelPasajeroExtra();
 		panelLogin=new PanelLogin();
-		panelLogin.btnConfirmarRegistro.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, new Color(0, 0, 0), new Color(0, 0, 0)));
-		panelLogin.btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, new Color(0, 0, 0), new Color(0, 0, 0)));
-		panelLogin.btnConfirmarLogin.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, new Color(0, 0, 0), new Color(0, 0, 0)));
-		panelLogin.btnConfirmarRegistro.setBackground(new Color(192, 192, 192));
-		panelLogin.btnCancelar.setBackground(new Color(192, 192, 192));
-		panelLogin.btnConfirmarLogin.setBackground(new Color(192, 192, 192));
 		panelPago=new PanelPago();
 		getContentPane().add(panelSaludo);
 		getContentPane().add(panelLineas1);
