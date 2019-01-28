@@ -16,7 +16,8 @@ import interfaces.PanelLogin;
 import conexion.ConexionAMySQL;
 import controlador.Controlador;
 
-public class Metodos {
+
+public class Metodos{
 
 	public Cliente ingresar(String nombre, String apellido, String dni, String sexo, String contrasenia) {
 		
@@ -35,7 +36,7 @@ public class Metodos {
 		ResultSet rs = null;
 		boolean estaRegistrado = true;
 		
-		/*Comparamos si el DNI insertado consta en la base de datos o no y hay que añadirlo*/
+		/*Comparamos si el DNI insertado consta en la base de datos o no y hay que aï¿½adirlo*/
 		try {
 			String sql = "select DNI from cliente where DNI = " + cliente.getDni();
 			rs = mod.db.hacerPeticion(sql);
@@ -43,7 +44,7 @@ public class Metodos {
 			if (rs.next()) {
 				estaRegistrado = true;
 			} 
-			/* Si no está en la base de datos devuelve un false y lo mete en la base de datos  */
+			/* Si no estï¿½ en la base de datos devuelve un false y lo mete en la base de datos  */
 			else estaRegistrado = false;
 			String sql1 = "insert into DNI values (" + estaRegistrado + ")";
 			
@@ -56,8 +57,8 @@ public class Metodos {
 	}
 	
 	public void registrarEnBD(Modelo mod, Cliente cliente) {
-		/* Registramos todos los parámetros menos el DNI que lo hemos insertado anteriormente*/
-		String sql1 = "insert into Nombre, Apellidos, Sexo, Contraseña, Fecha_nac values ('" + cliente.getNombre() + "','" + 
+		/* Registramos todos los parï¿½metros menos el DNI que lo hemos insertado anteriormente*/
+		String sql1 = "insert into Nombre, Apellidos, Sexo, Contraseï¿½a, Fecha_nac values ('" + cliente.getNombre() + "','" + 
 					cliente.getApellido() + "','"+ cliente.getSexo()+ "','"+ cliente.getContrasenia() + "','" + 
 					cliente.getFecha_nac() + ")";
 	}
@@ -74,6 +75,7 @@ public class Metodos {
 			/*llamamos a la base de datos el DNI y la contraseña del cliente*/
 			LoginDB = "select DNI,Contraseña from cliente";
 
+
 			rs = mod.db.hacerPeticion(LoginDB);
 
 			/*Comparamos los datos de la base de datos con los que ha introducido en el login el cliente*/
@@ -82,13 +84,13 @@ public class Metodos {
 				if(rs.getString("Contraseña")== contrasenia) {
 				login = true;
 				}
-				/*En este caso el DNI es correcto pero la contraseña que corresponde a ese usuario es errónea*/
+				/*En este caso el DNI es correcto pero la contraseï¿½a que corresponde a ese usuario es errï¿½nea*/
 				else {
-					System.out.println("Contraseña incorrecta");
+					System.out.println("Contraseï¿½a incorrecta");
 					login = false;
 				}
 			}
-			/*En este caso el DNI que ha metido no está registrado en la BD*/
+			/*En este caso el DNI que ha metido no estï¿½ registrado en la BD*/
 			else {
 				System.out.println(" Usuario inexistente");
 				login = false;
@@ -166,10 +168,10 @@ public class Metodos {
  * for (int i = 0, f = 0,fake=1; i < billetesMonedas.length+fake;i++,f++) {
  * //Mira si tiene que pasar a calcular los decimales if (f==9) { i=3; fake=0; }
  * //Calcula los euros if (euros >= billetesMonedas[i] && f < 9) {
- * model.addElement(billetesMonedas[i] + " €: " + (euros / billetesMonedas[i]));
+ * model.addElement(billetesMonedas[i] + " ï¿½: " + (euros / billetesMonedas[i]));
  * euros = euros % billetesMonedas[i]; } //Calcula los centimos si ha acabado
  * con los euros else if (decimales >= billetesMonedas[i] && f >= 9) {
- * model.addElement((dosDec.format(billetesMonedas[i]/100f)) + " €: " +
+ * model.addElement((dosDec.format(billetesMonedas[i]/100f)) + " ï¿½: " +
  * (decimales / billetesMonedas[i])); decimales = decimales %
  * billetesMonedas[i]; } } }
  * 

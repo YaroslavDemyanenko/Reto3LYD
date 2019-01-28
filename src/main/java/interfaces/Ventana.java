@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.border.BevelBorder;
 
 public class Ventana extends JFrame {
 	public PanelSaludo panelSaludo;
@@ -13,7 +15,7 @@ public class Ventana extends JFrame {
 	public PanelFinal panelFinal;
 	public PanelLineas1 panelLineas1;
 	public PanelLineas2 panelLineas2;
-	
+	public PanelResumen panelResumen;
 	public PanelPasajeroExtra panelPasajeroExtra;
 	public PanelLogin panelLogin;
 	public PanelPago panelPago;
@@ -25,14 +27,14 @@ public class Ventana extends JFrame {
 		panelFinal=new PanelFinal();
 		panelLineas1=new PanelLineas1();
 		panelLineas2=new PanelLineas2();
-		
+		panelResumen=new PanelResumen();
 		panelPasajeroExtra=new PanelPasajeroExtra();
 		panelLogin=new PanelLogin();
 		panelPago=new PanelPago();
 		getContentPane().add(panelSaludo);
 		getContentPane().add(panelLineas1);
 		getContentPane().add(panelLineas2);
-		//AQUI VA LA ULTIMA INTERFAZ
+		getContentPane().add(panelResumen);
 		getContentPane().add(panelLogin);
 		getContentPane().add(panelPasajeroExtra);
 		getContentPane().add(panelPago);

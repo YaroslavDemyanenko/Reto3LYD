@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JComboBox;
@@ -10,6 +11,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
 /**
  * @wbp.parser.entryPoint
  */
@@ -22,6 +24,7 @@ public class PanelFinal extends JPanel {
 		setLayout(null);
 		setVisible(false);
 		setBounds(0,0,800,600);
+		setBackground(new Color(193, 240, 240));
 		
 		lblImpresion = new JLabel("Imprimiendo billete/s...");
 		lblImpresion.setHorizontalAlignment(SwingConstants.CENTER);
@@ -29,11 +32,12 @@ public class PanelFinal extends JPanel {
 		lblImpresion.setBounds(184, 183, 443, 83);
 		add(lblImpresion);
 		
-		lblEspereUnMomento = new JLabel("Espere un momento");
+		lblEspereUnMomento = new JLabel();
+		lblEspereUnMomento.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblEspereUnMomento.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEspereUnMomento.setIcon(new ImageIcon(PanelFinal.class.getResource("/imagenes/cargando.gif")));
 		lblEspereUnMomento.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblEspereUnMomento.setBounds(184, 328, 443, 48);
+		lblEspereUnMomento.setBounds(115, 250, 578, 311);
 		add(lblEspereUnMomento);
-
 	}
 }
