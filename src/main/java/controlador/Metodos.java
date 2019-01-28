@@ -72,16 +72,16 @@ public class Metodos{
 
 			ResultSet rs;
 			
-			/*llamamos a la base de datos el DNI y la contraseña del cliente*/
-			LoginDB = "select DNI,Contraseña from cliente";
+			/*llamamos a la base de datos el DNI y la contraseï¿½a del cliente*/
+			LoginDB = "select DNI,Contraseï¿½a from cliente";
 
 
 			rs = mod.db.hacerPeticion(LoginDB);
 
 			/*Comparamos los datos de la base de datos con los que ha introducido en el login el cliente*/
 			if (rs.getString("DNI") == dni){
-				/*Este es el caso óptimo donde tanto el DNI y la contraseña existen y corresponden al mismo usuario*/
-				if(rs.getString("Contraseña")== contrasenia) {
+				/*Este es el caso ï¿½ptimo donde tanto el DNI y la contraseï¿½a existen y corresponden al mismo usuario*/
+				if(rs.getString("Contraseï¿½a")== contrasenia) {
 				login = true;
 				}
 				/*En este caso el DNI es correcto pero la contraseï¿½a que corresponde a ese usuario es errï¿½nea*/

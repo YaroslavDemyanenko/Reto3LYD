@@ -62,6 +62,7 @@ public class ConexionAMySQL {
 			lineas.add(new Linea(codLinea));
 		}
 		mod.municipio.crearYMeterMunicipios(lineas, mod);
+		mod.autobus.crearYMeterAutobuses(lineas, mod);
 	}
 	
 	public void meterParadasAModelo (DefaultListModel<String> model,String lista,String peticion,Modelo mod) throws SQLException {
