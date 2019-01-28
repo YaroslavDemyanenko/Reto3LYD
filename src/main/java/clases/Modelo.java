@@ -13,12 +13,12 @@ public class Modelo {
 	public ConexionAMySQL db;
 	
 	public Modelo(ConexionAMySQL db) {
-		autobus=new Autobus();
-		billete=new Billete();
-		cliente=new Cliente();
-		linea=new Linea();
-		municipio=new Municipio();
-		parada=new Parada();
-		this.db=db;
+		autobus = new Autobus();
+		billete = new Billete();
+		cliente = new Cliente();
+		linea = new Linea();
+		municipio = new Municipio();
+		parada = new Parada();
+		this.db = db;
 	}
 }
