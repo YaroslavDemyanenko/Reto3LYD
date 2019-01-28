@@ -4,8 +4,8 @@ public class Parada {
 	private int codigo;
 	private String calle;
 	private String nombParada;
-	private float latitud;
-	private float longitud;
+	private double latitud;
+	private double longitud;
 	
 	public int getCodigo() {
 		return this.codigo;
@@ -25,16 +25,16 @@ public class Parada {
 	public void setNombParada(String nombCalle) {
 		this.nombParada = nombCalle;
 	}
-	public float getLatitud() {
+	public double getLatitud() {
 		return this.latitud;
 	}
-	public void setLatitud(float latitud) {
+	public void setLatitud(double latitud) {
 		this.latitud = latitud;
 	}
-	public float getLongitud() {
+	public double getLongitud() {
 		return this.longitud;
 	}
-	public void setLongitud(float longitud) {
+	public void setLongitud(double longitud) {
 		this.longitud = longitud;
 	}
 	
