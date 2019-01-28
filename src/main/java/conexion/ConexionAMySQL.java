@@ -13,6 +13,7 @@ import clases.Modelo;
 public class ConexionAMySQL {
 	private Connection conexion;
 	
+
 	/**
 	 * Conecta la aplicacion con las base de datos
 	 * @param baseDatos
