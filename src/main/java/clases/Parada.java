@@ -3,7 +3,7 @@ package clases;
 public class Parada {
 	private int codigo;
 	private String calle;
-	private String nombCalle;
+	private String nombParada;
 	private float latitud;
 	private float longitud;
 	
@@ -19,11 +19,11 @@ public class Parada {
 	public void setCalle(String calle) {
 		this.calle = calle;
 	}
-	public String getNombCalle() {
-		return this.nombCalle;
+	public String getNombParada() {
+		return this.nombParada;
 	}
-	public void setNombCalle(String nombCalle) {
-		this.nombCalle = nombCalle;
+	public void setNombParada(String nombCalle) {
+		this.nombParada = nombCalle;
 	}
 	public float getLatitud() {
 		return this.latitud;
