@@ -7,25 +7,25 @@ public class Autobus {
 	private String color;
 	
 	public int getCodigo() {
-		return codigo;
+		return this.codigo;
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 	public int getNumPlazas() {
-		return numPlazas;
+		return this.numPlazas;
 	}
 	public void setNumPlazas(int numPlazas) {
 		this.numPlazas = numPlazas;
 	}
 	public double getConsumoKm() {
-		return consumoKm;
+		return this.consumoKm;
 	}
 	public void setConsumoKm(double consumoKm) {
 		this.consumoKm = consumoKm;
 	}
 	public String getColor() {
-		return color;
+		return this.color;
 	}
 	public void setColor(String color) {
 		this.color = color;

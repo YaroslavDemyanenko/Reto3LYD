@@ -19,24 +19,24 @@ public class testAutobus {
 	@Test
 	public void testCosumoKm() {
 		testAutobus.setConsumoKm(consumoKm);
-		assertEquals(testAutobus.getConsumoKm(), null);
+		assertEquals(testAutobus.getConsumoKm(), consumoKm, 0.05);
 	}
 
 	@Test
 	public void testCodigo() {
 		testAutobus.setCodigo(codigo);
-		assertEquals(testAutobus.getCodigo(), 45856564);
+		assertEquals(testAutobus.getCodigo(), codigo);
 	}
 	
 	@Test
 	public void testnumPlazas() {
 		testAutobus.setNumPlazas(numPlazas);
-		assertEquals(testAutobus.getNumPlazas(), 35);
+		assertEquals(testAutobus.getNumPlazas(), numPlazas);
 	}
 	
 	@Test
 	public void testColor() {
 		testAutobus.setColor(color);
-		assertEquals(testAutobus.getColor(), "Verde");
+		assertEquals(testAutobus.getColor(), color);
 	}
 }
