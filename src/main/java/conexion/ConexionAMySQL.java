@@ -39,8 +39,7 @@ public class ConexionAMySQL {
 		while (resul.next()) {
 			String codLinea=resul.getString("Cod_Linea");
 			model.addElement(codLinea+" "+resul.getString("Nombre"));
-			Linea lin = new Linea(codLinea);
-			lineas.add(lin);
+			lineas.add(new Linea(codLinea));
 		}
 	}
 	public void meterParadasAModelo (DefaultListModel<String> model,String lista,String peticion,Modelo mod) throws SQLException {

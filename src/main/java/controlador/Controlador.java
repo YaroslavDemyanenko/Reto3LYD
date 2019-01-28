@@ -97,7 +97,7 @@ public class Controlador{
 			if (e.getSource() == vis.panelLineas1.listLineas) {
 				String nombreLinea= vis.panelLineas1.listLineas.getSelectedValue().toString();
 				nombreLinea=nombreLinea.substring(0,2);
-    			String query="select nombre,longitud, latitud,sqrt(power((longitud-(SELECT Longitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)+power((latitud-(SELECT Latitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)) distancia from parada WHERE Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\""+nombreLinea+"\") order by distancia;";
+    			String query="select nombre,sqrt(power((longitud-(SELECT Longitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)+power((latitud-(SELECT Latitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)) distancia from parada WHERE Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\""+nombreLinea+"\") order by distancia;";
 				try {
 					vis.panelLineas1.modeloParadas.clear();
 					mod.db.meterParadasAModelo(vis.panelLineas1.modeloParadas,nombreLinea, query, mod);
