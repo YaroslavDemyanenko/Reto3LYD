@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 
 import com.toedter.calendar.IDateEditor;
 import com.toedter.calendar.JCalendar;
@@ -15,6 +16,7 @@ import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.JTextField;
 /**
@@ -36,7 +38,9 @@ public class PanelResumen extends JPanel {
 		setBackground(new Color(193, 240, 240));
 		
 		btnSingUp = new JButton("Sign Up");
-		btnSingUp.setBackground(new Color(0, 0, 0));
+		btnSingUp.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnSingUp.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnSingUp.setBackground(new Color(192, 192, 192));
 		btnSingUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSingUp.setBounds(689, 12, 89, 23);
 		add(btnSingUp);
@@ -106,13 +110,17 @@ public class PanelResumen extends JPanel {
 		add(lblX);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(new Color(0, 0, 0));
+		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnCancelar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnCancelar.setBackground(new Color(192, 192, 192));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setBounds(80, 519, 140, 41);
 		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBackground(new Color(0, 0, 0));
+		btnConfirmar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnConfirmar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnConfirmar.setBackground(new Color(192, 192, 192));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setBounds(638, 519, 140, 41);
 		add(btnConfirmar);

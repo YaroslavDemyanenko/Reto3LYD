@@ -1,6 +1,7 @@
 package interfaces;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -12,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
 
 import com.sun.glass.ui.Cursor;
 
@@ -120,21 +122,27 @@ public class PanelLogin extends JPanel {
 		textFieldContrasenia.setColumns(10);
 		
 		btnConfirmarRegistro = new JButton("Confirmar Registro");
-		btnConfirmarRegistro.setBackground(new Color(0, 0, 0));
+		btnConfirmarRegistro.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnConfirmarRegistro.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnConfirmarRegistro.setBackground(new Color(192, 192, 192));
 		btnConfirmarRegistro.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmarRegistro.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 		btnConfirmarRegistro.setBounds(141, 514, 180, 35);
 		add(btnConfirmarRegistro);
 		
 		btnConfirmarLogin = new JButton("Confirmar Login");
-		btnConfirmarLogin.setBackground(new Color(0, 0, 0));
+		btnConfirmarLogin.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnConfirmarLogin.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnConfirmarLogin.setBackground(new Color(192, 192, 192));
 		btnConfirmarLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmarLogin.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 		btnConfirmarLogin.setBounds(559, 268, 180, 35);
 		add(btnConfirmarLogin);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(new Color(0, 0, 0));
+		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnCancelar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnCancelar.setBackground(new Color(192, 192, 192));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 		btnCancelar.setBounds(610, 514, 129, 35);

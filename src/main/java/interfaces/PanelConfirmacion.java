@@ -11,12 +11,14 @@ import javax.swing.JTextField;
 import javax.swing.JList;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JCalendar;
 import java.util.Date;
 import com.toedter.calendar.IDateEditor;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 /**
  * @wbp.parser.entryPoint
  */
@@ -37,7 +39,9 @@ public class PanelConfirmacion extends JPanel {
 		
 		btnLogIn = new JButton("Log out");
 		btnLogIn.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnLogIn.setBackground(new Color(0, 0, 0));
+		btnLogIn.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnLogIn.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnLogIn.setBackground(new Color(192, 192, 192));
 		btnLogIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLogIn.setBounds(689, 12, 89, 23);
 		add(btnLogIn);
@@ -149,14 +153,18 @@ public class PanelConfirmacion extends JPanel {
 		add(textFieldPrecioBillete);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(new Color(0, 0, 0));
+		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnCancelar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnCancelar.setBackground(new Color(192, 192, 192));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnImprimir = new JButton("Imprimir Billete");
-		btnImprimir.setBackground(new Color(0, 0, 0));
+		btnImprimir.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnImprimir.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnImprimir.setBackground(new Color(192, 192, 192));
 		btnImprimir.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnImprimir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnImprimir.setBounds(603, 527, 181, 35);

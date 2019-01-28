@@ -11,11 +11,11 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-
+import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -40,7 +40,9 @@ public class PanelPago extends JPanel{
 
 		setBounds(0,0,800,600);
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBackground(new Color(0, 0, 0));
+		btnConfirmar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnConfirmar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnConfirmar.setBackground(new Color(192, 192, 192));
 		btnConfirmar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setBounds(655, 527, 129, 35);
@@ -187,8 +189,9 @@ public class PanelPago extends JPanel{
 		add(btn001);
 
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setForeground(new Color(0, 0, 0));
-		btnCancelar.setBackground(new Color(0, 0, 0));
+		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnCancelar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnCancelar.setBackground(new Color(192, 192, 192));
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setBounds(56, 527, 129, 35);
@@ -251,7 +254,9 @@ public class PanelPago extends JPanel{
 		add(lblUsuario);
 		
 		btnLogOut = new JButton("Log out");
-		btnLogOut.setBackground(new Color(0, 0, 0));
+		btnLogOut.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnLogOut.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnLogOut.setBackground(new Color(192, 192, 192));
 		btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLogOut.setBounds(689, 12, 89, 23);

@@ -6,12 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
@@ -36,14 +38,18 @@ public class PanelPasajeroExtra extends JPanel{
 		setBackground(new Color(193, 240, 240));
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(new Color(0, 0, 0));
+		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnCancelar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnCancelar.setBackground(new Color(192, 192, 192));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBackground(new Color(0, 0, 0));
+		btnConfirmar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnConfirmar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnConfirmar.setBackground(new Color(192, 192, 192));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnConfirmar.setBounds(655, 527, 129, 35);
