@@ -11,25 +11,25 @@ public class Billete {
 	
 	
 	public int getCodigoBillete() {
-		return codigoBillete;
+		return this.codigoBillete;
 	}
 	public void setCodigoBillete(int codigoBillete) {
 		this.codigoBillete = codigoBillete;
 	}
 	public int getCodAutobusIda() {
-		return codAutobusIda;
+		return this.codAutobusIda;
 	}
 	public void setCodAutobusIda(int codAutobusIda) {
 		this.codAutobusIda = codAutobusIda;
 	}
 	public int getCodAutobusVuelta() {
-		return codAutobusVuelta;
+		return this.codAutobusVuelta;
 	}
 	public void setCodAutobusVuelta(int codAutobusVuelta) {
 		this.codAutobusVuelta = codAutobusVuelta;
 	}
 	public float getPrecioTrayecto() {
-		return precioTrayecto;
+		return this.precioTrayecto;
 	}
 	public void setPrecioTrayecto(float precioTrayecto) {
 		this.precioTrayecto = precioTrayecto;
@@ -41,25 +41,25 @@ public class Billete {
 		this.fechaIda = fechaIda;
 	}
 	public Date getFechaVuelta() {
-		return fechaVuelta;
+		return this.fechaVuelta;
 	}
 	public void setFechaVuelta(Date fechaVuelta) {
 		this.fechaVuelta = fechaVuelta;
 	}
 	public Linea getLinea() {
-		return linea;
+		return this.linea;
 	}
 	public void setLinea(Linea linea) {
 		this.linea = linea;
 	}
 	public Parada getParadaInic() {
-		return paradaInic;
+		return this.paradaInic;
 	}
 	public void setParadaInic(Parada paradaInic) {
 		this.paradaInic = paradaInic;
 	}
 	public Parada getParadaFin() {
-		return paradaFin;
+		return this.paradaFin;
 	}
 	public void setParadaFin(Parada paradaFin) {
 		this.paradaFin = paradaFin;

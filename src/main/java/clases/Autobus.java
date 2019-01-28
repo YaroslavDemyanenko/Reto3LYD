@@ -3,29 +3,29 @@ package clases;
 public class Autobus {
 	private int codigo;
 	private int numPlazas;
-	private int consumoKm;
+	private double consumoKm;
 	private String color;
 	
 	public int getCodigo() {
-		return codigo;
+		return this.codigo;
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 	public int getNumPlazas() {
-		return numPlazas;
+		return this.numPlazas;
 	}
 	public void setNumPlazas(int numPlazas) {
 		this.numPlazas = numPlazas;
 	}
-	public int getConsumoKm() {
-		return consumoKm;
+	public double getConsumoKm() {
+		return this.consumoKm;
 	}
-	public void setConsumoKm(int consumoKm) {
+	public void setConsumoKm(double consumoKm) {
 		this.consumoKm = consumoKm;
 	}
 	public String getColor() {
-		return color;
+		return this.color;
 	}
 	public void setColor(String color) {
 		this.color = color;

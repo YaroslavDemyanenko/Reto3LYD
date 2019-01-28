@@ -25,19 +25,19 @@ public class Cliente {
 	
 
 	public String getDni() {
-		return dni;
+		return this.dni;
 	}
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	public String getApellido() {
-		return apellido;
+		return this.apellido;
 	}
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
@@ -49,13 +49,13 @@ public class Cliente {
 		this.fecha_nac = fecha_nac;
 	}
 	public String getSexo() {
-		return sexo;
+		return this.sexo;
 	}
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public String getContrasenia() {
-		return contrasenia;
+		return this.contrasenia;
 	}
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
