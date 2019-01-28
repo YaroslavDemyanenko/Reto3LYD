@@ -61,19 +61,19 @@ public class PanelLineas2 extends JPanel{
 		lblNombreLinea.setBounds(178, 133, 59, 25);
 		add(lblNombreLinea);
 
-		lblFechaIda = new JLabel("Fecha Ida");
+		lblFechaIda = new JLabel("Fecha Ida:");
 		lblFechaIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFechaIda.setBounds(79, 212, 116, 27);
 		add(lblFechaIda);
 
-		lblFechaVuelta = new JLabel("Fecha Vuelta");
+		lblFechaVuelta = new JLabel("Fecha Vuelta:");
 		lblFechaVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFechaVuelta.setBounds(79, 301, 89, 27);
+		lblFechaVuelta.setBounds(79, 301, 102, 27);
 		add(lblFechaVuelta);
 
-		lblNumeroDeBilletes = new JLabel("Numero de billetes");
+		lblNumeroDeBilletes = new JLabel("Numero de billetes:");
 		lblNumeroDeBilletes.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNumeroDeBilletes.setBounds(79, 383, 158, 27);
+		lblNumeroDeBilletes.setBounds(79, 383, 151, 27);
 		add(lblNumeroDeBilletes);
 
 		calendarioIda = new JDateChooser(null, null, null, new JSpinnerDateEditor());

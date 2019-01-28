@@ -94,7 +94,6 @@ public class PanelLineas1 extends JPanel {
 		btnCancelar.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnCancelar.setBackground(new Color(192, 192, 192));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnCancelar.setToolTipText("");
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		

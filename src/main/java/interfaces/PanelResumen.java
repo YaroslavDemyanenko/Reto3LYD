@@ -100,7 +100,7 @@ public class PanelResumen extends JPanel {
 		
 		lblNumeroDeBilletes = new JLabel("Numero de billetes:");
 		lblNumeroDeBilletes.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNumeroDeBilletes.setBounds(76, 435, 131, 41);
+		lblNumeroDeBilletes.setBounds(76, 435, 148, 41);
 		add(lblNumeroDeBilletes);
 		
 		lblX = new JLabel("x");
