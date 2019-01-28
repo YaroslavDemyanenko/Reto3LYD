@@ -11,8 +11,9 @@ public class ConexionAMySQL {
 	private Connection conexion;
 	
 	public ConexionAMySQL(String baseDatos,String user,String pass) {
+		/* Usar la IP de Yaros(192.168.101.35)*/
 		try {
-			this.conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/"+baseDatos+"?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass);
+			this.conexion= DriverManager.getConnection("jdbc:mysql://192.168.101.35:3306/"+baseDatos+"?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}

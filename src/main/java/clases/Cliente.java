@@ -17,6 +17,12 @@ public class Cliente {
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	/*pasajeros Extra*/
+	public Cliente(String nombre2, String apellido2, String dni2, String sexo2) {
+		// TODO Auto-generated constructor stub
+	}
+	
 
 	public String getDni() {
 		return dni;

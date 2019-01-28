@@ -16,7 +16,7 @@ import interfaces.PanelLogin;
 import conexion.ConexionAMySQL;
 import controlador.Controlador;
 
-public class Métodos {
+public class Metodos {
 
 	public Cliente ingresar(String nombre, String apellido, String dni, String sexo, String contrasenia) {
 		
@@ -29,7 +29,7 @@ public class Métodos {
 		return cliente;
 
 	}
-
+	
 	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) {
 
 		ResultSet rs = null;
@@ -65,22 +65,21 @@ public class Métodos {
 	public void Login(Modelo mod,String dni, String contrasenia) {
 		
 		Boolean login = false;
-		String dniLogin = "";
-		String contraseniaLogin = "";
+		String LoginDB = "";
 
 		try {
 
 			ResultSet rs;
 			
 			/*llamamos a la base de datos el DNI y la contraseña del cliente*/
-			dniLogin = "select DNI,Contraseña from cliente";
+			LoginDB = "select DNI,Contraseña from cliente";
 
-			rs = mod.db.hacerPeticion(dniLogin);
+			rs = mod.db.hacerPeticion(LoginDB);
 
 			/*Comparamos los datos de la base de datos con los que ha introducido en el login el cliente*/
 			if (rs.getString("DNI") == dni){
 				/*Este es el caso óptimo donde tanto el DNI y la contraseña existen y corresponden al mismo usuario*/
-				if(contraseniaLogin == contrasenia) {
+				if(rs.getString("Contraseña")== contrasenia) {
 				login = true;
 				}
 				/*En este caso el DNI es correcto pero la contraseña que corresponde a ese usuario es errónea*/
@@ -100,8 +99,21 @@ public class Métodos {
 		}
 
 	}
+	
+	public void PasajeroExtra(Modelo mod, String dni, String nombre, String apellido, String sexo, int CantidadPasajeros) {
+		
+		Cliente pasajeroExtra[]=new Cliente[CantidadPasajeros];		
+		
+		/* Genera clientes extra en base a la cantidad de pasajeros extra*/
+		while (CantidadPasajeros>0) {
+			pasajeroExtra[CantidadPasajeros]=new Cliente (nombre,apellido,dni, sexo);
+			CantidadPasajeros=CantidadPasajeros-1;
+		}
+	}		
 
 }
+
+
 
 /**
  * ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
