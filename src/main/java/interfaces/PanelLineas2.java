@@ -13,8 +13,10 @@ import javax.swing.JSpinner;
 import javax.swing.JList;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 /**
  * @wbp.parser.entryPoint
  */
@@ -41,7 +43,9 @@ public class PanelLineas2 extends JPanel{
 		add(lblUsuario);
 
 		btnLogIn = new JButton("Log in");
-		btnLogIn.setBackground(new Color(0, 0, 0));
+		btnLogIn.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnLogIn.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnLogIn.setBackground(new Color(192, 192, 192));
 		btnLogIn.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLogIn.setBounds(689, 12, 89, 23);
 		add(btnLogIn);
@@ -57,19 +61,19 @@ public class PanelLineas2 extends JPanel{
 		lblNombreLinea.setBounds(178, 133, 59, 25);
 		add(lblNombreLinea);
 
-		lblFechaIda = new JLabel("Fecha Ida");
+		lblFechaIda = new JLabel("Fecha Ida:");
 		lblFechaIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFechaIda.setBounds(79, 212, 116, 27);
 		add(lblFechaIda);
 
-		lblFechaVuelta = new JLabel("Fecha Vuelta");
+		lblFechaVuelta = new JLabel("Fecha Vuelta:");
 		lblFechaVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFechaVuelta.setBounds(79, 301, 89, 27);
+		lblFechaVuelta.setBounds(79, 301, 102, 27);
 		add(lblFechaVuelta);
 
-		lblNumeroDeBilletes = new JLabel("Numero de billetes");
+		lblNumeroDeBilletes = new JLabel("Numero de billetes:");
 		lblNumeroDeBilletes.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNumeroDeBilletes.setBounds(79, 383, 158, 27);
+		lblNumeroDeBilletes.setBounds(79, 383, 151, 27);
 		add(lblNumeroDeBilletes);
 
 		calendarioIda = new JDateChooser(null, null, null, new JSpinnerDateEditor());
@@ -85,13 +89,17 @@ public class PanelLineas2 extends JPanel{
 		add(spnNumeroDeBilletes);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(new Color(0, 0, 0));
+		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnCancelar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnCancelar.setBackground(new Color(192, 192, 192));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBackground(new Color(0, 0, 0));
+		btnConfirmar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnConfirmar.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnConfirmar.setBackground(new Color(192, 192, 192));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setBounds(655, 527, 129, 35);
 		add(btnConfirmar);

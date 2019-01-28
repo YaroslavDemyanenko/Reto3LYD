@@ -11,13 +11,15 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.sun.javafx.iio.ImageFrame;
+import java.awt.Component;
+import javax.swing.border.BevelBorder;
 
 /**
  * @wbp.parser.entryPoint
  */
 public class PanelSaludo extends JPanel {
 
-	public JLabel lblBienvenidoATermibus,lblTocaParaContinuar, lblUsuario;
+	public JLabel lblBienvenidoATermibus,lblTocaParaContinuar, lblUsuario,lblNewLabel;
 	public JButton btnSignUP;
 	
 	public PanelSaludo() {
@@ -36,9 +38,11 @@ public class PanelSaludo extends JPanel {
 		
 		
 		btnSignUP = new JButton("Sign UP");
-		btnSignUP.setBackground(new Color(0, 0, 0));
+		btnSignUP.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnSignUP.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnSignUP.setBackground(new Color(192, 192, 192));
 		btnSignUP.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnSignUP.setBounds(689, 12, 89, 23);
+		btnSignUP.setBounds(676, 12, 102, 23);
 		add(btnSignUP);
 		
 		
@@ -59,7 +63,7 @@ public class PanelSaludo extends JPanel {
 		lblBienvenidoATermibus.setBounds(174, 157, 471, 159);
 		add(lblBienvenidoATermibus);
 		
-		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(506, 438, 296, 135);
 		add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(PanelSaludo.class.getResource("/imagenes/logo-termibus.png")));
