@@ -29,10 +29,11 @@ public class Controlador{
 		this.mod=modelo;
 		this.vis=vista;
 		vista.setContentPane(vista.panelSaludo);
-		inicializar_eventos();
+		inicializarEventos();
 	}
 	
-	public void inicializar_eventos() {
+	public void inicializarEventos() {
+		
 		this.vis.panelSaludo.addMouseListener(new MseListener());
 		this.vis.panelLineas1.listLineas.addListSelectionListener(new lstListener());
 	}
@@ -50,13 +51,12 @@ public class Controlador{
 	
 	private class MseListener implements MouseListener
     {
-		ArrayList<Linea> lineas = new ArrayList<Linea>();
-		@Override
+		
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource() == vis.panelSaludo){
         		vis.setContentPane(vis.panelLineas1);
         		try {
-					mod.db.meterLineaEnListaYArray(vis.panelLineas1.modeloLineas, "SELECT * FROM `linea`", mod,lineas);
+					mod.db.meterLineaEnListaYArray(vis.panelLineas1.modeloLineas, "SELECT * FROM `linea`", mod,mod.lineas);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -68,25 +68,23 @@ public class Controlador{
 			// TODO Auto-generated method stub
 			
 		}
-
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
-
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
-
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
-    
+
+
     
     }
 	

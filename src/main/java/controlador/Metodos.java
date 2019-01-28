@@ -35,7 +35,7 @@ public class Metodos{
 		ResultSet rs = null;
 		boolean estaRegistrado = true;
 		
-		/*Comparamos si el DNI insertado consta en la base de datos o no y hay que a�adirlo*/
+		/*Comparamos si el DNI insertado consta en la base de datos o no y hay que añadirlo*/
 		try {
 			String sql = "select DNI from cliente where DNI = " + cliente.getDni();
 			rs = mod.db.hacerPeticion(sql);
@@ -43,7 +43,7 @@ public class Metodos{
 			if (rs.next()) {
 				estaRegistrado = true;
 			} 
-			/* Si no est� en la base de datos devuelve un false y lo mete en la base de datos  */
+			/* Si no esta en la base de datos devuelve un false y lo mete en la base de datos  */
 			else estaRegistrado = false;
 			String sql1 = "insert into DNI values (" + estaRegistrado + ")";
 			
@@ -85,7 +85,7 @@ public class Metodos{
 				}
 				/*En este caso el DNI es correcto pero la contrase�a que corresponde a ese usuario es err�nea*/
 				else {
-					System.out.println("Contrase�a incorrecta");
+					System.out.println("Contraseña incorrecta");
 					login = false;
 				}
 			}

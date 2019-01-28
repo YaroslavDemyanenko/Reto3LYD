@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.ArrayList;
+
 import conexion.ConexionAMySQL;
 
 public class Modelo {
@@ -11,6 +13,7 @@ public class Modelo {
 	public Municipio municipio;
 	public Parada parada;
 	public ConexionAMySQL db;
+	public ArrayList<Linea> lineas = new ArrayList<Linea>();
 	
 	public Modelo(ConexionAMySQL db) {
 		autobus=new Autobus();
@@ -20,5 +23,6 @@ public class Modelo {
 		municipio=new Municipio();
 		parada=new Parada();
 		this.db=db;
+		
 	}
 }

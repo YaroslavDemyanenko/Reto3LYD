@@ -13,15 +13,26 @@ import clases.Modelo;
 public class ConexionAMySQL {
 	private Connection conexion;
 	
-	public ConexionAMySQL(String baseDatos,String user,String pass) {
+	/**
+	 * Conecta la aplicacion con las base de datos
+	 * @param baseDatos
+	 * @param user
+	 * @param pass
+	 */
+	public ConexionAMySQL(String ip,String puerto,String baseDatos,String user,String pass) {
 		try {
-			this.conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/"+baseDatos+"?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass);
+			this.conexion= DriverManager.getConnection("jdbc:mysql://"+ip+":"+puerto+"/"+baseDatos+"?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 	}
 	
 
+	/**
+	 * Metodo para hacer peticiones a la base de datos
+	 * @param peticionString String que se usara en la query en sql
+	 * @return	devuelve un set de resultados
+	 */
 	public ResultSet hacerPeticion(String peticionString) {
 		try {
 			Statement peticion = conexion.createStatement();
@@ -34,6 +45,14 @@ public class ConexionAMySQL {
 	}
 	
 
+	/**
+	 * 
+	 * @param model
+	 * @param peticion
+	 * @param mod
+	 * @param lineas
+	 * @throws SQLException
+	 */
 	public void meterLineaEnListaYArray (DefaultListModel<String> model,String peticion,Modelo mod,ArrayList<Linea> lineas) throws SQLException {
 		ResultSet resul = mod.db.hacerPeticion(peticion);
 		while (resul.next()) {
@@ -41,7 +60,9 @@ public class ConexionAMySQL {
 			model.addElement(codLinea+" "+resul.getString("Nombre"));
 			lineas.add(new Linea(codLinea));
 		}
+		mod.municipio.crearYMeterMunicipios(lineas, mod);
 	}
+	
 	public void meterParadasAModelo (DefaultListModel<String> model,String lista,String peticion,Modelo mod) throws SQLException {
 		ResultSet resul = mod.db.hacerPeticion(peticion);
 		while (resul.next()) {

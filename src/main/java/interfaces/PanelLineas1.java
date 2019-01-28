@@ -24,7 +24,7 @@ public class PanelLineas1 extends JPanel {
 	public JButton btnSingUp;
 	public JLabel lblUsuario, lblLinea, lblParadaInicio;
 	public JRadioButton rdbtnIda, rdbtnIdayVuelta;
-	public ButtonGroup grupo;
+	public ButtonGroup grupoTipoViaje;
 	public JList listLineas,listParadas;
 	public DefaultListModel<String> modeloLineas,modeloParadas;
 	public JButton btnCancelar, btnConfirmar;
@@ -58,6 +58,7 @@ public class PanelLineas1 extends JPanel {
 		
 		
 		rdbtnIda = new JRadioButton("Ida");
+		rdbtnIda.setSelected(true);
 		rdbtnIda.setBackground(new Color(193, 240, 240));
 		rdbtnIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		rdbtnIda.setBounds(83, 468, 109, 23);
@@ -69,9 +70,9 @@ public class PanelLineas1 extends JPanel {
 		rdbtnIdayVuelta.setBounds(267, 468, 109, 23);
 		add(rdbtnIdayVuelta);
 		
-		grupo = new ButtonGroup();
-		grupo.add(rdbtnIda);
-		grupo.add(rdbtnIdayVuelta);
+		grupoTipoViaje = new ButtonGroup();
+		grupoTipoViaje.add(rdbtnIda);
+		grupoTipoViaje.add(rdbtnIdayVuelta);
 		
 		lblParadaInicio = new JLabel();
 		lblParadaInicio.setFont(new Font("Tahoma", Font.PLAIN, 16));
