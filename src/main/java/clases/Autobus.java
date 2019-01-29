@@ -20,12 +20,12 @@ public class Autobus {
 		this.color = color;
 	}
 	
-	public void crearYMeterAutobuses(ArrayList<Linea> lineas, Modelo mod) throws NumberFormatException, SQLException {
-		for (int i = 0; i < lineas.size(); i++) {
-			String consulta = "SELECT * FROM autobus WHERE Cod_bus IN(SELECT Cod_bus FROM `linea_autobus` WHERE cod_Linea IN(SELECT Cod_Linea FROM `linea` WHERE Cod_Linea=\""+lineas.get(i).codigo+"\"))";
+	public void crearYMeterAutobuses(Modelo mod) throws NumberFormatException, SQLException {
+		for (int i = 0; i < mod.lineas.size(); i++) {
+			String consulta = "SELECT * FROM autobus WHERE Cod_bus IN(SELECT Cod_bus FROM `linea_autobus` WHERE cod_Linea IN(SELECT Cod_Linea FROM `linea` WHERE Cod_Linea=\""+mod.lineas.get(i).codigo+"\"))";
 			ResultSet result = mod.db.hacerPeticion(consulta);
 			while (result.next()) {
-				lineas.get(i).listaAutobuses.add(new Autobus(result.getInt("Cod_bus"),result.getInt("N_Plazas"),result.getDouble("Consumo_km"),result.getString("Color")));
+				mod.lineas.get(i).listaAutobuses.add(new Autobus(result.getInt("Cod_bus"),result.getInt("N_Plazas"),result.getDouble("Consumo_km"),result.getString("Color")));
 				
 			}
 		}

@@ -33,6 +33,12 @@ public class Parada {
 		this.longitud=longi;
 	}
 	
+	public Parada(int codigo,String calle, String nombreParada) {
+		this.codigo=codigo;
+		this.calle=calle;
+		this.nombreParada=nombreParada;
+	}
+	
 
 	
 	public int getCodigo() {

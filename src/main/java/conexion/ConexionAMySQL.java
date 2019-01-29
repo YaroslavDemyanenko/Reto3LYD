@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 
 import clases.Linea;
 import clases.Modelo;
+import clases.Parada;
+import interfaces.Ventana;
 
 public class ConexionAMySQL {
 	private Connection conexion;
@@ -54,21 +56,30 @@ public class ConexionAMySQL {
 	 * @param lineas
 	 * @throws SQLException
 	 */
-	public void meterLineaEnListaYArray (DefaultListModel<String> model,String peticion,Modelo mod,ArrayList<Linea> lineas) throws SQLException {
+	public void llenarModeloConLinea (Ventana vis,Modelo mod) throws SQLException {
+		String peticion = "SELECT * FROM `linea`";
 		ResultSet resul = mod.db.hacerPeticion(peticion);
 		while (resul.next()) {
-			String codLinea=resul.getString("Cod_Linea");
-			model.addElement(codLinea+" "+resul.getString("Nombre"));
-			lineas.add(new Linea(codLinea));
+			vis.panelLineas1.modeloLineas.addElement(resul.getString("Cod_Linea")+" "+resul.getString("Nombre"));
 		}
-		mod.municipio.crearYMeterMunicipios(lineas, mod);
-		mod.autobus.crearYMeterAutobuses(lineas, mod);
+	}
+	public void inicializarLineas (Modelo mod) throws SQLException {
+		String peticion = "SELECT * FROM `linea`";
+		ResultSet resul = mod.db.hacerPeticion(peticion);
+		while (resul.next()) {
+			mod.lineas.add(new Linea(resul.getString("Cod_Linea")));
+		}
+		mod.municipio.crearYMeterMunicipios(mod);
+		mod.autobus.crearYMeterAutobuses(mod);
 	}
 	
-	public void meterParadasAModelo (DefaultListModel<String> model,String lista,String peticion,Modelo mod) throws SQLException {
-		ResultSet resul = mod.db.hacerPeticion(peticion);
-		while (resul.next()) {
-			model.addElement(resul.getString("Nombre"));
+	public void meterParadasAModelo (Ventana vis,Modelo mod) throws SQLException {
+		String query= vis.panelLineas1.listLineas.getSelectedValue().toString().substring(0,2);
+		query="select nombre,Cod_Parada,Calle,sqrt(power((longitud-(SELECT Longitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)+power((latitud-(SELECT Latitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)) distancia from parada WHERE Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\""+query+"\") order by distancia;";
+		ResultSet result = mod.db.hacerPeticion(query);
+		while (result.next()) {
+			vis.panelLineas1.modeloParadas.addElement(result.getString("Nombre"));
+			mod.arrayParadas.add(new Parada(result.getInt("Cod_Parada"),result.getString("Calle"),result.getString("Nombre")));
 		}
 	}
 	/**

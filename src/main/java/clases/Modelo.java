@@ -1,5 +1,6 @@
 package clases;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conexion.ConexionAMySQL;
@@ -14,6 +15,8 @@ public class Modelo {
 	public Parada parada;
 	public ConexionAMySQL db;
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
+	private boolean idaYVuelta=false;
+	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
 	
 	public Modelo(ConexionAMySQL db) {
 		autobus=new Autobus();
@@ -23,6 +26,18 @@ public class Modelo {
 		municipio=new Municipio();
 		parada=new Parada();
 		this.db=db;
-		
+		try {
+			db.inicializarLineas(this);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public boolean isIdaYVuelta() {
+		return idaYVuelta;
+	}
+
+	public void setIdaYVuelta(boolean idaYVuelta) {
+		this.idaYVuelta = idaYVuelta;
 	}
 }

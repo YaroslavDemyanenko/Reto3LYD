@@ -29,11 +29,11 @@ public class PanelLineas2 extends JPanel{
 	public DefaultListModel<Parada> modeloListaDestinos;
 	public JButton btnLogIn, btnCancelar, btnConfirmar;
 	public JSpinner spnNumeroDeBilletes;
+	JSpinnerDateEditor spinnerDateEditorVuelta, spinnerDateEditorIda;
 	
 	public PanelLineas2() {
 	
 		setBounds(0, 0, 800, 600);
-		setVisible(false);
 		setLayout(null);
 		setBackground(new Color(193, 240, 240));
 
@@ -58,7 +58,7 @@ public class PanelLineas2 extends JPanel{
 		lblNombreLinea = new JLabel("x");
 		lblNombreLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNombreLinea.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNombreLinea.setBounds(178, 133, 59, 25);
+		lblNombreLinea.setBounds(178, 133, 179, 25);
 		add(lblNombreLinea);
 
 		lblFechaIda = new JLabel("Fecha Ida:");
@@ -76,11 +76,16 @@ public class PanelLineas2 extends JPanel{
 		lblNumeroDeBilletes.setBounds(79, 383, 151, 27);
 		add(lblNumeroDeBilletes);
 
-		calendarioIda = new JDateChooser(null, null, null, new JSpinnerDateEditor());
-		calendarioIda.setBounds(163, 212, 137, 27);
+		spinnerDateEditorIda = new JSpinnerDateEditor();
+		spinnerDateEditorIda.setEnabled(false);
+		calendarioIda = new JDateChooser(null, null, null, spinnerDateEditorIda);
+		calendarioIda.setBounds(180, 212, 137, 27);
+		
 		add(calendarioIda);
 		
-		calendarioVuelta = new JDateChooser(null, null, null, new JSpinnerDateEditor());
+		spinnerDateEditorVuelta = new JSpinnerDateEditor();
+		spinnerDateEditorVuelta.setEnabled(false);
+		calendarioVuelta = new JDateChooser(null, null, null, spinnerDateEditorVuelta);
 		calendarioVuelta.setBounds(180, 301, 137, 27);
 		add(calendarioVuelta);
 		
