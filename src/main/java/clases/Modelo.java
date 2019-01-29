@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conexion.ConexionAMySQL;
+import controlador.Metodos;
 
 public class Modelo {
 
@@ -14,6 +15,7 @@ public class Modelo {
 	public Municipio municipio;
 	public Parada parada;
 	public ConexionAMySQL db;
+	public Metodos metodo;
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
 	private boolean idaYVuelta=false;
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
@@ -25,6 +27,7 @@ public class Modelo {
 		linea=new Linea();
 		municipio=new Municipio();
 		parada=new Parada();
+		metodo=new Metodos();
 		this.db=db;
 		try {
 			db.inicializarLineas(this);

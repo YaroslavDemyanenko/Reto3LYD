@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -24,12 +26,13 @@ public class Controlador {
 	}
 
 	public void inicializarEventos() {
-		this.vis.panelSaludo.addMouseListener(new MseListener());
+		this.vis.panelSaludo.addMouseListener(new mseListener());
 		this.vis.panelLineas1.listLineas.addListSelectionListener(new lstListener());
-		this.vis.panelLineas1.btnConfirmar.addActionListener(new BtnListener());
+		this.vis.panelLineas1.btnConfirmar.addActionListener(new btnListener());
+		this.vis.panelLineas2.calendarioIda.addPropertyChangeListener("date",new calendarListener());
 	}
 
-	private class BtnListener implements ActionListener {
+	private class btnListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == vis.panelLineas1.btnConfirmar) {
 				if (!vis.panelLineas1.listParadas.isSelectionEmpty()) {
@@ -39,14 +42,17 @@ public class Controlador {
 					vis.panelLineas2.lblNombreLinea.setText(vis.panelLineas1.listLineas.getSelectedValue().toString());
 					vis.panelLineas2.lblSal.setText(vis.panelLineas1.listParadas.getSelectedValue().toString());
 					vis.setContentPane(vis.panelLineas2);
-					vis.panelLineas2.calendarioIda.setDate(null);
+					mod.metodo.limitarFechasIda(vis, 4);
 				}
-
+			}
+			if (e.getSource() == vis.panelLineas2.calendarioIda.getCalendarButton()) {
+				System.out.println("hola");
+				mod.metodo.limitarFechasVuelta(vis, 4);
 			}
 		}
 	}
 
-	private class MseListener implements MouseListener {
+	private class mseListener implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource() == vis.panelSaludo) {
@@ -56,6 +62,7 @@ public class Controlador {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+				
 			}
 		}
 
@@ -102,6 +109,18 @@ public class Controlador {
 
 	}
 
+	private class calendarListener implements PropertyChangeListener{
+
+		@Override
+		public void propertyChange(PropertyChangeEvent e) {
+			if (e.getSource() == vis.panelLineas2.calendarioIda) {
+				System.out.println("hola");
+				mod.metodo.limitarFechasVuelta(vis, 4);
+			}
+			
+		}
+		
+	}
 	/**
 	 * private VentanaPrincipal vista; private Cliente modelo;
 	 * 

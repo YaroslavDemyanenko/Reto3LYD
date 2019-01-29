@@ -1,20 +1,12 @@
 package controlador;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Locale;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
+import java.util.Calendar;
+import java.util.Date;
 
 import clases.Cliente;
 import clases.Modelo;
-import interfaces.PanelLogin;
-import conexion.ConexionAMySQL;
-import controlador.Controlador;
+import interfaces.Ventana;
 
 
 public class Metodos{
@@ -29,6 +21,25 @@ public class Metodos{
 		cliente.setContrasenia(contrasenia);
 		return cliente;
 
+	}
+	
+	public void limitarFechasIda(Ventana vis,int numDias) {
+		Date fechaLimite=new Date();
+		vis.panelLineas2.calendarioIda.setDate(new Date());
+		Calendar c = Calendar.getInstance();
+		c.setTime(fechaLimite);
+		c.add(Calendar.DATE,numDias);
+		fechaLimite=c.getTime();
+		vis.panelLineas2.calendarioIda.setSelectableDateRange(new Date(),fechaLimite);
+	}
+	public void limitarFechasVuelta(Ventana vis,int numDias) {
+		Date fechaLimite=vis.panelLineas2.calendarioIda.getDate();
+		vis.panelLineas2.calendarioVuelta.setDate(fechaLimite);
+		Calendar c = Calendar.getInstance();
+		c.setTime(fechaLimite);
+		c.add(Calendar.DATE,numDias);
+		fechaLimite=c.getTime();
+		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(),fechaLimite);
 	}
 	
 	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) {

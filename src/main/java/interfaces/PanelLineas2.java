@@ -29,7 +29,7 @@ public class PanelLineas2 extends JPanel{
 	public DefaultListModel<Parada> modeloListaDestinos;
 	public JButton btnLogIn, btnCancelar, btnConfirmar;
 	public JSpinner spnNumeroDeBilletes;
-	JSpinnerDateEditor spinnerDateEditorVuelta, spinnerDateEditorIda;
+	public JSpinnerDateEditor spinnerDateEditorVuelta, spinnerDateEditorIda;
 	
 	public PanelLineas2() {
 	
@@ -77,15 +77,20 @@ public class PanelLineas2 extends JPanel{
 		add(lblNumeroDeBilletes);
 
 		spinnerDateEditorIda = new JSpinnerDateEditor();
+		spinnerDateEditorIda.setFont(new Font("Tahoma", Font.BOLD, 12));
 		spinnerDateEditorIda.setEnabled(false);
 		calendarioIda = new JDateChooser(null, null, null, spinnerDateEditorIda);
+		calendarioIda.setDateFormatString("dd-MM-yyyy");
+	
 		calendarioIda.setBounds(180, 212, 137, 27);
 		
 		add(calendarioIda);
 		
 		spinnerDateEditorVuelta = new JSpinnerDateEditor();
 		spinnerDateEditorVuelta.setEnabled(false);
+		spinnerDateEditorVuelta.setDateFormatString("dd/mm/yyyy");
 		calendarioVuelta = new JDateChooser(null, null, null, spinnerDateEditorVuelta);
+		calendarioVuelta.setDateFormatString("dd-MM-yyyy");
 		calendarioVuelta.setBounds(180, 301, 137, 27);
 		add(calendarioVuelta);
 		
