@@ -43,11 +43,11 @@ public class Controlador {
 					vis.panelLineas2.lblSal.setText(vis.panelLineas1.listParadas.getSelectedValue().toString());
 					vis.setContentPane(vis.panelLineas2);
 					mod.metodo.limitarFechasIda(vis, 4);
+					mod.parada.paradasLlegadaAModelo(mod, vis);
 				}
 			}
 			if (e.getSource() == vis.panelLineas2.calendarioIda.getCalendarButton()) {
-				System.out.println("hola");
-				mod.metodo.limitarFechasVuelta(vis, 4);
+				
 			}
 		}
 	}
@@ -99,7 +99,7 @@ public class Controlador {
 			if (e.getSource() == vis.panelLineas1.listLineas) {
 				try {
 					vis.panelLineas1.modeloParadas.clear();
-					mod.db.meterParadasAModelo(vis, mod);
+					mod.parada.paradasIdaAModelo(vis, mod);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -114,7 +114,6 @@ public class Controlador {
 		@Override
 		public void propertyChange(PropertyChangeEvent e) {
 			if (e.getSource() == vis.panelLineas2.calendarioIda) {
-				System.out.println("hola");
 				mod.metodo.limitarFechasVuelta(vis, 4);
 			}
 			

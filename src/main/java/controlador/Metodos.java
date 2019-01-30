@@ -42,6 +42,14 @@ public class Metodos{
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(),fechaLimite);
 	}
 	
+	public void mostrarResumenTrayecto(Ventana vis,Modelo mod) {
+		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
+		vis.panelResumen.lblNombrePardaInicio.setText(vis.panelLineas2.lblSal.getText());
+		vis.panelResumen.lblNombreParadaFin.setText(vis.panelLineas2.modeloListaDestinos.getElementAt(vis.panelLineas2.listaDestinos.getSelectedIndex()));
+		//vis.panelResumen.lblTipoDeTrayecto.setText(if(mod.isIdaYVuelta()) {"Ida y vuelta"}else {"Ida"} );
+		
+	}
+	
 	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) {
 
 		ResultSet rs = null;

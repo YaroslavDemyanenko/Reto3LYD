@@ -73,15 +73,7 @@ public class ConexionAMySQL {
 		mod.autobus.crearYMeterAutobuses(mod);
 	}
 	
-	public void meterParadasAModelo (Ventana vis,Modelo mod) throws SQLException {
-		String query= vis.panelLineas1.listLineas.getSelectedValue().toString().substring(0,2);
-		query="select nombre,Cod_Parada,Calle,sqrt(power((longitud-(SELECT Longitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)+power((latitud-(SELECT Latitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)) distancia from parada WHERE Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\""+query+"\") order by distancia;";
-		ResultSet result = mod.db.hacerPeticion(query);
-		while (result.next()) {
-			vis.panelLineas1.modeloParadas.addElement(result.getString("Nombre"));
-			mod.arrayParadas.add(new Parada(result.getInt("Cod_Parada"),result.getString("Calle"),result.getString("Nombre")));
-		}
-	}
+	
 	/**
 	 * Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from `linea` where 1");
