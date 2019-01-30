@@ -9,18 +9,28 @@ public class Cliente {
 	private String contrasenia;
 	
 
-	
-	public Cliente(String string, String string2, String string3, String string4, String string5) {
-		// TODO Auto-generated constructor stub
+	                                          /*CONSTRUCTOR 1*/
+	public Cliente(String dni, String nombre, String apellido, String fecha_nac, String sexo, String contrasenia) {
+		
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.contrasenia = contrasenia;
+		this.dni = dni;
+		this.sexo = sexo;
+		this.fecha_nac = fecha_nac;
 	}
-	
+	                                          /*CONSTRUCTOR 2*/
 	public Cliente() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-	/*pasajeros Extra*/
+	/*pasajeros Extra*/                       /*CONSTRUCTOR 3*/
 	public Cliente(String nombre2, String apellido2, String dni2, String sexo2) {
-		// TODO Auto-generated constructor stub
+		
+		this.nombre = nombre2;
+		this.apellido = apellido2;
+		this.dni = dni2;
+		this.sexo = sexo2;
 	}
 	
 

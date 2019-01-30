@@ -8,8 +8,8 @@ public class Parada {
 	private int codigo;
 	private String calle;
 	private String nombreParada;
-	private double latitud;
-	private double longitud;
+	private float latitud;
+	private float longitud;
 
 	public ArrayList<Parada> arrayParadasPorMunicipio(String nombreMunicipio,Modelo mod) throws SQLException {
 		ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
@@ -22,9 +22,12 @@ public class Parada {
 		
 	}
 
+	//constructor 1
 	public Parada() {
 		
 	}
+	
+	//constructor 2
 	public Parada(int codigo,String calle, String nombreParada,float latit,float longi) {
 		this.codigo=codigo;
 		this.calle=calle;
@@ -33,6 +36,7 @@ public class Parada {
 		this.longitud=longi;
 	}
 	
+	//constructor 3
 	public Parada(int codigo,String calle, String nombreParada) {
 		this.codigo=codigo;
 		this.calle=calle;
@@ -69,7 +73,7 @@ public class Parada {
 		return latitud;
 	}
 
-	public void setLatitud(double latitud) {
+	public void setLatitud(float latitud) {
 		this.latitud = latitud;
 	}
 
@@ -77,7 +81,7 @@ public class Parada {
 		return longitud;
 	}
 
-	public void setLongitud(double longitud) {
+	public void setLongitud(float longitud) {
 		this.longitud = longitud;
 	}
 

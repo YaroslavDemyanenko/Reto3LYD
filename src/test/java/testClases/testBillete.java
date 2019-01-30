@@ -43,4 +43,14 @@ public class testBillete {
 		testBillete.setPrecioTrayecto(precioTrayecto);
 		assertEquals(testBillete.getPrecioTrayecto(),precioTrayecto, 0.005);	
 	}
+	
+	@Test
+	public void testFechaIda() {
+			
+	}
+	
+	@Test
+	public void testFechaVuelta() {
+			
+	}
 }
