@@ -37,7 +37,7 @@ public class Modelo {
 	}
 
 	public boolean isIdaYVuelta() {
-		return idaYVuelta;
+		return this.idaYVuelta;
 	}
 
 	public void setIdaYVuelta(boolean idaYVuelta) {

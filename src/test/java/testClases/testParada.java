@@ -11,10 +11,12 @@ public class testParada {
 	private int codigo = 458;
 	private String calle = "San Miguel";
 	private String nombParada = "Norte";
-	private double latitud = 43.2603479;
-	private double longitud = -2.9334110;
+	private float latitud = 43.2603479f;
+	private float longitud = -2.9334110f;
 	
 	private Parada testParada = new Parada();
+	private Parada testcons2parada = new Parada(codigo, calle, nombParada, latitud, longitud);
+	private Parada testcons3parada = new Parada(codigo, calle, nombParada);
 	
 	@Test
 	public void testCodigo() {
@@ -44,5 +46,30 @@ public class testParada {
 	public void testLongitud() {
 		testParada.setLongitud(longitud);
 		assertEquals(testParada.getLongitud(),longitud, 0.5);	
+	}
+	
+	@Test
+	public void testConstructor2() {
+		assertEquals(testcons2parada.getCodigo(), codigo);
+		assertEquals(testcons2parada.getCalle(), calle);
+		assertEquals(testcons2parada.getnombreParada(), nombParada);
+		assertEquals(testcons2parada.getLatitud(), latitud, 0.000001);	
+		assertEquals(testcons2parada.getLongitud(), longitud, 0.000001);
+	}
+	
+	@Test
+	public void testConstructor3() {
+		assertEquals(testcons3parada.getCodigo(), codigo);
+		assertEquals(testcons3parada.getCalle(), calle);
+		assertEquals(testcons3parada.getnombreParada(), nombParada);
+	}
+	
+	@Test
+	public void testConstructor1() {
+		assertEquals(testParada.getCodigo(), 0);
+		assertEquals(testParada.getCalle(), null);
+		assertEquals(testParada.getnombreParada(), null);
+		assertEquals(testParada.getLatitud(), 0d, 0.000001);	
+		assertEquals(testParada.getLongitud(), 0d, 0.000001);
 	}
 }

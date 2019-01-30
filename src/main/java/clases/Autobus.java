@@ -8,11 +8,12 @@ import javax.swing.DefaultListModel;
 
 public class Autobus {
 	private int codigo;
-	
 	private int numPlazas;
 	private double consumoKm;
 	private String color;
 	
+	
+	//constructor 1
 	public Autobus(int codigo, int numPlazas, double consumoKm, String color) {
 		this.codigo = codigo;
 		this.numPlazas = numPlazas;
@@ -31,7 +32,11 @@ public class Autobus {
 		}
 	}
 	
-	public Autobus() {}
+	
+	//constructor 2
+	public Autobus() {
+		
+	}
 
 	public int getCodigo() {
 		return this.codigo;
