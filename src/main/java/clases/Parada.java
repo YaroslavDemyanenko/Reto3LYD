@@ -4,12 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import interfaces.Ventana;
+
 public class Parada {
-	private int codigo;
-	private String calle;
-	private String nombreParada;
-	private double latitud;
-	private double longitud;
+
+	public int codigo;
+	public String calle;
+	public String nombreParada;
+	public double latitud;
+	public double longitud;
+
 
 	public ArrayList<Parada> arrayParadasPorMunicipio(String nombreMunicipio,Modelo mod) throws SQLException {
 		ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
@@ -19,12 +23,14 @@ public class Parada {
 			arrayParadas.add(new Parada(result.getInt("Cod_Parada"),result.getString("Calle"),result.getString("Nombre"),result.getFloat("Latitud"),result.getFloat("Longitud")));
 		}
 		return arrayParadas;
-		
 	}
 
+	//constructor 1
 	public Parada() {
 		
 	}
+	
+	//constructor 2
 	public Parada(int codigo,String calle, String nombreParada,float latit,float longi) {
 		this.codigo=codigo;
 		this.calle=calle;
@@ -33,13 +39,33 @@ public class Parada {
 		this.longitud=longi;
 	}
 	
+	//constructor 3
 	public Parada(int codigo,String calle, String nombreParada) {
 		this.codigo=codigo;
 		this.calle=calle;
 		this.nombreParada=nombreParada;
 	}
 	
-
+	public void paradasIdaAModelo (Ventana vis,Modelo mod) throws SQLException {
+		String query= vis.panelLineas1.listLineas.getSelectedValue().toString().substring(0,2);
+		query="select nombre,Cod_Parada,Calle,sqrt(power((longitud-(SELECT Longitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)+power((latitud-(SELECT Latitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)) distancia from parada WHERE Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\""+query+"\") order by distancia;";
+		ResultSet result = mod.db.hacerPeticion(query);
+		mod.arrayParadas.clear();
+		while (result.next()) {
+			vis.panelLineas1.modeloParadas.addElement(result.getString("Nombre"));
+			mod.arrayParadas.add(new Parada(result.getInt("Cod_Parada"),result.getString("Calle"),result.getString("Nombre")));
+		}
+		vis.panelLineas1.modeloParadas.removeElementAt(vis.panelLineas1.modeloParadas.size()-1);
+	}
+	
+	public void paradasLlegadaAModelo(Modelo mod,Ventana vis) {
+		int index=vis.panelLineas1.listParadas.getSelectedIndex();
+		vis.panelLineas2.modeloListaDestinos.clear();
+		for (int i=index+1;i<mod.arrayParadas.size();i++) {
+			vis.panelLineas2.modeloListaDestinos.addElement(mod.arrayParadas.get(i).nombreParada);
+		}
+	}
+	
 	
 	public int getCodigo() {
 		return this.codigo;
@@ -69,7 +95,7 @@ public class Parada {
 		return latitud;
 	}
 
-	public void setLatitud(double latitud) {
+	public void setLatitud(float latitud) {
 		this.latitud = latitud;
 	}
 
@@ -77,7 +103,7 @@ public class Parada {
 		return longitud;
 	}
 
-	public void setLongitud(double longitud) {
+	public void setLongitud(float longitud) {
 		this.longitud = longitud;
 	}
 

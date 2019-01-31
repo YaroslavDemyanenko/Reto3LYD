@@ -42,16 +42,41 @@ public class Metodos {
 		c.add(Calendar.DATE, numDias);
 		fechaLimite = c.getTime();
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(), fechaLimite);
+<<<<<<< HEAD
 	}
 
 	public boolean comprobarDNIenBD(Modelo mod, Ventana vis, Cliente cliente) {
+=======
+	}
+
+	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
+		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
+		vis.panelResumen.lblNombrePardaInicio.setText(vis.panelLineas2.lblSal.getText());
+		vis.panelResumen.lblNombreParadaFin.setText(vis.panelLineas2.modeloListaDestinos.getElementAt(vis.panelLineas2.listaDestinos.getSelectedIndex()));
+		if (mod.isIdaYVuelta()) {
+			vis.panelResumen.lblIdaYVuelta.setText("Ida y vuelta");
+		} else {
+			vis.panelResumen.lblIdaYVuelta.setText("Ida");
+		}
+		mod.numeroBilletes=(Integer) vis.panelLineas2.spnNumeroDeBilletes.getValue();
+		vis.panelResumen.lblNumeroDeBilletes.setText(String.valueOf(mod.numeroBilletes));
+		vis.panelResumen.calendarioIda.setDate(vis.panelLineas2.calendarioIda.getDate());
+		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
+	}
+
+	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) {
+>>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 
 		ResultSet rs = null;
 		boolean estaRegistrado = true;
 
 		/*
 		 * Comparamos si el DNI insertado consta en la base de datos o no y hay que
+<<<<<<< HEAD
 		 * añadirlo
+=======
+		 * aÃ±adirlo
+>>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 		 */
 		try {
 			String sql = "select DNI from cliente where DNI = " + cliente.getDni();
@@ -81,6 +106,7 @@ public class Metodos {
 		 * Registramos todos los parï¿½metros menos el DNI que lo hemos insertado
 		 * anteriormente
 		 */
+<<<<<<< HEAD
 		String sql1 = "insert into Nombre, Apellidos, Sexo, Contraseña, Fecha_nac values ('" + cliente.getNombre()
 				+ "','" + cliente.getApellido() + "','" + cliente.getSexo() + "','" + cliente.getContrasenia() + "','"
 				+ cliente.getFecha_nac() + ")";
@@ -88,19 +114,32 @@ public class Metodos {
 
 	public void Login(Modelo mod,Ventana vis,String dni, String contrasenia, int CantidadPasajeros) {
 		
+=======
+		String sql1 = "insert into Nombre, Apellidos, Sexo, Contraseï¿½a, Fecha_nac values ('" + cliente.getNombre() + "','" + cliente.getApellido() + "','" + cliente.getSexo() + "','" + cliente.getContrasenia() + "','" + cliente.getFecha_nac() + ")";
+	}
+
+	public void Login(Modelo mod, String dni, String contrasenia) {
+
+>>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 		Boolean login = false;
 		String LoginDB = "";
 
 		try {
 
 			ResultSet rs;
+<<<<<<< HEAD
 			
 			/*llamamos a la base de datos el DNI y la contraseï¿½a del cliente*/
 			LoginDB = "select DNI,Contraseña from cliente";
+=======
+>>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 
+			/* llamamos a la base de datos el DNI y la contraseï¿½a del cliente */
+			LoginDB = "select DNI,Contraseï¿½a from cliente";
 
 			rs = mod.db.hacerPeticion(LoginDB);
 
+<<<<<<< HEAD
 			/*Comparamos los datos de la base de datos con los que ha introducido en el login el cliente*/
 			if (rs.getString("DNI") == dni){
 				/*Este es el caso optimo donde tanto el DNI y la contraseï¿½a existen y corresponden al mismo usuario*/
@@ -115,13 +154,31 @@ public class Metodos {
 					}
 				/*En este caso el DNI es correcto pero la contraseï¿½a que corresponde a ese usuario es errï¿½nea*/
 				}
+=======
+			/*
+			 * Comparamos los datos de la base de datos con los que ha introducido en el
+			 * login el cliente
+			 */
+			if (rs.getString("DNI") == dni) {
+				/*
+				 * Este es el caso ï¿½ptimo donde tanto el DNI y la contraseï¿½a existen y
+				 * corresponden al mismo usuario
+				 */
+				if (rs.getString("Contraseï¿½a") == contrasenia) {
+					login = true;
+				}
+				/*
+				 * En este caso el DNI es correcto pero la contraseï¿½a que corresponde a ese
+				 * usuario es errï¿½nea
+				 */
+>>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 				else {
 					JOptionPane.showMessageDialog(vis.panelLogin, "Contraseña Incorrecta", "Advertencia", 0);
 					login = false;
 				}
 				
 			}
-			/*En este caso el DNI que ha metido no estï¿½ registrado en la BD*/
+			/* En este caso el DNI que ha metido no estï¿½ registrado en la BD */
 			else {
 				JOptionPane.showMessageDialog(vis.panelLogin, "Usuario inexistente", "Advertencia", 0);
 				login = false;
@@ -133,6 +190,7 @@ public class Metodos {
 
 	}
 
+<<<<<<< HEAD
 	public void PasajeroExtra(Ventana vis, int CantidadPasajeros) {
 
 		Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
@@ -161,6 +219,17 @@ public class Metodos {
 		float total=0;
 		/*(0,80*consumoBus*distancia)/Nºasiento*/
 		return total;
+=======
+	public void PasajeroExtra(Modelo mod, String dni, String nombre, String apellido, String sexo, int CantidadPasajeros) {
+
+		Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
+
+		/* Genera clientes extra en base a la cantidad de pasajeros extra */
+		while (CantidadPasajeros > 0) {
+			pasajeroExtra[CantidadPasajeros] = new Cliente(nombre, apellido, dni, sexo);
+			CantidadPasajeros = CantidadPasajeros - 1;
+		}
+>>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 	}
 
 }

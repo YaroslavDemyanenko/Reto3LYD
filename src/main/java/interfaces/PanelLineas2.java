@@ -25,8 +25,8 @@ public class PanelLineas2 extends JPanel{
 	public JLabel lblUsuario, lblSalida,lblLinea,lblNumeroDeBilletes,lblNombreLinea,lblFechaIda,lblFechaVuelta,lblLleg,lblSal;
 	public JDateChooser calendarioIda,calendarioVuelta;
 	public JLabel lblLlegada;
-	public JList<Parada> listaDestinos;
-	public DefaultListModel<Parada> modeloListaDestinos;
+	public JList listaDestinos;
+	public DefaultListModel<String> modeloListaDestinos;
 	public JButton btnLogIn, btnCancelar, btnConfirmar;
 	public JSpinner spnNumeroDeBilletes;
 	public JSpinnerDateEditor spinnerDateEditorVuelta, spinnerDateEditorIda;
@@ -125,14 +125,14 @@ public class PanelLineas2 extends JPanel{
 		lblSal.setBounds(574, 133, 204, 25);
 		add(lblSal);
 		
-		modeloListaDestinos= new DefaultListModel<Parada>();
+		modeloListaDestinos= new DefaultListModel<String>();
 		
 		lblLlegada = new JLabel("Llegada:");
 		lblLlegada.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblLlegada.setBounds(489, 186, 89, 25);
 		add(lblLlegada);
 		
-		listaDestinos = new JList<Parada>(modeloListaDestinos);
+		listaDestinos = new JList(modeloListaDestinos);
 		listaDestinos.setBounds(489, 237, 231, 199);
 		add(listaDestinos);
 	}

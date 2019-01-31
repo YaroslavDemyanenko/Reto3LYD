@@ -30,6 +30,7 @@ public class Controlador {
 		this.vis.panelLineas1.listLineas.addListSelectionListener(new lstListener());
 		this.vis.panelLineas1.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelLineas2.calendarioIda.addPropertyChangeListener("date",new calendarListener());
+		this.vis.panelLineas2.btnConfirmar.addActionListener(new btnListener());
 	}
 
 	private class btnListener implements ActionListener {
@@ -39,15 +40,20 @@ public class Controlador {
 					if (vis.panelLineas1.rdbtnIdayVuelta.isSelected()) {
 						mod.setIdaYVuelta(true);
 					}
+					else {
+						vis.panelLineas2.calendarioVuelta.setVisible(false);
+						vis.panelLineas2.lblFechaVuelta.setVisible(false);
+					}
 					vis.panelLineas2.lblNombreLinea.setText(vis.panelLineas1.listLineas.getSelectedValue().toString());
 					vis.panelLineas2.lblSal.setText(vis.panelLineas1.listParadas.getSelectedValue().toString());
 					vis.setContentPane(vis.panelLineas2);
 					mod.metodo.limitarFechasIda(vis, 4);
+					mod.parada.paradasLlegadaAModelo(mod, vis);
 				}
 			}
-			if (e.getSource() == vis.panelLineas2.calendarioIda.getCalendarButton()) {
-				System.out.println("hola");
-				mod.metodo.limitarFechasVuelta(vis, 4);
+			else if (e.getSource() == vis.panelLineas2.btnConfirmar) {
+				vis.setContentPane(vis.panelResumen);
+				mod.metodo.mostrarResumenTrayecto(vis, mod);
 			}
 		}
 	}
@@ -99,7 +105,7 @@ public class Controlador {
 			if (e.getSource() == vis.panelLineas1.listLineas) {
 				try {
 					vis.panelLineas1.modeloParadas.clear();
-					mod.db.meterParadasAModelo(vis, mod);
+					mod.parada.paradasIdaAModelo(vis, mod);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -114,7 +120,6 @@ public class Controlador {
 		@Override
 		public void propertyChange(PropertyChangeEvent e) {
 			if (e.getSource() == vis.panelLineas2.calendarioIda) {
-				System.out.println("hola");
 				mod.metodo.limitarFechasVuelta(vis, 4);
 			}
 			

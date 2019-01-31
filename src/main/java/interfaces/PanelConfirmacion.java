@@ -34,7 +34,6 @@ public class PanelConfirmacion extends JPanel {
 	public PanelConfirmacion() {
 		setLayout(null);
 		setBounds(0,0,800,600);
-		setVisible(false);
 		setBackground(new Color(193, 240, 240));
 		
 		btnLogIn = new JButton("Log out");
