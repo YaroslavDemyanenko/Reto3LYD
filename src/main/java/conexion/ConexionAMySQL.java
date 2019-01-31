@@ -7,6 +7,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+import clases.Cliente;
 import clases.Linea;
 import clases.Modelo;
 import clases.Parada;
@@ -43,18 +44,29 @@ public class ConexionAMySQL {
 			return resultadoPeticion;
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
+		}return null;
+	}
+	
+	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
+		try {
+			String query = "insert into cliente ("
+					+"dni, "
+					+"nombre,"
+					+"apellidos, "
+					+"fechaNac, "
+					+"sexo, "
+					+"constraseña";
+					
+
+			Statement peticion = conexion.createStatement();
+			ResultSet resultadoPeticion = peticion.executeQuery(query);
+			//return resultadoPeticion;
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
-		return null;
 	}
 
-	/**
-	 * 
-	 * @param model
-	 * @param peticion
-	 * @param mod
-	 * @param lineas
-	 * @throws SQLException
-	 */
+
 	public void llenarModeloConLinea(Ventana vis, Modelo mod) throws SQLException {
 		String peticion = "SELECT * FROM `linea`";
 		ResultSet resul = mod.db.hacerPeticion(peticion);

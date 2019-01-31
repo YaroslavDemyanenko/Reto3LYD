@@ -49,34 +49,13 @@ public class Metodos {
 	}
 
 	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) throws SQLException {
-
-		ResultSet rs;
-		boolean estaRegistrado = true;
-
-			String sql = "select DNI from cliente where DNI = " + cliente.dni;
-			rs = mod.db.hacerPeticion(sql);
+			String sql = "select DNI from cliente where DNI = " + cliente.dni+"";
+			ResultSet rs = mod.db.hacerPeticion(sql);
 			if (rs.next()) {
-				estaRegistrado = true;
-			}
-
-			else
-				estaRegistrado = false;
-			String sql1 = "insert into cliente values ("+cliente.dni+", "+cliente.nombre+", "+cliente.apellido+", "+cliente.fechaNac+", ";
-
-			System.out.println("Error en obtener usuario");
-		
-
-		return estaRegistrado;
-
+				return true;
+			}else return false;
 	}
 
-	public void registrarEnBD(Modelo mod, Cliente cliente) {
-		/*
-		 * Registramos todos los par�metros menos el DNI que lo hemos insertado
-		 * anteriormente
-		 */
-		//String sql1 = "insert into Nombre, Apellidos, Sexo, Contrase�a, Fecha_nac values ('" + cliente.getNombre() + "','" + cliente.getApellido() + "','" + cliente.getSexo() + "','" + cliente.getContrasenia() + "','" + cliente.getFecha_nac() + ")";
-	}
 
 	public void Login(Modelo mod, String dni, String contrasenia) {
 
