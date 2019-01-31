@@ -75,7 +75,7 @@ public class Metodos {
 		 * Registramos todos los par�metros menos el DNI que lo hemos insertado
 		 * anteriormente
 		 */
-		String sql1 = "insert into Nombre, Apellidos, Sexo, Contrase�a, Fecha_nac values ('" + cliente.getNombre() + "','" + cliente.getApellido() + "','" + cliente.getSexo() + "','" + cliente.getContrasenia() + "','" + cliente.getFecha_nac() + ")";
+		//String sql1 = "insert into Nombre, Apellidos, Sexo, Contrase�a, Fecha_nac values ('" + cliente.getNombre() + "','" + cliente.getApellido() + "','" + cliente.getSexo() + "','" + cliente.getContrasenia() + "','" + cliente.getFecha_nac() + ")";
 	}
 
 	public void Login(Modelo mod, String dni, String contrasenia) {
@@ -125,17 +125,18 @@ public class Metodos {
 
 	}
 
+	/**
 	public void PasajeroExtra(Modelo mod, String dni, String nombre, String apellido, String sexo, int CantidadPasajeros) {
 
 		Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
 
-		/* Genera clientes extra en base a la cantidad de pasajeros extra */
+		/* Genera clientes extra en base a la cantidad de pasajeros extra 
 		while (CantidadPasajeros > 0) {
 			pasajeroExtra[CantidadPasajeros] = new Cliente(nombre, apellido, dni, sexo);
 			CantidadPasajeros = CantidadPasajeros - 1;
 		}
 	}
-
+	*/
 }
 
 /**
