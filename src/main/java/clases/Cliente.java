@@ -1,23 +1,27 @@
 package clases;
 
+import java.sql.Date;
+
+import sun.security.util.Password;
+
 public class Cliente {
-	private String dni;
-	private String nombre;
-	private String apellido;
-	private String fecha_nac;
-	private String sexo;
-	private String contrasenia;
+	public String dni;
+	public String nombre;
+	public String apellido;
+	public Date fechaNac;
+	public char sexo;
+	private char[] contrasenia;
 	
 
 	                                          /*CONSTRUCTOR 1*/
-	public Cliente(String dni, String nombre, String apellido, String fecha_nac, String sexo, String contrasenia) {
+	public Cliente(String dni, String nombre, String apellido, Date fechaNac, char sexo, char[] contrasenia) {
 		
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.contrasenia = contrasenia;
+		this.setContrasenia(contrasenia);
 		this.dni = dni;
 		this.sexo = sexo;
-		this.fecha_nac = fecha_nac;
+		this.fechaNac = fechaNac;
 	}
 	                                          /*CONSTRUCTOR 2*/
 	public Cliente() {
@@ -25,50 +29,21 @@ public class Cliente {
 	}
 	
 	/*pasajeros Extra*/                       /*CONSTRUCTOR 3*/
-	public Cliente(String nombre2, String apellido2, String dni2, String sexo2) {
+	public Cliente(String nombre, String apellido, String dni, char sexo) {
 		
-		this.nombre = nombre2;
-		this.apellido = apellido2;
-		this.dni = dni2;
-		this.sexo = sexo2;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.sexo = sexo;
+	}
+	public char[] getContrasenia() {
+		return contrasenia;
+	}
+	public void setContrasenia(char[] contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 	
 
-	public String getDni() {
-		return this.dni;
-	}
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-	public String getNombre() {
-		return this.nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getApellido() {
-		return this.apellido;
-	}
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-	public String getFecha_nac() {
-		return fecha_nac;
-	}
-	public void setFecha_nac(String fecha_nac) {
-		this.fecha_nac = fecha_nac;
-	}
-	public String getSexo() {
-		return this.sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-	public String getContrasenia() {
-		return this.contrasenia;
-	}
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
-	}
+
 
 }

@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
@@ -23,8 +24,9 @@ import com.sun.glass.ui.Cursor;
 public class PanelLogin extends JPanel {
 	
 
-	public JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin, textFieldContraseniaLogin, textFieldContrasenia,txtFechanacimiento;
+	public JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin, textFieldContraseniaLogin,txtFechanacimiento;
 	public JComboBox textFieldSexo;
+	public JPasswordField passFieldContrasenia;
 	public JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblLogin, lblDniLogin, lblContraseaLogin, lblContrasea, lblFechaNacimiento;
 	public JButton btnConfirmarRegistro, btnConfirmarLogin, btnCancelar;
 	
@@ -116,11 +118,10 @@ public class PanelLogin extends JPanel {
 		lblContrasea.setBounds(47, 439, 92, 39);
 		add(lblContrasea);
 		
-		textFieldContrasenia = new JTextField();
-		textFieldContrasenia.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textFieldContrasenia.setBounds(139, 439, 192, 39);
-		add(textFieldContrasenia);
-		textFieldContrasenia.setColumns(10);
+		passFieldContrasenia = new JPasswordField(10);
+		passFieldContrasenia.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		passFieldContrasenia.setBounds(139, 439, 192, 39);
+		add(passFieldContrasenia);
 		
 		btnConfirmarRegistro = new JButton("Confirmar Registro");
 		btnConfirmarRegistro.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));

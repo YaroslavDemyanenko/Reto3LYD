@@ -1,6 +1,7 @@
 package controlador;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,17 +11,7 @@ import interfaces.Ventana;
 
 public class Metodos {
 
-	public Cliente ingresar(String nombre, String apellido, String dni, String sexo, String contrasenia) {
-
-		Cliente cliente = new Cliente();
-		cliente.setNombre(nombre);
-		cliente.setApellido(apellido);
-		cliente.setDni(dni);
-		cliente.setSexo(sexo);
-		cliente.setContrasenia(contrasenia);
-		return cliente;
-
-	}
+	
 
 	public void limitarFechasIda(Ventana vis, int numDias) {
 		Date fechaLimite = new Date();
@@ -57,33 +48,23 @@ public class Metodos {
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
 
-	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) {
+	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) throws SQLException {
 
-		ResultSet rs = null;
+		ResultSet rs;
 		boolean estaRegistrado = true;
 
-		/*
-		 * Comparamos si el DNI insertado consta en la base de datos o no y hay que
-		 * añadirlo
-		 */
-		try {
-			String sql = "select DNI from cliente where DNI = " + cliente.getDni();
+			String sql = "select DNI from cliente where DNI = " + cliente.dni;
 			rs = mod.db.hacerPeticion(sql);
-			/* Si ya existe en la base de datos devuelve un true */
 			if (rs.next()) {
 				estaRegistrado = true;
 			}
-			/*
-			 * Si no esta en la base de datos devuelve un false y lo mete en la base de
-			 * datos
-			 */
+
 			else
 				estaRegistrado = false;
-			String sql1 = "insert into DNI values (" + estaRegistrado + ")";
+			String sql1 = "insert into cliente values ("+cliente.dni+", "+cliente.nombre+", "+cliente.apellido+", "+cliente.fechaNac+", ";
 
-		} catch (Exception e) {
 			System.out.println("Error en obtener usuario");
-		}
+		
 
 		return estaRegistrado;
 
