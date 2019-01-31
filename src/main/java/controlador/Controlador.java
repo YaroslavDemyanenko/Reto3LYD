@@ -30,6 +30,7 @@ public class Controlador {
 		this.vis.panelLineas1.listLineas.addListSelectionListener(new lstListener());
 		this.vis.panelLineas1.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelLineas2.calendarioIda.addPropertyChangeListener("date",new calendarListener());
+		this.vis.panelLineas2.btnConfirmar.addActionListener(new btnListener());
 	}
 
 	private class btnListener implements ActionListener {
@@ -39,6 +40,10 @@ public class Controlador {
 					if (vis.panelLineas1.rdbtnIdayVuelta.isSelected()) {
 						mod.setIdaYVuelta(true);
 					}
+					else {
+						vis.panelLineas2.calendarioVuelta.setVisible(false);
+						vis.panelLineas2.lblFechaVuelta.setVisible(false);
+					}
 					vis.panelLineas2.lblNombreLinea.setText(vis.panelLineas1.listLineas.getSelectedValue().toString());
 					vis.panelLineas2.lblSal.setText(vis.panelLineas1.listParadas.getSelectedValue().toString());
 					vis.setContentPane(vis.panelLineas2);
@@ -46,8 +51,9 @@ public class Controlador {
 					mod.parada.paradasLlegadaAModelo(mod, vis);
 				}
 			}
-			if (e.getSource() == vis.panelLineas2.calendarioIda.getCalendarButton()) {
-				
+			else if (e.getSource() == vis.panelLineas2.btnConfirmar) {
+				vis.setContentPane(vis.panelResumen);
+				mod.metodo.mostrarResumenTrayecto(vis, mod);
 			}
 		}
 	}

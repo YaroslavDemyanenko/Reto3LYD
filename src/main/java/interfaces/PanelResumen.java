@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 
 public class PanelResumen extends JPanel {
 
-	public JLabel lblUsuario,lblResumen, lblLinea, lblPardaInicio, lblPardaFin, lblTipoDeTrayecto, lblNombreLinea, lblNombrePardaInicio, lblNombreParadaFin, lblIdaIda, lblNumeroDeBilletes, lblX, lblFechaIda, lblFechaVuelta, lblPrecio ;
+	public JLabel lblUsuario,lblResumen, lblLinea, lblPardaInicio, lblPardaFin, lblTipoDeTrayecto, lblNombreLinea, lblNombrePardaInicio, lblNombreParadaFin, lblIdaYVuelta, lblNumBill, lblNumeroDeBilletes, lblFechaIda, lblFechaVuelta, lblPrecio ;
 	public JButton btnSingUp, btnCancelar, btnConfirmar ;
 	public JDateChooser calendarioIda, calendarioVuelta;
 	public JTextField textPrecio;
@@ -33,7 +33,6 @@ public class PanelResumen extends JPanel {
 	public PanelResumen() {
 		
 		setBounds(0, 0, 800, 600);
-		setVisible(false);
 		setLayout(null);
 		setBackground(new Color(193, 240, 240));
 		
@@ -92,22 +91,22 @@ public class PanelResumen extends JPanel {
 		lblNombreParadaFin.setBounds(237, 314, 216, 32);
 		add(lblNombreParadaFin);
 		
-		lblIdaIda = new JLabel("Ida / Ida y vuelta");
-		lblIdaIda.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIdaIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblIdaIda.setBounds(240, 375, 128, 32);
-		add(lblIdaIda);
+		lblIdaYVuelta = new JLabel("Ida / Ida y vuelta");
+		lblIdaYVuelta.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIdaYVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblIdaYVuelta.setBounds(240, 375, 128, 32);
+		add(lblIdaYVuelta);
 		
-		lblNumeroDeBilletes = new JLabel("Numero de billetes:");
+		lblNumBill = new JLabel("Numero de billetes:");
+		lblNumBill.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNumBill.setBounds(76, 435, 148, 41);
+		add(lblNumBill);
+		
+		lblNumeroDeBilletes = new JLabel("x");
 		lblNumeroDeBilletes.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNumeroDeBilletes.setBounds(76, 435, 148, 41);
+		lblNumeroDeBilletes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNumeroDeBilletes.setBounds(234, 439, 89, 32);
 		add(lblNumeroDeBilletes);
-		
-		lblX = new JLabel("x");
-		lblX.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblX.setHorizontalAlignment(SwingConstants.CENTER);
-		lblX.setBounds(234, 439, 89, 32);
-		add(lblX);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));

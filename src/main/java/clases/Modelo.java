@@ -19,6 +19,7 @@ public class Modelo {
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
 	private boolean idaYVuelta=false;
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
+	public int numeroBilletes;
 	
 	public Modelo(ConexionAMySQL db) {
 		autobus=new Autobus();

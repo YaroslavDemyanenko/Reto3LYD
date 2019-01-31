@@ -1,9 +1,7 @@
-/controlador/
-/conexion/
-/interfaces/
 /clases/
-<<<<<<< HEAD
+/conexion/
+/controlador/
 /imagenes/
-=======
->>>>>>> 8734b3b0125695e269ae190dd542a3e96df913c2
+/interfaces/
 /testClases/
+/testCliente.class

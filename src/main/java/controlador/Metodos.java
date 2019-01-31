@@ -8,11 +8,10 @@ import clases.Cliente;
 import clases.Modelo;
 import interfaces.Ventana;
 
-
-public class Metodos{
+public class Metodos {
 
 	public Cliente ingresar(String nombre, String apellido, String dni, String sexo, String contrasenia) {
-		
+
 		Cliente cliente = new Cliente();
 		cliente.setNombre(nombre);
 		cliente.setApellido(apellido);
@@ -22,94 +21,118 @@ public class Metodos{
 		return cliente;
 
 	}
-	
-	public void limitarFechasIda(Ventana vis,int numDias) {
-		Date fechaLimite=new Date();
+
+	public void limitarFechasIda(Ventana vis, int numDias) {
+		Date fechaLimite = new Date();
 		vis.panelLineas2.calendarioIda.setDate(new Date());
 		Calendar c = Calendar.getInstance();
 		c.setTime(fechaLimite);
-		c.add(Calendar.DATE,numDias);
-		fechaLimite=c.getTime();
-		vis.panelLineas2.calendarioIda.setSelectableDateRange(new Date(),fechaLimite);
+		c.add(Calendar.DATE, numDias);
+		fechaLimite = c.getTime();
+		vis.panelLineas2.calendarioIda.setSelectableDateRange(new Date(), fechaLimite);
 	}
-	public void limitarFechasVuelta(Ventana vis,int numDias) {
-		Date fechaLimite=vis.panelLineas2.calendarioIda.getDate();
+
+	public void limitarFechasVuelta(Ventana vis, int numDias) {
+		Date fechaLimite = vis.panelLineas2.calendarioIda.getDate();
 		vis.panelLineas2.calendarioVuelta.setDate(fechaLimite);
 		Calendar c = Calendar.getInstance();
 		c.setTime(fechaLimite);
-		c.add(Calendar.DATE,numDias);
-		fechaLimite=c.getTime();
-		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(),fechaLimite);
+		c.add(Calendar.DATE, numDias);
+		fechaLimite = c.getTime();
+		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(), fechaLimite);
 	}
-	
-	public void mostrarResumenTrayecto(Ventana vis,Modelo mod) {
+
+	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
 		vis.panelResumen.lblNombrePardaInicio.setText(vis.panelLineas2.lblSal.getText());
 		vis.panelResumen.lblNombreParadaFin.setText(vis.panelLineas2.modeloListaDestinos.getElementAt(vis.panelLineas2.listaDestinos.getSelectedIndex()));
-		//vis.panelResumen.lblTipoDeTrayecto.setText(if(mod.isIdaYVuelta()) {"Ida y vuelta"}else {"Ida"} );
-		
+		if (mod.isIdaYVuelta()) {
+			vis.panelResumen.lblIdaYVuelta.setText("Ida y vuelta");
+		} else {
+			vis.panelResumen.lblIdaYVuelta.setText("Ida");
+		}
+		mod.numeroBilletes=(Integer) vis.panelLineas2.spnNumeroDeBilletes.getValue();
+		vis.panelResumen.lblNumeroDeBilletes.setText(String.valueOf(mod.numeroBilletes));
+		vis.panelResumen.calendarioIda.setDate(vis.panelLineas2.calendarioIda.getDate());
+		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
-	
+
 	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) {
 
 		ResultSet rs = null;
 		boolean estaRegistrado = true;
-		
-		/*Comparamos si el DNI insertado consta en la base de datos o no y hay que añadirlo*/
+
+		/*
+		 * Comparamos si el DNI insertado consta en la base de datos o no y hay que
+		 * añadirlo
+		 */
 		try {
 			String sql = "select DNI from cliente where DNI = " + cliente.getDni();
 			rs = mod.db.hacerPeticion(sql);
-			/* Si ya existe en la base de datos devuelve un true*/
+			/* Si ya existe en la base de datos devuelve un true */
 			if (rs.next()) {
 				estaRegistrado = true;
-			} 
-			/* Si no esta en la base de datos devuelve un false y lo mete en la base de datos  */
-			else estaRegistrado = false;
+			}
+			/*
+			 * Si no esta en la base de datos devuelve un false y lo mete en la base de
+			 * datos
+			 */
+			else
+				estaRegistrado = false;
 			String sql1 = "insert into DNI values (" + estaRegistrado + ")";
-			
+
 		} catch (Exception e) {
 			System.out.println("Error en obtener usuario");
 		}
-		
+
 		return estaRegistrado;
-		
-	}
-	
-	public void registrarEnBD(Modelo mod, Cliente cliente) {
-		/* Registramos todos los par�metros menos el DNI que lo hemos insertado anteriormente*/
-		String sql1 = "insert into Nombre, Apellidos, Sexo, Contrase�a, Fecha_nac values ('" + cliente.getNombre() + "','" + 
-					cliente.getApellido() + "','"+ cliente.getSexo()+ "','"+ cliente.getContrasenia() + "','" + 
-					cliente.getFecha_nac() + ")";
+
 	}
 
-	public void Login(Modelo mod,String dni, String contrasenia) {
-		
+	public void registrarEnBD(Modelo mod, Cliente cliente) {
+		/*
+		 * Registramos todos los par�metros menos el DNI que lo hemos insertado
+		 * anteriormente
+		 */
+		String sql1 = "insert into Nombre, Apellidos, Sexo, Contrase�a, Fecha_nac values ('" + cliente.getNombre() + "','" + cliente.getApellido() + "','" + cliente.getSexo() + "','" + cliente.getContrasenia() + "','" + cliente.getFecha_nac() + ")";
+	}
+
+	public void Login(Modelo mod, String dni, String contrasenia) {
+
 		Boolean login = false;
 		String LoginDB = "";
 
 		try {
 
 			ResultSet rs;
-			
-			/*llamamos a la base de datos el DNI y la contrase�a del cliente*/
-			LoginDB = "select DNI,Contrase�a from cliente";
 
+			/* llamamos a la base de datos el DNI y la contrase�a del cliente */
+			LoginDB = "select DNI,Contrase�a from cliente";
 
 			rs = mod.db.hacerPeticion(LoginDB);
 
-			/*Comparamos los datos de la base de datos con los que ha introducido en el login el cliente*/
-			if (rs.getString("DNI") == dni){
-				/*Este es el caso �ptimo donde tanto el DNI y la contrase�a existen y corresponden al mismo usuario*/
-				if(rs.getString("Contrase�a")== contrasenia) {
-				login = true;
+			/*
+			 * Comparamos los datos de la base de datos con los que ha introducido en el
+			 * login el cliente
+			 */
+			if (rs.getString("DNI") == dni) {
+				/*
+				 * Este es el caso �ptimo donde tanto el DNI y la contrase�a existen y
+				 * corresponden al mismo usuario
+				 */
+				if (rs.getString("Contrase�a") == contrasenia) {
+					login = true;
 				}
-				/*En este caso el DNI es correcto pero la contrase�a que corresponde a ese usuario es err�nea*/
+				/*
+				 * En este caso el DNI es correcto pero la contrase�a que corresponde a ese
+				 * usuario es err�nea
+				 */
 				else {
 					System.out.println("Contraseña incorrecta");
 					login = false;
 				}
 			}
-			/*En este caso el DNI que ha metido no est� registrado en la BD*/
+			/* En este caso el DNI que ha metido no est� registrado en la BD */
 			else {
 				System.out.println(" Usuario inexistente");
 				login = false;
@@ -120,21 +143,19 @@ public class Metodos{
 		}
 
 	}
-	
+
 	public void PasajeroExtra(Modelo mod, String dni, String nombre, String apellido, String sexo, int CantidadPasajeros) {
-		
-		Cliente pasajeroExtra[]=new Cliente[CantidadPasajeros];		
-		
-		/* Genera clientes extra en base a la cantidad de pasajeros extra*/
-		while (CantidadPasajeros>0) {
-			pasajeroExtra[CantidadPasajeros]=new Cliente (nombre,apellido,dni, sexo);
-			CantidadPasajeros=CantidadPasajeros-1;
+
+		Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
+
+		/* Genera clientes extra en base a la cantidad de pasajeros extra */
+		while (CantidadPasajeros > 0) {
+			pasajeroExtra[CantidadPasajeros] = new Cliente(nombre, apellido, dni, sexo);
+			CantidadPasajeros = CantidadPasajeros - 1;
 		}
-	}		
+	}
 
 }
-
-
 
 /**
  * ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
