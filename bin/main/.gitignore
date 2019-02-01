@@ -1,4 +1,7 @@
-/interfaces/
 /clases/
-/controlador/
 /conexion/
+/controlador/
+/imagenes/
+/interfaces/
+/testClases/
+/testCliente.class
