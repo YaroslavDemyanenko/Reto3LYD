@@ -17,13 +17,26 @@ public class testMunicipio {
 	@Test
 	public void testContructor1() {
 		
-		assertEquals(testMunicipio.nombre, "Igorre");
-		assertEquals(testMunicipio.codigoPostal, 48340);
+		assertEquals(testMunicipio.getNombre(), null);
+		assertEquals(testMunicipio.getCodigoPostal(), 0);
 	}
 
+	@Test
 	public void testContructor2() {
 		
-		assertEquals(testcons2Municipio.nombre, nombre);
-		assertEquals(testcons2Municipio.codigoPostal, codigoPostal);
+		assertEquals(testcons2Municipio.getNombre(), nombre);
+		assertEquals(testcons2Municipio.getCodigoPostal(), codigoPostal);
+	}
+	
+	@Test
+	public void testNombre() {
+		testMunicipio.setNombre(nombre);
+		assertEquals(testMunicipio.getNombre(),nombre);	
+	}
+	
+	@Test
+	public void testCodigoPostal() {
+		testMunicipio.setCodigoPostal(codigoPostal);
+		assertEquals(testMunicipio.getCodigoPostal(),codigoPostal);	
 	}
 }
