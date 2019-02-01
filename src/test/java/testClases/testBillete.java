@@ -28,8 +28,8 @@ public class testBillete {
 	
 	@Test
 	public void testCodAutobusIda() {
-		testBillete.setCodAutobusVuelta(codAutobusIda);
-		assertEquals(testBillete.getCodAutobusVuelta(),codAutobusIda);	
+		testBillete.setCodAutobusIda(codAutobusIda);
+		assertEquals(testBillete.getCodAutobusIda(),codAutobusIda);	
 	}
 
 	@Test
@@ -46,11 +46,31 @@ public class testBillete {
 	
 	@Test
 	public void testFechaIda() {
-			
+		testBillete.setFechaIda(fechaIda);
+		assertEquals(testBillete.getFechaIda(),fechaIda);
 	}
 	
 	@Test
 	public void testFechaVuelta() {
-			
+		testBillete.setFechaVuelta(fechaVuelta);
+		assertEquals(testBillete.getFechaVuelta(),fechaVuelta);
+	}
+	
+	@Test
+	public void testLinea() {
+		testBillete.setLinea(linea);
+		assertEquals(testBillete.getLinea(),linea);
+	}
+	
+	@Test
+	public void testParadaInic() {
+		testBillete.setParadaInic(paradaInic);
+		assertEquals(testBillete.getParadaInic(),paradaInic);
+	}
+	
+	@Test
+	public void testParadaFin() {
+		testBillete.setParadaFin(paradaFin);
+		assertEquals(testBillete.getParadaFin(),paradaFin);
 	}
 }

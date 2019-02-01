@@ -10,6 +10,7 @@ public class Cliente {
 	public char sexo;
 	private char[] contrasenia;
 	
+	/*CONSTRUCTOR 1*/
 	public Cliente(String dni, String nombre, String apellido, Date fechaNac, char sexo, char[] contrasenia) {
 		
 		this.nombre = nombre;
@@ -20,9 +21,11 @@ public class Cliente {
 		this.fechaNac = fechaNac;
 	}
 	
+	/*CONSTRUCTOR 2*/
 	public Cliente() {	
 	}
 	
+	/*CONSTRUCTOR 3*/
 	public Cliente(String nombre, String apellido, String dni, char sexo) {
 		
 		this.nombre = nombre;
@@ -30,9 +33,11 @@ public class Cliente {
 		this.dni = dni;
 		this.sexo = sexo;
 	}
+	
 	public char[] getContrasenia() {
 		return contrasenia;
 	}
+	
 	public void setContrasenia(char[] contrasenia) {
 		this.contrasenia = contrasenia;
 	}
