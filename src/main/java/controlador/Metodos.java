@@ -1,6 +1,7 @@
 package controlador;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -42,12 +43,10 @@ public class Metodos {
 		c.add(Calendar.DATE, numDias);
 		fechaLimite = c.getTime();
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(), fechaLimite);
-<<<<<<< HEAD
+
 	}
 
-	public boolean comprobarDNIenBD(Modelo mod, Ventana vis, Cliente cliente) {
-=======
-	}
+
 
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
@@ -64,36 +63,26 @@ public class Metodos {
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
 
-	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) {
->>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
+	public boolean comprobarDNIenBD(Modelo mod, Ventana vis, Cliente cliente) {
 
 		ResultSet rs = null;
 		boolean estaRegistrado = true;
-
-		/*
-		 * Comparamos si el DNI insertado consta en la base de datos o no y hay que
-<<<<<<< HEAD
-		 * añadirlo
-=======
-		 * aÃ±adirlo
->>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
-		 */
+		 
 		try {
+			//Comparamos si el DNI insertado consta en la base de datos o no y hay queaÃ±adirlo
 			String sql = "select DNI from cliente where DNI = " + cliente.getDni();
 			rs = mod.db.hacerPeticion(sql);
-			/* Si ya existe en la base de datos devuelve un true */
+			// Si ya existe en la base de datos devuelve un true */
 			if (rs.next()) {
 				estaRegistrado = true;
 			}
-			/*
-			 * Si no esta en la base de datos devuelve un false y lo mete en la base de
-			 * datos
-			 */
+			// Si no esta en la base de datos devuelve un false y lo mete en la base dedatos
 			else
 				estaRegistrado = false;
 			String sql1 = "insert into DNI values (" + estaRegistrado + ")";
 
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			JOptionPane.showMessageDialog(vis.panelLogin, "Error en obtener usuario", "Advertencia", 0);
 		}
 
@@ -101,101 +90,65 @@ public class Metodos {
 
 	}
 
-	public void registrarEnBD(Modelo mod, Cliente cliente) {
-		/*
-		 * Registramos todos los parï¿½metros menos el DNI que lo hemos insertado
-		 * anteriormente
-		 */
-<<<<<<< HEAD
+	public void registrarEnBD(Modelo mod, Ventana vis, Cliente cliente) {
+		//Registramos todos los parï¿½metros menos el DNI que lo hemos insertadoanteriormente
 		String sql1 = "insert into Nombre, Apellidos, Sexo, Contraseña, Fecha_nac values ('" + cliente.getNombre()
 				+ "','" + cliente.getApellido() + "','" + cliente.getSexo() + "','" + cliente.getContrasenia() + "','"
 				+ cliente.getFecha_nac() + ")";
 	}
 
-	public void Login(Modelo mod,Ventana vis,String dni, String contrasenia, int CantidadPasajeros) {
-		
-=======
-		String sql1 = "insert into Nombre, Apellidos, Sexo, Contraseï¿½a, Fecha_nac values ('" + cliente.getNombre() + "','" + cliente.getApellido() + "','" + cliente.getSexo() + "','" + cliente.getContrasenia() + "','" + cliente.getFecha_nac() + ")";
-	}
+	public void Login(Modelo mod, Ventana vis, String dni, String contrasenia, int CantidadPasajeros ) {
 
-	public void Login(Modelo mod, String dni, String contrasenia) {
-
->>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 		Boolean login = false;
 		String LoginDB = "";
 
 		try {
 
 			ResultSet rs;
-<<<<<<< HEAD
-			
-			/*llamamos a la base de datos el DNI y la contraseï¿½a del cliente*/
-			LoginDB = "select DNI,Contraseña from cliente";
-=======
->>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 
-			/* llamamos a la base de datos el DNI y la contraseï¿½a del cliente */
+			// llamamos a la base de datos el DNI y la contraseï¿½a del cliente 
 			LoginDB = "select DNI,Contraseï¿½a from cliente";
 
 			rs = mod.db.hacerPeticion(LoginDB);
 
-<<<<<<< HEAD
-			/*Comparamos los datos de la base de datos con los que ha introducido en el login el cliente*/
+			//Comparamos los datos de la base de datos con los que ha introducido en el login el cliente
 			if (rs.getString("DNI") == dni){
-				/*Este es el caso optimo donde tanto el DNI y la contraseï¿½a existen y corresponden al mismo usuario*/
+				//Este es el caso optimo donde tanto el DNI y la contraseï¿½a existen y corresponden al mismo usuario
 				if(rs.getString("Contraseña")== contrasenia) {
-				login = true;
-				vis.panelLogin.setVisible(false);
-					if(CantidadPasajeros==0) {
-						vis.panelPago.setVisible(true);
-					}
-					else {
-						vis.panelPasajeroExtra.setVisible(true);
-					}
-				/*En este caso el DNI es correcto pero la contraseï¿½a que corresponde a ese usuario es errï¿½nea*/
-				}
-=======
-			/*
-			 * Comparamos los datos de la base de datos con los que ha introducido en el
-			 * login el cliente
-			 */
-			if (rs.getString("DNI") == dni) {
-				/*
-				 * Este es el caso ï¿½ptimo donde tanto el DNI y la contraseï¿½a existen y
-				 * corresponden al mismo usuario
-				 */
-				if (rs.getString("Contraseï¿½a") == contrasenia) {
 					login = true;
+					vis.panelLogin.setVisible(false);
+						if(CantidadPasajeros==0) {
+							vis.panelPago.setVisible(true);
+						}
+						else {
+							vis.panelPasajeroExtra.setVisible(true);
+						}
+						//En este caso el DNI es correcto pero la contraseï¿½a que corresponde a ese usuario es errï¿½nea
 				}
-				/*
-				 * En este caso el DNI es correcto pero la contraseï¿½a que corresponde a ese
-				 * usuario es errï¿½nea
-				 */
->>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 				else {
 					JOptionPane.showMessageDialog(vis.panelLogin, "Contraseña Incorrecta", "Advertencia", 0);
 					login = false;
 				}
 				
 			}
-			/* En este caso el DNI que ha metido no estï¿½ registrado en la BD */
+			// En este caso el DNI que ha metido no estï¿½ registrado en la BD
 			else {
 				JOptionPane.showMessageDialog(vis.panelLogin, "Usuario inexistente", "Advertencia", 0);
 				login = false;
 			}
 
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			JOptionPane.showMessageDialog(vis.panelLogin, "Error en obtener usuario", "Advertencia", 0);
 		}
 
 	}
 
-<<<<<<< HEAD
 	public void PasajeroExtra(Ventana vis, int CantidadPasajeros) {
 
 		Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
 
-		/* Genera clientes extra en base a la cantidad de pasajeros extra */
+		// Genera clientes extra en base a la cantidad de pasajeros extra 
 		while (CantidadPasajeros > 0) {
 			pasajeroExtra[CantidadPasajeros] = new Cliente(vis.panelPasajeroExtra.textFieldNombre.getText(),
 					vis.panelPasajeroExtra.textFieldApellido.getText(), vis.panelPasajeroExtra.textFieldDNI.getText(),
@@ -204,32 +157,28 @@ public class Metodos {
 		}
 	}
 	
-	public float PrecioTrayecto(Modelo mod) {
-		float precioGasolina=(float) 0.80;
+	public double PrecioTrayecto(Modelo mod) throws SQLException{
+		double precioGasolina = 0.80;
+		String DatosAutobus = "";
 		float consumo=0;
-		String distancia= "";
+		double distancia= 0;
 		int asiento=0;
+		
 		ResultSet rs;
 		
-		distancia = "select DNI,Contraseña from cliente";
-
-
-		rs = mod.db.hacerPeticion(distancia);
+		//Pedimos los datos de cantidad de asientos y el consumo a la BD
+		DatosAutobus = "select N_plazas, Consumo_km from autobus";
 		
-		float total=0;
-		/*(0,80*consumoBus*distancia)/Nºasiento*/
+		rs = mod.db.hacerPeticion(DatosAutobus);
+		
+		consumo = rs.getFloat("Consumo_km");
+		asiento = rs.getInt("N_plazas");
+						
+		
+		double total=(precioGasolina*consumo*distancia)/asiento;
+		//(0,80*consumoBus*distancia)/Nºasiento
 		return total;
-=======
-	public void PasajeroExtra(Modelo mod, String dni, String nombre, String apellido, String sexo, int CantidadPasajeros) {
 
-		Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
-
-		/* Genera clientes extra en base a la cantidad de pasajeros extra */
-		while (CantidadPasajeros > 0) {
-			pasajeroExtra[CantidadPasajeros] = new Cliente(nombre, apellido, dni, sexo);
-			CantidadPasajeros = CantidadPasajeros - 1;
-		}
->>>>>>> 48f77f82c96620ac91614d213a55b591518ab503
 	}
 
 }
