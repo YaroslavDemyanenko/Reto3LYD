@@ -45,7 +45,12 @@ public class Parada {
 		this.calle=calle;
 		this.nombreParada=nombreParada;
 	}
-	
+	/**
+	 * Se introducen las paradas en un modelo para luego sacarlas y mostarlas en la lista de la interfaz
+	 * @param vis
+	 * @param mod
+	 * @throws SQLException
+	 */
 	public void paradasIdaAModelo (Ventana vis,Modelo mod) throws SQLException {
 		String query= vis.panelLineas1.listLineas.getSelectedValue().toString().substring(0,2);
 		query="select nombre,Cod_Parada,Calle,sqrt(power((longitud-(SELECT Longitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)+power((latitud-(SELECT Latitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)) distancia from parada WHERE Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\""+query+"\") order by distancia;";

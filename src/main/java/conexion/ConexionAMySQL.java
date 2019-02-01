@@ -47,7 +47,10 @@ public class ConexionAMySQL {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}return null;
 	}
-	
+	/**
+	 * Inserta un usuario nuevo en la base de datos
+	 * @param usuario
+	 */
 	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
 		try {
 			String query = "insert into cliente (DNI,Nombre,Apellidos,Fecha_nac,Sexo,ConstraseÃ±a) values(?,?,?,?,?,?);";
@@ -67,7 +70,12 @@ public class ConexionAMySQL {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 	}
-	
+	/**
+	 * Comprueba la existencia de ese DNI
+	 * @param cliente
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean comprobarDNIenBD(Cliente cliente) throws SQLException {
 		String sql = "select DNI from cliente where DNI = " + cliente.dni+"";
 		ResultSet rs = hacerPeticion(sql);
@@ -76,6 +84,15 @@ public class ConexionAMySQL {
 		}else return false;
 	}
 
+	/**
+	 * Metodo para loguearse
+	 * @param mod
+	 * @param vis
+	 * @param dni
+	 * @param contrasenia
+	 * @param CantidadPasajeros
+	 * @throws SQLException
+	 */
 	public void Login(Modelo mod, Ventana vis, String dni, String contrasenia, int CantidadPasajeros )throws SQLException {
 
 		Boolean login = false;		
@@ -92,7 +109,7 @@ public class ConexionAMySQL {
 			//Comparamos los datos de la base de datos con los que ha introducido en el login el cliente
 		if (rs.getString("DNI") == dni){
 			//Este es el caso optimo donde tanto el DNI y la contraseï¿½a existen y corresponden al mismo usuario
-			if(rs.getString("Contraseña")== contrasenia) {
+			if(rs.getString("Contraseï¿½a")== contrasenia) {
 				login = true;
 				vis.panelLogin.setVisible(false);
 					if(CantidadPasajeros==0) {
@@ -103,7 +120,7 @@ public class ConexionAMySQL {
 					//En este caso el DNI es correcto pero la contraseï¿½a que corresponde a ese usuario es errï¿½nea
 			}
 			else {
-				JOptionPane.showMessageDialog(vis.panelLogin, "Contraseña Incorrecta", "Advertencia", 0);
+				JOptionPane.showMessageDialog(vis.panelLogin, "Contraseï¿½a Incorrecta", "Advertencia", 0);
 				login = false;
 			}
 				
@@ -133,7 +150,12 @@ public class ConexionAMySQL {
 		mod.municipio.crearYMeterMunicipios(mod);
 		mod.autobus.crearYMeterAutobuses(mod);
 	}
-	
+	/**
+	 * Se calcula el precio del trayecto
+	 * @param mod
+	 * @return
+	 * @throws SQLException
+	 */
 	public double PrecioTrayecto(Modelo mod) throws SQLException{
 		double precioGasolina = 0.80;
 		String DatosAutobus = "";

@@ -17,6 +17,15 @@ import interfaces.Ventana;
 public class Metodos {
 
 
+	/**
+	 * Ingresa un cliente en la base de datos
+	 * @param nombre
+	 * @param apellido
+	 * @param dni
+	 * @param sexo
+	 * @param contrasenia
+	 * @return
+	 */
 	public Cliente ingresar(String nombre, String apellido, String dni, char sexo, char[] contrasenia) {
 
 		Cliente cliente = new Cliente();
@@ -29,6 +38,11 @@ public class Metodos {
 
 	}
 
+	/**
+	 * Limita las fechas de los billetes
+	 * @param vis
+	 * @param numDias
+	 */
 	public void limitarFechasIda(Ventana vis, int numDias) {
 		Date fechaLimite = new Date();
 		vis.panelLineas2.calendarioIda.setDate(new Date());
@@ -39,6 +53,11 @@ public class Metodos {
 		vis.panelLineas2.calendarioIda.setSelectableDateRange(new Date(), fechaLimite);
 	}
 
+	/**
+	 * Limita las fechas de la vuelta 
+	 * @param vis
+	 * @param numDias
+	 */
 	public void limitarFechasVuelta(Ventana vis, int numDias) {
 		Date fechaLimite = vis.panelLineas2.calendarioIda.getDate();
 		vis.panelLineas2.calendarioVuelta.setDate(fechaLimite);
