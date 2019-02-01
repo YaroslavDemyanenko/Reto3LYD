@@ -1,5 +1,8 @@
 package clases;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 
 public class Cliente {
@@ -10,7 +13,6 @@ public class Cliente {
 	public char sexo;
 	private char[] contrasenia;
 	
-	/*CONSTRUCTOR 1*/
 	public Cliente(String dni, String nombre, String apellido, Date fechaNac, char sexo, char[] contrasenia) {
 		
 		this.nombre = nombre;
@@ -21,11 +23,9 @@ public class Cliente {
 		this.fechaNac = fechaNac;
 	}
 	
-	/*CONSTRUCTOR 2*/
 	public Cliente() {	
 	}
 	
-	/*CONSTRUCTOR 3*/
 	public Cliente(String nombre, String apellido, String dni, char sexo) {
 		
 		this.nombre = nombre;
@@ -34,6 +34,17 @@ public class Cliente {
 		this.sexo = sexo;
 	}
 	
+	
+	public String encriptarContra() throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		String contraEnc = new String(this.contrasenia);
+		byte[] hashInBytes = md.digest(contraEnc.getBytes(StandardCharsets.UTF_8));
+		StringBuilder sb = new StringBuilder();
+		for (byte b : hashInBytes) {
+			sb.append(String.format("%02x", b));
+		}
+		return sb.toString();
+	}
 
 	public String getNombre(String nombre) {
 		return nombre;
@@ -58,7 +69,7 @@ public class Cliente {
 	public void setContrasenia(char[] contrasenia) {
 		this.contrasenia = contrasenia;
 	}
-	
+
 	public char getSexo(char sexo) {
 		return sexo;
 	}
@@ -73,7 +84,6 @@ public class Cliente {
 	
 	public void setDni(String dni) {
 		this.dni = dni;
-		
 	}
 	
 

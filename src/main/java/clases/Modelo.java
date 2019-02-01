@@ -16,10 +16,13 @@ public class Modelo {
 	public Parada parada;
 	public ConexionAMySQL db;
 	public Metodos metodo;
+	
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
-	private boolean idaYVuelta=false;
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
+	
+	private boolean idaYVuelta=false;
 	public int numeroBilletes;
+	public Cliente clienteRegistrado;
 	
 	public Modelo(ConexionAMySQL db) {
 		autobus=new Autobus();
