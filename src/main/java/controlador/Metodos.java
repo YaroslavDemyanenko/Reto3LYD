@@ -1,5 +1,8 @@
 package controlador;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -10,8 +13,6 @@ import clases.Modelo;
 import interfaces.Ventana;
 
 public class Metodos {
-
-	
 
 	public void limitarFechasIda(Ventana vis, int numDias) {
 		Date fechaLimite = new Date();
@@ -42,7 +43,7 @@ public class Metodos {
 		} else {
 			vis.panelResumen.lblIdaYVuelta.setText("Ida");
 		}
-		mod.numeroBilletes=(Integer) vis.panelLineas2.spnNumeroDeBilletes.getValue();
+		mod.numeroBilletes = (Integer) vis.panelLineas2.spnNumeroDeBilletes.getValue();
 		vis.panelResumen.lblNumeroDeBilletes.setText(String.valueOf(mod.numeroBilletes));
 		vis.panelResumen.calendarioIda.setDate(vis.panelLineas2.calendarioIda.getDate());
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
@@ -50,25 +51,22 @@ public class Metodos {
 
 	
 
-
 	public void Login(Modelo mod, String dni, String contrasenia) {
 
 		Boolean login = false;
 		String LoginDB = "";
 
 		try {
-			ResultSet rs=mod.db.hacerPeticion(LoginDB);
+			ResultSet rs = mod.db.hacerPeticion(LoginDB);
 			LoginDB = "select DNI,Contrase�a from cliente";
 			if (rs.getString("DNI") == dni) {
 				if (rs.getString("Contrase�a") == contrasenia) {
 					login = true;
-				}
-				else {
+				} else {
 					System.out.println("Contraseña incorrecta");
 					login = false;
 				}
-			}
-			else {
+			} else {
 				System.out.println(" Usuario inexistente");
 				login = false;
 			}
@@ -79,17 +77,16 @@ public class Metodos {
 	}
 
 	/**
-	public void PasajeroExtra(Modelo mod, String dni, String nombre, String apellido, String sexo, int CantidadPasajeros) {
-
-		Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
-
-		/* Genera clientes extra en base a la cantidad de pasajeros extra 
-		while (CantidadPasajeros > 0) {
-			pasajeroExtra[CantidadPasajeros] = new Cliente(nombre, apellido, dni, sexo);
-			CantidadPasajeros = CantidadPasajeros - 1;
-		}
-	}
-	*/
+	 * public void PasajeroExtra(Modelo mod, String dni, String nombre, String
+	 * apellido, String sexo, int CantidadPasajeros) {
+	 * 
+	 * Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
+	 * 
+	 * /* Genera clientes extra en base a la cantidad de pasajeros extra while
+	 * (CantidadPasajeros > 0) { pasajeroExtra[CantidadPasajeros] = new
+	 * Cliente(nombre, apellido, dni, sexo); CantidadPasajeros = CantidadPasajeros -
+	 * 1; } }
+	 */
 }
 
 /**

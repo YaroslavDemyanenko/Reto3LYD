@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -7,6 +8,8 @@ import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
+
+import javax.swing.JButton;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -35,6 +38,7 @@ public class Controlador {
 
 	private class btnListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			
 			if (e.getSource() == vis.panelLineas1.btnConfirmar) {
 				if (!vis.panelLineas1.listParadas.isSelectionEmpty()) {
 					if (vis.panelLineas1.rdbtnIdayVuelta.isSelected()) {
@@ -55,6 +59,7 @@ public class Controlador {
 			else if (e.getSource() == vis.panelLineas2.btnConfirmar) {
 				vis.setContentPane(vis.panelResumen);
 				mod.metodo.mostrarResumenTrayecto(vis, mod);
+				
 			}
 		}
 	}
@@ -126,6 +131,15 @@ public class Controlador {
 			
 		}
 		
+	}
+	
+	private class loginListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+			if (((JButton) e.getSource()).getName()=="botonLogin") {
+				
+			}
+		}
 	}
 	/**
 	 * private VentanaPrincipal vista; private Cliente modelo;

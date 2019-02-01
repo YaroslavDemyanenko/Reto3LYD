@@ -1,5 +1,6 @@
 package conexion;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class ConexionAMySQL {
 	 */
 	public ResultSet hacerPeticion(String peticionString) {
 		try {
-			Statement peticion = conexion.createStatement();
+			Statement peticion = this.conexion.createStatement();
 			ResultSet resultadoPeticion = peticion.executeQuery(peticionString);
 			return resultadoPeticion;
 		} catch (SQLException e) {
@@ -47,25 +48,29 @@ public class ConexionAMySQL {
 		}return null;
 	}
 	
-	public void insertarUsuarioEnBaseDeDatos(Modelo mod,Cliente usuario) {
+	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
 		try {
 			String query = "insert into cliente (DNI,Nombre,Apellidos,Fecha_nac,Sexo,Constraseña) values(?,?,?,?,?,?);";
-			PreparedStatement insertartUsuario=mod.db.conexion.prepareStatement(query);
+			PreparedStatement insertartUsuario=this.conexion.prepareStatement(query);
 	            insertartUsuario.setString(1, usuario.dni);
 	            insertartUsuario.setString(2, usuario.nombre);
 	            insertartUsuario.setString(3, usuario.apellido);
 	            insertartUsuario.setDate(4, usuario.fechaNac);
 	            insertartUsuario.setString(5, String.valueOf(usuario.sexo));
-	            //insertartUsuario.setCharacterStream(6, reader, length);
-			
+	            try {
+					insertartUsuario.setString(6, usuario.encriptarContra());
+				} catch (NoSuchAlgorithmException e) {
+					System.out.println(e);
+				}
+	            insertartUsuario.executeQuery();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 	}
 	
-	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) throws SQLException {
+	public boolean comprobarDNIenBD(Cliente cliente) throws SQLException {
 		String sql = "select DNI from cliente where DNI = " + cliente.dni+"";
-		ResultSet rs = mod.db.hacerPeticion(sql);
+		ResultSet rs = hacerPeticion(sql);
 		if (rs.next()) {
 			return true;
 		}else return false;

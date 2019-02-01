@@ -9,7 +9,7 @@ import conexion.*;
 public class Launcher {
 
 	public static void main(String[] args) {
-		ConexionAMySQL conexion= new ConexionAMySQL("localhost","3306","termibus", "hr", "PepeJeans");
+		ConexionAMySQL conexion= new ConexionAMySQL("localhost","3306","reto3", "aplication", "PepeJeans");
 		Modelo modelo = new Modelo(conexion);
 		Ventana vista = new Ventana();
 		
