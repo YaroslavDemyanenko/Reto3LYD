@@ -1,19 +1,2 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-/controlador/
-=======
-/interfaces/
-=======
->>>>>>> e7df58b121cbdc9d496f9bff596361c27b314a73
-/clases/
 /conexion/
-<<<<<<< HEAD
->>>>>>> fd1979ae3b8721da60130a483d50da3dca75dc28
-/testClases/
-=======
 /controlador/
-/imagenes/
-/interfaces/
-/testClases/
-/testCliente.class
->>>>>>> e7df58b121cbdc9d496f9bff596361c27b314a73
