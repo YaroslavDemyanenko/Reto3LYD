@@ -150,33 +150,25 @@ public class ConexionAMySQL {
 		mod.municipio.crearYMeterMunicipios(mod);
 		mod.autobus.crearYMeterAutobuses(mod);
 	}
+
 	/**
-	 * Se calcula el precio del trayecto
+	 * Calculamos el precio del trayecto dependiendo de las paradas que haya elegido el usuario
 	 * @param mod
+	 * @param llegada
+	 * @param salida
 	 * @return
 	 * @throws SQLException
 	 */
-	public double PrecioTrayecto(Modelo mod) throws SQLException{
-		double precioGasolina = 0.80;
-		String DatosAutobus = "";
-		float consumo=0;
-		double distancia= 0;
-		int asiento=0;
-		
-		ResultSet rs;
-		
-		//Pedimos los datos de cantidad de asientos y el consumo a la BD
-		DatosAutobus = "select N_plazas, Consumo_km from autobus";
-		
-		rs = mod.db.hacerPeticion(DatosAutobus);
-		
-		consumo = rs.getFloat("Consumo_km");
-		asiento = rs.getInt("N_plazas");
-						
-		
-		double total=(precioGasolina*consumo*distancia)/asiento;
-		return total;
+	public double PrecioTrayecto(Modelo mod, Parada llegada, Parada salida) throws SQLException{
 
+		double precioGasolina = 0.80;
+		String DatosAutobus = "select N_plazas, Consumo_km from autobus";		
+		ResultSet rs = mod.db.hacerPeticion(DatosAutobus);		
+		float consumo = rs.getFloat("Consumo_km");
+		int asiento = rs.getInt("N_plazas");
+		double distancia=controlador.Metodos.distanciaLineas(salida, llegada);				
+		
+		return (precioGasolina*consumo*distancia)/asiento;
 	}
 
 	/**
