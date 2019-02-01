@@ -33,12 +33,7 @@ public class Cliente {
 		this.dni = dni;
 		this.sexo = sexo;
 	}
-	public char[] getContrasenia() {
-		return contrasenia;
-	}
-	public void setContrasenia(char[] contrasenia) {
-		this.contrasenia = contrasenia;
-	}
+	
 	
 	public String encriptarContra() throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
@@ -50,5 +45,46 @@ public class Cliente {
 		}
 		return sb.toString();
 	}
+
+	public String getNombre(String nombre) {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre=nombre;		
+	}
 	
+	public String getApellido(String apellido) {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido=apellido;		
+	}
+
+	public char[] getContrasenia() {
+		return contrasenia;
+	}
+	
+	public void setContrasenia(char[] contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+	public char getSexo(char sexo) {
+		return sexo;
+	}
+
+	public void setSexo(char sexo) {
+		this.sexo=sexo;		
+	}
+
+	public String getDni(String dni) {
+		return dni;
+	}
+	
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+	
+
 }

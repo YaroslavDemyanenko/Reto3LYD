@@ -5,8 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Municipio {
-	String nombre;
-	int codigoPostal;
+
+	public String nombre;
+	public int codigoPostal;
+
 	ArrayList<Parada> paradas = new ArrayList<Parada>();
 
 	public Municipio() {
@@ -32,10 +34,26 @@ public class Municipio {
 			int cont=0;
 			while (result.next()) {
 				mod.lineas.get(i).listaMunicipios.add(new Municipio(result.getString("Nombre"), result.getInt("Cod_Postal")));
-				mod.lineas.get(i).listaMunicipios.get(cont).paradas=mod.parada.arrayParadasPorMunicipio(mod.lineas.get(i).listaMunicipios.get(cont).nombre,mod);
+				mod.lineas.get(i).listaMunicipios.get(cont).paradas=mod.parada.arrayParadasPorMunicipio(mod.lineas.get(i).listaMunicipios.get(cont).getNombre(),mod);
 				cont++;
 			}
 		}
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getCodigoPostal() {
+		return this.codigoPostal;
+	}
+
+	public void setCodigoPostal(int codigoPostal) {
+		this.codigoPostal = codigoPostal;
 	}
 
 }

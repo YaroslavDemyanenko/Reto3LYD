@@ -8,11 +8,26 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import clases.Cliente;
 import clases.Modelo;
 import interfaces.Ventana;
 
 public class Metodos {
+
+
+	public Cliente ingresar(String nombre, String apellido, String dni, char sexo, char[] contrasenia) {
+
+		Cliente cliente = new Cliente();
+		cliente.setNombre(nombre);
+		cliente.setApellido(apellido);
+		cliente.setDni(dni);
+		cliente.setSexo(sexo);
+		cliente.setContrasenia(contrasenia);
+		return cliente;
+
+	}
 
 	public void limitarFechasIda(Ventana vis, int numDias) {
 		Date fechaLimite = new Date();
@@ -32,7 +47,23 @@ public class Metodos {
 		c.add(Calendar.DATE, numDias);
 		fechaLimite = c.getTime();
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(), fechaLimite);
+
 	}
+
+	/**
+	public void PasajeroExtra(Ventana vis, int CantidadPasajeros) {
+
+		Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
+
+		// Genera clientes extra en base a la cantidad de pasajeros extra 
+		while (CantidadPasajeros > 0) {
+			pasajeroExtra[CantidadPasajeros] = new Cliente(vis.panelPasajeroExtra.textFieldNombre.getText(),
+					//vis.panelPasajeroExtra.textFieldApellido.getText(), vis.panelPasajeroExtra.textFieldDNI.getText(),
+					//vis.panelPasajeroExtra.textFieldSexo.getToolTipText());
+			//CantidadPasajeros = CantidadPasajeros - 1;
+		}
+	}
+	**/
 
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
@@ -49,7 +80,9 @@ public class Metodos {
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
 
+/**
 	
+<<<<<<< HEAD
 
 	public void Login(Modelo mod, String dni, String contrasenia) {
 
@@ -72,10 +105,22 @@ public class Metodos {
 			}
 		} catch (Exception e) {
 			System.out.println("Error en obtener usuario");
+=======
+	public char DevolverSexo(Ventana vis) {
+		char charSexo = 'V';
+		if (vis.panelPasajeroExtra.textFieldSexo.getToolTipText()="Hombre") {
+			charSexo='V'; 
+>>>>>>> 8d47bf7ed417ca605726ce1528c01be956f89bd0
 		}
-
+		else {
+			charSexo='M';
+		}
+		
+		return charSexo;
+		
 	}
 
+<<<<<<< HEAD
 	/**
 	 * public void PasajeroExtra(Modelo mod, String dni, String nombre, String
 	 * apellido, String sexo, int CantidadPasajeros) {
@@ -87,67 +132,18 @@ public class Metodos {
 	 * Cliente(nombre, apellido, dni, sexo); CantidadPasajeros = CantidadPasajeros -
 	 * 1; } }
 	 */
+
+	
+
+	
+	
+
 }
 
 /**
  * ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
  */
 
-/**
- * Funciones y metodos relacionados con el pago de los productos.
- * 
- *
- */
-
-/*
- * public class FuncionesPago {
- * 
- * NumberFormat nf = NumberFormat.getNumberInstance(Locale.UK); private
- * DecimalFormat dosDec = (DecimalFormat) nf;
- * 
- * 
- **/
-
-/**
- * Comprueba todas las cantidades del parametro inventario y si es mayor que 0.
- * Calcula el precio a pagar.
- * 
- * @param inventario Array de objetos de tipo Producto.
- * @return devuelve el precio total sin IVA (Dinero que debe pagar el cliente).
- */
-
-/*
- * public float PrecioAPagar(Producto[] inventario) { float resultado = 0; for
- * (int i = 0; i < inventario.length; i++) { if (inventario[i].cantidad > 0) {
- * resultado = resultado + inventario[i].cantidad * inventario[i].precio; } }
- * return resultado; }
- **/
-
-/**
- * Dandole un numero y un modelo de lista nos hace una lista del cambio de la
- * forma mas optima (menor numero de monedas).
- * 
- * @param model  El modelo en el cual se guarda la lista de cambios.
- * @param dinero El numero con el cual tiene que calcular el cambio.
- */
-
-/*
- * public void Cambios(DefaultListModel model, float dinero) { int euros = (int)
- * dinero; int decimales = Math.round((dinero - euros) * 100); int[]
- * billetesMonedas = { 500, 200, 100, 50, 20, 10, 5, 2, 1 };
- * Datos.dosDecFormato(dosDec);
- * 
- * for (int i = 0, f = 0,fake=1; i < billetesMonedas.length+fake;i++,f++) {
- * //Mira si tiene que pasar a calcular los decimales if (f==9) { i=3; fake=0; }
- * //Calcula los euros if (euros >= billetesMonedas[i] && f < 9) {
- * model.addElement(billetesMonedas[i] + " �: " + (euros / billetesMonedas[i]));
- * euros = euros % billetesMonedas[i]; } //Calcula los centimos si ha acabado
- * con los euros else if (decimales >= billetesMonedas[i] && f >= 9) {
- * model.addElement((dosDec.format(billetesMonedas[i]/100f)) + " �: " +
- * (decimales / billetesMonedas[i])); decimales = decimales %
- * billetesMonedas[i]; } } }
- * 
- **/
 
 /**
  * ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
