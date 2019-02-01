@@ -5,13 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Municipio {
-<<<<<<< HEAD
+
 	public String nombre;
 	public int codigoPostal;
-=======
-	private String nombre;
-	private int codigoPostal;
->>>>>>> e7df58b121cbdc9d496f9bff596361c27b314a73
+
 	ArrayList<Parada> paradas = new ArrayList<Parada>();
 
 	public Municipio() {
