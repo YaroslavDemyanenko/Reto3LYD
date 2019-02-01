@@ -12,11 +12,21 @@ import javax.swing.JOptionPane;
 
 import clases.Cliente;
 import clases.Modelo;
+import clases.Parada;
 import interfaces.Ventana;
 
 public class Metodos {
 
 
+	/**
+	 * Ingresa un cliente en la base de datos
+	 * @param nombre
+	 * @param apellido
+	 * @param dni
+	 * @param sexo
+	 * @param contrasenia
+	 * @return
+	 */
 	public Cliente ingresar(String nombre, String apellido, String dni, char sexo, char[] contrasenia) {
 
 		Cliente cliente = new Cliente();
@@ -29,6 +39,11 @@ public class Metodos {
 
 	}
 
+	/**
+	 * Limita las fechas de los billetes
+	 * @param vis
+	 * @param numDias
+	 */
 	public void limitarFechasIda(Ventana vis, int numDias) {
 		Date fechaLimite = new Date();
 		vis.panelLineas2.calendarioIda.setDate(new Date());
@@ -39,6 +54,11 @@ public class Metodos {
 		vis.panelLineas2.calendarioIda.setSelectableDateRange(new Date(), fechaLimite);
 	}
 
+	/**
+	 * Limita las fechas de la vuelta 
+	 * @param vis
+	 * @param numDias
+	 */
 	public void limitarFechasVuelta(Ventana vis, int numDias) {
 		Date fechaLimite = vis.panelLineas2.calendarioIda.getDate();
 		vis.panelLineas2.calendarioVuelta.setDate(fechaLimite);
@@ -80,8 +100,16 @@ public class Metodos {
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
 
-/**
 	
+
+	public static double distanciaLineas(Parada llegada, Parada salida){
+		double latitudX=(salida.getLatitud()-llegada.getLatitud())*(salida.getLatitud()-llegada.getLatitud());
+		double altitudX=(salida.getLongitud()-llegada.getLongitud())*(salida.getLongitud()-llegada.getLongitud());
+		double distancia= Math.sqrt(latitudX+altitudX);
+
+		return distancia;
+	}
+
 
 
 	public void Login(Modelo mod, String dni, String contrasenia) {
@@ -105,12 +133,14 @@ public class Metodos {
 			}
 		} catch (Exception e) {
 			System.out.println("Error en obtener usuario");
-=======
+		}
+	}
+			/**
 	public char DevolverSexo(Ventana vis) {
 		char charSexo = 'V';
 		if (vis.panelPasajeroExtra.textFieldSexo.getToolTipText()="Hombre") {
 			charSexo='V'; 
->>>>>>> 8d47bf7ed417ca605726ce1528c01be956f89bd0
+
 		}
 		else {
 			charSexo='M';
@@ -120,8 +150,8 @@ public class Metodos {
 		
 	}
 
-<<<<<<< HEAD
-	/**
+
+	
 	 * public void PasajeroExtra(Modelo mod, String dni, String nombre, String
 	 * apellido, String sexo, int CantidadPasajeros) {
 	 * 
@@ -131,6 +161,15 @@ public class Metodos {
 	 * (CantidadPasajeros > 0) { pasajeroExtra[CantidadPasajeros] = new
 	 * Cliente(nombre, apellido, dni, sexo); CantidadPasajeros = CantidadPasajeros -
 	 * 1; } }
-	 */
+	 
 
+<<<<<<< HEAD
 }
+=======
+	
+
+	
+	
+**/ 
+}
+

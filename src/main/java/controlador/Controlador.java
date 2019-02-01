@@ -36,6 +36,7 @@ public class Controlador {
 		this.vis.panelLineas2.btnConfirmar.addActionListener(new btnListener());
 	}
 
+
 	private class btnListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			
@@ -67,6 +68,7 @@ public class Controlador {
 
 	private class mseListener implements MouseListener {
 
+		/*Metodo para que cuando haga click en cualquier zona del panel saludo pase al siguiente panel*/
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource() == vis.panelSaludo) {
 				vis.setContentPane(vis.panelLineas1);

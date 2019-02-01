@@ -34,7 +34,11 @@ public class Cliente {
 		this.sexo = sexo;
 	}
 	
-	
+	/**
+	 * Metodo de incripatcion de la contraseña
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 */
 	public String encriptarContra() throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		String contraEnc = new String(this.contrasenia);

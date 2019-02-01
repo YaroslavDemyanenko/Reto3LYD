@@ -47,7 +47,10 @@ public class ConexionAMySQL {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}return null;
 	}
-	
+	/**
+	 * Inserta un usuario nuevo en la base de datos
+	 * @param usuario
+	 */
 	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
 		try {
 			String query = "insert into cliente (DNI,Nombre,Apellidos,Fecha_nac,Sexo,Constraseña) values(?,?,?,?,?,?);";
@@ -67,7 +70,12 @@ public class ConexionAMySQL {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 	}
-	
+	/**
+	 * Comprueba la existencia de ese DNI
+	 * @param cliente
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean comprobarDNIenBD(Cliente cliente) throws SQLException {
 		String sql = "select DNI from cliente where DNI = " + cliente.dni+"";
 		ResultSet rs = hacerPeticion(sql);
@@ -76,6 +84,15 @@ public class ConexionAMySQL {
 		}else return false;
 	}
 
+	/**
+	 * Metodo para loguearse
+	 * @param mod
+	 * @param vis
+	 * @param dni
+	 * @param contrasenia
+	 * @param CantidadPasajeros
+	 * @throws SQLException
+	 */
 	public void Login(Modelo mod, Ventana vis, String dni, String contrasenia, int CantidadPasajeros )throws SQLException {
 
 		Boolean login = false;		
@@ -133,25 +150,26 @@ public class ConexionAMySQL {
 		mod.municipio.crearYMeterMunicipios(mod);
 		mod.autobus.crearYMeterAutobuses(mod);
 	}
+
+
 	/**
-	 * Pedimos los datos de cantidad de asientos y el consumo a la BD,
+	 * Calculamos el precio del trayecto dependiendo de las paradas que haya elegido el usuario
 	 * @param mod
+	 * @param llegada
+	 * @param salida
 	 * @return
 	 * @throws SQLException
 	 */
-	public double calcularPrecioTrayecto(Parada paradaSld,Parada paradaLlgd) throws SQLException{
-		final double precioGasolina = 0.80;
-		String DatosAutobus = "select N_plazas, Consumo_km from autobus";
-		ResultSet rs = hacerPeticion(DatosAutobus);
+	public double PrecioTrayecto(Modelo mod, Parada llegada, Parada salida) throws SQLException{
+
+		double precioGasolina = 0.80;
+		String DatosAutobus = "select N_plazas, Consumo_km from autobus";		
+		ResultSet rs = mod.db.hacerPeticion(DatosAutobus);		
+		float consumo = rs.getFloat("Consumo_km");
+		int asiento = rs.getInt("N_plazas");
+		double distancia=controlador.Metodos.distanciaLineas(salida, llegada);				
 		
-		float consumo=rs.getFloat("Consumo_km");
-		int asiento=rs.getInt("N_plazas");
-		
-		double distancia= 0;
-						
-		
-		double total=(precioGasolina*consumo*distancia)/asiento;
-		return total;
+		return (precioGasolina*consumo*distancia)/asiento;
 
 	}
 
