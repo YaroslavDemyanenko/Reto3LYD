@@ -48,6 +48,7 @@ public class Controlador {
 					vis.panelLineas2.lblSal.setText(vis.panelLineas1.listParadas.getSelectedValue().toString());
 					vis.setContentPane(vis.panelLineas2);
 					mod.metodo.limitarFechasIda(vis, 4);
+					mod.metodo.limitarFechasVuelta(vis, 4);
 					mod.parada.paradasLlegadaAModelo(mod, vis);
 				}
 			}

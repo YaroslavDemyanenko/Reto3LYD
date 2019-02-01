@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 /controlador/
+=======
+/interfaces/
+/clases/
+/controlador/
+/conexion/
+>>>>>>> fd1979ae3b8721da60130a483d50da3dca75dc28
+/testClases/

@@ -1,9 +1,6 @@
 package clases;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
-
-import com.mysql.cj.protocol.Resultset;
 
 public class Linea {
 	String codigo;

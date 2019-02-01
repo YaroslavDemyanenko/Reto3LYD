@@ -7,18 +7,19 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 public class Autobus {
-	private int codigo;
-	private int numPlazas;
-	private double consumoKm;
-	private String color;
+	int codigo;
+	int numPlazas;
+	double consumoKm;
+	String color;
 	
-	
-	//constructor 1
 	public Autobus(int codigo, int numPlazas, double consumoKm, String color) {
 		this.codigo = codigo;
 		this.numPlazas = numPlazas;
 		this.consumoKm = consumoKm;
 		this.color = color;
+	}
+	
+	public Autobus() {	
 	}
 	
 	public void crearYMeterAutobuses(Modelo mod) throws NumberFormatException, SQLException {
@@ -33,10 +34,7 @@ public class Autobus {
 	}
 	
 	
-	//constructor 2
-	public Autobus() {
-		
-	}
+
 
 	public int getCodigo() {
 		return this.codigo;

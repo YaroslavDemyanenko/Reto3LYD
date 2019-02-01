@@ -8,11 +8,11 @@ import interfaces.Ventana;
 
 public class Parada {
 
-	public int codigo;
-	public String calle;
-	public String nombreParada;
-	public double latitud;
-	public double longitud;
+	int codigo;
+	String calle;
+	String nombreParada;
+	double latitud;
+	double longitud;
 
 
 	public ArrayList<Parada> arrayParadasPorMunicipio(String nombreMunicipio,Modelo mod) throws SQLException {
