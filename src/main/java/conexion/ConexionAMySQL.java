@@ -79,7 +79,7 @@ public class ConexionAMySQL {
 	public void Login(Modelo mod, Ventana vis, String dni, String contrasenia, int CantidadPasajeros )throws SQLException {
 
 		Boolean login = false;		
-		String sql = "select DNI,Contraseï¿½a from cliente";
+		String sql = "select DNI,ContraseÃ±a from cliente";
 		ResultSet rs = mod.db.hacerPeticion(sql);
 			
 			//ResultSet rs;
@@ -92,7 +92,7 @@ public class ConexionAMySQL {
 			//Comparamos los datos de la base de datos con los que ha introducido en el login el cliente
 		if (rs.getString("DNI") == dni){
 			//Este es el caso optimo donde tanto el DNI y la contraseï¿½a existen y corresponden al mismo usuario
-			if(rs.getString("Contraseña")== contrasenia) {
+			if(rs.getString("Contraseï¿½a")== contrasenia) {
 				login = true;
 				vis.panelLogin.setVisible(false);
 					if(CantidadPasajeros==0) {
@@ -103,7 +103,7 @@ public class ConexionAMySQL {
 					//En este caso el DNI es correcto pero la contraseï¿½a que corresponde a ese usuario es errï¿½nea
 			}
 			else {
-				JOptionPane.showMessageDialog(vis.panelLogin, "Contraseña Incorrecta", "Advertencia", 0);
+				JOptionPane.showMessageDialog(vis.panelLogin, "Contraseï¿½a Incorrecta", "Advertencia", 0);
 				login = false;
 			}
 				
@@ -133,23 +133,21 @@ public class ConexionAMySQL {
 		mod.municipio.crearYMeterMunicipios(mod);
 		mod.autobus.crearYMeterAutobuses(mod);
 	}
-	
-	public double PrecioTrayecto(Modelo mod) throws SQLException{
-		double precioGasolina = 0.80;
-		String DatosAutobus = "";
-		float consumo=0;
+	/**
+	 * Pedimos los datos de cantidad de asientos y el consumo a la BD,
+	 * @param mod
+	 * @return
+	 * @throws SQLException
+	 */
+	public double calcularPrecioTrayecto(Parada paradaSld,Parada paradaLlgd) throws SQLException{
+		final double precioGasolina = 0.80;
+		String DatosAutobus = "select N_plazas, Consumo_km from autobus";
+		ResultSet rs = hacerPeticion(DatosAutobus);
+		
+		float consumo=rs.getFloat("Consumo_km");
+		int asiento=rs.getInt("N_plazas");
+		
 		double distancia= 0;
-		int asiento=0;
-		
-		ResultSet rs;
-		
-		//Pedimos los datos de cantidad de asientos y el consumo a la BD
-		DatosAutobus = "select N_plazas, Consumo_km from autobus";
-		
-		rs = mod.db.hacerPeticion(DatosAutobus);
-		
-		consumo = rs.getFloat("Consumo_km");
-		asiento = rs.getInt("N_plazas");
 						
 		
 		double total=(precioGasolina*consumo*distancia)/asiento;

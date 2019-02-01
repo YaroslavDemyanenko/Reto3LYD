@@ -19,6 +19,7 @@ public class Modelo {
 	
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
+	public Billete billeteIda,billeteVuelta;
 	
 	private boolean idaYVuelta=false;
 	public int numeroBilletes;

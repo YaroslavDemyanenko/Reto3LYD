@@ -57,6 +57,7 @@ public class Controlador {
 				}
 			}
 			else if (e.getSource() == vis.panelLineas2.btnConfirmar) {
+				//mod.db.calcularPrecioTrayecto(mod);
 				vis.setContentPane(vis.panelResumen);
 				mod.metodo.mostrarResumenTrayecto(vis, mod);
 				

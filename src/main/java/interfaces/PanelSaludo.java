@@ -63,7 +63,7 @@ public class PanelSaludo extends JPanel {
 		lblBienvenidoATermibus.setBounds(174, 157, 471, 159);
 		add(lblBienvenidoATermibus);
 		
-		lblNewLabel = new JLabel("");
+		lblNewLabel = new JLabel("test");
 		lblNewLabel.setBounds(506, 438, 296, 135);
 		add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(PanelSaludo.class.getResource("/imagenes/logo-termibus.png")));
