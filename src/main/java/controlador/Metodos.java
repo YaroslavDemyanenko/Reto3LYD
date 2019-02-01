@@ -48,13 +48,7 @@ public class Metodos {
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
 
-	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) throws SQLException {
-			String sql = "select DNI from cliente where DNI = " + cliente.dni+"";
-			ResultSet rs = mod.db.hacerPeticion(sql);
-			if (rs.next()) {
-				return true;
-			}else return false;
-	}
+	
 
 
 	public void Login(Modelo mod, String dni, String contrasenia) {
@@ -63,41 +57,21 @@ public class Metodos {
 		String LoginDB = "";
 
 		try {
-
-			ResultSet rs;
-
-			/* llamamos a la base de datos el DNI y la contrase�a del cliente */
+			ResultSet rs=mod.db.hacerPeticion(LoginDB);
 			LoginDB = "select DNI,Contrase�a from cliente";
-
-			rs = mod.db.hacerPeticion(LoginDB);
-
-			/*
-			 * Comparamos los datos de la base de datos con los que ha introducido en el
-			 * login el cliente
-			 */
 			if (rs.getString("DNI") == dni) {
-				/*
-				 * Este es el caso �ptimo donde tanto el DNI y la contrase�a existen y
-				 * corresponden al mismo usuario
-				 */
 				if (rs.getString("Contrase�a") == contrasenia) {
 					login = true;
 				}
-				/*
-				 * En este caso el DNI es correcto pero la contrase�a que corresponde a ese
-				 * usuario es err�nea
-				 */
 				else {
 					System.out.println("Contraseña incorrecta");
 					login = false;
 				}
 			}
-			/* En este caso el DNI que ha metido no est� registrado en la BD */
 			else {
 				System.out.println(" Usuario inexistente");
 				login = false;
 			}
-
 		} catch (Exception e) {
 			System.out.println("Error en obtener usuario");
 		}

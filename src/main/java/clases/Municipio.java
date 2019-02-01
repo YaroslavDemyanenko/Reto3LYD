@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Municipio {
-	public String nombre;
-	public int codigoPostal;
+	String nombre;
+	int codigoPostal;
 	ArrayList<Parada> paradas = new ArrayList<Parada>();
 
 	public Municipio() {

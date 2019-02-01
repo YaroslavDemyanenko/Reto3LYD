@@ -2,8 +2,6 @@ package clases;
 
 import java.sql.Date;
 
-import sun.security.util.Password;
-
 public class Cliente {
 	public String dni;
 	public String nombre;
@@ -12,8 +10,6 @@ public class Cliente {
 	public char sexo;
 	private char[] contrasenia;
 	
-
-	                                          /*CONSTRUCTOR 1*/
 	public Cliente(String dni, String nombre, String apellido, Date fechaNac, char sexo, char[] contrasenia) {
 		
 		this.nombre = nombre;
@@ -23,12 +19,10 @@ public class Cliente {
 		this.sexo = sexo;
 		this.fechaNac = fechaNac;
 	}
-	                                          /*CONSTRUCTOR 2*/
-	public Cliente() {
-		
+	
+	public Cliente() {	
 	}
 	
-	/*pasajeros Extra*/                       /*CONSTRUCTOR 3*/
 	public Cliente(String nombre, String apellido, String dni, char sexo) {
 		
 		this.nombre = nombre;
@@ -43,7 +37,4 @@ public class Cliente {
 		this.contrasenia = contrasenia;
 	}
 	
-
-
-
 }

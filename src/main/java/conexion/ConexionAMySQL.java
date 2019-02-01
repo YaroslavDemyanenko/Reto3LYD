@@ -47,24 +47,29 @@ public class ConexionAMySQL {
 		}return null;
 	}
 	
-	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
+	public void insertarUsuarioEnBaseDeDatos(Modelo mod,Cliente usuario) {
 		try {
-			String query = "insert into cliente ("
-					+"dni, "
-					+"nombre,"
-					+"apellidos, "
-					+"fechaNac, "
-					+"sexo, "
-					+"constraseña";
-					
-
-			Statement peticion = conexion.createStatement();
-			ResultSet resultadoPeticion = peticion.executeQuery(query);
-			//return resultadoPeticion;
+			String query = "insert into cliente (DNI,Nombre,Apellidos,Fecha_nac,Sexo,Constraseña) values(?,?,?,?,?,?);";
+			PreparedStatement insertartUsuario=mod.db.conexion.prepareStatement(query);
+	            insertartUsuario.setString(1, usuario.dni);
+	            insertartUsuario.setString(2, usuario.nombre);
+	            insertartUsuario.setString(3, usuario.apellido);
+	            insertartUsuario.setDate(4, usuario.fechaNac);
+	            insertartUsuario.setString(5, String.valueOf(usuario.sexo));
+	            //insertartUsuario.setCharacterStream(6, reader, length);
+			
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 	}
+	
+	public boolean comprobarDNIenBD(Modelo mod, Cliente cliente) throws SQLException {
+		String sql = "select DNI from cliente where DNI = " + cliente.dni+"";
+		ResultSet rs = mod.db.hacerPeticion(sql);
+		if (rs.next()) {
+			return true;
+		}else return false;
+}
 
 
 	public void llenarModeloConLinea(Ventana vis, Modelo mod) throws SQLException {
