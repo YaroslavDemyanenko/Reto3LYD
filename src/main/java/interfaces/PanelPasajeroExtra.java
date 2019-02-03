@@ -33,7 +33,6 @@ public class PanelPasajeroExtra extends JPanel{
 	
 	public PanelPasajeroExtra() {
 		setLayout(null);
-		setVisible(false);
 		setBounds(0,0,800,600);
 		setBackground(new Color(193, 240, 240));
 		
@@ -99,10 +98,16 @@ public class PanelPasajeroExtra extends JPanel{
 		lblNombre.setBounds(216, 151, 109, 39);
 		add(lblNombre);
 		
-		lblRegistroUsuario = new JLabel("Registro usuario 2");
+		lblRegistroUsuario = new JLabel("Registro pasajero extra");
 		lblRegistroUsuario.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblRegistroUsuario.setBounds(265, 39, 269, 48);
+		lblRegistroUsuario.setBounds(235, 39, 330, 48);
 		add(lblRegistroUsuario);
 	
+	}
+	
+	public void limpiar() {
+		textFieldApellido.setText("");
+		textFieldDNI.setText("");
+		textFieldNombre.setText("");
 	}
 }

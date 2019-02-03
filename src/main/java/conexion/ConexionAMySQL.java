@@ -45,93 +45,77 @@ public class ConexionAMySQL {
 			return resultadoPeticion;
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
-		}return null;
+		}
+		return null;
 	}
+
 	/**
 	 * Inserta un usuario nuevo en la base de datos
+	 * 
 	 * @param usuario
 	 */
-	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
+	public void insertarUsuarioEnBaseDeDatos(Cliente usuario, Modelo mod) {
 		try {
 			String query = "insert into cliente (DNI,Nombre,Apellidos,Fecha_nac,Sexo,Constraseña) values(?,?,?,?,?,?);";
-			PreparedStatement insertartUsuario=this.conexion.prepareStatement(query);
-	            insertartUsuario.setString(1, usuario.dni);
-	            insertartUsuario.setString(2, usuario.nombre);
-	            insertartUsuario.setString(3, usuario.apellido);
-	            insertartUsuario.setDate(4, usuario.fechaNac);
-	            insertartUsuario.setString(5, String.valueOf(usuario.sexo));
-	            try {
-					insertartUsuario.setString(6, usuario.encriptarContra());
-				} catch (NoSuchAlgorithmException e) {
-					System.out.println(e);
-				}
-	            insertartUsuario.executeQuery();
+			PreparedStatement insertartUsuario = this.conexion.prepareStatement(query);
+			insertartUsuario.setString(1, usuario.dni);
+			insertartUsuario.setString(2, usuario.nombre);
+			insertartUsuario.setString(3, usuario.apellido);
+			insertartUsuario.setDate(4, usuario.fechaNac);
+			insertartUsuario.setString(5, String.valueOf(usuario.sexo));
+			insertartUsuario.setString(6, mod.metodo.encriptarContra(usuario.getContrasenia()).toString());
+			insertartUsuario.executeQuery();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 	}
+
 	/**
 	 * Comprueba la existencia de ese DNI
+	 * 
 	 * @param cliente
 	 * @return
 	 * @throws SQLException
 	 */
 	public boolean comprobarDNIenBD(Cliente cliente) throws SQLException {
-		String sql = "select DNI from cliente where DNI = " + cliente.dni+"";
+		String sql = "select DNI from cliente where DNI = " + cliente.dni + "";
 		ResultSet rs = hacerPeticion(sql);
 		if (rs.next()) {
 			return true;
-		}else return false;
+		} else
+			return false;
 	}
 
 	/**
 	 * Metodo para loguearse
+	 * 
 	 * @param mod
 	 * @param vis
 	 * @param dni
 	 * @param contrasenia
 	 * @param CantidadPasajeros
+	 * @return
 	 * @throws SQLException
 	 */
-	public void Login(Modelo mod, Ventana vis, String dni, String contrasenia, int CantidadPasajeros )throws SQLException {
-
-		Boolean login = false;		
-		String sql = "select DNI,Contraseña from cliente";
+	public Cliente iniciarSesion(Modelo mod, Ventana vis) {
+		String dniUsuario = vis.panelLogin.textFieldDNILogin.getText();
+		String contraUsuario = mod.metodo.encriptarContra(vis.panelLogin.passFieldContraseniaLogin.getPassword());
+		String sql = "select * from cliente where DNI=\"" + dniUsuario + "\"";
 		ResultSet rs = mod.db.hacerPeticion(sql);
-			
-			//ResultSet rs;
-
-			// llamamos a la base de datos el DNI y la contrase�a del cliente 
-			//LoginDB = "select DNI,Contrase�a from cliente";
-
-			//rs = mod.db.hacerPeticion(LoginDB);
-
-			//Comparamos los datos de la base de datos con los que ha introducido en el login el cliente
-		if (rs.getString("DNI") == dni){
-			//Este es el caso optimo donde tanto el DNI y la contrase�a existen y corresponden al mismo usuario
-			if(rs.getString("Contrase�a")== contrasenia) {
-				login = true;
-				vis.panelLogin.setVisible(false);
-					if(CantidadPasajeros==0) {
-						vis.panelPago.setVisible(true);
-					}						else {
-						vis.panelPasajeroExtra.setVisible(true);
-					}
-					//En este caso el DNI es correcto pero la contrase�a que corresponde a ese usuario es err�nea
-			}
-			else {
-				JOptionPane.showMessageDialog(vis.panelLogin, "Contrase�a Incorrecta", "Advertencia", 0);
-				login = false;
-			}
-				
+		try {
+			if (rs.next()) {
+				String contraBase = rs.getString("Contraseña");
+				if (contraBase.equals(contraUsuario)) {
+					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fecha_nac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Contraseña").toCharArray()));
+				} else {
+					System.out.println("Contraseña erronea");
+				}
+			} else System.out.println("El usuario no existe");
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		// En este caso el DNI que ha metido no est� registrado en la BD
-		else {
-			JOptionPane.showMessageDialog(vis.panelLogin, "Usuario inexistente", "Advertencia", 0);
-			login = false;
-		}
+		return null;
 	}
-		
 
 	public void llenarModeloConLinea(Ventana vis, Modelo mod) throws SQLException {
 		String peticion = "SELECT * FROM `linea`";
@@ -151,25 +135,26 @@ public class ConexionAMySQL {
 		mod.autobus.crearYMeterAutobuses(mod);
 	}
 
-
 	/**
-	 * Calculamos el precio del trayecto dependiendo de las paradas que haya elegido el usuario
+	 * Calculamos el precio del trayecto dependiendo de las paradas que haya elegido
+	 * el usuario
+	 * 
 	 * @param mod
 	 * @param llegada
 	 * @param salida
 	 * @return
 	 * @throws SQLException
 	 */
-	public double PrecioTrayecto(Modelo mod, Parada llegada, Parada salida) throws SQLException{
+	public double PrecioTrayecto(Modelo mod, Parada llegada, Parada salida) throws SQLException {
 
 		double precioGasolina = 0.80;
-		String DatosAutobus = "select N_plazas, Consumo_km from autobus";		
-		ResultSet rs = mod.db.hacerPeticion(DatosAutobus);		
+		String DatosAutobus = "select N_plazas, Consumo_km from autobus";
+		ResultSet rs = mod.db.hacerPeticion(DatosAutobus);
 		float consumo = rs.getFloat("Consumo_km");
 		int asiento = rs.getInt("N_plazas");
-		double distancia=controlador.Metodos.distanciaLineas(salida, llegada);				
-		
-		return (precioGasolina*consumo*distancia)/asiento;
+		double distancia = controlador.Metodos.distanciaLineas(salida, llegada);
+
+		return (precioGasolina * consumo * distancia) / asiento;
 
 	}
 

@@ -19,7 +19,7 @@ import javax.swing.border.BevelBorder;
  */
 public class PanelSaludo extends JPanel {
 
-	public JLabel lblBienvenidoATermibus,lblTocaParaContinuar, lblUsuario,lblNewLabel;
+	public JLabel lblBienvenidoATermibus,lblTocaParaContinuar, lblUsuario,lblLogo;
 	public JButton btnSignUP;
 	
 	public PanelSaludo() {
@@ -44,6 +44,7 @@ public class PanelSaludo extends JPanel {
 		btnSignUP.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSignUP.setBounds(676, 12, 102, 23);
 		add(btnSignUP);
+		btnSignUP.setName("botonLogin");
 		
 		
 		lblTocaParaContinuar = new JLabel();
@@ -63,10 +64,10 @@ public class PanelSaludo extends JPanel {
 		lblBienvenidoATermibus.setBounds(174, 157, 471, 159);
 		add(lblBienvenidoATermibus);
 		
-		lblNewLabel = new JLabel("test");
-		lblNewLabel.setBounds(506, 438, 296, 135);
-		add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(PanelSaludo.class.getResource("/imagenes/logo-termibus.png")));
+		lblLogo = new JLabel("test");
+		lblLogo.setBounds(506, 438, 296, 135);
+		add(lblLogo);
+		lblLogo.setIcon(new ImageIcon(PanelSaludo.class.getResource("/imagenes/logo-termibus.png")));
 		
 		
 		

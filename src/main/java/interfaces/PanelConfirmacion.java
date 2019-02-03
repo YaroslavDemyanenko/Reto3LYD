@@ -185,7 +185,15 @@ public class PanelConfirmacion extends JPanel {
 		fechaVuelta = new JDateChooser((JCalendar) null, (Date) null, (String) null, (IDateEditor) null);
 		fechaVuelta.setBounds(549, 278, 137, 27);
 		add(fechaVuelta);
-		
-
+	}
+	public void limpiar() {
+		lblFieldCodigo.setText("");
+		lblFieldApellidos.setText("");
+		lblFieldNombre.setText("");
+		lblFieldCodigo.setText("");
+		lblFieldLinea.setText("");
+		lblFieldParadaFin.setText("");
+		lblFieldParadaInicio.setText("");
+		lblFieldTipoTrayecto.setText("");
 	}
 }

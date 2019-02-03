@@ -4,11 +4,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
-
-import javax.swing.JOptionPane;
 
 import clases.Cliente;
 import clases.Modelo;
@@ -17,9 +14,9 @@ import interfaces.Ventana;
 
 public class Metodos {
 
-
 	/**
-	 * Ingresa un cliente en la base de datos
+	 * Crea un objeto cliente
+	 * 
 	 * @param nombre
 	 * @param apellido
 	 * @param dni
@@ -41,6 +38,7 @@ public class Metodos {
 
 	/**
 	 * Limita las fechas de los billetes
+	 * 
 	 * @param vis
 	 * @param numDias
 	 */
@@ -55,7 +53,8 @@ public class Metodos {
 	}
 
 	/**
-	 * Limita las fechas de la vuelta 
+	 * Limita las fechas de la vuelta
+	 * 
 	 * @param vis
 	 * @param numDias
 	 */
@@ -71,19 +70,41 @@ public class Metodos {
 	}
 
 	/**
-	public void PasajeroExtra(Ventana vis, int CantidadPasajeros) {
+	 * Metodo de incripatcion de la contraseña
+	 * 
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 */
+	public String encriptarContra(char[] contrasenia) {
 
-		Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
-
-		// Genera clientes extra en base a la cantidad de pasajeros extra 
-		while (CantidadPasajeros > 0) {
-			pasajeroExtra[CantidadPasajeros] = new Cliente(vis.panelPasajeroExtra.textFieldNombre.getText(),
-					//vis.panelPasajeroExtra.textFieldApellido.getText(), vis.panelPasajeroExtra.textFieldDNI.getText(),
-					//vis.panelPasajeroExtra.textFieldSexo.getToolTipText());
-			//CantidadPasajeros = CantidadPasajeros - 1;
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			String contraEnc = new String(contrasenia);
+			byte[] hashInBytes = md.digest(contraEnc.getBytes(StandardCharsets.UTF_8));
+			StringBuilder sb = new StringBuilder();
+			for (byte b : hashInBytes) {
+				sb.append(String.format("%02x", b));
+			}
+			return sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
-	**/
+
+	/**
+	 * public void PasajeroExtra(Ventana vis, int CantidadPasajeros) {
+	 * 
+	 * Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
+	 * 
+	 * // Genera clientes extra en base a la cantidad de pasajeros extra while
+	 * (CantidadPasajeros > 0) { pasajeroExtra[CantidadPasajeros] = new
+	 * Cliente(vis.panelPasajeroExtra.textFieldNombre.getText(),
+	 * //vis.panelPasajeroExtra.textFieldApellido.getText(),
+	 * vis.panelPasajeroExtra.textFieldDNI.getText(),
+	 * //vis.panelPasajeroExtra.textFieldSexo.getToolTipText()); //CantidadPasajeros
+	 * = CantidadPasajeros - 1; } }
+	 **/
 
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
@@ -91,85 +112,37 @@ public class Metodos {
 		vis.panelResumen.lblNombreParadaFin.setText(vis.panelLineas2.modeloListaDestinos.getElementAt(vis.panelLineas2.listaDestinos.getSelectedIndex()));
 		if (mod.isIdaYVuelta()) {
 			vis.panelResumen.lblIdaYVuelta.setText("Ida y vuelta");
+			vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 		} else {
 			vis.panelResumen.lblIdaYVuelta.setText("Ida");
+			vis.panelResumen.calendarioVuelta.setVisible(false);
+			vis.panelResumen.lblFechaVuelta.setVisible(false);
 		}
+		vis.panelResumen.calendarioIda.setDate(vis.panelLineas2.calendarioIda.getDate());
 		mod.numeroBilletes = (Integer) vis.panelLineas2.spnNumeroDeBilletes.getValue();
 		vis.panelResumen.lblNumeroDeBilletes.setText(String.valueOf(mod.numeroBilletes));
 		vis.panelResumen.calendarioIda.setDate(vis.panelLineas2.calendarioIda.getDate());
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
 
-	
-
-	public static double distanciaLineas(Parada llegada, Parada salida){
-		double latitudX=(salida.getLatitud()-llegada.getLatitud())*(salida.getLatitud()-llegada.getLatitud());
-		double altitudX=(salida.getLongitud()-llegada.getLongitud())*(salida.getLongitud()-llegada.getLongitud());
-		double distancia= Math.sqrt(latitudX+altitudX);
+	public static double distanciaLineas(Parada llegada, Parada salida) {
+		double latitudX = (salida.getLatitud() - llegada.getLatitud()) * (salida.getLatitud() - llegada.getLatitud());
+		double altitudX = (salida.getLongitud() - llegada.getLongitud()) * (salida.getLongitud() - llegada.getLongitud());
+		double distancia = Math.sqrt(latitudX + altitudX);
 
 		return distancia;
 	}
 
-
-
-	public void Login(Modelo mod, String dni, String contrasenia) {
-
-		Boolean login = false;
-		String LoginDB = "";
-
-		try {
-			ResultSet rs = mod.db.hacerPeticion(LoginDB);
-			LoginDB = "select DNI,Contrase�a from cliente";
-			if (rs.getString("DNI") == dni) {
-				if (rs.getString("Contrase�a") == contrasenia) {
-					login = true;
-				} else {
-					System.out.println("Contraseña incorrecta");
-					login = false;
-				}
-			} else {
-				System.out.println(" Usuario inexistente");
-				login = false;
-			}
-		} catch (Exception e) {
-			System.out.println("Error en obtener usuario");
-		}
-	}
-			/**
-	public char DevolverSexo(Ventana vis) {
-		char charSexo = 'V';
-		if (vis.panelPasajeroExtra.textFieldSexo.getToolTipText()="Hombre") {
-			charSexo='V'; 
-
-		}
-		else {
-			charSexo='M';
-		}
-		
-		return charSexo;
-		
-	}
-
-
-	
-	 * public void PasajeroExtra(Modelo mod, String dni, String nombre, String
-	 * apellido, String sexo, int CantidadPasajeros) {
+	/**
+	 * public char DevolverSexo(Ventana vis) { char charSexo = 'V'; if
+	 * (vis.panelPasajeroExtra.textFieldSexo.getToolTipText()="Hombre") {
+	 * charSexo='V';
 	 * 
-	 * Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
+	 * } else { charSexo='M'; }
 	 * 
-	 * /* Genera clientes extra en base a la cantidad de pasajeros extra while
-	 * (CantidadPasajeros > 0) { pasajeroExtra[CantidadPasajeros] = new
-	 * Cliente(nombre, apellido, dni, sexo); CantidadPasajeros = CantidadPasajeros -
-	 * 1; } }
-	 
+	 * return charSexo;
+	 * 
+	 * }
+	 **/
 
-<<<<<<< HEAD
 }
-=======
-	
-
-	
-	
-**/ 
-}
-

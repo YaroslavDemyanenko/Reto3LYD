@@ -1,12 +1,18 @@
 package interfaces;
 
-import javax.swing.JPanel;
-
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.util.Calendar;
 import java.util.Date;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
@@ -14,11 +20,6 @@ import com.toedter.calendar.IDateEditor;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-
-import javax.swing.JTextField;
 /**
  * @wbp.parser.entryPoint
  */
@@ -26,9 +27,10 @@ import javax.swing.JTextField;
 public class PanelResumen extends JPanel {
 
 	public JLabel lblUsuario,lblResumen, lblLinea, lblPardaInicio, lblPardaFin, lblTipoDeTrayecto, lblNombreLinea, lblNombrePardaInicio, lblNombreParadaFin, lblIdaYVuelta, lblNumBill, lblNumeroDeBilletes, lblFechaIda, lblFechaVuelta, lblPrecio ;
-	public JButton btnSingUp, btnCancelar, btnConfirmar ;
+	public JButton btnSignUp, btnCancelar, btnConfirmar ;
 	public JDateChooser calendarioIda, calendarioVuelta;
 	public JTextField textPrecio;
+	public JSpinnerDateEditor spinnerDateEditorIda,spinnerDateEditorVuelta;
 	
 	public PanelResumen() {
 		
@@ -36,13 +38,14 @@ public class PanelResumen extends JPanel {
 		setLayout(null);
 		setBackground(new Color(193, 240, 240));
 		
-		btnSingUp = new JButton("Sign Up");
-		btnSingUp.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
-		btnSingUp.setAlignmentY(Component.TOP_ALIGNMENT);
-		btnSingUp.setBackground(new Color(192, 192, 192));
-		btnSingUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnSingUp.setBounds(689, 12, 89, 23);
-		add(btnSingUp);
+		btnSignUp = new JButton("Sign Up");
+		btnSignUp.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnSignUp.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnSignUp.setBackground(new Color(192, 192, 192));
+		btnSignUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnSignUp.setBounds(689, 12, 89, 23);
+		add(btnSignUp);
+		btnSignUp.setName("botonLogin");
 		
 		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -131,9 +134,7 @@ public class PanelResumen extends JPanel {
 		add(lblFechaIda);
 		
 		
-		calendarioIda = new JDateChooser((JCalendar) null, (Date) null, (String) null, (IDateEditor) null);
-		calendarioIda.setBounds(554, 202, 137, 27);
-		add(calendarioIda);
+		
 		
 
 		lblLinea = new JLabel("Linea:");
@@ -148,10 +149,6 @@ public class PanelResumen extends JPanel {
 		lblFechaVuelta.setBounds(570, 295, 104, 24);
 		add(lblFechaVuelta);
 		
-		calendarioVuelta = new JDateChooser((JCalendar) null, (Date) null, (String) null, (IDateEditor) null);
-		calendarioVuelta.setBounds(554, 341, 137, 27);
-		add(calendarioVuelta);
-		
 		lblPrecio = new JLabel("Precio:");
 		lblPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -163,6 +160,47 @@ public class PanelResumen extends JPanel {
 		textPrecio.setBounds(563, 448, 119, 41);
 		add(textPrecio);
 		textPrecio.setColumns(10);
+		
+		
+		
+		
+		spinnerDateEditorIda = new JSpinnerDateEditor();
+		spinnerDateEditorIda.setEnabled(false);
+		((JSpinner.DefaultEditor) spinnerDateEditorIda.getEditor()).getTextField().setEditable(false);
+		((JSpinner.DefaultEditor) spinnerDateEditorIda.getEditor()).getTextField().setEnabled(true);
+		spinnerDateEditorIda.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		calendarioIda = new JDateChooser(null, null, null, spinnerDateEditorIda);
+		calendarioIda.getCalendarButton().setEnabled(false);
+		calendarioIda.getCalendarButton().setDisabledIcon(new ImageIcon(PanelResumen.class.getResource("/imagenes/JCalendarColor16.gif")));
+		calendarioIda.setBounds(554, 202, 137, 27);
+		calendarioIda.setDateFormatString("dd-MM-yyyy");
+		add(calendarioIda);
+		
+		
+		spinnerDateEditorVuelta = new JSpinnerDateEditor();
+		spinnerDateEditorVuelta.setEnabled(false);
+		((JSpinner.DefaultEditor) spinnerDateEditorVuelta.getEditor()).getTextField().setEditable(false);
+		((JSpinner.DefaultEditor) spinnerDateEditorVuelta.getEditor()).getTextField().setEnabled(true);
+		spinnerDateEditorVuelta.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		calendarioVuelta = new JDateChooser(null, null, null, spinnerDateEditorVuelta);
+		calendarioVuelta.getCalendarButton().setEnabled(false);
+		calendarioVuelta.getCalendarButton().setDisabledIcon(new ImageIcon(PanelResumen.class.getResource("/imagenes/JCalendarColor16.gif")));
+		calendarioVuelta.setBounds(554, 341, 137, 27);
+		calendarioVuelta.setDateFormatString("dd-MM-yyyy");
+		add(calendarioVuelta);
 
+	}
+	public void limpiar() {
+		lblNombreLinea.setText("");
+		lblNombrePardaInicio.setText("");
+		lblNombreParadaFin.setText("");
+		lblIdaYVuelta.setText("");
+		textPrecio.setText("0");
+		calendarioIda.setDate(Calendar.getInstance().getTime());
+		calendarioVuelta.setDate(Calendar.getInstance().getTime());
+		calendarioVuelta.setVisible(true);
+		lblFechaVuelta.setVisible(true);
 	}
 }

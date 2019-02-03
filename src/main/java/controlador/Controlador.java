@@ -10,6 +10,7 @@ import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -34,6 +35,21 @@ public class Controlador {
 		this.vis.panelLineas1.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelLineas2.calendarioIda.addPropertyChangeListener("date",new calendarListener());
 		this.vis.panelLineas2.btnConfirmar.addActionListener(new btnListener());
+		
+		this.vis.panelSaludo.btnSignUP.addActionListener(new btnListener());
+		this.vis.panelLineas1.btnSignUP.addActionListener(new btnListener());
+		this.vis.panelLineas2.btnLogIn.addActionListener(new btnListener());
+		this.vis.panelResumen.btnSignUp.addActionListener(new btnListener());
+		
+		this.vis.panelLogin.btnConfirmarLogin.addActionListener(new btnListener());
+		
+		this.vis.panelLineas1.btnCancelar.addActionListener(new cancelListener());
+		this.vis.panelLineas2.btnCancelar.addActionListener(new cancelListener());
+		this.vis.panelResumen.btnCancelar.addActionListener(new cancelListener());
+		this.vis.panelPasajeroExtra.btnCancelar.addActionListener(new cancelListener());
+		this.vis.panelLogin.btnCancelar.addActionListener(new cancelListener());
+		this.vis.panelConfirmacion.btnCancelar.addActionListener(new cancelListener());
+		this.vis.panelPago.btnCancelar.addActionListener(new cancelListener());
 	}
 
 
@@ -62,6 +78,32 @@ public class Controlador {
 				vis.setContentPane(vis.panelResumen);
 				mod.metodo.mostrarResumenTrayecto(vis, mod);
 				
+			}
+			else if(((JButton) e.getSource()).getName()=="botonLogin") {
+				mod.ultimoPanel=(JPanel) ((JButton) e.getSource()).getParent();
+				vis.setContentPane(vis.panelLogin);
+			}
+			else if (e.getSource() == vis.panelLogin.btnConfirmarLogin) {
+				mod.clienteRegistrado=mod.db.iniciarSesion(mod, vis);
+				if(mod.clienteRegistrado != null) {
+					vis.setContentPane(mod.ultimoPanel);
+				}
+			}
+		}
+	}
+	
+	private class cancelListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			vis.setContentPane(vis.panelSaludo);
+			mod.reset();
+			switch(( ((JButton) e.getSource()).getParent().getName())) {
+				case "panelConfirmacion":vis.panelConfirmacion.limpiar();
+				case "panelPago":vis.panelPago.limpiar();
+				case "panelPasajeroExtra":vis.panelPasajeroExtra.limpiar();
+				case "panelLogin":vis.panelLogin.limpiar();
+				case "panelResumen":vis.panelResumen.limpiar();
+				case "panelLineas2":vis.panelLineas2.limpiar();
+				case "PanelLineas1":vis.panelLineas1.limpiar();break;
 			}
 		}
 	}
@@ -111,12 +153,14 @@ public class Controlador {
 
 		@Override
 		public void valueChanged(ListSelectionEvent e) {
-			if (e.getSource() == vis.panelLineas1.listLineas) {
+			if (e.getSource() == vis.panelLineas1.listLineas && e.getValueIsAdjusting()==true) {
 				try {
 					vis.panelLineas1.modeloParadas.clear();
 					mod.parada.paradasIdaAModelo(vis, mod);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
+				} catch (NullPointerException e2) {
+					e2.printStackTrace();
 				}
 			}
 
@@ -136,34 +180,4 @@ public class Controlador {
 		
 	}
 	
-	private class loginListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			
-			if (((JButton) e.getSource()).getName()=="botonLogin") {
-				
-			}
-		}
-	}
-	/**
-	 * private VentanaPrincipal vista; private Cliente modelo;
-	 * 
-	 * public Controlador(VentanaPrincipal vista, Cliente modelo) { this.vista =
-	 * vista; this.modelo = modelo; this.vista.panel1.boton.addActionListener(this);
-	 * this.vista.panel2.boton.addActionListener(this); }
-	 * 
-	 * 
-	 * @Override public void actionPerformed(ActionEvent e) {
-	 * 
-	 *           if (e.getSource() == vista.panel1.boton) {
-	 *           modelo.setNombre(vista.panel1.textNombre.getText());
-	 *           modelo.setApellido(vista.panel1.textApellido.getText());
-	 *           vista.setContentPane(vista.panel2);
-	 *           vista.panel2.textDatos.setText(modelo.getNombre() + "\n" +
-	 *           modelo.getApellido()); }
-	 * 
-	 *           if (e.getSource() == vista.panel2.boton) {
-	 *           vista.panel1.setVisible(true); vista.panel2.setVisible(false); }
-	 * 
-	 *           }
-	 **/
 }

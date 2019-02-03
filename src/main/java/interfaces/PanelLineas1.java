@@ -21,7 +21,7 @@ import java.awt.Font;
 public class PanelLineas1 extends JPanel {
 	
 
-	public JButton btnSingUp;
+	public JButton btnSignUP;
 	public JLabel lblUsuario, lblLinea, lblParadaInicio;
 	public JRadioButton rdbtnIda, rdbtnIdayVuelta;
 	public ButtonGroup grupoTipoViaje;
@@ -35,13 +35,14 @@ public class PanelLineas1 extends JPanel {
 		setBounds(0, 0, 800, 600);
 		setLayout(null);
 	
-		btnSingUp = new JButton("Sign Up");
-		btnSingUp.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
-		btnSingUp.setAlignmentY(Component.TOP_ALIGNMENT);
-		btnSingUp.setBackground(new Color(192, 192, 192));
-		btnSingUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnSingUp.setBounds(689, 12, 89, 23);
-		add(btnSingUp);
+		btnSignUP = new JButton("Sign Up");
+		btnSignUP.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnSignUP.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnSignUP.setBackground(new Color(192, 192, 192));
+		btnSignUP.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnSignUP.setBounds(689, 12, 89, 23);
+		add(btnSignUP);
+		btnSignUP.setName("botonLogin");
 		
 		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -108,5 +109,14 @@ public class PanelLineas1 extends JPanel {
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setBounds(655, 527, 129, 35);
 		add(btnConfirmar);
+	}
+	public void limpiar() {
+		listLineas.clearSelection();
+		modeloLineas.clear();;
+		listParadas.clearSelection();
+		modeloParadas.clear();;
+		lblUsuario.setText("Usuario");
+		rdbtnIda.setSelected(true);
+		rdbtnIdayVuelta.setSelected(false);
 	}
 }

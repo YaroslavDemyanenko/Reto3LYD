@@ -1,7 +1,10 @@
 package clases;
 
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.swing.JPanel;
 
 import conexion.ConexionAMySQL;
 import controlador.Metodos;
@@ -24,6 +27,9 @@ public class Modelo {
 	private boolean idaYVuelta=false;
 	public int numeroBilletes;
 	public Cliente clienteRegistrado;
+	public JPanel ultimoPanel;
+	public Parada paradaSalida, paradaDestino;
+	public Color colorCalendario;
 	
 	public Modelo(ConexionAMySQL db) {
 		autobus=new Autobus();
@@ -47,5 +53,16 @@ public class Modelo {
 
 	public void setIdaYVuelta(boolean idaYVuelta) {
 		this.idaYVuelta = idaYVuelta;
+	}
+	
+	public void reset() {
+		billeteIda=null;
+		billeteVuelta=null;
+		numeroBilletes=0;
+		clienteRegistrado=null;
+		ultimoPanel=null;
+		paradaSalida=null;
+		paradaDestino=null;
+		idaYVuelta=false;
 	}
 }
