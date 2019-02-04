@@ -26,7 +26,7 @@ public class ConexionAMySQL {
 	 */
 	public ConexionAMySQL(String ip, String puerto, String baseDatos, String user, String pass) {
 		try {
-			this.conexion = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + baseDatos + "?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass);
+			this.conexion=(DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + baseDatos + "?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass));
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
@@ -49,6 +49,14 @@ public class ConexionAMySQL {
 		return null;
 	}
 
+	public void llenarModeloConLinea(Ventana vis, Modelo mod) throws SQLException {
+		String peticion = "SELECT * FROM `linea`";
+		ResultSet resul = mod.db.hacerPeticion(peticion);
+		while (resul.next()) {
+			vis.panelLineas1.modeloLineas.addElement(resul.getString("Cod_Linea") + " " + resul.getString("Nombre"));
+		}
+	}
+	
 	/**
 	 * Inserta un usuario nuevo en la base de datos
 	 * 
@@ -63,65 +71,10 @@ public class ConexionAMySQL {
 			insertartUsuario.setString(3, usuario.apellido);
 			insertartUsuario.setDate(4, usuario.fechaNac);
 			insertartUsuario.setString(5, String.valueOf(usuario.sexo));
-			insertartUsuario.setString(6, mod.metodo.encriptarContra(usuario.getContrasenia()).toString());
+			insertartUsuario.setString(6, mod.metodosLogin.encriptarContra(usuario.getContrasenia()).toString());
 			insertartUsuario.executeQuery();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
-		}
-	}
-
-	/**
-	 * Comprueba la existencia de ese DNI
-	 * 
-	 * @param cliente
-	 * @return
-	 * @throws SQLException
-	 */
-	public boolean comprobarDNIenBD(Cliente cliente) throws SQLException {
-		String sql = "select DNI from cliente where DNI = " + cliente.dni + "";
-		ResultSet rs = hacerPeticion(sql);
-		if (rs.next()) {
-			return true;
-		} else
-			return false;
-	}
-
-	/**
-	 * Metodo para loguearse
-	 * 
-	 * @param mod
-	 * @param vis
-	 * @param dni
-	 * @param contrasenia
-	 * @param CantidadPasajeros
-	 * @return
-	 * @throws SQLException
-	 */
-	public Cliente iniciarSesion(Modelo mod, Ventana vis) {
-		String dniUsuario = vis.panelLogin.textFieldDNILogin.getText();
-		String contraUsuario = mod.metodo.encriptarContra(vis.panelLogin.passFieldContraseniaLogin.getPassword());
-		String sql = "select * from cliente where DNI=\"" + dniUsuario + "\"";
-		ResultSet rs = mod.db.hacerPeticion(sql);
-		try {
-			if (rs.next()) {
-				String contraBase = rs.getString("Contraseña");
-				if (contraBase.equals(contraUsuario)) {
-					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fecha_nac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Contraseña").toCharArray()));
-				} else {
-					System.out.println("Contraseña erronea");
-				}
-			} else System.out.println("El usuario no existe");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public void llenarModeloConLinea(Ventana vis, Modelo mod) throws SQLException {
-		String peticion = "SELECT * FROM `linea`";
-		ResultSet resul = mod.db.hacerPeticion(peticion);
-		while (resul.next()) {
-			vis.panelLineas1.modeloLineas.addElement(resul.getString("Cod_Linea") + " " + resul.getString("Nombre"));
 		}
 	}
 
@@ -157,6 +110,7 @@ public class ConexionAMySQL {
 		return (precioGasolina * consumo * distancia) / asiento;
 
 	}
+
 
 	/**
 	 * Statement stmt = con.createStatement(); ResultSet rs =

@@ -84,7 +84,7 @@ public class Controlador {
 				vis.setContentPane(vis.panelLogin);
 			}
 			else if (e.getSource() == vis.panelLogin.btnConfirmarLogin) {
-				mod.clienteRegistrado=mod.db.iniciarSesion(mod, vis);
+				mod.clienteRegistrado=mod.metodosLogin.iniciarSesion(mod, vis);
 				if(mod.clienteRegistrado != null) {
 					vis.setContentPane(mod.ultimoPanel);
 				}

@@ -82,28 +82,8 @@ public class Metodos {
 		vis.panelPasajeroExtra.textFieldSexo.setSelectedIndex(0);
 	}
 
-	/**
-	 * Metodo de incripatcion de la contraseña
-	 * 
-	 * @return
-	 * @throws NoSuchAlgorithmException
-	 */
-	public String encriptarContra(char[] contrasenia) {
-
-		try {
-			MessageDigest md = MessageDigest.getInstance("MD5");
-			String contraEnc = new String(contrasenia);
-			byte[] hashInBytes = md.digest(contraEnc.getBytes(StandardCharsets.UTF_8));
-			StringBuilder sb = new StringBuilder();
-			for (byte b : hashInBytes) {
-				sb.append(String.format("%02x", b));
-			}
-			return sb.toString();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
+	
 
 	/**
 	 * public void PasajeroExtra(Ventana vis, int CantidadPasajeros) {

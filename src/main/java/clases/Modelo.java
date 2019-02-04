@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import conexion.ConexionAMySQL;
 import controlador.Metodos;
+import controlador.MetodosLoginYRegistro;
 
 public class Modelo {
 
@@ -19,6 +20,7 @@ public class Modelo {
 	public Parada parada;
 	public ConexionAMySQL db;
 	public Metodos metodo;
+	public MetodosLoginYRegistro metodosLogin;
 	
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
@@ -39,6 +41,7 @@ public class Modelo {
 		municipio=new Municipio();
 		parada=new Parada();
 		metodo=new Metodos();
+		metodosLogin=new MetodosLoginYRegistro();
 		this.db=db;
 		try {
 			db.inicializarLineas(this);
