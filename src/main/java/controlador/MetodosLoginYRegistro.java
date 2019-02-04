@@ -101,7 +101,7 @@ public class MetodosLoginYRegistro {
 			apellido.length()>0 &&
 			validarDNI(dni)==true &&
 			fechaNac.before(Calendar.getInstance().getTime()) &&
-			validarContraseña(contra)
+			validarContrasenia(contra)
 			) 
 		{
 			if(comprobarDNIenBD(vis.panelLogin.textFieldDNI.getText(), mod)==false) {
@@ -116,7 +116,7 @@ public class MetodosLoginYRegistro {
 		return null;
 	}
 	
-	private boolean validarContraseña(char[] contra) {
+	private boolean validarContrasenia(char[] contra) {
 		if (contra.length >= 8) {
 			//Regex para validar contraseña, por orden: Una letra minuscula, una letra mayuscula, un numero y minimo 8 caracteres de longitud
 			if(contra.toString().matches("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})")) {
