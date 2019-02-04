@@ -41,6 +41,7 @@ public class Controlador {
 		this.vis.panelResumen.btnSignUp.addActionListener(new btnListener());
 		
 		this.vis.panelLogin.btnConfirmarLogin.addActionListener(new btnListener());
+		this.vis.panelLogin.btnConfirmarRegistro.addActionListener(new btnListener());
 		
 		this.vis.panelLineas1.btnCancelar.addActionListener(new cancelListener());
 		this.vis.panelLineas2.btnCancelar.addActionListener(new cancelListener());
@@ -86,6 +87,12 @@ public class Controlador {
 				mod.clienteRegistrado=mod.metodosLogin.iniciarSesion(mod, vis);
 				if(mod.clienteRegistrado != null) {
 					vis.setContentPane(mod.ultimoPanel);
+				}
+			}
+			else if(e.getSource() == vis.panelLogin.btnConfirmarRegistro) {
+				mod.clienteRegistrado=mod.metodosLogin.registroUsuario(vis, mod);
+				if(mod.clienteRegistrado!=null) {
+					mod.db.insertarUsuarioEnBaseDeDatos(mod.clienteRegistrado, mod);
 				}
 			}
 		}

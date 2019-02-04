@@ -60,21 +60,21 @@ public class ConexionAMySQL {
 	}
 	
 	/**
-	 * Inserta un usuario nuevo en la base de datos
-	 * 
-	 * @param usuario
+	 * Inserta la informacion del usuario en la base de datos
+	 * @param usuario el cliente que se registrara en la base de datos
+	 * @param mod modelo con la conexion a la base de datos
 	 */
 	public void insertarUsuarioEnBaseDeDatos(Cliente usuario, Modelo mod) {
 		try {
-			String query = "insert into cliente (DNI,Nombre,Apellidos,Fecha_nac,Sexo,Constraseña) values(?,?,?,?,?,?);";
+			String query = "insert into cliente (DNI,Nombre,Apellidos,Fecha_nac,Sexo,Contraseña) values(?,?,?,?,?,?);";
 			PreparedStatement insertartUsuario = this.conexion.prepareStatement(query);
 			insertartUsuario.setString(1, usuario.dni);
 			insertartUsuario.setString(2, usuario.nombre);
 			insertartUsuario.setString(3, usuario.apellido);
-			insertartUsuario.setDate(4, (Date) usuario.fechaNac);
+			insertartUsuario.setDate(4,new java.sql.Date( usuario.fechaNac.getTime()));
 			insertartUsuario.setString(5, String.valueOf(usuario.sexo));
 			insertartUsuario.setString(6, usuario.getContrasenia());
-			insertartUsuario.executeQuery();
+			insertartUsuario.executeUpdate();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
