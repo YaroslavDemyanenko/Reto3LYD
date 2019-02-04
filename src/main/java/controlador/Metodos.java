@@ -85,16 +85,4 @@ public class Metodos {
 		return distancia;
 	}
 
-	/**
-	 * public char DevolverSexo(Ventana vis) { char charSexo = 'V'; if
-	 * (vis.panelPasajeroExtra.textFieldSexo.getToolTipText()="Hombre") {
-	 * charSexo='V';
-	 * 
-	 * } else { charSexo='M'; }
-	 * 
-	 * return charSexo;
-	 * 
-	 * }
-	 **/
-
 }

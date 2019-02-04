@@ -104,7 +104,7 @@ public class MetodosLoginYRegistro {
 			apellido.length()>0 &&
 			validarDNI(dni)==true &&
 			fechaNac.before(Calendar.getInstance().getTime()) &&
-			validarContraseña(contra)
+			validarContrasenia(contra)
 			) 
 		{
 			if(comprobarDNIenBD(vis.panelLogin.textFieldDNI.getText(), mod)==false) {
@@ -115,11 +115,11 @@ public class MetodosLoginYRegistro {
 			}
 			
 		}
-		else if(validarContraseña(contra)==true)	JOptionPane.showMessageDialog(null, "Porfavor, rellena todos los campos", "Campos sin completar",JOptionPane.WARNING_MESSAGE);;
+		else if(validarContrasenia(contra)==true)	JOptionPane.showMessageDialog(null, "Porfavor, rellena todos los campos", "Campos sin completar",JOptionPane.WARNING_MESSAGE);;
 		return null;
 	}
 	
-	private boolean validarContraseña(char[] contra) {
+	private boolean validarContrasenia(char[] contra) {
 		if (contra.length >= 8) {
 			//Regex para validar contraseña, por orden: Una letra minuscula, una letra mayuscula, un numero y minimo 8 caracteres de longitud
 			if(contra.toString().matches("^.*(?=.{8,})(?=..*[0-9])(?=\\S+$)(?=.*[a-z])(?=.*[A-Z]).*$")) {
@@ -139,4 +139,15 @@ public class MetodosLoginYRegistro {
 	public boolean validarDNI(String DNI){
 		return DNI.matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
+	
+	public void cambiarSexoAChar(Ventana vis, Cliente Cliente){
+		Object sexo = vis.panelLogin.cmbBoxSexo.getSelectedItem();
+		if(sexo=="Hombre"){
+			Cliente.setSexo('V');
+		}
+		else 
+			Cliente.setSexo('M');
+
+	}
+	
 }
