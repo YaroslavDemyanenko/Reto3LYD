@@ -2,21 +2,21 @@ package interfaces;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
+import java.util.Calendar;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
 import javax.swing.border.BevelBorder;
 
-import com.sun.glass.ui.Cursor;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JSpinnerDateEditor;
 
 /**
  * @wbp.parser.entryPoint
@@ -24,16 +24,17 @@ import com.sun.glass.ui.Cursor;
 public class PanelLogin extends JPanel {
 	
 
-	public JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin, textFieldContraseniaLogin,txtFechanacimiento;
-	public JComboBox textFieldSexo;
-	public JPasswordField passFieldContrasenia;
+	public JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin;
+	public JComboBox cmbBoxSexo;
+	public JPasswordField passFieldContrasenia,passFieldContraseniaLogin;
 	public JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblLogin, lblDniLogin, lblContraseaLogin, lblContrasea, lblFechaNacimiento;
 	public JButton btnConfirmarRegistro, btnConfirmarLogin, btnCancelar;
+	public JSpinnerDateEditor spinnerFechaNac;
+	public JDateChooser calendarioFechaNac;
 	
 	
 	public PanelLogin() {
 		setLayout(null);
-		setVisible(false);
 		setBounds(0,0,800,600);
 		setBackground(new Color(193, 240, 240));
 		
@@ -80,11 +81,11 @@ public class PanelLogin extends JPanel {
 		lblSexo.setBounds(51, 379, 65, 41);
 		add(lblSexo);
 		
-		textFieldSexo = new JComboBox();
-		textFieldSexo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textFieldSexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
-		textFieldSexo.setBounds(139, 379, 192, 39);
-		add(textFieldSexo);
+		cmbBoxSexo = new JComboBox();
+		cmbBoxSexo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		cmbBoxSexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
+		cmbBoxSexo.setBounds(139, 379, 192, 39);
+		add(cmbBoxSexo);
 		
 		lblLogin = new JLabel("Login:");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 28));
@@ -107,18 +108,17 @@ public class PanelLogin extends JPanel {
 		lblContraseaLogin.setBounds(468, 170, 81, 39);
 		add(lblContraseaLogin);
 		
-		textFieldContraseniaLogin = new JTextField();
-		textFieldContraseniaLogin.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textFieldContraseniaLogin.setBounds(559, 170, 180, 39);
-		add(textFieldContraseniaLogin);
-		textFieldContraseniaLogin.setColumns(10);
+		passFieldContraseniaLogin = new JPasswordField();
+		passFieldContraseniaLogin.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		passFieldContraseniaLogin.setBounds(559, 170, 180, 39);
+		add(passFieldContraseniaLogin);
 		
 		lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblContrasea.setBounds(47, 439, 92, 39);
 		add(lblContrasea);
 		
-		passFieldContrasenia = new JPasswordField(10);
+		passFieldContrasenia = new JPasswordField();
 		passFieldContrasenia.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		passFieldContrasenia.setBounds(139, 439, 192, 39);
 		add(passFieldContrasenia);
@@ -155,13 +155,24 @@ public class PanelLogin extends JPanel {
 		lblFechaNacimiento.setBounds(47, 245, 136, 39);
 		add(lblFechaNacimiento);
 		
-		txtFechanacimiento = new JTextField();
-		txtFechanacimiento.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtFechanacimiento.setBounds(193, 243, 190, 43);
-		add(txtFechanacimiento);
-		txtFechanacimiento.setColumns(10);
+		spinnerFechaNac = new JSpinnerDateEditor();
+		spinnerFechaNac.setEnabled(false);
+		spinnerFechaNac.setDateFormatString("dd/mm/yyyy");
+		calendarioFechaNac = new JDateChooser(null, null, null, spinnerFechaNac);
+		calendarioFechaNac.setDateFormatString("dd-MM-yyyy");
+		calendarioFechaNac.setBounds(193, 257, 137, 27);
+		add(calendarioFechaNac);
 		
 
 	
+	}
+	public void limpiar(){
+		textFieldNombre.setText("");
+		textFieldApellido.setText("");
+		textFieldDNI.setText("");
+		calendarioFechaNac.setDate(Calendar.getInstance().getTime());
+		passFieldContrasenia.setText("");
+		passFieldContraseniaLogin.setText("");
+		textFieldDNILogin.setText("");
 	}
 }

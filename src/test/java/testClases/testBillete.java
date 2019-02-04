@@ -32,6 +32,7 @@ public class testBillete {
 		assertEquals(testBillete.getCodAutobusIda(),codAutobusIda);	
 	}
 
+	/**
 	@Test
 	public void testCodAutobusVuelta() {
 		testBillete.setCodAutobusVuelta(codAutobusVuelta);
@@ -55,6 +56,7 @@ public class testBillete {
 		testBillete.setFechaVuelta(fechaVuelta);
 		assertEquals(testBillete.getFechaVuelta(),fechaVuelta);
 	}
+	**/
 	
 	@Test
 	public void testLinea() {

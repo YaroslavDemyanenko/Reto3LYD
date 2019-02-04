@@ -4,19 +4,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 
 import clases.Parada;
 
 import javax.swing.JSpinner;
+import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.JList;
 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.util.Calendar;
+
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.SpinnerNumberModel;
 /**
  * @wbp.parser.entryPoint
  */
@@ -49,13 +55,14 @@ public class PanelLineas2 extends JPanel{
 		btnLogIn.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLogIn.setBounds(689, 12, 89, 23);
 		add(btnLogIn);
+		btnLogIn.setName("botonLogin");
 
 		lblLinea = new JLabel("Linea:");
 		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblLinea.setBounds(79, 133, 89, 25);
 		add(lblLinea);
 
-		lblNombreLinea = new JLabel("x");
+		lblNombreLinea = new JLabel("");
 		lblNombreLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNombreLinea.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreLinea.setBounds(178, 133, 179, 25);
@@ -77,25 +84,27 @@ public class PanelLineas2 extends JPanel{
 		add(lblNumeroDeBilletes);
 
 		spinnerDateEditorIda = new JSpinnerDateEditor();
+		((JSpinner.DefaultEditor) spinnerDateEditorIda.getEditor()).getTextField().setEditable(false);
 		spinnerDateEditorIda.setFont(new Font("Tahoma", Font.BOLD, 12));
-		spinnerDateEditorIda.setEnabled(false);
+		
 		calendarioIda = new JDateChooser(null, null, null, spinnerDateEditorIda);
 		calendarioIda.setDateFormatString("dd-MM-yyyy");
-	
 		calendarioIda.setBounds(180, 212, 137, 27);
-		
 		add(calendarioIda);
 		
 		spinnerDateEditorVuelta = new JSpinnerDateEditor();
-		spinnerDateEditorVuelta.setEnabled(false);
-		spinnerDateEditorVuelta.setDateFormatString("dd/mm/yyyy");
+		((JSpinner.DefaultEditor) spinnerDateEditorVuelta.getEditor()).getTextField().setEditable(false);
+		spinnerDateEditorVuelta.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
 		calendarioVuelta = new JDateChooser(null, null, null, spinnerDateEditorVuelta);
 		calendarioVuelta.setDateFormatString("dd-MM-yyyy");
 		calendarioVuelta.setBounds(180, 301, 137, 27);
 		add(calendarioVuelta);
 		
 		spnNumeroDeBilletes = new JSpinner();
+		spnNumeroDeBilletes.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnNumeroDeBilletes.setBounds(247, 381, 70, 30);
+		((JSpinner.DefaultEditor) spnNumeroDeBilletes.getEditor()).getTextField().setEditable(false);
 		add(spnNumeroDeBilletes);
 		
 		btnCancelar = new JButton("Cancelar");
@@ -135,5 +144,13 @@ public class PanelLineas2 extends JPanel{
 		listaDestinos = new JList(modeloListaDestinos);
 		listaDestinos.setBounds(489, 237, 231, 199);
 		add(listaDestinos);
+	}
+	public void limpiar() {
+		lblNombreLinea.setText("");
+		calendarioIda.setDate(Calendar.getInstance().getTime());
+		calendarioVuelta.setDate(Calendar.getInstance().getTime());
+		spnNumeroDeBilletes.setValue(1);
+		lblSal.setText("");
+		lblUsuario.setText("");
 	}
 }

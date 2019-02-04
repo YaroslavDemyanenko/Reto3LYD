@@ -45,15 +45,20 @@ public class Parada {
 		this.calle=calle;
 		this.nombreParada=nombreParada;
 	}
-	
+	/**
+	 * Se introducen las paradas en un modelo para luego sacarlas y mostarlas en la lista de la interfaz
+	 * @param vis
+	 * @param mod
+	 * @throws SQLException
+	 */
 	public void paradasIdaAModelo (Ventana vis,Modelo mod) throws SQLException {
 		String query= vis.panelLineas1.listLineas.getSelectedValue().toString().substring(0,2);
-		query="select nombre,Cod_Parada,Calle,sqrt(power((longitud-(SELECT Longitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)+power((latitud-(SELECT Latitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)) distancia from parada WHERE Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\""+query+"\") order by distancia;";
+		query="select nombre,Cod_Parada,Calle,Latitud,Longitud,sqrt(power((longitud-(SELECT Longitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)+power((latitud-(SELECT Latitud FROM `parada` where Nombre=\"Termibus-Bilbao\")),2)) distancia from parada WHERE Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\""+query+"\") order by distancia;";
 		ResultSet result = mod.db.hacerPeticion(query);
 		mod.arrayParadas.clear();
 		while (result.next()) {
 			vis.panelLineas1.modeloParadas.addElement(result.getString("Nombre"));
-			mod.arrayParadas.add(new Parada(result.getInt("Cod_Parada"),result.getString("Calle"),result.getString("Nombre")));
+			mod.arrayParadas.add(new Parada(result.getInt("Cod_Parada"),result.getString("Calle"),result.getString("Nombre"),result.getFloat("Latitud"),result.getFloat("Longitud")));
 		}
 		vis.panelLineas1.modeloParadas.removeElementAt(vis.panelLineas1.modeloParadas.size()-1);
 	}
@@ -65,7 +70,6 @@ public class Parada {
 			vis.panelLineas2.modeloListaDestinos.addElement(mod.arrayParadas.get(i).nombreParada);
 		}
 	}
-	
 	
 	public int getCodigo() {
 		return this.codigo;

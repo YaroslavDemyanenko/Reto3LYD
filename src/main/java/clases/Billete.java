@@ -1,14 +1,43 @@
 package clases;
 
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import interfaces.Ventana;
 
 public class Billete {
-	int codigoBillete,codAutobusIda,codAutobusVuelta;
+	int codigoBillete,codAutobus;
 	float precioTrayecto;
-	Date fechaIda, fechaVuelta;
+	Date fecha;
 	Linea linea;
 	Parada paradaInic, paradaFin;
 	
+	public Billete() {
+		
+	}
+	public Billete(Modelo mod) throws SQLException {
+		ResultSet rs= mod.db.hacerPeticion("SELECT COUNT(*) FROM `billete`");
+		this.codigoBillete=rs.getInt("COUNT(*)")+1;
+	}
+	
+	public void crearBilletes (Modelo mod,Ventana vis) throws SQLException{
+		mod.billeteIda=new Billete(mod);
+		mod.billeteVuelta=new Billete(mod);
+		for(int i=0;i<mod.arrayParadas.size();i++) {
+			if (mod.arrayParadas.get(i).nombreParada==vis.panelLineas2.lblSal.getText()) {
+				mod.billeteIda.paradaInic=mod.arrayParadas.get(i);
+			}
+			if (mod.arrayParadas.get(i).nombreParada==vis.panelLineas2.modeloListaDestinos.getElementAt(vis.panelLineas2.listaDestinos.getSelectedIndex())) {
+				mod.billeteIda.paradaFin=mod.arrayParadas.get(i);
+			}
+		}
+		mod.billeteIda.fecha=(Date) vis.panelLineas2.calendarioIda.getDate();
+		//if(vis.panelLineas2.calendarioVuelta.isVisible()) {
+			//billete.fecha=(Date) vis.panelLineas2.calendarioVuelta.getDate();
+		//}
+		
+	}
 	
 	public int getCodigoBillete() {
 		return this.codigoBillete;
@@ -17,17 +46,12 @@ public class Billete {
 		this.codigoBillete = codigoBillete;
 	}
 	public int getCodAutobusIda() {
-		return this.codAutobusIda;
+		return this.codAutobus;
 	}
 	public void setCodAutobusIda(int codAutobusIda) {
-		this.codAutobusIda = codAutobusIda;
+		this.codAutobus = codAutobusIda;
 	}
-	public int getCodAutobusVuelta() {
-		return this.codAutobusVuelta;
-	}
-	public void setCodAutobusVuelta(int codAutobusVuelta) {
-		this.codAutobusVuelta = codAutobusVuelta;
-	}
+	
 	public float getPrecioTrayecto() {
 		return this.precioTrayecto;
 	}
@@ -35,16 +59,10 @@ public class Billete {
 		this.precioTrayecto = precioTrayecto;
 	}
 	public Date getFechaIda() {
-		return fechaIda;
+		return fecha;
 	}
 	public void setFechaIda(Date fechaIda) {
-		this.fechaIda = fechaIda;
-	}
-	public Date getFechaVuelta() {
-		return this.fechaVuelta;
-	}
-	public void setFechaVuelta(Date fechaVuelta) {
-		this.fechaVuelta = fechaVuelta;
+		this.fecha = fechaIda;
 	}
 	public Linea getLinea() {
 		return this.linea;

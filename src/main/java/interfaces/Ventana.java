@@ -1,13 +1,8 @@
 package interfaces;
 
-import java.awt.EventQueue;
-
+import java.awt.CardLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.CardLayout;
-import java.awt.Color;
-import javax.swing.border.BevelBorder;
 
 public class Ventana extends JFrame {
 	public PanelSaludo panelSaludo;
@@ -40,6 +35,15 @@ public class Ventana extends JFrame {
 		getContentPane().add(panelPago);
 		getContentPane().add(panelConfirmacion);
 		getContentPane().add(panelFinal);
+		panelSaludo.setName("panelSaludo");
+		panelConfirmacion.setName("panelConfirmacion");
+		panelLineas1.setName("PanelLineas1");
+		panelLineas2.setName("panelLineas2");
+		panelResumen.setName("panelResumen");
+		panelPasajeroExtra.setName("panelPasajeroExtra");
+		panelLogin.setName("panelLogin");
+		panelPago.setName("panelPago");
+		panelFinal.setName("panelFinal");
 		
 		//Inicializacion de variables
 		
