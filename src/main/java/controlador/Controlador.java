@@ -93,6 +93,7 @@ public class Controlador {
 				mod.clienteRegistrado=mod.metodosLogin.registroUsuario(vis, mod);
 				if(mod.clienteRegistrado!=null) {
 					mod.db.insertarUsuarioEnBaseDeDatos(mod.clienteRegistrado, mod);
+					vis.setContentPane(mod.ultimoPanel);
 				}
 			}
 		}

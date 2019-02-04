@@ -3,6 +3,7 @@ package clases;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JPanel;
 
@@ -24,8 +25,9 @@ public class Modelo {
 	
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
-	public Billete billeteIda,billeteVuelta;
+	public Billete billeteGeneralIda,billeteGeneralVuelta,billeteIda,billeteVuelta;
 	
+	public Date fechaIda,fechaVuelta;
 	private boolean idaYVuelta=false;
 	public int numeroBilletes;
 	public Cliente clienteRegistrado;
