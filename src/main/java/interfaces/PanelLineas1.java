@@ -51,7 +51,7 @@ public class PanelLineas1 extends JPanel {
 		add(lblUsuario);
 		
 		lblLinea = new JLabel();
-		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblLinea.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblLinea.setHorizontalAlignment(SwingConstants.LEFT);
 		lblLinea.setText("Linea");
 		lblLinea.setBounds(83, 97, 86, 20);
@@ -61,14 +61,14 @@ public class PanelLineas1 extends JPanel {
 		rdbtnIda = new JRadioButton("Ida");
 		rdbtnIda.setSelected(true);
 		rdbtnIda.setBackground(new Color(193, 240, 240));
-		rdbtnIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		rdbtnIda.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		rdbtnIda.setBounds(83, 468, 109, 23);
 		add(rdbtnIda);
 		
 		rdbtnIdayVuelta = new JRadioButton("Ida y vuelta");
 		rdbtnIdayVuelta.setBackground(new Color(193, 240, 240));
-		rdbtnIdayVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		rdbtnIdayVuelta.setBounds(267, 468, 109, 23);
+		rdbtnIdayVuelta.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
+		rdbtnIdayVuelta.setBounds(267, 468, 129, 23);
 		add(rdbtnIdayVuelta);
 		
 		grupoTipoViaje = new ButtonGroup();
@@ -76,7 +76,7 @@ public class PanelLineas1 extends JPanel {
 		grupoTipoViaje.add(rdbtnIdayVuelta);
 		
 		lblParadaInicio = new JLabel();
-		lblParadaInicio.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblParadaInicio.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblParadaInicio.setHorizontalAlignment(SwingConstants.LEFT);
 		lblParadaInicio.setText("Parada inicio");
 		lblParadaInicio.setBounds(433, 97, 129, 20);

@@ -60,20 +60,20 @@ public class PanelResumen extends JPanel {
 		add(lblResumen);
 		
 		lblPardaInicio = new JLabel("Parda Inicio:");
-		lblPardaInicio.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblPardaInicio.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblPardaInicio.setHorizontalAlignment(SwingConstants.LEFT);
-		lblPardaInicio.setBounds(76, 257, 99, 23);
+		lblPardaInicio.setBounds(76, 257, 110, 23);
 		add(lblPardaInicio);
 		
 		lblPardaFin = new JLabel("Parda Fin:");
 		lblPardaFin.setHorizontalAlignment(SwingConstants.LEFT);
-		lblPardaFin.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblPardaFin.setBounds(76, 314, 80, 32);
+		lblPardaFin.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
+		lblPardaFin.setBounds(76, 314, 110, 32);
 		add(lblPardaFin);
 		
 		lblTipoDeTrayecto = new JLabel("Tipo de Trayecto:");
-		lblTipoDeTrayecto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeTrayecto.setBounds(76, 375, 131, 32);
+		lblTipoDeTrayecto.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
+		lblTipoDeTrayecto.setBounds(76, 375, 154, 32);
 		add(lblTipoDeTrayecto);
 		
 		lblNombreLinea = new JLabel("Nombre linea");
@@ -97,18 +97,18 @@ public class PanelResumen extends JPanel {
 		lblIdaYVuelta = new JLabel("Ida / Ida y vuelta");
 		lblIdaYVuelta.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIdaYVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblIdaYVuelta.setBounds(240, 375, 128, 32);
+		lblIdaYVuelta.setBounds(259, 375, 128, 32);
 		add(lblIdaYVuelta);
 		
 		lblNumBill = new JLabel("Numero de billetes:");
-		lblNumBill.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNumBill.setBounds(76, 435, 148, 41);
+		lblNumBill.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
+		lblNumBill.setBounds(76, 435, 173, 41);
 		add(lblNumBill);
 		
 		lblNumeroDeBilletes = new JLabel("x");
 		lblNumeroDeBilletes.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNumeroDeBilletes.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNumeroDeBilletes.setBounds(234, 439, 89, 32);
+		lblNumeroDeBilletes.setBounds(250, 439, 89, 32);
 		add(lblNumeroDeBilletes);
 		
 		btnCancelar = new JButton("Cancelar");
@@ -129,7 +129,7 @@ public class PanelResumen extends JPanel {
 		
 		lblFechaIda = new JLabel("Fecha Ida");
 		lblFechaIda.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFechaIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFechaIda.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblFechaIda.setBounds(570, 170, 104, 24);
 		add(lblFechaIda);
 		
@@ -140,18 +140,18 @@ public class PanelResumen extends JPanel {
 		lblLinea = new JLabel("Linea:");
 		lblLinea.setBounds(76, 197, 110, 32);
 		add(lblLinea);
-		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblLinea.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblLinea.setHorizontalAlignment(SwingConstants.LEFT);
 		
 		lblFechaVuelta = new JLabel("Fecha Vuelta");
-		lblFechaVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFechaVuelta.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblFechaVuelta.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFechaVuelta.setBounds(570, 295, 104, 24);
+		lblFechaVuelta.setBounds(564, 295, 115, 24);
 		add(lblFechaVuelta);
 		
 		lblPrecio = new JLabel("Precio:");
 		lblPrecio.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblPrecio.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblPrecio.setBounds(584, 410, 77, 28);
 		add(lblPrecio);
 		

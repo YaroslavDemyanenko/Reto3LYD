@@ -58,7 +58,7 @@ public class PanelLineas2 extends JPanel{
 		btnLogIn.setName("botonLogin");
 
 		lblLinea = new JLabel("Linea:");
-		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblLinea.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblLinea.setBounds(79, 133, 89, 25);
 		add(lblLinea);
 
@@ -69,18 +69,18 @@ public class PanelLineas2 extends JPanel{
 		add(lblNombreLinea);
 
 		lblFechaIda = new JLabel("Fecha Ida:");
-		lblFechaIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFechaIda.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblFechaIda.setBounds(79, 212, 116, 27);
 		add(lblFechaIda);
 
 		lblFechaVuelta = new JLabel("Fecha Vuelta:");
-		lblFechaVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFechaVuelta.setBounds(79, 301, 102, 27);
+		lblFechaVuelta.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
+		lblFechaVuelta.setBounds(79, 301, 116, 27);
 		add(lblFechaVuelta);
 
 		lblNumeroDeBilletes = new JLabel("Numero de billetes:");
-		lblNumeroDeBilletes.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNumeroDeBilletes.setBounds(79, 383, 151, 27);
+		lblNumeroDeBilletes.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
+		lblNumeroDeBilletes.setBounds(79, 383, 166, 27);
 		add(lblNumeroDeBilletes);
 
 		spinnerDateEditorIda = new JSpinnerDateEditor();
@@ -89,7 +89,7 @@ public class PanelLineas2 extends JPanel{
 		
 		calendarioIda = new JDateChooser(null, null, null, spinnerDateEditorIda);
 		calendarioIda.setDateFormatString("dd-MM-yyyy");
-		calendarioIda.setBounds(180, 212, 137, 27);
+		calendarioIda.setBounds(205, 212, 137, 27);
 		add(calendarioIda);
 		
 		spinnerDateEditorVuelta = new JSpinnerDateEditor();
@@ -98,12 +98,12 @@ public class PanelLineas2 extends JPanel{
 		
 		calendarioVuelta = new JDateChooser(null, null, null, spinnerDateEditorVuelta);
 		calendarioVuelta.setDateFormatString("dd-MM-yyyy");
-		calendarioVuelta.setBounds(180, 301, 137, 27);
+		calendarioVuelta.setBounds(205, 301, 137, 27);
 		add(calendarioVuelta);
 		
 		spnNumeroDeBilletes = new JSpinner();
 		spnNumeroDeBilletes.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
-		spnNumeroDeBilletes.setBounds(247, 381, 70, 30);
+		spnNumeroDeBilletes.setBounds(255, 381, 70, 30);
 		((JSpinner.DefaultEditor) spnNumeroDeBilletes.getEditor()).getTextField().setEditable(false);
 		add(spnNumeroDeBilletes);
 		
@@ -124,21 +124,21 @@ public class PanelLineas2 extends JPanel{
 		add(btnConfirmar);
 		
 		lblSalida = new JLabel("Salida:");
-		lblSalida.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSalida.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblSalida.setBounds(489, 130, 86, 31);
 		add(lblSalida);
 		
 		
 		lblSal = new JLabel("yyyyyyyyyyy");
 		lblSal.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblSal.setBounds(574, 133, 204, 25);
+		lblSal.setBounds(562, 133, 216, 25);
 		add(lblSal);
 		
 		modeloListaDestinos= new DefaultListModel<String>();
 		
 		lblLlegada = new JLabel("Llegada:");
-		lblLlegada.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblLlegada.setBounds(489, 186, 89, 25);
+		lblLlegada.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
+		lblLlegada.setBounds(489, 201, 89, 25);
 		add(lblLlegada);
 		
 		listaDestinos = new JList(modeloListaDestinos);

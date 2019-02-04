@@ -52,7 +52,7 @@ public class PanelConfirmacion extends JPanel {
 		add(lblUsuario);
 		
 		lblCdigo = new JLabel("C\u00F3digo:");
-		lblCdigo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCdigo.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblCdigo.setBounds(53, 158, 132, 35);
 		add(lblCdigo);
 		
@@ -62,7 +62,7 @@ public class PanelConfirmacion extends JPanel {
 		
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNombre.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblNombre.setBounds(53, 249, 112, 23);
 		add(lblNombre);
 		
@@ -72,7 +72,7 @@ public class PanelConfirmacion extends JPanel {
 		
 		
 		lblApellidos = new JLabel("Apellidos:");
-		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblApellidos.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblApellidos.setBounds(53, 327, 104, 29);
 		add(lblApellidos);
 		
@@ -82,7 +82,7 @@ public class PanelConfirmacion extends JPanel {
 		
 		
 		lblDni = new JLabel("DNI:");
-		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblDni.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblDni.setBounds(53, 411, 112, 23);
 		add(lblDni);
 		
@@ -92,7 +92,7 @@ public class PanelConfirmacion extends JPanel {
 		
 		
 		lblLnea = new JLabel("L\u00EDnea");
-		lblLnea.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblLnea.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblLnea.setBounds(297, 161, 138, 29);
 		add(lblLnea);
 		
@@ -102,7 +102,7 @@ public class PanelConfirmacion extends JPanel {
 		
 		
 		lblSalida = new JLabel("Salida:");
-		lblSalida.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSalida.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblSalida.setBounds(297, 249, 118, 23);
 		add(lblSalida);
 		
@@ -112,7 +112,7 @@ public class PanelConfirmacion extends JPanel {
 		
 		
 		lblLlegada = new JLabel("Llegada:");
-		lblLlegada.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblLlegada.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblLlegada.setBounds(297, 330, 167, 23);
 		add(lblLlegada);
 		
@@ -122,8 +122,8 @@ public class PanelConfirmacion extends JPanel {
 		
 		
 		lblTipoDeTrayecto = new JLabel("Tipo de Trayecto:");
-		lblTipoDeTrayecto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeTrayecto.setBounds(297, 411, 138, 23);
+		lblTipoDeTrayecto.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
+		lblTipoDeTrayecto.setBounds(297, 411, 167, 23);
 		add(lblTipoDeTrayecto);
 		
 		lblFieldTipoTrayecto = new JLabel();
@@ -132,18 +132,18 @@ public class PanelConfirmacion extends JPanel {
 		
 		
 		lblFechaIda = new JLabel("Fecha Ida:");
-		lblFechaIda.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFechaIda.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblFechaIda.setBounds(549, 164, 104, 23);
 		add(lblFechaIda);
 		
 		lblFechaVuelta = new JLabel("Fecha Vuelta:");
-		lblFechaVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFechaVuelta.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblFechaVuelta.setBounds(549, 249, 130, 23);
 		add(lblFechaVuelta);
 		
 		lblPrecioBillete = new JLabel("Precio Billete:");
-		lblPrecioBillete.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblPrecioBillete.setBounds(603, 372, 112, 23);
+		lblPrecioBillete.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
+		lblPrecioBillete.setBounds(592, 372, 130, 23);
 		add(lblPrecioBillete);
 		
 		textFieldPrecioBillete = new JTextField();
@@ -170,7 +170,7 @@ public class PanelConfirmacion extends JPanel {
 		add(btnImprimir);
 		
 		lblPasajerosas = new JLabel("Pasajeros/as:");
-		lblPasajerosas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblPasajerosas.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblPasajerosas.setBounds(53, 64, 138, 25);
 		add(lblPasajerosas);
 		

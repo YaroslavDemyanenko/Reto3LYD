@@ -73,7 +73,7 @@ public class PanelPasajeroExtra extends JPanel{
 		add(textFieldDNI);
 		
 		lblSexo = new JLabel("Sexo:");
-		lblSexo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSexo.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblSexo.setBounds(216, 344, 83, 48);
 		add(lblSexo);
 		
@@ -84,17 +84,17 @@ public class PanelPasajeroExtra extends JPanel{
 		add(textFieldSexo);
 		
 		lblDni = new JLabel("DNI:");
-		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblDni.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblDni.setBounds(216, 285, 130, 43);
 		add(lblDni);
 		
 		lblApellido = new JLabel("Apellido:");
-		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblApellido.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblApellido.setBounds(216, 210, 130, 48);
 		add(lblApellido);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNombre.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblNombre.setBounds(216, 151, 109, 39);
 		add(lblNombre);
 		

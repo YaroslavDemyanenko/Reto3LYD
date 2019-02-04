@@ -52,7 +52,6 @@ public class Controlador {
 		this.vis.panelPago.btnCancelar.addActionListener(new cancelListener());
 	}
 
-
 	private class btnListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			
