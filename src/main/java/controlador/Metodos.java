@@ -1,45 +1,13 @@
 package controlador;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import clases.Cliente;
 import clases.Modelo;
 import clases.Parada;
 import interfaces.Ventana;
 
 public class Metodos {
-
-	/**
-	 * Crea un objeto cliente
-	 * 
-	 * @param nombre
-	 * @param apellido
-	 * @param dni
-	 * @param sexo
-	 * @param contrasenia
-	 * @return
-	 */
-	public Cliente ingresar(String nombre, String apellido, String dni, char sexo, char[] contrasenia) {
-
-		Cliente cliente = new Cliente();
-		cliente.setNombre(nombre);
-		cliente.setApellido(apellido);
-		cliente.setDni(dni);
-		cliente.setSexo(sexo);
-		cliente.setContrasenia(contrasenia);
-		return cliente;
-
-	}
 
 	/**
 	 * Limita las fechas de los billetes

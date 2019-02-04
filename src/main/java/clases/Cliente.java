@@ -1,22 +1,21 @@
 package clases;
 
-import java.sql.Date;
-
+import java.util.Date;
 public class Cliente {
 	public String dni;
 	public String nombre;
 	public String apellido;
 	public Date fechaNac;
 	public char sexo;
-	private char[] contrasenia;
+	private String contrasenia;
 	
-	public Cliente(String dni, String nombre, String apellido, Date fechaNac, char sexo, char[] contrasenia) {
+	public Cliente(String dni, String nombre, String apellido, Date fechaNac, char sexo, String contrasenia) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.fechaNac = fechaNac;
 		this.sexo = sexo;
-		this.setContrasenia(contrasenia);
+		this.contrasenia=contrasenia;
 
 	}
 	
@@ -50,11 +49,11 @@ public class Cliente {
 		this.apellido=apellido;		
 	}
 
-	public char[] getContrasenia() {
+	public String getContrasenia() {
 		return contrasenia;
 	}
 	
-	public void setContrasenia(char[] contrasenia) {
+	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
 
