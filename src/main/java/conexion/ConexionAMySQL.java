@@ -1,11 +1,13 @@
 package conexion;
 
-import java.security.NoSuchAlgorithmException;
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import clases.Cliente;
@@ -69,9 +71,9 @@ public class ConexionAMySQL {
 			insertartUsuario.setString(1, usuario.dni);
 			insertartUsuario.setString(2, usuario.nombre);
 			insertartUsuario.setString(3, usuario.apellido);
-			insertartUsuario.setDate(4, usuario.fechaNac);
+			insertartUsuario.setDate(4, (Date) usuario.fechaNac);
 			insertartUsuario.setString(5, String.valueOf(usuario.sexo));
-			insertartUsuario.setString(6, mod.metodosLogin.encriptarContra(usuario.getContrasenia()).toString());
+			insertartUsuario.setString(6, usuario.getContrasenia());
 			insertartUsuario.executeQuery();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);

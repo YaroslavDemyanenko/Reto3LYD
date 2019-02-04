@@ -3,9 +3,10 @@ package controlador;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -21,7 +22,6 @@ public class MetodosLoginYRegistro {
 	 * @return
 	 */
 	public String encriptarContra(char[] contrasenia) {
-
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			String contraEnc = new String(contrasenia);
@@ -57,7 +57,7 @@ public class MetodosLoginYRegistro {
 			if (rs.next()) {
 				String contraBase = rs.getString("Contraseña");
 				if (contraBase.equals(contraUsuario)) {
-					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fecha_nac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Contraseña").toCharArray()));
+					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fecha_nac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Contraseña")));
 				} else {
 					System.out.println("Contraseña erronea");
 				}
@@ -75,14 +75,66 @@ public class MetodosLoginYRegistro {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean comprobarDNIenBD(Cliente cliente,Modelo mod) throws SQLException {
-		String sql = "select DNI from cliente where DNI = " + cliente.dni + "";
+	public boolean comprobarDNIenBD(String dni,Modelo mod) {
+		String sql = "select DNI from cliente where DNI = " + dni + "";
 		ResultSet rs = mod.db.hacerPeticion(sql);
-		if (rs.next()) {
-			return true;
-		} else
-			return false;
+		try {
+			if (rs.next()) {
+				return true;
+			} else
+				return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
+	
+	public Cliente registroUsuario(Ventana vis,Modelo mod) {
+		String dni=vis.panelLogin.textFieldDNI.getText();
+		String nombre=vis.panelLogin.textFieldNombre.getText();
+		String apellido=vis.panelLogin.textFieldApellido.getText();
+		Date fechaNac=vis.panelLogin.calendarioFechaNac.getDate();
+		char sexo='s';
+		final char[] contra=vis.panelLogin.passFieldContrasenia.getPassword();
+		if(	nombre.length()>0 &&
+			apellido.length()>0 &&
+			validarDNI(dni)==true &&
+			fechaNac.before(Calendar.getInstance().getTime()) &&
+			validarContraseña(contra)
+			) 
+		{
+			if(comprobarDNIenBD(vis.panelLogin.textFieldDNI.getText(), mod)==false) {
+				return (new Cliente(dni,nombre,apellido,fechaNac,sexo,encriptarContra(contra)));
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado",JOptionPane.INFORMATION_MESSAGE);
+			}
+			
+		}
+		else return null;
+		return null;
+	}
+	
+	private boolean validarContraseña(char[] contra) {
+		if (contra.length >= 8) {
+			//Regex para validar contraseña, por orden: Una letra minuscula, una letra mayuscula, un numero y minimo 8 caracteres de longitud
+			if(contra.toString().matches("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})")) {
+				return true;
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Introduce una letra minuscula, una mayuscula, un numero y al menos 8 caracteres", "Contraseña poco segura", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Introduce una letra minuscula, una mayuscula, un numero y al menos 8 caracteres", "Contraseña Invalida", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+	}
+
+	private boolean validarDNI(String text) {
+		return false;
+	}
 	
 }
