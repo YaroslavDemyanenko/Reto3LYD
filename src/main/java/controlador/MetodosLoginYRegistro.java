@@ -133,8 +133,7 @@ public class MetodosLoginYRegistro {
 		}
 	}
 
-	private boolean validarDNI(String text) {
-		return false;
+	public boolean validarDNI(String DNI){
+		return DNI.matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
-	
 }

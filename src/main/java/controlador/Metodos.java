@@ -1,8 +1,8 @@
 package controlador;
 
+
 import java.util.Calendar;
 import java.util.Date;
-
 import clases.Modelo;
 import clases.Parada;
 import interfaces.Ventana;
@@ -40,20 +40,7 @@ public class Metodos {
 		fechaLimite = c.getTime();
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(), fechaLimite);
 
-	}
-	
-	public void clearfields(Ventana vis) {
-		vis.panelLogin.textFieldNombre.setText("");
-		vis.panelLogin.textFieldApellido.setText("");
-		vis.panelLogin.textFieldDNI.setText("");
-		vis.panelLogin.textFieldDNILogin.setText("");			
-		vis.panelLogin.passFieldContrasenia.setText("");		
-		vis.panelPasajeroExtra.textFieldNombre.setText("");
-		vis.panelPasajeroExtra.textFieldApellido.setText("");
-		vis.panelPasajeroExtra.textFieldDNI.setText("");
-		vis.panelPasajeroExtra.textFieldSexo.setSelectedIndex(0);
-	}
-
+	}	
 	
 	
 
