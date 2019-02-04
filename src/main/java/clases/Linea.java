@@ -3,9 +3,9 @@ package clases;
 import java.util.ArrayList;
 
 public class Linea {
-	private String codigo;
-	ArrayList <Autobus> listaAutobuses = new ArrayList<Autobus>();
-	ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
+	public String codigo;
+	public ArrayList <Autobus> listaAutobuses = new ArrayList<Autobus>();
+	public ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
 	
 	public Linea(String codigo) {
 		this.setCodigo(codigo);

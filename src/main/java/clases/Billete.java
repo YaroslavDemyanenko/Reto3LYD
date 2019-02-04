@@ -1,12 +1,13 @@
 package clases;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import interfaces.Ventana;
 
 public class Billete {
+	
 	int codigoBillete,codAutobus;
 	float precioTrayecto;
 	Date fecha;
@@ -16,26 +17,50 @@ public class Billete {
 	public Billete() {
 		
 	}
+	
+	public Billete(float precioTrayecto, Date fecha, Linea linea, Parada paradaInic, Parada paradaFin) {
+		this.precioTrayecto = precioTrayecto;
+		this.fecha = fecha;
+		this.linea = linea;
+		this.paradaInic = paradaInic;
+		this.paradaFin = paradaFin;
+	}
+	
 	public Billete(Modelo mod) throws SQLException {
 		ResultSet rs= mod.db.hacerPeticion("SELECT COUNT(*) FROM `billete`");
 		this.codigoBillete=rs.getInt("COUNT(*)")+1;
 	}
 	
-	public void crearBilletes (Modelo mod,Ventana vis) throws SQLException{
-		mod.billeteIda=new Billete(mod);
-		mod.billeteVuelta=new Billete(mod);
-		for(int i=0;i<mod.arrayParadas.size();i++) {
-			if (mod.arrayParadas.get(i).nombreParada==vis.panelLineas2.lblSal.getText()) {
-				mod.billeteIda.paradaInic=mod.arrayParadas.get(i);
-			}
-			if (mod.arrayParadas.get(i).nombreParada==vis.panelLineas2.modeloListaDestinos.getElementAt(vis.panelLineas2.listaDestinos.getSelectedIndex())) {
-				mod.billeteIda.paradaFin=mod.arrayParadas.get(i);
+	public void informacionGeneralBilletes (Modelo mod,Ventana vis) throws SQLException{
+		
+		Linea linea;
+		Parada paradaInic,paradaDest;
+		Date fechaIda,fechaVuelta;
+		Double precio;
+		
+		for(int i=0;i<mod.lineas.size();) {
+			if (mod.lineas.get(i).codigo.equals(vis.panelLineas2.lblNombreLinea.getText().substring(0, 2))) {
+				linea=mod.lineas.get(i);
+				break;
 			}
 		}
-		mod.billeteIda.fecha=(Date) vis.panelLineas2.calendarioIda.getDate();
-		//if(vis.panelLineas2.calendarioVuelta.isVisible()) {
-			//billete.fecha=(Date) vis.panelLineas2.calendarioVuelta.getDate();
-		//}
+		for(int i=0;i<mod.arrayParadas.size();i++) {
+			if (mod.arrayParadas.get(i).nombreParada==vis.panelLineas2.modeloListaDestinos.getElementAt(vis.panelLineas2.listaDestinos.getSelectedIndex())) {
+				paradaDest=mod.arrayParadas.get(i);
+				break;
+			}
+			else if (mod.arrayParadas.get(i).nombreParada==vis.panelLineas2.lblSal.getText()) {
+				paradaInic=mod.arrayParadas.get(i);
+			}
+		}
+		fechaIda=vis.panelLineas2.calendarioIda.getDate();
+		mod.billeteGeneralIda=new Billete();
+		if(mod.isIdaYVuelta()) {
+			fechaVuelta=vis.panelLineas2.calendarioVuelta.getDate();
+			mod.billeteGeneralVuelta=mod.billeteGeneralIda;
+			mod.billeteGeneralVuelta.fecha=fechaVuelta;
+		}
+		
 		
 	}
 	
