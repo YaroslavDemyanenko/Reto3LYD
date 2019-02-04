@@ -12,6 +12,7 @@ public class Autobus {
 	double consumoKm;
 	String color;
 	
+	//CONSTRUCTOR 1
 	public Autobus(int codigo, int numPlazas, double consumoKm, String color) {
 		this.codigo = codigo;
 		this.numPlazas = numPlazas;
@@ -19,6 +20,7 @@ public class Autobus {
 		this.color = color;
 	}
 	
+	//CONSTRUCTOR 2
 	public Autobus() {	
 	}
 	

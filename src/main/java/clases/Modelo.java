@@ -36,20 +36,24 @@ public class Modelo {
 	public Color colorCalendario;
 	
 	public Modelo(ConexionAMySQL db) {
-		autobus=new Autobus();
-		billete=new Billete();
-		cliente=new Cliente();
-		linea=new Linea();
-		municipio=new Municipio();
-		parada=new Parada();
-		metodo=new Metodos();
-		metodosLogin=new MetodosLoginYRegistro();
+		this.autobus=new Autobus();
+		this.billete=new Billete();
+		this.cliente=new Cliente();
+		this.linea=new Linea();
+		this.municipio=new Municipio();
+		this.parada=new Parada();
+		this.metodo=new Metodos();
+		this.metodosLogin=new MetodosLoginYRegistro();
 		this.db=db;
 		try {
 			db.inicializarLineas(this);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public Modelo() {
+		
 	}
 
 	public boolean isIdaYVuelta() {
@@ -61,13 +65,13 @@ public class Modelo {
 	}
 	
 	public void reset() {
-		billeteIda=null;
-		billeteVuelta=null;
-		numeroBilletes=0;
-		clienteRegistrado=null;
-		ultimoPanel=null;
-		paradaSalida=null;
-		paradaDestino=null;
-		idaYVuelta=false;
+		this.billeteIda=null;
+		this.billeteVuelta=null;
+		this.numeroBilletes=0;
+		this.clienteRegistrado=null;
+		this.ultimoPanel=null;
+		this.paradaSalida=null;
+		this.paradaDestino=null;
+		this.idaYVuelta=false;
 	}
 }

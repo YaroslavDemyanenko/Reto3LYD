@@ -15,7 +15,7 @@ public class testCliente {
 	public String apellido = "Lopez";
 	public Date fechaNac;
 	public char sexo = 'M';
-	private char[] contrasenia;
+	private String contrasenia;
 	
 	private Cliente testCliente = new Cliente();
 	private Cliente testcons1Cliente = new Cliente(dni, nombre, apellido, fechaNac, sexo, contrasenia);
