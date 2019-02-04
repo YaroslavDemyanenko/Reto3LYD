@@ -87,4 +87,15 @@ public class MetodosLoginYRegistro {
 	public boolean ValidarDNI(String DNI){
 		return DNI.matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
+	
+	public void cambiarSexoAChar(Ventana vis, Cliente Cliente){
+		Object sexo = vis.panelLogin.cmbBoxSexo.getSelectedItem();
+		if(sexo=="Hombre"){
+			Cliente.setSexo('V');
+		}
+		else 
+			Cliente.setSexo('M');
+
+	}
+	
 }
