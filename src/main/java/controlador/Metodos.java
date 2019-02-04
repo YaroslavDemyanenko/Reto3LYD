@@ -4,8 +4,12 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import clases.Cliente;
@@ -68,20 +72,7 @@ public class Metodos {
 		fechaLimite = c.getTime();
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(), fechaLimite);
 
-	}
-	
-	public void clearfields(Ventana vis) {
-		vis.panelLogin.textFieldNombre.setText("");
-		vis.panelLogin.textFieldApellido.setText("");
-		vis.panelLogin.textFieldDNI.setText("");
-		vis.panelLogin.textFieldDNILogin.setText("");			
-		vis.panelLogin.passFieldContrasenia.setText("");		
-		vis.panelPasajeroExtra.textFieldNombre.setText("");
-		vis.panelPasajeroExtra.textFieldApellido.setText("");
-		vis.panelPasajeroExtra.textFieldDNI.setText("");
-		vis.panelPasajeroExtra.textFieldSexo.setSelectedIndex(0);
-	}
-
+	}	
 	
 	
 
