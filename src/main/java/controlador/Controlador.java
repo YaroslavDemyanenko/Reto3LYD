@@ -41,6 +41,7 @@ public class Controlador {
 		this.vis.panelResumen.btnSignUp.addActionListener(new btnListener());
 		
 		this.vis.panelLogin.btnConfirmarLogin.addActionListener(new btnListener());
+		this.vis.panelLogin.btnConfirmarRegistro.addActionListener(new btnListener());
 		
 		this.vis.panelLineas1.btnCancelar.addActionListener(new cancelListener());
 		this.vis.panelLineas2.btnCancelar.addActionListener(new cancelListener());
@@ -50,7 +51,6 @@ public class Controlador {
 		this.vis.panelConfirmacion.btnCancelar.addActionListener(new cancelListener());
 		this.vis.panelPago.btnCancelar.addActionListener(new cancelListener());
 	}
-
 
 	private class btnListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -88,6 +88,13 @@ public class Controlador {
 					vis.setContentPane(mod.ultimoPanel);
 				}
 			}
+			else if(e.getSource() == vis.panelLogin.btnConfirmarRegistro) {
+				mod.clienteRegistrado=mod.metodosLogin.registroUsuario(vis, mod);
+				if(mod.clienteRegistrado!=null) {
+					mod.db.insertarUsuarioEnBaseDeDatos(mod.clienteRegistrado, mod);
+					vis.setContentPane(mod.ultimoPanel);
+				}
+			}
 		}
 	}
 	
@@ -109,7 +116,9 @@ public class Controlador {
 
 	private class mseListener implements MouseListener {
 
-		/*Metodo para que cuando haga click en cualquier zona del panel saludo pase al siguiente panel*/
+		/**
+		 * Metodo para que cuando haga click en cualquier zona del panel saludo pase al siguiente panel
+		 */
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource() == vis.panelSaludo) {
 				vis.setContentPane(vis.panelLineas1);

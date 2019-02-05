@@ -51,7 +51,7 @@ public class PanelPago extends JPanel{
 		add(btnConfirmar);
 
 		lblDineroMetido = new JLabel("Dinero metido:");
-		lblDineroMetido.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblDineroMetido.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblDineroMetido.setBounds(309, 75, 169, 35);
 		add(lblDineroMetido);
 		
@@ -62,7 +62,7 @@ public class PanelPago extends JPanel{
 		textDineroMetido.setColumns(10);
 
 		lblPagado = new JLabel("Vueltas:");
-		lblPagado.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblPagado.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblPagado.setBounds(581, 75, 112, 35);
 		add(lblPagado);
 		
@@ -216,22 +216,22 @@ public class PanelPago extends JPanel{
 		arrayBtn[14]=btn001;
 		
 		label = new JLabel("\u20AC");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label.setFont(new Font("Yu Gothic Medium", Font.BOLD, 20));
 		label.setBounds(695, 121, 43, 35);
 		add(label);
 		
 		label_1 = new JLabel("\u20AC");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label_1.setFont(new Font("Yu Gothic Medium", Font.BOLD, 20));
 		label_1.setBounds(449, 121, 29, 35);
 		add(label_1);
 		
 		label_2 = new JLabel("\u20AC");
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label_2.setFont(new Font("Yu Gothic Medium", Font.BOLD, 20));
 		label_2.setBounds(166, 121, 29, 35);
 		add(label_2);
 		
 		lblAPagar = new JLabel("A pagar:");
-		lblAPagar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblAPagar.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 
 		lblAPagar.setBounds(52, 80, 98, 25);
 		add(lblAPagar);

@@ -36,7 +36,7 @@ public class MetodosLoginYRegistro {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Metodo para loguearse
 	 * 
@@ -61,13 +61,14 @@ public class MetodosLoginYRegistro {
 				} else {
 					System.out.println("Contraseña erronea");
 				}
-			} else System.out.println("El usuario no existe");
+			} else
+				System.out.println("El usuario no existe");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Comprueba la existencia de ese DNI
 	 * 
@@ -75,8 +76,8 @@ public class MetodosLoginYRegistro {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean comprobarDNIenBD(String dni,Modelo mod) {
-		String sql = "select DNI from cliente where DNI = " + dni + "";
+	public boolean comprobarDNIenBD(String dni, Modelo mod) {
+		String sql = "select DNI from cliente where DNI = \"" + dni + "\"";
 		ResultSet rs = mod.db.hacerPeticion(sql);
 		try {
 			if (rs.next()) {
@@ -88,6 +89,7 @@ public class MetodosLoginYRegistro {
 		}
 		return false;
 	}
+
 	
 	/**
 	 * Registra al usuario en la base de datos en el caso que no estuviera
@@ -95,31 +97,28 @@ public class MetodosLoginYRegistro {
 	 * @param mod
 	 * @return
 	 */
-	public Cliente registroUsuario(Ventana vis,Modelo mod) {
-		String dni=vis.panelLogin.textFieldDNI.getText();
-		String nombre=vis.panelLogin.textFieldNombre.getText();
-		String apellido=vis.panelLogin.textFieldApellido.getText();
-		Date fechaNac=vis.panelLogin.calendarioFechaNac.getDate();
-		char sexo='s';
-		final char[] contra=vis.panelLogin.passFieldContrasenia.getPassword();
-		if(	nombre.length()>0 &&
-			apellido.length()>0 &&
-			validarDNI(dni)==true &&
-			fechaNac.before(Calendar.getInstance().getTime()) &&
-			validarContrasenia(contra)
-			) 
-		{
-			if(comprobarDNIenBD(vis.panelLogin.textFieldDNI.getText(), mod)==false) {
-				return (new Cliente(dni,nombre,apellido,fechaNac,sexo,encriptarContra(contra)));
+
+
+	public Cliente registroUsuario(Ventana vis, Modelo mod) {
+		String dni = vis.panelLogin.textFieldDNI.getText();
+		String nombre = vis.panelLogin.textFieldNombre.getText();
+		String apellido = vis.panelLogin.textFieldApellido.getText();
+		Date fechaNac = vis.panelLogin.calendarioFechaNac.getDate();
+		char sexo = cambiarSexoAChar(vis);
+		final char[] contra = vis.panelLogin.passFieldContrasenia.getPassword();
+		if (nombre.length() > 0 && apellido.length() > 0 && validarDNI(dni) == true && fechaNac.before(Calendar.getInstance().getTime()) && validarContrasenia(contra)) {
+			if (comprobarDNIenBD(vis.panelLogin.textFieldDNI.getText(), mod) == false) {
+				return (new Cliente(dni, nombre, apellido, fechaNac, sexo, encriptarContra(contra)));
+			} else {
+				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
 			}
-			else {
-				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado",JOptionPane.INFORMATION_MESSAGE);
-			}
-			
-		}
-		else return null;
+
+		} else if (validarContrasenia(contra) == true)
+			JOptionPane.showMessageDialog(null, "Porfavor, rellena todos los campos", "Campos sin completar", JOptionPane.WARNING_MESSAGE);
+		;
 		return null;
 	}
+
 	
 	/**
 	 * Comprueba que has introducido la contrase�a segun los criterios requeridos
@@ -127,18 +126,12 @@ public class MetodosLoginYRegistro {
 	 * @return
 	 */
 	private boolean validarContrasenia(char[] contra) {
-		if (contra.length >= 8) {
-			//Regex para validar contraseña, por orden: Una letra minuscula, una letra mayuscula, un numero y minimo 8 caracteres de longitud
-			if(contra.toString().matches("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})")) {
-				return true;
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "Introduce una letra minuscula, una mayuscula, un numero y al menos 8 caracteres", "Contraseña poco segura", JOptionPane.ERROR_MESSAGE);
-				return false;
-			}
-		}
-		else {
-			JOptionPane.showMessageDialog(null, "Introduce una letra minuscula, una mayuscula, un numero y al menos 8 caracteres", "Contraseña Invalida", JOptionPane.ERROR_MESSAGE);
+		// Regex para validar contraseña, por orden: Una letra minuscula, una letra
+		// mayuscula, un numero y minimo 8 caracteres de longitud
+		if (contra.toString().matches("^.*(?=.{8,})(?=..*[0-9])(?=\\S+$)(?=.*[a-z])(?=.*[A-Z]).*$")) {
+			return true;
+		} else {
+			JOptionPane.showMessageDialog(null, "Introduce una letra minuscula, una mayuscula, un numero y al menos 8 caracteres", "Contraseña poco segura", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 	}
@@ -188,9 +181,20 @@ public class MetodosLoginYRegistro {
 		
 		if (!(vis.panelLogin.textFieldApellido.getText().matches("^[a-zA-Z]+$"))) {
 	        JOptionPane.showMessageDialog(null, "Tu apellido debe ser texto", "Error", JOptionPane.ERROR_MESSAGE);
-		}
-		
+		}	
 		
 	}
 	
+
+
+	public char cambiarSexoAChar(Ventana vis) {
+		String sexo = vis.panelLogin.cmbBoxSexo.getSelectedItem().toString();
+		if (sexo == "Hombre") {
+			return 'V';
+		} else
+			return 'M';
+
+	}
+
+
 }
