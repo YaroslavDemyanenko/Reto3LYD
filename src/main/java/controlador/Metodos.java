@@ -77,12 +77,18 @@ public class Metodos {
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
 
-	public static double distanciaLineas(Parada llegada, Parada salida) {
+	@Deprecated
+	public double distanciaLineas(Parada salida, Parada llegada) {
 		double latitudX = (salida.getLatitud() - llegada.getLatitud()) * (salida.getLatitud() - llegada.getLatitud());
 		double altitudX = (salida.getLongitud() - llegada.getLongitud()) * (salida.getLongitud() - llegada.getLongitud());
 		double distancia = Math.sqrt(latitudX + altitudX);
 
 		return distancia;
 	}
+	
+
+	
+	
+	
 
 }

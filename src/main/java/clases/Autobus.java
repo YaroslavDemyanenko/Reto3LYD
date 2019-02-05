@@ -2,15 +2,14 @@ package clases;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Autobus {
-	int codigo;
-	int numPlazas;
-	double consumoKm;
-	String color;
+	public int codigo;
+	public int numPlazas;
+	public double consumoKm;
+	public String color;
 	
 	//CONSTRUCTOR 1
 	public Autobus(int codigo, int numPlazas, double consumoKm, String color) {
@@ -24,13 +23,17 @@ public class Autobus {
 	public Autobus() {	
 	}
 	
-	public void crearYMeterAutobuses(Modelo mod) throws NumberFormatException, SQLException {
+	public void crearYMeterAutobuses(Modelo mod){
 		for (int i = 0; i < mod.lineas.size(); i++) {
 			String consulta = "SELECT * FROM autobus WHERE Cod_bus IN(SELECT Cod_bus FROM `linea_autobus` WHERE cod_Linea IN(SELECT Cod_Linea FROM `linea` WHERE Cod_Linea=\""+mod.lineas.get(i).getCodigo()+"\"))";
 			ResultSet result = mod.db.hacerPeticion(consulta);
-			while (result.next()) {
-				mod.lineas.get(i).listaAutobuses.add(new Autobus(result.getInt("Cod_bus"),result.getInt("N_Plazas"),result.getDouble("Consumo_km"),result.getString("Color")));
-				
+			try {
+				while (result.next()) {
+					mod.lineas.get(i).listaAutobuses.add(new Autobus(result.getInt("Cod_bus"),result.getInt("N_Plazas"),result.getDouble("Consumo_km"),result.getString("Color")));
+					
+				}
+			} catch (SQLException e) {
+				JOptionPane.showMessageDialog(null, "Error al crear autobuses", "Error", 0);
 			}
 		}
 	}

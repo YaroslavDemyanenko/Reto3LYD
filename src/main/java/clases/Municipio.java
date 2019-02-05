@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Municipio {
 
 	public String nombre;
@@ -27,15 +29,19 @@ public class Municipio {
 	 * @throws NumberFormatException 
 	 * @throws SQLException
 	 */
-	public void crearYMeterMunicipios(Modelo mod) throws NumberFormatException, SQLException {
+	public void crearYMeterMunicipios(Modelo mod){
 		for (int i = 0; i < mod.lineas.size(); i++) {
 			String consulta = "SELECT * FROM poblacion where Cod_Postal in(SELECT Cod_Postal from poblacion_parada where Cod_Parada IN(SELECT Cod_Parada FROM linea_parada where linea_parada.Cod_Linea=\"L" + Integer.toString(i + 1) + "\"))";
 			ResultSet result = mod.db.hacerPeticion(consulta);
 			int cont=0;
-			while (result.next()) {
-				mod.lineas.get(i).listaMunicipios.add(new Municipio(result.getString("Nombre"), result.getInt("Cod_Postal")));
-				mod.lineas.get(i).listaMunicipios.get(cont).paradas=mod.parada.arrayParadasPorMunicipio(mod.lineas.get(i).listaMunicipios.get(cont).getNombre(),mod);
-				cont++;
+			try {
+				while (result.next()) {
+					mod.lineas.get(i).listaMunicipios.add(new Municipio(result.getString("Nombre"), result.getInt("Cod_Postal")));
+					mod.lineas.get(i).listaMunicipios.get(cont).paradas=mod.parada.arrayParadasPorMunicipio(mod.lineas.get(i).listaMunicipios.get(cont).getNombre(),mod);
+					cont++;
+				}
+			} catch (SQLException e) {
+				JOptionPane.showMessageDialog(null, "Error al crear municipios", "Error", 0);
 			}
 		}
 	}
