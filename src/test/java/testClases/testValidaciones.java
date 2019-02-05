@@ -30,6 +30,7 @@ public class testValidaciones {
 //		assertEquals(cambiarSexoAChar("Hombre"),'V');
 //	}
 //	
+	
 	@Test
 	public void testvalidarDNI() {
 		assertEquals(metodosLoginTest.validarDNI("7777777B"),true);
