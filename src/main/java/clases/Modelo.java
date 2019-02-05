@@ -1,7 +1,6 @@
 package clases;
 
 import java.awt.Color;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -35,6 +34,8 @@ public class Modelo {
 	public Parada paradaSalida, paradaDestino;
 	public Color colorCalendario;
 	
+	public Modelo() {}
+	
 	public Modelo(ConexionAMySQL db) {
 		this.autobus=new Autobus();
 		this.billete=new Billete();
@@ -45,15 +46,7 @@ public class Modelo {
 		this.metodo=new Metodos();
 		this.metodosLogin=new MetodosLoginYRegistro();
 		this.db=db;
-		try {
-			db.inicializarLineas(this);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public Modelo() {
-		
+		db.inicializarLineas(this);
 	}
 
 	public boolean isIdaYVuelta() {

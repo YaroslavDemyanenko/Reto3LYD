@@ -12,31 +12,31 @@ import javax.swing.JOptionPane;
 import clases.Cliente;
 import clases.Linea;
 import clases.Modelo;
-import clases.Parada;
 import interfaces.Ventana;
 
 public class ConexionAMySQL {
 	private Connection conexion;
 
 	/**
-	 * Conecta la aplicacion con las base de datos
-	 * 
-	 * @param baseDatos
-	 * @param user
-	 * @param pass
+	 * Conecta la aplicacion a la base de datos
+	 * @param ip IP de la base de datos
+	 * @param puerto Puerto que usa para conectarse
+	 * @param baseDatos Base de datos de la cual se pedira informacion
+	 * @param user Usuario que pueda acceder a la base de datos
+	 * @param pass Contraseña del usuario
 	 */
 	public ConexionAMySQL(String ip, String puerto, String baseDatos, String user, String pass) {
 		try {
 			this.conexion=(DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + baseDatos + "?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass));
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
+			
 		}
 	}
 
 	/**
 	 * Metodo para hacer peticiones a la base de datos
 	 * 
-	 * @param peticionString String que se usara en la query en sql
+	 * @param peticionString String que se usara en la query de sql
 	 * @return devuelve un set de resultados
 	 */
 	public ResultSet hacerPeticion(String peticionString) {
@@ -50,11 +50,15 @@ public class ConexionAMySQL {
 		return null;
 	}
 
-	public void llenarModeloConLinea(Ventana vis, Modelo mod) throws SQLException {
+	public void llenarModeloConLinea(Ventana vis, Modelo mod) {
 		String peticion = "SELECT * FROM `linea`";
 		ResultSet resul = mod.db.hacerPeticion(peticion);
-		while (resul.next()) {
-			vis.panelLineas1.modeloLineas.addElement(resul.getString("Cod_Linea") + " " + resul.getString("Nombre"));
+		try {
+			while (resul.next()) {
+				vis.panelLineas1.modeloLineas.addElement(resul.getString("Cod_Linea") + " " + resul.getString("Nombre"));
+			}
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al rellenar el modelo con las lineas", "Error", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 	
@@ -79,43 +83,17 @@ public class ConexionAMySQL {
 		}
 	}
 
-	public void inicializarLineas(Modelo mod) throws SQLException {
+	public void inicializarLineas(Modelo mod){
 		String peticion = "SELECT Cod_Linea FROM `linea`";
 		ResultSet resul = mod.db.hacerPeticion(peticion);
-		while (resul.next()) {
-			mod.lineas.add(new Linea(resul.getString("Cod_Linea")));
+		try {
+			while (resul.next()) {
+				mod.lineas.add(new Linea(resul.getString("Cod_Linea")));
+			}
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al crear el array de lineas", "Error", 0);
 		}
 		mod.municipio.crearYMeterMunicipios(mod);
 		mod.autobus.crearYMeterAutobuses(mod);
 	}
-
-	/**
-	 * Calculamos el precio del trayecto dependiendo de las paradas que haya elegido
-	 * el usuario
-	 * 
-	 * @param mod
-	 * @param llegada
-	 * @param salida
-	 * @return
-	 * @throws SQLException
-	 */
-	public double PrecioTrayecto(Modelo mod, Parada llegada, Parada salida) throws SQLException {
-
-		double precioGasolina = 0.80;
-		String DatosAutobus = "select N_plazas, Consumo_km from autobus";
-		ResultSet rs = mod.db.hacerPeticion(DatosAutobus);
-		float consumo = rs.getFloat("Consumo_km");
-		int asiento = rs.getInt("N_plazas");
-		double distancia = controlador.Metodos.distanciaLineas(salida, llegada);
-
-		return (precioGasolina * consumo * distancia) / asiento;
-
-	}
-
-
-	/**
-	 * Statement stmt = con.createStatement(); ResultSet rs =
-	 * stmt.executeQuery("select * from `linea` where 1"); while (rs.next())
-	 * System.out.println(rs.getString("Cod_Linea") + " " + rs.getString("Nombre"));
-	 */
 }
