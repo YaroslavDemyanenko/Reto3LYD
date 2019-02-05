@@ -90,6 +90,15 @@ public class MetodosLoginYRegistro {
 		return false;
 	}
 
+	
+	/**
+	 * Registra al usuario en la base de datos en el caso que no estuviera
+	 * @param vis
+	 * @param mod
+	 * @return
+	 */
+
+
 	public Cliente registroUsuario(Ventana vis, Modelo mod) {
 		String dni = vis.panelLogin.textFieldDNI.getText();
 		String nombre = vis.panelLogin.textFieldNombre.getText();
@@ -110,6 +119,12 @@ public class MetodosLoginYRegistro {
 		return null;
 	}
 
+	
+	/**
+	 * Comprueba que has introducido la contraseña segun los criterios requeridos
+	 * @param contra
+	 * @return
+	 */
 	private boolean validarContrasenia(char[] contra) {
 		// Regex para validar contraseÃ±a, por orden: Una letra minuscula, una letra
 		// mayuscula, un numero y minimo 8 caracteres de longitud
@@ -121,9 +136,56 @@ public class MetodosLoginYRegistro {
 		}
 	}
 
-	public boolean validarDNI(String DNI) {
+	/**
+	 * Comprueba que el DNI cumple con los parametros de un DNI
+	 * @param DNI
+	 * @return
+	 */
+	public boolean validarDNI(String DNI){
 		return DNI.matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
+	
+	/**
+	 * Pasa el texto seleccionado en sexo a 'M' en el caso de ser mujer y a 'V' en el caso de ser hombre
+	 * @param vis
+	 * @param Cliente
+	 */
+	public void cambiarSexoAChar(Ventana vis, Cliente Cliente){
+		Object sexo = vis.panelLogin.cmbBoxSexo.getSelectedItem();
+		if(sexo=="Hombre"){
+			Cliente.setSexo('V');
+		}
+		else 
+			Cliente.setSexo('M');
+
+	}
+	
+	/**Comprueba que has metido texto en el campo Nombre
+	 * 
+	 * @param vis
+	 * @return
+	 */
+	public void validarNombre(Ventana vis) {
+		if (!(vis.panelLogin.textFieldNombre.getText().matches("^[a-zA-Z]+$"))) {
+	        JOptionPane.showMessageDialog(null, "Tu nombre debe ser texto", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		
+	}
+	
+	/**
+	 * Comprueba que has metido texto en el campo Apellido
+	 * @param vis
+	 * @return
+	 */
+	public void validarApellido(Ventana vis) {
+		
+		if (!(vis.panelLogin.textFieldApellido.getText().matches("^[a-zA-Z]+$"))) {
+	        JOptionPane.showMessageDialog(null, "Tu apellido debe ser texto", "Error", JOptionPane.ERROR_MESSAGE);
+		}	
+		
+	}
+	
+
 
 	public char cambiarSexoAChar(Ventana vis) {
 		String sexo = vis.panelLogin.cmbBoxSexo.getSelectedItem().toString();
@@ -133,5 +195,6 @@ public class MetodosLoginYRegistro {
 			return 'M';
 
 	}
+
 
 }

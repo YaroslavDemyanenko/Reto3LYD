@@ -15,7 +15,7 @@ public class testCliente {
 	public String apellido = "Lopez";
 	public Date fechaNac;
 	public char sexo = 'M';
-	private String contrasenia;
+	private String contrasenia = "contraseña";
 	
 	private Cliente testCliente = new Cliente();
 	private Cliente testcons1Cliente = new Cliente(dni, nombre, apellido, fechaNac, sexo, contrasenia);
@@ -25,6 +25,30 @@ public class testCliente {
 	public void testContrasenia() {
 		testCliente.setContrasenia(contrasenia);
 		assertEquals(testCliente.getContrasenia(),contrasenia);
+	}
+	
+	@Test
+	public void testNombre() {
+		testCliente.setNombre(nombre);
+		assertEquals(testCliente.getNombre(),nombre);
+	}
+	
+	@Test
+	public void testApellido() {
+		testCliente.setApellido(apellido);
+		assertEquals(testCliente.getApellido(),apellido);
+	}
+	
+	@Test
+	public void testSexo() {
+		testCliente.setSexo(sexo);
+		assertEquals(testCliente.getSexo(),sexo);
+	}
+	
+	@Test
+	public void testDni() {
+		testCliente.setDni(dni);
+		assertEquals(testCliente.getDni(),dni);
 	}
 	
 	@Test

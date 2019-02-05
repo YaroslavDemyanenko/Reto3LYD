@@ -17,7 +17,7 @@ public class Linea {
 	
 	
 	public String getCodigo() {
-		return codigo;
+		return this.codigo;
 	}
 	
 	public void setCodigo(String codigo) {

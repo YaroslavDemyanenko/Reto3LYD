@@ -12,13 +12,23 @@ import clases.Parada;
 
 public class testBillete {
 
-	int codigoBillete,codAutobusIda,codAutobusVuelta;
+	int codigoBillete;
+	int codAutobusIda;
+	int codAutobusVuelta;
 	float precioTrayecto;
-	Date fechaIda, fechaVuelta;
+	Date fechaIda;
+	Date fechaVuelta;
+	Date fecha;
 	Linea linea;
-	Parada paradaInic, paradaFin;
+	Parada paradaInic;
+	Parada paradaFin;
 	
 	Billete testBillete = new Billete();
+	Billete test2Billete = new Billete(precioTrayecto, fecha, linea, paradaInic, paradaFin);
+	
+	
+	
+	
 	
 	@Test
 	public void testCodigoBillete() {

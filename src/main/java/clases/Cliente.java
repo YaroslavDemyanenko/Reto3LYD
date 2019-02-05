@@ -33,7 +33,7 @@ public class Cliente {
 	
 	
 
-	public String getNombre(String nombre) {
+	public String getNombre() {
 		return nombre;
 	}
 
@@ -41,7 +41,7 @@ public class Cliente {
 		this.nombre=nombre;		
 	}
 	
-	public String getApellido(String apellido) {
+	public String getApellido() {
 		return apellido;
 	}
 
@@ -57,7 +57,7 @@ public class Cliente {
 		this.contrasenia = contrasenia;
 	}
 
-	public char getSexo(char sexo) {
+	public char getSexo() {
 		return sexo;
 	}
 
@@ -65,7 +65,7 @@ public class Cliente {
 		this.sexo=sexo;		
 	}
 
-	public String getDni(String dni) {
+	public String getDni() {
 		return dni;
 	}
 	
