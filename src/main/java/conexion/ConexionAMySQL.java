@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import clases.Cliente;
 import clases.Linea;
 import clases.Modelo;
+import clases.Parada;
+import controlador.Metodos;
 import interfaces.Ventana;
 
 public class ConexionAMySQL {
@@ -95,5 +97,24 @@ public class ConexionAMySQL {
 		}
 		mod.municipio.crearYMeterMunicipios(mod);
 		mod.autobus.crearYMeterAutobuses(mod);
+	}
+	
+	/**
+	 * Calculo del precio del trayecto
+	 * @param mod
+	 * @param salida
+	 * @param llegada
+	 * @return
+	 * @throws SQLException
+	 */
+	public double precioTrayecto(Modelo mod, Parada salida, Parada llegada) throws SQLException {
+		double distancia = controlador.Metodos.distanciaLineas(salida, llegada);
+		double gasolina = 0.80;
+		String peticion = "select Consumo_km, N_plazas from 'autobus'";
+		ResultSet resul = mod.db.hacerPeticion(peticion);
+		float consumo=resul.getFloat("Consumo_km");
+		int plazas=resul.getInt("N_plazas");
+		
+		return (distancia* gasolina*consumo)/plazas;
 	}
 }
