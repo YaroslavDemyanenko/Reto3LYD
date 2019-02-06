@@ -3,6 +3,7 @@ package testClases;
 import static org.junit.Assert.*;
 
 import java.sql.Date;
+import java.text.DateFormat;
 
 import org.junit.Test;
 
@@ -25,9 +26,6 @@ public class testBillete {
 	
 	Billete testBillete = new Billete();
 	Billete test2Billete = new Billete(precioTrayecto, fecha, linea, paradaInic, paradaFin);
-	
-	
-	
 	
 	
 	@Test

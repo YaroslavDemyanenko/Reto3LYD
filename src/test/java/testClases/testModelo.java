@@ -1,13 +1,18 @@
 package testClases;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.*;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JPanel;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import clases.Autobus;
 import clases.Billete;
@@ -22,32 +27,104 @@ import controlador.MetodosLoginYRegistro;
 
 public class testModelo {
 
-	public Billete billeteIda,billeteVuelta;
-	private boolean idaYVuelta=false;
-	public int numeroBilletes;
-	public Cliente clienteRegistrado;
-	public JPanel ultimoPanel;
-	public Parada paradaSalida, paradaDestino;
-	
-	private Modelo testModelo = new Modelo();
+	private Billete billeteIda,billeteVuelta;
+	private boolean idaYVuelta = false;
+	private int numeroBilletes = 0;
+	private Cliente clienteRegistrado;
+	private JPanel ultimoPanel;
+	private Parada paradaSalida, paradaDestino;
+	private ConexionAMySQL db;
+	private Modelo testModeloConstrutor = new Modelo();
+	private ConexionAMySQL dbMock = mock(ConexionAMySQL.class);
+	private Modelo testModeloConstructor2 = new Modelo(dbMock);
 	
 	@Test
 	public void testidaYVuelta() {
-		testModelo.setIdaYVuelta(idaYVuelta);
-		assertEquals(testModelo.isIdaYVuelta(), idaYVuelta);
+		testModeloConstrutor.setIdaYVuelta(idaYVuelta);
+		assertEquals(testModeloConstrutor.isIdaYVuelta(), idaYVuelta);
 	}
 	
 	@Test
 	public void testConstructor1() {
-		testModelo.reset();
-		assertEquals(testModelo.billeteIda, billeteIda);
-		assertEquals(testModelo.billeteVuelta, billeteVuelta);
-		assertEquals(testModelo.numeroBilletes, numeroBilletes);
-		assertEquals(testModelo.clienteRegistrado, clienteRegistrado);
-		assertEquals(testModelo.ultimoPanel, ultimoPanel);
-		assertEquals(testModelo.paradaSalida, paradaSalida);
-		assertEquals(testModelo.paradaDestino, paradaDestino);
-		assertEquals(testModelo.isIdaYVuelta(), idaYVuelta);
+		assertEquals(testModeloConstrutor.billete, null);
+		assertEquals(testModeloConstrutor.cliente, null);
+		assertEquals(testModeloConstrutor.linea, null);
+		assertEquals(testModeloConstrutor.municipio, null);
+		assertEquals(testModeloConstrutor.parada, null);
+		assertEquals(testModeloConstrutor.metodo, null);
+		assertEquals(testModeloConstrutor.db, null);		
+		assertEquals(testModeloConstrutor.metodosLogin, null);
+		assertEquals(testModeloConstrutor.billeteGeneralIda, null);
+		assertEquals(testModeloConstrutor.billeteGeneralVuelta, null);
+		assertEquals(testModeloConstrutor.fechaIda, null);
+		assertEquals(testModeloConstrutor.fechaVuelta, null);
+		assertEquals(testModeloConstrutor.colorCalendario, null);
+		assertEquals(testModeloConstrutor.billeteIda, null);
+		assertEquals(testModeloConstrutor.billeteVuelta, null);
+		assertEquals(testModeloConstrutor.numeroBilletes, 0);
+		assertEquals(testModeloConstrutor.clienteRegistrado, null);
+		assertEquals(testModeloConstrutor.ultimoPanel, null);
+		assertEquals(testModeloConstrutor.paradaSalida, null);
+		assertEquals(testModeloConstrutor.paradaDestino, null);
+		assertEquals(testModeloConstrutor.isIdaYVuelta(), false);
+		assertEquals(testModeloConstrutor.autobus, null);
+		assertEquals(testModeloConstrutor.lineas.size(), 0);
+		assertTrue(testModeloConstrutor.lineas.isEmpty());
+		assertEquals(testModeloConstrutor.arrayParadas.size(), 0);
+		assertTrue(testModeloConstrutor.arrayParadas.isEmpty());
+	}
+	
+	@Test
+	public void testConstructor2() throws SQLException  {
+		assertEquals(testModeloConstructor2.billete.getClass(), Billete.class);
+		assertNotEquals(testModeloConstructor2.billete, null);
+		assertEquals(testModeloConstructor2.cliente.getClass(), Cliente.class);
+		assertNotEquals(testModeloConstructor2.cliente, null);
+		assertEquals(testModeloConstructor2.linea.getClass(), Linea.class);
+		assertNotEquals(testModeloConstructor2.linea, null);
+		assertEquals(testModeloConstructor2.municipio.getClass(), Municipio.class);
+		assertNotEquals(testModeloConstructor2.municipio, null);
+		assertEquals(testModeloConstructor2.parada.getClass(), Parada.class);
+		assertNotEquals(testModeloConstructor2.parada, null);
+		assertEquals(testModeloConstructor2.metodo.getClass(), Metodos.class);
+		assertNotEquals(testModeloConstructor2.metodo, null);
+		assertEquals(testModeloConstructor2.metodosLogin.getClass(), MetodosLoginYRegistro.class);
+		assertNotEquals(testModeloConstructor2.metodosLogin, null);
+		verify(dbMock, times(1)).inicializarLineas(Mockito.any(Modelo.class));
+		assertNotEquals(testModeloConstructor2.db, null);	
+		assertEquals(testModeloConstructor2.billeteGeneralIda, null);
+		assertEquals(testModeloConstructor2.billeteGeneralVuelta, null);
+		assertEquals(testModeloConstructor2.fechaIda, null);
+		assertEquals(testModeloConstructor2.fechaVuelta, null);
+		assertEquals(testModeloConstructor2.colorCalendario, null);
+		assertEquals(testModeloConstructor2.billeteIda, null);
+		assertEquals(testModeloConstructor2.billeteVuelta, null);
+		assertEquals(testModeloConstructor2.numeroBilletes, 0);
+		assertEquals(testModeloConstructor2.clienteRegistrado, null);
+		assertEquals(testModeloConstructor2.ultimoPanel, null);
+		assertEquals(testModeloConstructor2.paradaSalida, null);
+		assertEquals(testModeloConstructor2.paradaDestino, null);
+		assertEquals(testModeloConstructor2.isIdaYVuelta(), false);
+		assertEquals(testModeloConstructor2.autobus.getClass(), Autobus.class);
+		assertNotEquals(testModeloConstructor2.autobus, null);
+		assertEquals(testModeloConstructor2.lineas.size(), 0);
+		assertTrue(testModeloConstructor2.lineas.isEmpty());
+		assertEquals(testModeloConstructor2.arrayParadas.size(), 0);
+		assertTrue(testModeloConstructor2.arrayParadas.isEmpty());
+	}
+	
+	@Test
+	public void testReset() {
+		testModeloConstructor2.reset();
+		assertEquals(testModeloConstructor2.billeteIda, null);
+		/*
+		this.billeteVuelta=null;
+		this.numeroBilletes=0;
+		this.clienteRegistrado=null;
+		this.ultimoPanel=null;
+		this.paradaSalida=null;
+		this.paradaDestino=null;
+		this.idaYVuelta=false;*/
 	}
 
 }
