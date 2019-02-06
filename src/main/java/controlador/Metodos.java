@@ -78,7 +78,7 @@ public class Metodos {
 	}
 
 	@Deprecated
-	public double distanciaLineas(Parada salida, Parada llegada) {
+	public static double distanciaLineas(Parada salida, Parada llegada) {
 		double latitudX = (salida.getLatitud() - llegada.getLatitud()) * (salida.getLatitud() - llegada.getLatitud());
 		double altitudX = (salida.getLongitud() - llegada.getLongitud()) * (salida.getLongitud() - llegada.getLongitud());
 		double distancia = Math.sqrt(latitudX + altitudX);
