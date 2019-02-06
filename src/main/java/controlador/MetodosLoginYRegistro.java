@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -101,12 +102,12 @@ public class MetodosLoginYRegistro {
 	 */
 
 
-	public Cliente registroUsuario(Ventana vis, Modelo mod) {
+	public Cliente registroUsuario(Ventana vis, Modelo mod, JComboBox campoTexto) {
 		String dni = vis.panelLogin.textFieldDNI.getText();
 		String nombre = vis.panelLogin.textFieldNombre.getText();
 		String apellido = vis.panelLogin.textFieldApellido.getText();
 		Date fechaNac = vis.panelLogin.calendarioFechaNac.getDate();
-		char sexo = cambiarSexoAChar(vis);
+		char sexo = cambiarSexoAChar(campoTexto);
 		final char[] contra = vis.panelLogin.passFieldContrasenia.getPassword();
 		if (nombre.length() > 0 &&
 				apellido.length() > 0 &&
@@ -170,9 +171,13 @@ public class MetodosLoginYRegistro {
 	}
 	
 
-
-	public char cambiarSexoAChar(Ventana vis) {
-		String sexo = vis.panelLogin.cmbBoxSexo.getSelectedItem().toString();
+	/**
+	 * Pasa los parametros del comboBox de la interfaz a caracteres char para poder enviarselo posteriormente a la BD
+	 * @param campoTexto
+	 * @return
+	 */
+	public char cambiarSexoAChar(JComboBox campoTexto) {
+		String sexo = campoTexto.getSelectedItem().toString();
 		if (sexo == "Hombre") {
 			return 'V';
 		} else
