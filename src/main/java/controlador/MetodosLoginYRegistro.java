@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Color;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -8,7 +9,9 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import clases.Cliente;
 import clases.Modelo;
@@ -99,14 +102,18 @@ public class MetodosLoginYRegistro {
 	 */
 
 
-	public Cliente registroUsuario(Ventana vis, Modelo mod) {
+	public Cliente registroUsuario(Ventana vis, Modelo mod, JComboBox campoTexto) {
 		String dni = vis.panelLogin.textFieldDNI.getText();
 		String nombre = vis.panelLogin.textFieldNombre.getText();
 		String apellido = vis.panelLogin.textFieldApellido.getText();
 		Date fechaNac = vis.panelLogin.calendarioFechaNac.getDate();
-		char sexo = cambiarSexoAChar(vis);
+		char sexo = cambiarSexoAChar(campoTexto);
 		final char[] contra = vis.panelLogin.passFieldContrasenia.getPassword();
-		if (nombre.length() > 0 && apellido.length() > 0 && validarDNI(dni) == true && fechaNac.before(Calendar.getInstance().getTime()) && validarContrasenia(contra)) {
+		if (nombre.length() > 0 &&
+				apellido.length() > 0 &&
+				validarDNI(dni) == true &&
+				fechaNac.before(Calendar.getInstance().getTime()) &&
+				validarContrasenia(contra)) {
 			if (comprobarDNIenBD(vis.panelLogin.textFieldDNI.getText(), mod) == false) {
 				return (new Cliente(dni, nombre, apellido, fechaNac, sexo, encriptarContra(contra)));
 			} else {
@@ -125,7 +132,7 @@ public class MetodosLoginYRegistro {
 	 * @param contra
 	 * @return
 	 */
-	private boolean validarContrasenia(char[] contra) {
+	public boolean validarContrasenia(char[] contra) {
 		// Regex para validar contraseña, por orden: Una letra minuscula, una letra
 		// mayuscula, un numero y minimo 8 caracteres de longitud
 		if (contra.toString().matches("^.*(?=.{8,})(?=..*[0-9])(?=\\S+$)(?=.*[a-z])(?=.*[A-Z]).*$")) {
@@ -145,50 +152,32 @@ public class MetodosLoginYRegistro {
 		return DNI.matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
 	
-	/**
-	 * Pasa el texto seleccionado en sexo a 'M' en el caso de ser mujer y a 'V' en el caso de ser hombre
-	 * @param vis
-	 * @param Cliente
-	 */
-	public void cambiarSexoAChar(Ventana vis, Cliente Cliente){
-		Object sexo = vis.panelLogin.cmbBoxSexo.getSelectedItem();
-		if(sexo=="Hombre"){
-			Cliente.setSexo('V');
-		}
-		else 
-			Cliente.setSexo('M');
-
-	}
 	
-	/**Comprueba que has metido texto en el campo Nombre
+	/**Comprueba que has metido letras en el campo de texto
 	 * 
 	 * @param vis
 	 * @return
 	 */
-	public void validarNombre(Ventana vis) {
-		if (!(vis.panelLogin.textFieldNombre.getText().matches("^[a-zA-Z]+$"))) {
-	        JOptionPane.showMessageDialog(null, "Tu nombre debe ser texto", "Error", JOptionPane.ERROR_MESSAGE);
+	public boolean validarSoloLetras(JTextField campoTexto) {
+		if (!(campoTexto.getText().matches("^[a-zA-Z]+$"))) {
+	        JOptionPane.showMessageDialog(null, "Este campo solo admite letras", "Error", JOptionPane.ERROR_MESSAGE);
+	        campoTexto.setBackground(new Color(240, 128, 128));
+	        return false;
 		}
+		else
+			campoTexto.setBackground(new JTextField().getBackground());
+			return true;
 		
 	}
 	
+
 	/**
-	 * Comprueba que has metido texto en el campo Apellido
-	 * @param vis
+	 * Pasa los parametros del comboBox de la interfaz a caracteres char para poder enviarselo posteriormente a la BD
+	 * @param campoTexto
 	 * @return
 	 */
-	public void validarApellido(Ventana vis) {
-		
-		if (!(vis.panelLogin.textFieldApellido.getText().matches("^[a-zA-Z]+$"))) {
-	        JOptionPane.showMessageDialog(null, "Tu apellido debe ser texto", "Error", JOptionPane.ERROR_MESSAGE);
-		}	
-		
-	}
-	
-
-
-	public char cambiarSexoAChar(Ventana vis) {
-		String sexo = vis.panelLogin.cmbBoxSexo.getSelectedItem().toString();
+	public char cambiarSexoAChar(JComboBox campoTexto) {
+		String sexo = campoTexto.getSelectedItem().toString();
 		if (sexo == "Hombre") {
 			return 'V';
 		} else
