@@ -9,6 +9,7 @@ import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -20,6 +21,7 @@ public class Controlador {
 
 	public Modelo mod;
 	public Ventana vis;
+	public JComboBox campoTexto;
 
 	public Controlador(Modelo modelo, Ventana vista) {
 		this.mod = modelo;
@@ -84,7 +86,7 @@ public class Controlador {
 					vis.setContentPane(mod.ultimoPanel);
 				}
 			} else if (e.getSource() == vis.panelLogin.btnConfirmarRegistro) {
-				mod.clienteRegistrado = mod.metodosLogin.registroUsuario(vis, mod);
+				mod.clienteRegistrado = mod.metodosLogin.registroUsuario(vis, mod, campoTexto);
 				if (mod.clienteRegistrado != null) {
 					mod.db.insertarUsuarioEnBaseDeDatos(mod.clienteRegistrado, mod);
 					vis.setContentPane(mod.ultimoPanel);
