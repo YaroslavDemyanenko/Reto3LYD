@@ -23,6 +23,8 @@ import java.util.Calendar;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.SpinnerNumberModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 /**
  * @wbp.parser.entryPoint
  */
@@ -102,6 +104,7 @@ public class PanelLineas2 extends JPanel{
 		add(calendarioVuelta);
 		
 		spnNumeroDeBilletes = new JSpinner();
+		
 		spnNumeroDeBilletes.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnNumeroDeBilletes.setBounds(255, 381, 70, 30);
 		((JSpinner.DefaultEditor) spnNumeroDeBilletes.getEditor()).getTextField().setEditable(false);

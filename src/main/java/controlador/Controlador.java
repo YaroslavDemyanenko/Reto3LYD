@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -21,7 +23,6 @@ public class Controlador {
 
 	public Modelo mod;
 	public Ventana vis;
-	public JComboBox campoTexto;
 
 	public Controlador(Modelo modelo, Ventana vista) {
 		this.mod = modelo;
@@ -32,9 +33,12 @@ public class Controlador {
 
 	public void inicializarEventos() {
 		this.vis.panelSaludo.addMouseListener(new mseListener());
+		this.vis.panelLineas2.spnNumeroDeBilletes.addMouseListener(new mseListener());
+		
 		this.vis.panelLineas1.listLineas.addListSelectionListener(new lstListener());
 		this.vis.panelLineas1.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelLineas2.calendarioIda.addPropertyChangeListener("date", new calendarListener());
+		this.vis.panelLineas2.calendarioVuelta.addPropertyChangeListener("date", new calendarListener());
 		this.vis.panelLineas2.btnConfirmar.addActionListener(new btnListener());
 
 		this.vis.panelSaludo.btnSignUP.addActionListener(new btnListener());
@@ -134,7 +138,6 @@ public class Controlador {
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
 
 		}
 
@@ -183,10 +186,18 @@ public class Controlador {
 		public void propertyChange(PropertyChangeEvent e) {
 			if (e.getSource() == vis.panelLineas2.calendarioIda) {
 				mod.metodo.limitarFechasVuelta(vis, 4);
+				vis.panelLineas2.spnNumeroDeBilletes.setValue(1);
+				vis.panelLineas2.spnNumeroDeBilletes.setModel(new SpinnerNumberModel(1, 1, mod.autobus.numeroPlazasRestantes(mod, vis), 1));
+			}
+			if (e.getSource() == vis.panelLineas2.calendarioVuelta) {
+				mod.metodo.limitarFechasVuelta(vis, 4);
+				vis.panelLineas2.spnNumeroDeBilletes.setValue(1);
+				vis.panelLineas2.spnNumeroDeBilletes.setModel(new SpinnerNumberModel(1, 1, mod.autobus.numeroPlazasRestantes(mod, vis), 1));
 			}
 
 		}
 
 	}
+	
 
 }
