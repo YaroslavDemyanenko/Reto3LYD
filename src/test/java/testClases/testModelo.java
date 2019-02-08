@@ -34,6 +34,7 @@ public class testModelo {
 	private JPanel ultimoPanel;
 	private Parada paradaSalida, paradaDestino;
 	private ConexionAMySQL db;
+	
 	private Modelo testModeloConstrutor = new Modelo();
 	private ConexionAMySQL dbMock = mock(ConexionAMySQL.class);
 	private Modelo testModeloConstructor2 = new Modelo(dbMock);
@@ -70,8 +71,8 @@ public class testModelo {
 		assertEquals(testModeloConstrutor.autobus, null);
 		assertEquals(testModeloConstrutor.lineas.size(), 0);
 		assertTrue(testModeloConstrutor.lineas.isEmpty());
-		assertEquals(testModeloConstrutor.arrayParadas.size(), 0);
-		assertTrue(testModeloConstrutor.arrayParadas.isEmpty());
+		assertEquals(testModeloConstrutor.arrayParadas.size(), 0); /*Comprueb que el array esta en la posicion 0*/
+		assertTrue(testModeloConstrutor.arrayParadas.isEmpty()); /*Comprueba que el array esta vacio*/
 	}
 	
 	@Test
@@ -90,7 +91,7 @@ public class testModelo {
 		assertNotEquals(testModeloConstructor2.metodo, null);
 		assertEquals(testModeloConstructor2.metodosLogin.getClass(), MetodosLoginYRegistro.class);
 		assertNotEquals(testModeloConstructor2.metodosLogin, null);
-		verify(dbMock, times(1)).inicializarLineas(Mockito.any(Modelo.class));
+		verify(dbMock, times(1)).inicializarLineas(Mockito.any(Modelo.class)); /*Comprueba que con el mock que se haya llamado 1 vez a la clase inicializarLineas en la baase de datos*/
 		assertNotEquals(testModeloConstructor2.db, null);	
 		assertEquals(testModeloConstructor2.billeteGeneralIda, null);
 		assertEquals(testModeloConstructor2.billeteGeneralVuelta, null);
@@ -117,14 +118,13 @@ public class testModelo {
 	public void testReset() {
 		testModeloConstructor2.reset();
 		assertEquals(testModeloConstructor2.billeteIda, null);
-		/*
-		this.billeteVuelta=null;
-		this.numeroBilletes=0;
-		this.clienteRegistrado=null;
-		this.ultimoPanel=null;
-		this.paradaSalida=null;
-		this.paradaDestino=null;
-		this.idaYVuelta=false;*/
+		assertEquals(testModeloConstructor2.billeteVuelta, null);
+		assertEquals(testModeloConstructor2.numeroBilletes, 0);
+		assertEquals(testModeloConstructor2.clienteRegistrado, null);
+		assertEquals(testModeloConstructor2.ultimoPanel, null);
+		assertEquals(testModeloConstructor2.paradaSalida, null);
+		assertEquals(testModeloConstructor2.paradaDestino, null);
+		assertEquals(testModeloConstructor2.isIdaYVuelta(), false);
 	}
 
 }

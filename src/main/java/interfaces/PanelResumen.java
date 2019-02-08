@@ -95,9 +95,9 @@ public class PanelResumen extends JPanel {
 		add(lblNombreParadaFin);
 		
 		lblIdaYVuelta = new JLabel("Ida / Ida y vuelta");
-		lblIdaYVuelta.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIdaYVuelta.setHorizontalAlignment(SwingConstants.LEFT);
 		lblIdaYVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblIdaYVuelta.setBounds(259, 375, 128, 32);
+		lblIdaYVuelta.setBounds(240, 375, 128, 32);
 		add(lblIdaYVuelta);
 		
 		lblNumBill = new JLabel("Numero de billetes:");
@@ -108,7 +108,7 @@ public class PanelResumen extends JPanel {
 		lblNumeroDeBilletes = new JLabel("x");
 		lblNumeroDeBilletes.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNumeroDeBilletes.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNumeroDeBilletes.setBounds(250, 439, 89, 32);
+		lblNumeroDeBilletes.setBounds(237, 439, 59, 32);
 		add(lblNumeroDeBilletes);
 		
 		btnCancelar = new JButton("Cancelar");
