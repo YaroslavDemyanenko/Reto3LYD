@@ -2,6 +2,7 @@ package clases;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -11,15 +12,13 @@ public class Autobus {
 	public double consumoKm;
 	public String color;
 	
-	//CONSTRUCTOR 1
 	public Autobus(int codigo, int numPlazas, double consumoKm, String color) {
 		this.codigo = codigo;
 		this.numPlazas = numPlazas;
 		this.consumoKm = consumoKm;
 		this.color = color;
 	}
-	
-	//CONSTRUCTOR 2
+
 	public Autobus() {	
 	}
 	
@@ -36,6 +35,10 @@ public class Autobus {
 				JOptionPane.showMessageDialog(null, "Error al crear autobuses", "Error", 0);
 			}
 		}
+	}
+	
+	public void numeroPlazasRestantes(Date fechaIda, Date fechaVuelta) {
+		
 	}
 	
 	

@@ -33,12 +33,14 @@ public class Metodos {
 	 */
 	public void limitarFechasVuelta(Ventana vis, int numDias) {
 		Date fechaLimite = vis.panelLineas2.calendarioIda.getDate();
-		vis.panelLineas2.calendarioVuelta.setDate(fechaLimite);
 		Calendar c = Calendar.getInstance();
 		c.setTime(fechaLimite);
+		c.add(Calendar.DATE, 1);
+		fechaLimite = c.getTime();
+		vis.panelLineas2.calendarioVuelta.setDate(fechaLimite);
 		c.add(Calendar.DATE, numDias);
 		fechaLimite = c.getTime();
-		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(), fechaLimite);
+		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioVuelta.getDate(), fechaLimite);
 
 	}	
 	

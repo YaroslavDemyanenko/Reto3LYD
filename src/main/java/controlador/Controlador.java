@@ -86,7 +86,7 @@ public class Controlador {
 					vis.setContentPane(mod.ultimoPanel);
 				}
 			} else if (e.getSource() == vis.panelLogin.btnConfirmarRegistro) {
-				mod.clienteRegistrado = mod.metodosLogin.registroUsuario(vis, mod, campoTexto);
+				mod.clienteRegistrado = mod.metodosLogin.registroUsuario(vis, mod);
 				if (mod.clienteRegistrado != null) {
 					mod.db.insertarUsuarioEnBaseDeDatos(mod.clienteRegistrado, mod);
 					vis.setContentPane(mod.ultimoPanel);

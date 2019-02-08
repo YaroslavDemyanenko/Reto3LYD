@@ -44,17 +44,19 @@ public class Billete {
 	 * @return distancia en km entre 2 coordenadas
 	 */
 	public double distanciaEnKmEntreDosParadas(Parada salida, Parada llegada) {
-		double lati1=salida.latitud;
-		double long1=salida.longitud;
-		double lati2=llegada.latitud;
-		double long2=llegada.longitud;
-		final double radioTierra=6371;
+		double lati1=Math.toRadians(salida.latitud);
+		double lati2=Math.toRadians(llegada.latitud);
+		
+		double lati2menoslati1=Math.toRadians(llegada.latitud-salida.latitud);
+		double long2menoslong1=Math.toRadians(llegada.longitud-salida.longitud);
+		
+		final double radioTierra=6371000;
 
-		double rLati=lati2-lati1;
-		double rLong=long2-long1;
-		double a=Math.pow(Math.sin((rLati/2)),2) + Math.cos(lati1) * Math.cos(lati2) * Math.pow(Math.sin((rLong/2)),2);
+		double a=Math.sin(lati2menoslati1/2) * Math.sin(lati2menoslati1)/2 +
+				Math.cos(lati1) * Math.cos(lati2) * Math.sin(long2menoslong1/2) * Math.sin(long2menoslong1/2);
 		double c=2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 		double distancia=radioTierra*c;
+		System.out.println(distancia);
 		return distancia;
 	
 	}
@@ -69,16 +71,15 @@ public class Billete {
 	 */
 	public double precioTrayecto(Modelo mod, Parada salida, Parada llegada, Double consumo,int numPlazas){
 		final double precioGasolina = 0.80;
-		double distancia = mod.billete.distanciaEnKmEntreDosParadas(salida, llegada);
+		double distancia = distanciaEnKmEntreDosParadas(salida, llegada);
 		return ((precioGasolina * consumo * distancia)*1.20) / numPlazas;
 	}
 	
-	public void informacionGeneralBilletes (Modelo mod,Ventana vis) throws SQLException{
+	public void informacionGeneralBilletes (Modelo mod,Ventana vis){
 		
 		Linea linea;
 		Parada paradaInic,paradaDest;
 		Date fechaIda,fechaVuelta;
-		Double precio;
 		
 		
 		for(int i=0;i<mod.lineas.size();) {
@@ -98,9 +99,6 @@ public class Billete {
 			}
 		}
 		fechaIda=vis.panelLineas2.calendarioIda.getDate();
-		//
-		//precio=precioTrayecto(mod, paradaInic, paradaDest, consumo, numPlazas);
-		//
 		mod.billeteGeneralIda=new Billete();
 		if(mod.isIdaYVuelta()) {
 			fechaVuelta=vis.panelLineas2.calendarioVuelta.getDate();

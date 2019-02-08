@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -93,27 +95,22 @@ public class MetodosLoginYRegistro {
 		return false;
 	}
 
-	
 	/**
 	 * Registra al usuario en la base de datos en el caso que no estuviera
+	 * 
 	 * @param vis
 	 * @param mod
 	 * @return
 	 */
 
-
-	public Cliente registroUsuario(Ventana vis, Modelo mod, JComboBox campoTexto) {
+	public Cliente registroUsuario(Ventana vis, Modelo mod) {
 		String dni = vis.panelLogin.textFieldDNI.getText();
 		String nombre = vis.panelLogin.textFieldNombre.getText();
 		String apellido = vis.panelLogin.textFieldApellido.getText();
 		Date fechaNac = vis.panelLogin.calendarioFechaNac.getDate();
-		char sexo = cambiarSexoAChar(campoTexto);
+		char sexo = cambiarSexoAChar(vis.panelLogin.cmbBoxSexo);
 		final char[] contra = vis.panelLogin.passFieldContrasenia.getPassword();
-		if (nombre.length() > 0 &&
-				apellido.length() > 0 &&
-				validarDNI(dni) == true &&
-				fechaNac.before(Calendar.getInstance().getTime()) &&
-				validarContrasenia(contra)) {
+		if (nombre.length() > 0 && apellido.length() > 0 && validarDNI(dni) == true && fechaNac.before(Calendar.getInstance().getTime()) && validarContrasenia(contra)) {
 			if (comprobarDNIenBD(vis.panelLogin.textFieldDNI.getText(), mod) == false) {
 				return (new Cliente(dni, nombre, apellido, fechaNac, sexo, encriptarContra(contra)));
 			} else {
@@ -126,53 +123,61 @@ public class MetodosLoginYRegistro {
 		return null;
 	}
 
-	
 	/**
-	 * Comprueba que has introducido la contrase�a segun los criterios requeridos
+	 * Comprueba que has introducido la contrase�a segun los criterios requeridos
+	 * 
 	 * @param contra
 	 * @return
 	 */
 	public boolean validarContrasenia(char[] contra) {
 		// Regex para validar contraseña, por orden: Una letra minuscula, una letra
 		// mayuscula, un numero y minimo 8 caracteres de longitud
-		if (contra.toString().matches("^.*(?=.{8,})(?=..*[0-9])(?=\\S+$)(?=.*[a-z])(?=.*[A-Z]).*$")) {
+
+		Pattern p = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$");
+		String contraString=new String(contra);
+		Matcher m = p.matcher(contraString);
+		System.out.println(contraString);
+
+		if (m.matches()) {
 			return true;
 		} else {
 			JOptionPane.showMessageDialog(null, "Introduce una letra minuscula, una mayuscula, un numero y al menos 8 caracteres", "Contraseña poco segura", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
+
 	}
 
 	/**
 	 * Comprueba que el DNI cumple con los parametros de un DNI
+	 * 
 	 * @param DNI
 	 * @return
 	 */
-	public boolean validarDNI(String DNI){
+	public boolean validarDNI(String DNI) {
 		return DNI.matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
-	
-	
-	/**Comprueba que has metido letras en el campo de texto
+
+	/**
+	 * Comprueba que has metido letras en el campo de texto
 	 * 
 	 * @param vis
 	 * @return
 	 */
 	public boolean validarSoloLetras(JTextField campoTexto) {
 		if (!(campoTexto.getText().matches("^[a-zA-Z]+$"))) {
-	        JOptionPane.showMessageDialog(null, "Este campo solo admite letras", "Error", JOptionPane.ERROR_MESSAGE);
-	        campoTexto.setBackground(new Color(240, 128, 128));
-	        return false;
-		}
-		else
+			JOptionPane.showMessageDialog(null, "Este campo solo admite letras", "Error", JOptionPane.ERROR_MESSAGE);
+			campoTexto.setBackground(new Color(240, 128, 128));
+			return false;
+		} else
 			campoTexto.setBackground(new JTextField().getBackground());
-			return true;
-		
+		return true;
+
 	}
-	
 
 	/**
-	 * Pasa los parametros del comboBox de la interfaz a caracteres char para poder enviarselo posteriormente a la BD
+	 * Pasa los parametros del comboBox de la interfaz a caracteres char para poder
+	 * enviarselo posteriormente a la BD
+	 * 
 	 * @param campoTexto
 	 * @return
 	 */
@@ -184,6 +189,5 @@ public class MetodosLoginYRegistro {
 			return 'M';
 
 	}
-
 
 }
