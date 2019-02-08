@@ -51,17 +51,7 @@ public class testValidaciones {
 		 bueno[7]='8';
 		assertEquals(metodosLoginTest.validarContrasenia(bueno),true);
 		
-<<<<<<< HEAD
-		numeros[0]='a';
-		numeros[1]='l';
-		numeros[2]='m';
-		numeros[3]='e';
-		numeros[4]='n';
-		numeros[5]='d';
-		numeros[6]='r';
-		numeros[7]='a';
-		assertEquals(metodosLoginTest.validarContrasenia(numeros),true);
-=======
+
 		char[] malo = new char[8];
 		malo[0]='a';
 		malo[1]='l';
@@ -72,7 +62,7 @@ public class testValidaciones {
 		malo[6]='r';
 		malo[7]='a';
 		assertEquals(metodosLoginTest.validarContrasenia(malo),false);
->>>>>>> 2aba49068312911a20ac08fb6a1400c027b5d2d7
+
 	}
 
 	@Test
