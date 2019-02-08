@@ -50,7 +50,7 @@ public class Billete {
 		double lati2menoslati1=Math.toRadians(llegada.latitud-salida.latitud);
 		double long2menoslong1=Math.toRadians(llegada.longitud-salida.longitud);
 		
-		final double radioTierra=6371000;
+		final double radioTierra=6371;
 
 		double a=Math.sin(lati2menoslati1/2) * Math.sin(lati2menoslati1)/2 +
 				Math.cos(lati1) * Math.cos(lati2) * Math.sin(long2menoslong1/2) * Math.sin(long2menoslong1/2);
@@ -69,7 +69,7 @@ public class Billete {
 	 * @param autobus autobus para saber el consumo
 	 * @return
 	 */
-	public double precioTrayecto(Modelo mod, Parada salida, Parada llegada, Double consumo,int numPlazas){
+	public double precioTrayecto(Parada salida, Parada llegada, Double consumo,int numPlazas){
 		final double precioGasolina = 0.80;
 		double distancia = distanciaEnKmEntreDosParadas(salida, llegada);
 		return ((precioGasolina * consumo * distancia)*1.20) / numPlazas;

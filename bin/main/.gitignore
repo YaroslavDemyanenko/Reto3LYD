@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-/controlador/
-=======
-/interfaces/
->>>>>>> a0a1c69f503b60a8d6d8008ae7b51c587d04adfb
-/testClases/
 /clases/
+/testClases/
+/interfaces/
