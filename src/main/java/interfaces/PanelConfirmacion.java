@@ -2,6 +2,7 @@ package interfaces;
 
 import java.awt.EventQueue;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -30,6 +31,7 @@ public class PanelConfirmacion extends JPanel {
 	public JDateChooser fechaIda,fechaVuelta;
 	public JComboBox comboBoxPasajeros;
 	public JTextField textFieldPrecioBillete;
+	public DefaultComboBoxModel<String> modeloPasajero;
 	
 	public PanelConfirmacion() {
 		setLayout(null);
@@ -174,7 +176,9 @@ public class PanelConfirmacion extends JPanel {
 		lblPasajerosas.setBounds(53, 64, 138, 25);
 		add(lblPasajerosas);
 		
-		comboBoxPasajeros = new JComboBox();
+		modeloPasajero= new DefaultComboBoxModel<String>();
+		
+		comboBoxPasajeros = new JComboBox(modeloPasajero);
 		comboBoxPasajeros.setBounds(53, 100, 132, 35);
 		add(comboBoxPasajeros);
 		

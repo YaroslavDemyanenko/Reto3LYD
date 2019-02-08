@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 
 import com.toedter.calendar.JDateChooser;
@@ -13,6 +14,7 @@ import clases.Parada;
 
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DefaultEditor;
+import javax.swing.JTextField;
 import javax.swing.JList;
 
 import java.awt.Color;
@@ -23,8 +25,8 @@ import java.util.Calendar;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.SpinnerNumberModel;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.ComponentOrientation;
+
 /**
  * @wbp.parser.entryPoint
  */
@@ -104,8 +106,9 @@ public class PanelLineas2 extends JPanel{
 		add(calendarioVuelta);
 		
 		spnNumeroDeBilletes = new JSpinner();
-		
-		spnNumeroDeBilletes.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+
+		spnNumeroDeBilletes.setModel(new SpinnerNumberModel(new Integer(1), new Integer(0), null, new Integer(1)));
+
 		spnNumeroDeBilletes.setBounds(255, 381, 70, 30);
 		((JSpinner.DefaultEditor) spnNumeroDeBilletes.getEditor()).getTextField().setEditable(false);
 		add(spnNumeroDeBilletes);
@@ -128,24 +131,24 @@ public class PanelLineas2 extends JPanel{
 		
 		lblSalida = new JLabel("Salida:");
 		lblSalida.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
-		lblSalida.setBounds(489, 130, 86, 31);
+		lblSalida.setBounds(447, 130, 86, 31);
 		add(lblSalida);
 		
 		
 		lblSal = new JLabel("yyyyyyyyyyy");
 		lblSal.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblSal.setBounds(562, 133, 216, 25);
+		lblSal.setBounds(520, 133, 258, 25);
 		add(lblSal);
 		
 		modeloListaDestinos= new DefaultListModel<String>();
 		
 		lblLlegada = new JLabel("Llegada:");
 		lblLlegada.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
-		lblLlegada.setBounds(489, 201, 89, 25);
+		lblLlegada.setBounds(447, 201, 89, 25);
 		add(lblLlegada);
 		
 		listaDestinos = new JList(modeloListaDestinos);
-		listaDestinos.setBounds(489, 237, 231, 199);
+		listaDestinos.setBounds(447, 237, 231, 199);
 		add(listaDestinos);
 	}
 	public void limpiar() {

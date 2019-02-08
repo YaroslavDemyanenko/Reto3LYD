@@ -51,6 +51,7 @@ public class testValidaciones {
 		 bueno[7]='8';
 		assertEquals(metodosLoginTest.validarContrasenia(bueno),true);
 		
+
 		char[] malo = new char[8];
 		malo[0]='a';
 		malo[1]='l';
@@ -61,6 +62,7 @@ public class testValidaciones {
 		malo[6]='r';
 		malo[7]='a';
 		assertEquals(metodosLoginTest.validarContrasenia(malo),false);
+
 	}
 
 	@Test

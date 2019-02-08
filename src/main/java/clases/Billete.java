@@ -77,7 +77,7 @@ public class Billete {
 	 * @param autobus autobus para saber el consumo
 	 * @return
 	 */
-	public double precioTrayecto(Modelo mod, Parada salida, Parada llegada, Double consumo,int numPlazas){
+	public double precioTrayecto(Parada salida, Parada llegada, Double consumo,int numPlazas){
 		final double precioGasolina = 0.80;
 		double distancia = distanciaEnKmEntreDosParadas(salida, llegada);
 		return ((precioGasolina * consumo * distancia)*1.20) / numPlazas;

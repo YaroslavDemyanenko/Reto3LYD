@@ -24,6 +24,7 @@ public class Modelo {
 	
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
+	public ArrayList<Cliente> arrayClientes = new  ArrayList<Cliente>();
 	public Billete billeteGeneralIda,billeteGeneralVuelta,billeteIda,billeteVuelta;
 	
 	public Date fechaIda,fechaVuelta;
