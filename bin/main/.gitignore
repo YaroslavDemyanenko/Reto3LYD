@@ -1,20 +1,4 @@
-<<<<<<< HEAD
-/testClases/
-=======
-<<<<<<< HEAD
-/conexion/
 /controlador/
-/clases/
-=======
-<<<<<<< HEAD
 /testClases/
-/clases/
-=======
-/clases/
-/conexion/
-/controlador/
 /interfaces/
-/testClases/
->>>>>>> ef23619f93aecac0ac7abf788d5d9feee56bd105
->>>>>>> cee9eaaf614f07b0933395cfc8dca4c0dcbd1fa4
->>>>>>> 47ed610d171c6b2c8e7216075ae26aa83bd77910
+/clases/

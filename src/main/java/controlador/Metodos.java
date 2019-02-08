@@ -3,6 +3,11 @@ package controlador;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JSpinner;
+
+import clases.Cliente;
 import clases.Modelo;
 import clases.Parada;
 import interfaces.Ventana;
@@ -40,8 +45,7 @@ public class Metodos {
 		fechaLimite = c.getTime();
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioIda.getDate(), fechaLimite);
 
-	}	
-	
+	}		
 	
 
 	/**
@@ -86,9 +90,49 @@ public class Metodos {
 		return distancia;
 	}
 	
-
+	/**
+	 * Determinamos el cliente
+	 * @param vis
+	 * @param cliente
+	 * @param mod
+	 */
+	public void eleccionCliente(Ventana vis, Cliente cliente, Modelo mod) {	
+		for (int i = 0;i<mod.arrayClientes.size();i++)
+		{
+			mod.arrayClientes.add(cliente);
+			vis.panelConfirmacion.modeloPasajero.addElement(mod.arrayClientes.get(i).nombre);
+			vis.panelConfirmacion.modeloPasajero.addElement(mod.arrayClientes.get(i).apellido);
+			vis.panelConfirmacion.modeloPasajero.addElement(mod.arrayClientes.get(i).dni);
+		}
+	}
 	
+	/**
+	 * Enseñar datos de cada cliente
+	 * @param vis
+	 * @param mod
+	 * @param cliente
+	 */
+	public void confirmacionDatos(Ventana vis, Modelo mod, Cliente cliente) {
+		vis.panelConfirmacion.modeloPasajero.removeAllElements();
+		for (int i = 0;i<mod.arrayClientes.size();i++)
+		{
+			vis.panelConfirmacion.lblFieldCodigo.setText(String.valueOf(i));
+			vis.panelConfirmacion.lblFieldNombre.setText(mod.arrayClientes.get(i).nombre);
+			vis.panelConfirmacion.lblFieldApellidos.setText(mod.arrayClientes.get(i).apellido);
+			vis.panelConfirmacion.lblFieldDNI.setText(mod.arrayClientes.get(i).dni);			
+		}
+		
+		vis.panelConfirmacion.lblFieldLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
+		vis.panelConfirmacion.lblFieldParadaInicio.setText(String.valueOf(vis.panelLineas1.listParadas.getSelectedValues()));
+		vis.panelConfirmacion.lblFieldParadaFin.setText(String.valueOf(vis.panelLineas2.listaDestinos.getSelectedValues()));		
+		vis.panelConfirmacion.fechaIda.setDate(vis.panelLineas2.calendarioIda.getDate());
+		vis.panelConfirmacion.fechaVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
+		if(mod.isIdaYVuelta()==true) {
+			vis.panelConfirmacion.lblFieldTipoTrayecto.setText("Ida y vuelta");
+		}
+		else
+			vis.panelConfirmacion.lblFieldTipoTrayecto.setText("Ida");
+		
+	}
 	
-	
-
 }

@@ -59,7 +59,7 @@ public class testValidaciones {
 		numeros[5]='d';
 		numeros[6]='r';
 		numeros[7]='a';
-		assertEquals(metodosLoginTest.validarContrasenia(numeros),false);
+		assertEquals(metodosLoginTest.validarContrasenia(numeros),true);
 	}
 
 	@Test
