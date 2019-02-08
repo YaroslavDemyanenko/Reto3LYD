@@ -10,11 +10,11 @@ import interfaces.Ventana;
 
 public class Billete {
 	
-	int codigoBillete,codAutobus;
-	float precioTrayecto;
-	Date fecha;
-	Linea linea;
-	Parada paradaInic, paradaFin;
+	public int codigoBillete,codAutobus;
+	public float precioTrayecto;
+	public Date fecha;
+	public Linea linea;
+	public Parada paradaInic, paradaFin;
 	
 	/**
 	 * Constructor vacio

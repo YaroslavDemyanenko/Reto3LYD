@@ -13,20 +13,31 @@ import clases.Parada;
 
 public class testBillete {
 
-	int codigoBillete;
-	int codAutobusIda;
-	int codAutobusVuelta;
-	float precioTrayecto;
-	Date fechaIda;
-	Date fechaVuelta;
-	Date fecha;
-	Linea linea;
-	Parada paradaInic;
-	Parada paradaFin;
+	private int codigoBillete =0;
+	private int codAutobusIda =0;
+	private int codAutobusVuelta =0;
+	private float precioTrayecto = 0;
+	private Date fechaIda;
+	private Date fechaVuelta;
+	private Date fecha;
+	private Linea linea;
+	private Parada paradaInic=new Parada();
+	private Parada paradaFin=new Parada();
+	 
+	private Billete testBillete = new Billete();
 	
-	Billete testBillete = new Billete();
-	Billete test2Billete = new Billete(precioTrayecto, fecha, linea, paradaInic, paradaFin);
 	
+	
+	@Test
+	public void testDistanciaEnKmEntreDosParadas() {
+		Billete test2Billete = new Billete(precioTrayecto, fecha, linea, paradaInic, paradaFin);
+		test2Billete.paradaInic.latitud= 43.257;
+		test2Billete.paradaInic.longitud= -2.92344;
+		test2Billete.paradaFin.latitud= 42.8462700;
+		test2Billete.paradaFin.longitud= -2.6722500;
+		//test2Billete.distanciaEnKmEntreDosParadas(this.paradaInic, this.paradaFin);
+		assertEquals(test2Billete.distanciaEnKmEntreDosParadas(this.paradaInic, this.paradaFin), 50.01,0.1);
+	}
 	
 	@Test
 	public void testCodigoBillete() {
