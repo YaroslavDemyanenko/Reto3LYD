@@ -10,11 +10,11 @@ import interfaces.Ventana;
 
 public class Billete {
 	
-	int codigoBillete,codAutobus;
-	float precioTrayecto;
-	Date fecha;
-	Linea linea;
-	Parada paradaInic, paradaFin;
+	public int codigoBillete,codAutobus;
+	public float precioTrayecto;
+	public Date fecha;
+	public Linea linea;
+	public Parada paradaInic, paradaFin;
 	
 	/**
 	 * Constructor vacio
@@ -55,6 +55,7 @@ public class Billete {
 		double a=Math.pow(Math.sin((rLati/2)),2) + Math.cos(lati1) * Math.cos(lati2) * Math.pow(Math.sin((rLong/2)),2);
 		double c=2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 		double distancia=radioTierra*c;
+		System.out.println(distancia);
 		return distancia;
 	
 	}
