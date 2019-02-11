@@ -11,13 +11,23 @@ import javax.swing.JTextField;
 
 import org.junit.Test;
 
+import controlador.Metodos;
 import controlador.MetodosLoginYRegistro;
+import interfaces.PanelPasajeroExtra;
+import clases.Cliente;
+import clases.Modelo;
+
 
 public class testValidaciones {
 	private MetodosLoginYRegistro metodosLoginTest = new MetodosLoginYRegistro();
+	private Metodos metodosTest = new Metodos();
 	private JTextField campoTextoTest=new JTextField();
 	private JComboBox campoTextoTest1=new JComboBox(new String[] {"Hombre", "Mujer"});
-
+	private DefaultComboBoxModel<String> modeloPasajero;
+	private Cliente cliente = new Cliente();
+	private PanelPasajeroExtra panel = new PanelPasajeroExtra();
+	
+	
 	@Test
 	public void testValidarLetras() {
 		campoTextoTest.setText("1");
@@ -75,5 +85,20 @@ public class testValidaciones {
 		assertEquals(metodosLoginTest.cambiarSexoAChar(campoTextoTest1),'M');
 		assertNotEquals(metodosLoginTest.cambiarSexoAChar(campoTextoTest1),'V');
 	}
+	
+	/**
+	@Test
+	public void testpasajeroExtra(Cliente [] cliente) {
+		 panel.textFieldNombre.setText("TestNombre");
+		 panel.textFieldApellido.setText("TestApellido");
+		 panel.textFieldDNI.setText("TestDNI");
+		 panel.textFieldSexo.setSelectedItem("Hombre");
+		assertEquals(metodosTest.pasajeroExtra(panel, 4, cliente),cliente.getnombre()=="TestNombre");
+		assertEquals(metodosTest.pasajeroExtra(panel, 4, cliente),cliente.getapellido()=="TestApellido");
+		assertEquals(metodosTest.pasajeroExtra(panel, 4, cliente),cliente.getdni()=="TestDNI");
+		assertEquals(metodosTest.pasajeroExtra(panel, 4, cliente),cliente.getSexo()=='V');
+ 
+	}
+	*/
 	
 }

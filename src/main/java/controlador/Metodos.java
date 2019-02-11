@@ -10,6 +10,7 @@ import javax.swing.JSpinner;
 import clases.Cliente;
 import clases.Modelo;
 import clases.Parada;
+import interfaces.PanelPasajeroExtra;
 import interfaces.Ventana;
 
 public class Metodos {
@@ -51,20 +52,18 @@ public class Metodos {
 	
 
 	
-	  public void pasajeroExtra(Ventana vis, int CantidadPasajeros) {
-	  
-		  Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
-		  
-		  for (int i = 0; i < pasajeroExtra.length; i++) {
-			  pasajeroExtra[i].setNombre(vis.panelPasajeroExtra.textFieldNombre.getText());
-			  pasajeroExtra[i].setApellido(vis.panelPasajeroExtra.textFieldApellido.getText());
-			  pasajeroExtra[i].setDni(vis.panelPasajeroExtra.textFieldDNI.getText());
-			  if( vis.panelPasajeroExtra.textFieldSexo.getSelectedItem().toString()=="Hombre") {
-				  pasajeroExtra[i].setSexo('V');
+	  public void pasajeroExtra(PanelPasajeroExtra panel, int CantidadPasajeros, Cliente [] cliente) {
+		  CantidadPasajeros= CantidadPasajeros-1;
+		  for (int i = 0; i < CantidadPasajeros; i++) {
+			  cliente[i].setNombre(panel.textFieldNombre.getText());
+			  cliente[i].setApellido(panel.textFieldApellido.getText());
+			  cliente[i].setDni(panel.textFieldDNI.getText());
+			  if(panel.textFieldSexo.getSelectedItem().toString()=="Hombre") {
+				  cliente[i].setSexo('V');
 			  } else {
-				  pasajeroExtra[i].setSexo('M');
+				  cliente[i].setSexo('M');
 			  }
-	      }	  
+		  }	  
 	  }
 
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
@@ -101,12 +100,11 @@ public class Metodos {
 	 * @param cliente
 	 * @param mod
 	 */
-	public void eleccionCliente(Ventana vis, Cliente cliente, Modelo mod, Cliente[] pasajeroExtra) {	
+	public void eleccionCliente(Ventana vis, Modelo mod, Cliente[] cliente) {	
 		vis.panelConfirmacion.modeloPasajero.removeAllElements();
-		mod.arrayClientes.add(cliente);		
-		if(pasajeroExtra!=null) {
-			for(int i=0; i>pasajeroExtra.length;i++) {
-				mod.arrayClientes.add(pasajeroExtra[i]);
+		if(cliente!=null) {
+			for(int i=0; i>cliente.length;i++) {
+				mod.arrayClientes.add(cliente[i]);
 			}
 		}		
 		
@@ -118,7 +116,7 @@ public class Metodos {
 	 * @param mod
 	 * @param cliente
 	 */
-	public void confirmacionDatos(Ventana vis, Modelo mod, Cliente cliente) {		
+	public void confirmacionDatos(Ventana vis, Modelo mod) {		
 		int posicion = vis.panelConfirmacion.comboBoxPasajeros.getSelectedIndex();
 		vis.panelConfirmacion.lblFieldCodigo.setText(String.valueOf(posicion));
 		vis.panelConfirmacion.lblFieldNombre.setText(mod.arrayClientes.get(posicion).nombre);
