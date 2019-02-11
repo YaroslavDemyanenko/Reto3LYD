@@ -12,6 +12,7 @@ import javax.swing.JSpinner;
 import clases.Cliente;
 import clases.Modelo;
 import clases.Parada;
+import interfaces.PanelPasajeroExtra;
 import interfaces.Ventana;
 
 public class Metodos {
@@ -52,11 +53,25 @@ public class Metodos {
 	
 	public double round(double value, int places) {
 	    if (places < 0) throw new IllegalArgumentException();
-
 	    BigDecimal bd = new BigDecimal(value);
 	    bd = bd.setScale(places, RoundingMode.HALF_UP);
 	    return bd.doubleValue();
 	}
+
+	
+	  public void pasajeroExtra(PanelPasajeroExtra panel, int CantidadPasajeros, Cliente [] cliente) {
+		  CantidadPasajeros= CantidadPasajeros-1;
+		  for (int i = 0; i < CantidadPasajeros; i++) {
+			  cliente[i].setNombre(panel.textFieldNombre.getText());
+			  cliente[i].setApellido(panel.textFieldApellido.getText());
+			  cliente[i].setDni(panel.textFieldDNI.getText());
+			  if(panel.textFieldSexo.getSelectedItem().toString()=="Hombre") {
+				  cliente[i].setSexo('V');
+			  } else {
+				  cliente[i].setSexo('M');
+			  }
+		  }	  
+	  }
 
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
@@ -87,19 +102,19 @@ public class Metodos {
 	}
 	
 	/**
-	 * Determinamos el cliente
+	 * Inserta los clientes en el array
 	 * @param vis
 	 * @param cliente
 	 * @param mod
 	 */
-	public void eleccionCliente(Ventana vis, Cliente cliente, Modelo mod) {	
-		for (int i = 0;i<mod.arrayClientes.size();i++)
-		{
-			mod.arrayClientes.add(cliente);
-			vis.panelConfirmacion.modeloPasajero.addElement(mod.arrayClientes.get(i).nombre);
-			vis.panelConfirmacion.modeloPasajero.addElement(mod.arrayClientes.get(i).apellido);
-			vis.panelConfirmacion.modeloPasajero.addElement(mod.arrayClientes.get(i).dni);
-		}
+	public void eleccionCliente(Ventana vis, Modelo mod, Cliente[] cliente) {	
+		vis.panelConfirmacion.modeloPasajero.removeAllElements();
+		if(cliente!=null) {
+			for(int i=0; i>cliente.length;i++) {
+				mod.arrayClientes.add(cliente[i]);
+			}
+		}		
+		
 	}
 	
 	/**
@@ -108,15 +123,12 @@ public class Metodos {
 	 * @param mod
 	 * @param cliente
 	 */
-	public void confirmacionDatos(Ventana vis, Modelo mod, Cliente cliente) {
-		vis.panelConfirmacion.modeloPasajero.removeAllElements();
-		for (int i = 0;i<mod.arrayClientes.size();i++)
-		{
-			vis.panelConfirmacion.lblFieldCodigo.setText(String.valueOf(i));
-			vis.panelConfirmacion.lblFieldNombre.setText(mod.arrayClientes.get(i).nombre);
-			vis.panelConfirmacion.lblFieldApellidos.setText(mod.arrayClientes.get(i).apellido);
-			vis.panelConfirmacion.lblFieldDNI.setText(mod.arrayClientes.get(i).dni);			
-		}
+	public void confirmacionDatos(Ventana vis, Modelo mod) {		
+		int posicion = vis.panelConfirmacion.comboBoxPasajeros.getSelectedIndex();
+		vis.panelConfirmacion.lblFieldCodigo.setText(String.valueOf(posicion));
+		vis.panelConfirmacion.lblFieldNombre.setText(mod.arrayClientes.get(posicion).nombre);
+		vis.panelConfirmacion.lblFieldApellidos.setText(mod.arrayClientes.get(posicion).apellido);
+		vis.panelConfirmacion.lblFieldDNI.setText(mod.arrayClientes.get(posicion).dni);
 		
 		vis.panelConfirmacion.lblFieldLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
 		vis.panelConfirmacion.lblFieldParadaInicio.setText(String.valueOf(vis.panelLineas1.listParadas.getSelectedValuesList()));
