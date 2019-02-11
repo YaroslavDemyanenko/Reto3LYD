@@ -50,19 +50,22 @@ public class Metodos {
 	}		
 	
 
-	/**
-	 * public void PasajeroExtra(Ventana vis, int CantidadPasajeros) {
-	 * 
-	 * Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
-	 * 
-	 * // Genera clientes extra en base a la cantidad de pasajeros extra while
-	 * (CantidadPasajeros > 0) { pasajeroExtra[CantidadPasajeros] = new
-	 * Cliente(vis.panelPasajeroExtra.textFieldNombre.getText(),
-	 * //vis.panelPasajeroExtra.textFieldApellido.getText(),
-	 * vis.panelPasajeroExtra.textFieldDNI.getText(),
-	 * //vis.panelPasajeroExtra.textFieldSexo.getToolTipText()); //CantidadPasajeros
-	 * = CantidadPasajeros - 1; } }
-	 **/
+	
+	  public void pasajeroExtra(Ventana vis, int CantidadPasajeros) {
+	  
+		  Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
+		  
+		  for (int i = 0; i < pasajeroExtra.length; i++) {
+			  pasajeroExtra[i].setNombre(vis.panelPasajeroExtra.textFieldNombre.getText());
+			  pasajeroExtra[i].setApellido(vis.panelPasajeroExtra.textFieldApellido.getText());
+			  pasajeroExtra[i].setDni(vis.panelPasajeroExtra.textFieldDNI.getText());
+			  if( vis.panelPasajeroExtra.textFieldSexo.getSelectedItem().toString()=="Hombre") {
+				  pasajeroExtra[i].setSexo('V');
+			  } else {
+				  pasajeroExtra[i].setSexo('M');
+			  }
+	      }	  
+	  }
 
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
@@ -93,19 +96,20 @@ public class Metodos {
 	}
 	
 	/**
-	 * Determinamos el cliente
+	 * Inserta los clientes en el array
 	 * @param vis
 	 * @param cliente
 	 * @param mod
 	 */
-	public void eleccionCliente(Ventana vis, Cliente cliente, Modelo mod) {	
-		for (int i = 0;i<mod.arrayClientes.size();i++)
-		{
-			mod.arrayClientes.add(cliente);
-			vis.panelConfirmacion.modeloPasajero.addElement(mod.arrayClientes.get(i).nombre);
-			vis.panelConfirmacion.modeloPasajero.addElement(mod.arrayClientes.get(i).apellido);
-			vis.panelConfirmacion.modeloPasajero.addElement(mod.arrayClientes.get(i).dni);
-		}
+	public void eleccionCliente(Ventana vis, Cliente cliente, Modelo mod, Cliente[] pasajeroExtra) {	
+		vis.panelConfirmacion.modeloPasajero.removeAllElements();
+		mod.arrayClientes.add(cliente);		
+		if(pasajeroExtra!=null) {
+			for(int i=0; i>pasajeroExtra.length;i++) {
+				mod.arrayClientes.add(pasajeroExtra[i]);
+			}
+		}		
+		
 	}
 	
 	/**
@@ -114,15 +118,12 @@ public class Metodos {
 	 * @param mod
 	 * @param cliente
 	 */
-	public void confirmacionDatos(Ventana vis, Modelo mod, Cliente cliente) {
-		vis.panelConfirmacion.modeloPasajero.removeAllElements();
-		for (int i = 0;i<mod.arrayClientes.size();i++)
-		{
-			vis.panelConfirmacion.lblFieldCodigo.setText(String.valueOf(i));
-			vis.panelConfirmacion.lblFieldNombre.setText(mod.arrayClientes.get(i).nombre);
-			vis.panelConfirmacion.lblFieldApellidos.setText(mod.arrayClientes.get(i).apellido);
-			vis.panelConfirmacion.lblFieldDNI.setText(mod.arrayClientes.get(i).dni);			
-		}
+	public void confirmacionDatos(Ventana vis, Modelo mod, Cliente cliente) {		
+		int posicion = vis.panelConfirmacion.comboBoxPasajeros.getSelectedIndex();
+		vis.panelConfirmacion.lblFieldCodigo.setText(String.valueOf(posicion));
+		vis.panelConfirmacion.lblFieldNombre.setText(mod.arrayClientes.get(posicion).nombre);
+		vis.panelConfirmacion.lblFieldApellidos.setText(mod.arrayClientes.get(posicion).apellido);
+		vis.panelConfirmacion.lblFieldDNI.setText(mod.arrayClientes.get(posicion).dni);
 		
 		vis.panelConfirmacion.lblFieldLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
 		vis.panelConfirmacion.lblFieldParadaInicio.setText(String.valueOf(vis.panelLineas1.listParadas.getSelectedValues()));
