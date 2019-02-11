@@ -40,23 +40,66 @@ public class Autobus {
 	}
 
 	public int numeroPlazasRestantes(Modelo mod, Ventana vis) {
-
 		try {
-			//mod.billete.informacionGeneralBilletes(mod, vis);
-			mod.billeteGeneralIda.linea.codigo="L1";
-			String fecha = String.format("%1$tY-%1$tm-%1$td", vis.panelLineas2.calendarioIda.getDate());
-			System.out.println(fecha);
-			String consulta = "SELECT COUNT(*) FROM billete where Fecha='" + fecha + "' AND Cod_Linea='" + mod.billeteGeneralIda.linea.codigo + "')";
+			mod.billete.informacionGeneralBilletes(mod, vis);
+			String linea = mod.billeteGeneralIda.linea.codigo;
+			String fechaIda = String.format("%1$tY-%1$tm-%1$td", mod.billeteGeneralIda.fecha);
+			String fechaVuelta = null;
+			boolean hayVuelta = mod.isIdaYVuelta();
+			int numBillIda, numBillVuelta = 0;
+
+			String consulta = "SELECT COUNT(*) FROM billete where Fecha='" + fechaIda + "' AND Cod_Linea='" + linea + "'";
 			ResultSet result = mod.db.hacerPeticion(consulta);
-			int numBillIda = result.getInt(1);
-			fecha = String.format("%1$tY-%1$tm-%1$td", vis.panelLineas2.calendarioVuelta.getDate());
-			consulta = "SELECT COUNT(*) FROM billete where Fecha='" + fecha + "' AND Cod_Linea='" + mod.billeteGeneralIda.linea.codigo + "')";
+			result.first();
+			numBillIda = result.getInt(1);
+
+			if (hayVuelta) {
+				fechaVuelta = String.format("%1$tY-%1$tm-%1$td", mod.billeteGeneralVuelta.fecha);
+				consulta = "SELECT COUNT(*) FROM billete where Fecha='" + fechaVuelta + "' AND Cod_Linea='" + linea + "'";
+				result = mod.db.hacerPeticion(consulta);
+				result.first();
+				numBillVuelta = result.getInt(1);
+			}
+
+			consulta = "SELECT * FROM autobus WHERE Cod_bus IN(SELECT Cod_bus FROM linea_autobus WHERE Cod_Linea='" + linea + "') AND N_plazas>" + numBillIda;
 			result = mod.db.hacerPeticion(consulta);
-			int numBillVuelta = result.getInt(1);
-			if (numBillIda >= numBillVuelta) {
-				return numBillVuelta;
-			} else
-				return numBillIda;
+			int plazasRestantesIda = 0;
+			int plazasRestantesVuelta = 0;
+			result.beforeFirst();
+			while (result.next()) {
+				plazasRestantesIda += result.getInt("N_plazas") - numBillIda;
+				if (hayVuelta) {
+					plazasRestantesVuelta += result.getInt("N_plazas") - numBillVuelta;
+					if (plazasRestantesIda > 0 && plazasRestantesVuelta > 0) {
+						mod.billeteGeneralIda.codAutobus=result.getInt("Cod_bus");
+						mod.billeteGeneralVuelta.codAutobus=result.getInt("Cod_bus");
+						break;
+					}
+				} else if (plazasRestantesIda > 0) {
+					mod.billeteGeneralIda.codAutobus=result.getInt("Cod_bus");
+					break;
+				}
+			}
+			if ((!hayVuelta && plazasRestantesIda < 0) || (hayVuelta && (plazasRestantesIda < 0 || plazasRestantesVuelta <0))) {
+				JOptionPane.showMessageDialog(null, "No quedan billetes para este dia, seleccione otro dia", "Billetes agotados", JOptionPane.WARNING_MESSAGE);
+				return 0;
+			}
+
+			if (hayVuelta && fechaIda.equals(fechaVuelta)) {
+				if (plazasRestantesVuelta % 2 == 0) {
+					return plazasRestantesVuelta / 2;
+				} else
+					return (plazasRestantesVuelta - 1) / 2;
+			} else if (hayVuelta) {
+				if (plazasRestantesIda >= plazasRestantesVuelta) {
+					return plazasRestantesVuelta;
+				} else {
+					return plazasRestantesIda;
+				}
+			} else if (!hayVuelta) {
+				return plazasRestantesIda;
+			}
+			return 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

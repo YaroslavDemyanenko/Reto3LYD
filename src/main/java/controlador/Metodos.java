@@ -1,6 +1,8 @@
 package controlador;
 
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -40,29 +42,21 @@ public class Metodos {
 		Date fechaLimite = vis.panelLineas2.calendarioIda.getDate();
 		Calendar c = Calendar.getInstance();
 		c.setTime(fechaLimite);
-		c.add(Calendar.DATE, 1);
 		fechaLimite = c.getTime();
 		vis.panelLineas2.calendarioVuelta.setDate(fechaLimite);
 		c.add(Calendar.DATE, numDias);
 		fechaLimite = c.getTime();
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioVuelta.getDate(), fechaLimite);
 
-	}		
+	}	
 	
+	public double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
 
-	/**
-	 * public void PasajeroExtra(Ventana vis, int CantidadPasajeros) {
-	 * 
-	 * Cliente pasajeroExtra[] = new Cliente[CantidadPasajeros];
-	 * 
-	 * // Genera clientes extra en base a la cantidad de pasajeros extra while
-	 * (CantidadPasajeros > 0) { pasajeroExtra[CantidadPasajeros] = new
-	 * Cliente(vis.panelPasajeroExtra.textFieldNombre.getText(),
-	 * //vis.panelPasajeroExtra.textFieldApellido.getText(),
-	 * vis.panelPasajeroExtra.textFieldDNI.getText(),
-	 * //vis.panelPasajeroExtra.textFieldSexo.getToolTipText()); //CantidadPasajeros
-	 * = CantidadPasajeros - 1; } }
-	 **/
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
+	}
 
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
@@ -109,7 +103,7 @@ public class Metodos {
 	}
 	
 	/**
-	 * Enseñar datos de cada cliente
+	 * Ensear datos de cada cliente
 	 * @param vis
 	 * @param mod
 	 * @param cliente
@@ -125,8 +119,8 @@ public class Metodos {
 		}
 		
 		vis.panelConfirmacion.lblFieldLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
-		vis.panelConfirmacion.lblFieldParadaInicio.setText(String.valueOf(vis.panelLineas1.listParadas.getSelectedValues()));
-		vis.panelConfirmacion.lblFieldParadaFin.setText(String.valueOf(vis.panelLineas2.listaDestinos.getSelectedValues()));		
+		vis.panelConfirmacion.lblFieldParadaInicio.setText(String.valueOf(vis.panelLineas1.listParadas.getSelectedValuesList()));
+		vis.panelConfirmacion.lblFieldParadaFin.setText(String.valueOf(vis.panelLineas2.listaDestinos.getSelectedValuesList()));		
 		vis.panelConfirmacion.fechaIda.setDate(vis.panelLineas2.calendarioIda.getDate());
 		vis.panelConfirmacion.fechaVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 		if(mod.isIdaYVuelta()==true) {

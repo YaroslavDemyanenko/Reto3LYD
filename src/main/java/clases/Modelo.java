@@ -59,13 +59,13 @@ public class Modelo {
 	}
 	
 	public void reset() {
-		this.billeteIda=null;
-		this.billeteVuelta=null;
+		this.billeteIda=new Billete();
+		this.billeteVuelta=new Billete();
 		this.numeroBilletes=0;
 		this.clienteRegistrado=null;
-		this.ultimoPanel=null;
-		this.paradaSalida=null;
-		this.paradaDestino=null;
+		this.ultimoPanel=new JPanel();
+		this.paradaSalida=new Parada();
+		this.paradaDestino=new Parada();
 		this.idaYVuelta=false;
 	}
 }

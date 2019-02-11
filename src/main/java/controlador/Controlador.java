@@ -2,7 +2,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
@@ -10,7 +9,6 @@ import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ListSelectionEvent;
@@ -77,7 +75,7 @@ public class Controlador {
 					mod.parada.paradasLlegadaAModelo(mod, vis);
 				}
 			} else if (e.getSource() == vis.panelLineas2.btnConfirmar) {
-				// mod.db.calcularPrecioTrayecto(mod);
+				vis.panelResumen.textPrecio.setText(Double.toString(mod.billete.precioTotal(mod, (int) (vis.panelLineas2.spnNumeroDeBilletes.getModel().getValue()))));
 				vis.setContentPane(vis.panelResumen);
 				mod.metodo.mostrarResumenTrayecto(vis, mod);
 
@@ -116,7 +114,7 @@ public class Controlador {
 				vis.panelResumen.limpiar();
 			case "panelLineas2":
 				vis.panelLineas2.limpiar();
-			case "PanelLineas1":
+			case "panelLineas1":
 				vis.panelLineas1.limpiar();
 				break;
 			}
@@ -171,11 +169,9 @@ public class Controlador {
 					mod.parada.paradasIdaAModelo(vis, mod);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
-				} catch (NullPointerException e2) {
-					e2.printStackTrace();
-				}
-			}
 
+				}	
+			}
 		}
 
 	}
@@ -186,13 +182,10 @@ public class Controlador {
 		public void propertyChange(PropertyChangeEvent e) {
 			if (e.getSource() == vis.panelLineas2.calendarioIda) {
 				mod.metodo.limitarFechasVuelta(vis, 4);
-				vis.panelLineas2.spnNumeroDeBilletes.setValue(1);
-				vis.panelLineas2.spnNumeroDeBilletes.setModel(new SpinnerNumberModel(1, 1, mod.autobus.numeroPlazasRestantes(mod, vis), 1));
 			}
-			if (e.getSource() == vis.panelLineas2.calendarioVuelta) {
-				mod.metodo.limitarFechasVuelta(vis, 4);
+			else if ((e.getSource() == vis.panelLineas2.calendarioVuelta) && !vis.panelLineas2.listaDestinos.isSelectionEmpty()) {
 				vis.panelLineas2.spnNumeroDeBilletes.setValue(1);
-				vis.panelLineas2.spnNumeroDeBilletes.setModel(new SpinnerNumberModel(1, 1, mod.autobus.numeroPlazasRestantes(mod, vis), 1));
+				vis.panelLineas2.spnNumeroDeBilletes.setModel(new SpinnerNumberModel(1, 0, mod.autobus.numeroPlazasRestantes(mod, vis), 1));
 			}
 
 		}
