@@ -36,6 +36,14 @@ public class Billete {
 		this.paradaInic = paradaInic;
 		this.paradaFin = paradaFin;
 	}
+	
+	public Billete(Date fecha, Linea linea, Parada paradaInic, Parada paradaFin) {
+		this.precioTrayecto = precioTrayecto;
+		this.fecha = fecha;
+		this.linea = linea;
+		this.paradaInic = paradaInic;
+		this.paradaFin = paradaFin;
+	}
 
 	/**
 	 * Metodo para calcular la distancia en km entre dos puntos (formula utilizada: Haversine Formula)
@@ -50,7 +58,7 @@ public class Billete {
 		double lati2menoslati1=Math.toRadians(llegada.latitud-salida.latitud);
 		double long2menoslong1=Math.toRadians(llegada.longitud-salida.longitud);
 		
-		final double radioTierra=6371000;
+		final double radioTierra=6371;
 
 		double a=Math.sin(lati2menoslati1/2) * Math.sin(lati2menoslati1)/2 +
 				Math.cos(lati1) * Math.cos(lati2) * Math.sin(long2menoslong1/2) * Math.sin(long2menoslong1/2);
@@ -69,7 +77,7 @@ public class Billete {
 	 * @param autobus autobus para saber el consumo
 	 * @return
 	 */
-	public double precioTrayecto(Modelo mod, Parada salida, Parada llegada, Double consumo,int numPlazas){
+	public double precioTrayecto(Parada salida, Parada llegada, Double consumo,int numPlazas){
 		final double precioGasolina = 0.80;
 		double distancia = distanciaEnKmEntreDosParadas(salida, llegada);
 		return ((precioGasolina * consumo * distancia)*1.20) / numPlazas;
@@ -77,8 +85,8 @@ public class Billete {
 	
 	public void informacionGeneralBilletes (Modelo mod,Ventana vis){
 		
-		Linea linea;
-		Parada paradaInic,paradaDest;
+		Linea linea = null;
+		Parada paradaInic = null,paradaDest = null;
 		Date fechaIda,fechaVuelta;
 		
 		
@@ -99,7 +107,7 @@ public class Billete {
 			}
 		}
 		fechaIda=vis.panelLineas2.calendarioIda.getDate();
-		mod.billeteGeneralIda=new Billete();
+		mod.billeteGeneralIda=new Billete(fechaIda,linea,paradaInic,paradaDest);
 		if(mod.isIdaYVuelta()) {
 			fechaVuelta=vis.panelLineas2.calendarioVuelta.getDate();
 			mod.billeteGeneralVuelta=mod.billeteGeneralIda;

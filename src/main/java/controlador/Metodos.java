@@ -22,7 +22,7 @@ public class Metodos {
 	 */
 	public void limitarFechasIda(Ventana vis, int numDias) {
 		Date fechaLimite = new Date();
-		vis.panelLineas2.calendarioIda.setDate(new Date());
+		vis.panelLineas2.calendarioIda.setDate(fechaLimite);
 		Calendar c = Calendar.getInstance();
 		c.setTime(fechaLimite);
 		c.add(Calendar.DATE, numDias);

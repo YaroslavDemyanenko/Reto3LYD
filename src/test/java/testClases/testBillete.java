@@ -25,7 +25,7 @@ public class testBillete {
 	private Parada paradaFin=new Parada();
 	 
 	private Billete testBillete = new Billete();
-	
+
 	
 	
 	@Test
@@ -37,6 +37,18 @@ public class testBillete {
 		test2Billete.paradaFin.longitud= -2.6722500;
 		//test2Billete.distanciaEnKmEntreDosParadas(this.paradaInic, this.paradaFin);
 		assertEquals(test2Billete.distanciaEnKmEntreDosParadas(this.paradaInic, this.paradaFin), 50.01,0.1);
+	}
+	
+	@Test
+	public void testclasePrecioTrayecto() {
+		Billete test2Billete = new Billete(precioTrayecto, fecha, linea, paradaInic, paradaFin);
+		test2Billete.paradaInic.latitud= 43.257;
+		test2Billete.paradaInic.longitud= -2.92344;
+		test2Billete.paradaFin.latitud= 42.8462700;
+		test2Billete.paradaFin.longitud= -2.6722500;
+		double consumo = 50.23;
+		int numeroPlazas =5;
+		assertEquals(test2Billete.precioTrayecto(test2Billete.paradaInic, test2Billete.paradaFin, consumo, numeroPlazas),482.44,0.1);
 	}
 	
 	@Test
