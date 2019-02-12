@@ -111,9 +111,7 @@ public class PanelLineas1 extends JPanel {
 		add(btnConfirmar);
 	}
 	public void limpiar() {
-		listLineas.clearSelection();
 		modeloLineas.clear();;
-		listParadas.clearSelection();
 		modeloParadas.clear();;
 		lblUsuario.setText("Usuario");
 		rdbtnIda.setSelected(true);

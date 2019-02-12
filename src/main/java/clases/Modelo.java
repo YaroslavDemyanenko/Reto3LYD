@@ -25,7 +25,7 @@ public class Modelo {
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
 	public ArrayList<Cliente> arrayClientes = new  ArrayList<Cliente>();
-	public Billete billeteGeneralIda,billeteGeneralVuelta,billeteIda,billeteVuelta;
+	public Billete billeteGeneralIda = new Billete(),billeteGeneralVuelta=new Billete(),billeteIda,billeteVuelta;
 	
 	public Date fechaIda,fechaVuelta;
 	private boolean idaYVuelta=false;
@@ -60,6 +60,8 @@ public class Modelo {
 	
 	public void reset() {
 		this.billeteIda=new Billete();
+		this.billeteGeneralIda=new Billete();
+		this.billeteGeneralVuelta=new Billete();
 		this.billeteVuelta=new Billete();
 		this.numeroBilletes=0;
 		this.clienteRegistrado=null;

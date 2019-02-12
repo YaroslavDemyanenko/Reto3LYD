@@ -41,8 +41,7 @@ public class Billete {
 		this.paradaFin = paradaFin;
 	}
 
-	public Billete(Date fecha, Linea linea, Parada paradaInic, Parada paradaFin) {
-		this.fecha = fecha;
+	public Billete(Linea linea, Parada paradaInic, Parada paradaFin) {
 		this.linea = linea;
 		this.paradaInic = paradaInic;
 		this.paradaFin = paradaFin;
@@ -56,16 +55,20 @@ public class Billete {
 	 * @param llegada parada final
 	 * @return distancia en km entre 2 coordenadas
 	 */
+	
+	
 	public double distanciaEnKmEntreDosParadas(Parada salida, Parada llegada) {
 		double lati1 = Math.toRadians(salida.latitud);
 		double lati2 = Math.toRadians(llegada.latitud);
 
-		double lati2menoslati1 = Math.toRadians(llegada.latitud - salida.latitud);
-		double long2menoslong1 = Math.toRadians(llegada.longitud - salida.longitud);
+		double dlat = Math.toRadians(llegada.latitud - salida.latitud);
+		double dlong = Math.toRadians(llegada.longitud - salida.longitud);
 
 		final double radioTierra = 6371;
 
-		double a = Math.sin(lati2menoslati1 / 2) * Math.sin(lati2menoslati1) / 2 + Math.cos(lati1) * Math.cos(lati2) * Math.sin(long2menoslong1 / 2) * Math.sin(long2menoslong1 / 2);
+		double a = Math.sin(dlat/2.0) * Math.sin(dlat/2.0)  + 
+				Math.cos(lati1) * Math.cos(lati2) * 
+				Math.sin(dlong/2.0) * Math.sin(dlong/2.0);
 		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 		double distancia = radioTierra * c;
 		return distancia;
@@ -116,7 +119,7 @@ public class Billete {
 
 		Linea linea = new Linea();
 		Parada paradaInic = new Parada(), paradaDest = new Parada();
-		Date fechaIda, fechaVuelta;
+		
 
 		for (int i = 0; i < mod.lineas.size(); i++) {
 			if (mod.lineas.get(i).codigo.equals(vis.panelLineas2.lblNombreLinea.getText().substring(0, 2))) {
@@ -124,17 +127,24 @@ public class Billete {
 				break;
 			}
 		}
+		String salida= vis.panelLineas2.lblSal.getText();
 		String destino = vis.panelLineas2.listaDestinos.getSelectedValue().toString();
 		for (int i = 0; i < mod.arrayParadas.size(); i++) {
 			if (mod.arrayParadas.get(i).nombreParada.equals(destino)) {
 				paradaDest = mod.arrayParadas.get(i);
 				break;
-			} else if (mod.arrayParadas.get(i).nombreParada == vis.panelLineas2.lblSal.getText()) {
+			} else if (mod.arrayParadas.get(i).nombreParada == salida) {
 				paradaInic = mod.arrayParadas.get(i);
 			}
 		}
+		mod.billeteGeneralIda=new Billete(linea,paradaInic,paradaDest);
+		
+	}
+	
+	public void fechasGeneralBilletes(Modelo mod, Ventana vis) {
+		Date fechaIda, fechaVuelta;
 		fechaIda = vis.panelLineas2.calendarioIda.getDate();
-		mod.billeteGeneralIda = new Billete(fechaIda, linea, paradaInic, paradaDest);
+		mod.billeteGeneralIda.fecha=fechaIda;
 		if (mod.isIdaYVuelta()) {
 			fechaVuelta = vis.panelLineas2.calendarioVuelta.getDate();
 			mod.billeteGeneralVuelta = mod.billeteGeneralIda;

@@ -48,6 +48,7 @@ public class Metodos {
 		c.add(Calendar.DATE, numDias);
 		fechaLimite = c.getTime();
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioVuelta.getDate(), fechaLimite);
+		vis.panelLineas2.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getMinSelectableDate());
 
 	}	
 	
