@@ -25,7 +25,7 @@ public class testBillete {
 	private Parada paradaFin=new Parada();
 	 
 	private Billete testBillete = new Billete();
-
+	private Billete test3Billete = new Billete();
 	
 	
 	@Test
@@ -52,6 +52,15 @@ public class testBillete {
 	}
 	
 	@Test
+	public void testConsBillete() {
+		Billete test3Billete = new Billete(fecha,linea,paradaInic,paradaFin);
+		assertEquals(test3Billete.getLinea(), null);
+		assertEquals(test3Billete.getParadaInic(), paradaInic);
+		assertEquals(test3Billete.getParadaFin(), paradaFin);
+		assertEquals(test3Billete.getFecha(), null);
+	}
+	
+	@Test
 	public void testCodigoBillete() {
 		testBillete.setCodigoBillete(codigoBillete);
 		assertEquals(testBillete.getCodigoBillete(),codigoBillete);	
@@ -59,6 +68,12 @@ public class testBillete {
 	
 	@Test
 	public void testCodAutobusIda() {
+		testBillete.setFecha(fecha);
+		assertEquals(testBillete.getFecha(),fecha);
+	}
+	
+	@Test
+	public void testFecha() {
 		testBillete.setCodAutobusIda(codAutobusIda);
 		assertEquals(testBillete.getCodAutobusIda(),codAutobusIda);	
 	}

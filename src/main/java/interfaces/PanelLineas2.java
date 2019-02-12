@@ -153,6 +153,9 @@ public class PanelLineas2 extends JPanel{
 	}
 	public void limpiar() {
 		lblNombreLinea.setText("");
+		modeloListaDestinos.clear();
+		calendarioVuelta.setVisible(true);
+		lblFechaVuelta.setVisible(true);
 		calendarioIda.setDate(Calendar.getInstance().getTime());
 		calendarioVuelta.setDate(Calendar.getInstance().getTime());
 		spnNumeroDeBilletes.setValue(1);
