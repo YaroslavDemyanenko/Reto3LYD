@@ -12,6 +12,9 @@ import clases.Modelo;
 import clases.Parada;
 import interfaces.PanelPasajeroExtra;
 import interfaces.Ventana;
+import interfaces.PanelConfirmacion;
+import interfaces.PanelLineas2;
+import interfaces.PanelLineas1;
 
 public class Metodos {
 
@@ -52,9 +55,8 @@ public class Metodos {
 	
 
 	
-	  public void pasajeroExtra(PanelPasajeroExtra panel, int CantidadPasajeros, Cliente [] cliente) {
-		  CantidadPasajeros= CantidadPasajeros-1;
-		  for (int i = 0; i < CantidadPasajeros; i++) {
+	  public void pasajeroExtra(PanelPasajeroExtra panel, Cliente [] cliente) {		  
+		  for (int i = 0; i < cliente.length; i++) {
 			  cliente[i].setNombre(panel.textFieldNombre.getText());
 			  cliente[i].setApellido(panel.textFieldApellido.getText());
 			  cliente[i].setDni(panel.textFieldDNI.getText());
@@ -116,23 +118,23 @@ public class Metodos {
 	 * @param mod
 	 * @param cliente
 	 */
-	public void confirmacionDatos(Ventana vis, Modelo mod) {		
-		int posicion = vis.panelConfirmacion.comboBoxPasajeros.getSelectedIndex();
-		vis.panelConfirmacion.lblFieldCodigo.setText(String.valueOf(posicion));
-		vis.panelConfirmacion.lblFieldNombre.setText(mod.arrayClientes.get(posicion).nombre);
-		vis.panelConfirmacion.lblFieldApellidos.setText(mod.arrayClientes.get(posicion).apellido);
-		vis.panelConfirmacion.lblFieldDNI.setText(mod.arrayClientes.get(posicion).dni);
+	public void confirmacionDatos(PanelConfirmacion panel1,PanelLineas2 panel2, PanelLineas1 panel3, Modelo mod) {		
+		int posicion = panel1.comboBoxPasajeros.getSelectedIndex();
+		panel1.lblFieldCodigo.setText(String.valueOf(posicion));
+		panel1.lblFieldNombre.setText(mod.arrayClientes.get(posicion).nombre);
+		panel1.lblFieldApellidos.setText(mod.arrayClientes.get(posicion).apellido);
+		panel1.lblFieldDNI.setText(mod.arrayClientes.get(posicion).dni);
 		
-		vis.panelConfirmacion.lblFieldLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
-		vis.panelConfirmacion.lblFieldParadaInicio.setText(String.valueOf(vis.panelLineas1.listParadas.getSelectedValues()));
-		vis.panelConfirmacion.lblFieldParadaFin.setText(String.valueOf(vis.panelLineas2.listaDestinos.getSelectedValues()));		
-		vis.panelConfirmacion.fechaIda.setDate(vis.panelLineas2.calendarioIda.getDate());
-		vis.panelConfirmacion.fechaVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
+		panel1.lblFieldLinea.setText(panel2.lblNombreLinea.getText());
+		panel1.lblFieldParadaInicio.setText(String.valueOf(panel3.listParadas.getSelectedValues()));
+		panel1.lblFieldParadaFin.setText(String.valueOf(panel2.listaDestinos.getSelectedValues()));		
+		panel1.fechaIda.setDate(panel2.calendarioIda.getDate());
+		panel1.fechaVuelta.setDate(panel2.calendarioVuelta.getDate());
 		if(mod.isIdaYVuelta()==true) {
-			vis.panelConfirmacion.lblFieldTipoTrayecto.setText("Ida y vuelta");
+			panel1.lblFieldTipoTrayecto.setText("Ida y vuelta");
 		}
 		else
-			vis.panelConfirmacion.lblFieldTipoTrayecto.setText("Ida");
+			panel1.lblFieldTipoTrayecto.setText("Ida");
 		
 	}
 	

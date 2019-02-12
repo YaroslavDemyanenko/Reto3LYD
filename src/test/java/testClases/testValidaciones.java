@@ -13,9 +13,13 @@ import org.junit.Test;
 
 import controlador.Metodos;
 import controlador.MetodosLoginYRegistro;
+import interfaces.PanelConfirmacion;
+import interfaces.PanelLineas1;
+import interfaces.PanelLineas2;
 import interfaces.PanelPasajeroExtra;
 import clases.Cliente;
 import clases.Modelo;
+
 
 
 public class testValidaciones {
@@ -26,6 +30,10 @@ public class testValidaciones {
 	private DefaultComboBoxModel<String> modeloPasajero;
 	private Cliente cliente = new Cliente();
 	private PanelPasajeroExtra panel = new PanelPasajeroExtra();
+	private PanelConfirmacion panel1 = new PanelConfirmacion();
+	private PanelLineas2 panel2 = new PanelLineas2();
+	private PanelLineas1 panel3 = new PanelLineas1();
+	private Modelo mod = new Modelo();
 	
 	
 	@Test
@@ -86,19 +94,25 @@ public class testValidaciones {
 		assertNotEquals(metodosLoginTest.cambiarSexoAChar(campoTextoTest1),'V');
 	}
 	
-	/**
+
 	@Test
-	public void testpasajeroExtra(Cliente [] cliente) {
-		 panel.textFieldNombre.setText("TestNombre");
-		 panel.textFieldApellido.setText("TestApellido");
-		 panel.textFieldDNI.setText("TestDNI");
-		 panel.textFieldSexo.setSelectedItem("Hombre");
-		assertEquals(metodosTest.pasajeroExtra(panel, 4, cliente),cliente.getnombre()=="TestNombre");
-		assertEquals(metodosTest.pasajeroExtra(panel, 4, cliente),cliente.getapellido()=="TestApellido");
-		assertEquals(metodosTest.pasajeroExtra(panel, 4, cliente),cliente.getdni()=="TestDNI");
-		assertEquals(metodosTest.pasajeroExtra(panel, 4, cliente),cliente.getSexo()=='V');
- 
+	public void testPasajeroExtra() {
+		Cliente[] cliente = new Cliente[1];
+		panel.textFieldNombre.setText("TestNombre");
+		panel.textFieldApellido.setText("TestApellido");
+		panel.textFieldDNI.setText("TestDNI");
+		panel.textFieldSexo.setSelectedItem("Hombre");
+		metodosTest.pasajeroExtra(panel, cliente);
+		assertEquals(cliente[1].nombre,"TestNombre");
+		assertEquals(cliente[1].apellido,"TestApellido");
+		assertEquals(cliente[1].dni,"TestDNI");
+		assertEquals(cliente[1].sexo,'V');
 	}
-	*/
+	
+	@Test
+	public void testConfirmacionDatos() {
+		panel1.lblFieldCodigo.setText("00008");
+		assertEquals(panel1.lblFieldCodigo,"00008");
+	}
 	
 }
