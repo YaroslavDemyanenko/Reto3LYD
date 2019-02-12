@@ -151,9 +151,13 @@ public class Billete {
 			mod.billeteGeneralVuelta.fecha = fechaVuelta;
 		}
 	}
+	
+	public Date getFecha() {
+		return this. fecha;
+	}
 
-	public void limitarCompraBilletes(JSpinner spnBilletes) {
-
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 	public int getCodigoBillete() {

@@ -50,18 +50,18 @@ public class testParada {
 	
 	@Test
 	public void testConstructor2() {
-		assertEquals(testcons2parada.getCodigo(), codigo);
-		assertEquals(testcons2parada.getCalle(), calle);
-		assertEquals(testcons2parada.getnombreParada(), nombParada);
+		assertEquals(testcons2parada.getCodigo(), 458);
+		assertEquals(testcons2parada.getCalle(), "San Miguel");
+		assertEquals(testcons2parada.getnombreParada(), "Norte");
 		assertEquals(testcons2parada.getLatitud(), latitud, 0.000001);	
 		assertEquals(testcons2parada.getLongitud(), longitud, 0.000001);
 	}
 	
 	@Test
 	public void testConstructor3() {
-		assertEquals(testcons3parada.getCodigo(), codigo);
-		assertEquals(testcons3parada.getCalle(), calle);
-		assertEquals(testcons3parada.getnombreParada(), nombParada);
+		assertEquals(testcons3parada.getCodigo(), 458);
+		assertEquals(testcons3parada.getCalle(), "San Miguel");
+		assertEquals(testcons3parada.getnombreParada(), "Norte");
 	}
 	
 	@Test
