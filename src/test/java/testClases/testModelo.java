@@ -116,15 +116,21 @@ public class testModelo {
 	
 	@Test
 	public void testReset() {
-		testModeloConstructor2.reset();
-		assertEquals(testModeloConstructor2.billeteIda, null);
-		assertEquals(testModeloConstructor2.billeteVuelta, null);
-		assertEquals(testModeloConstructor2.numeroBilletes, 0);
-		assertEquals(testModeloConstructor2.clienteRegistrado, null);
-		assertEquals(testModeloConstructor2.ultimoPanel, null);
-		assertEquals(testModeloConstructor2.paradaSalida, null);
-		assertEquals(testModeloConstructor2.paradaDestino, null);
-		assertEquals(testModeloConstructor2.isIdaYVuelta(), false);
+		Modelo testModeloConstrutor = new Modelo();
+		testModeloConstrutor.reset();
+		assertEquals(testModeloConstrutor.billeteIda.getClass(), Billete.class);
+		assertNotEquals(testModeloConstrutor.billeteIda, null);
+		assertEquals(testModeloConstrutor.billeteVuelta.getClass(), Billete.class);
+		assertNotEquals(testModeloConstrutor.billeteVuelta, null);
+		assertEquals(testModeloConstrutor.numeroBilletes, 0);
+		assertEquals(testModeloConstrutor.clienteRegistrado, null);
+	    assertEquals(testModeloConstrutor.ultimoPanel.getClass(), JPanel.class);
+	    assertNotEquals(testModeloConstrutor.ultimoPanel, null);
+		assertEquals(testModeloConstrutor.paradaSalida.getClass(), Parada.class);
+		assertNotEquals(testModeloConstrutor.paradaSalida, null);
+		assertEquals(testModeloConstrutor.paradaDestino.getClass(), Parada.class);
+		assertNotEquals(testModeloConstrutor.paradaDestino, null);
+		assertEquals(testModeloConstrutor.isIdaYVuelta(), false);
 	}
 
 }
