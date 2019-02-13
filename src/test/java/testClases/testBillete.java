@@ -53,7 +53,7 @@ public class testBillete {
 	
 	@Test
 	public void testConsBillete() {
-		Billete test3Billete = new Billete(fecha,linea,paradaInic,paradaFin);
+		Billete test3Billete = new Billete(linea,paradaInic,paradaFin);
 		assertEquals(test3Billete.getLinea(), null);
 		assertEquals(test3Billete.getParadaInic(), paradaInic);
 		assertEquals(test3Billete.getParadaFin(), paradaFin);
