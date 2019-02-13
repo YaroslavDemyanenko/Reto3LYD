@@ -126,6 +126,7 @@ public class Metodos {
 	 * @param mod
 	 * @param cliente
 	 */
+
 	public void confirmacionDatos(PanelConfirmacion panel1, PanelLineas2 panel2, PanelLineas1 panel3, Modelo mod) {		
 		int posicion = panel1.getPasajeros();
 		panel1.actualizarPosicion(posicion);

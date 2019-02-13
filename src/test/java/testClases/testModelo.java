@@ -55,8 +55,10 @@ public class testModelo {
 		assertEquals(testModeloConstrutor.metodo, null);
 		assertEquals(testModeloConstrutor.db, null);		
 		assertEquals(testModeloConstrutor.metodosLogin, null);
-		assertEquals(testModeloConstrutor.billeteGeneralIda, null);
-		assertEquals(testModeloConstrutor.billeteGeneralVuelta, null);
+		assertEquals(testModeloConstrutor.billeteGeneralIda.getClass(), Billete.class);
+		assertNotEquals(testModeloConstrutor.billeteGeneralIda, null);
+		assertEquals(testModeloConstrutor.billeteGeneralVuelta.getClass(), Billete.class);
+		assertNotEquals(testModeloConstrutor.billeteGeneralVuelta, null);
 		assertEquals(testModeloConstrutor.fechaIda, null);
 		assertEquals(testModeloConstrutor.fechaVuelta, null);
 		assertEquals(testModeloConstrutor.colorCalendario, null);
@@ -93,8 +95,10 @@ public class testModelo {
 		assertNotEquals(testModeloConstructor2.metodosLogin, null);
 		verify(dbMock, times(1)).inicializarLineas(Mockito.any(Modelo.class)); /*Comprueba que con el mock que se haya llamado 1 vez a la clase inicializarLineas en la baase de datos*/
 		assertNotEquals(testModeloConstructor2.db, null);	
-		assertEquals(testModeloConstructor2.billeteGeneralIda, null);
-		assertEquals(testModeloConstructor2.billeteGeneralVuelta, null);
+		assertEquals(testModeloConstructor2.billeteGeneralIda.getClass(), Billete.class);
+		assertNotEquals(testModeloConstructor2.billeteGeneralIda, null);
+		assertEquals(testModeloConstructor2.billeteGeneralVuelta.getClass(), Billete.class);
+		assertNotEquals(testModeloConstructor2.billeteGeneralVuelta, null);
 		assertEquals(testModeloConstructor2.fechaIda, null);
 		assertEquals(testModeloConstructor2.fechaVuelta, null);
 		assertEquals(testModeloConstructor2.colorCalendario, null);

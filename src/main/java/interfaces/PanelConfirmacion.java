@@ -207,6 +207,8 @@ public class PanelConfirmacion extends JPanel {
 		lblFieldTipoTrayecto.setText("");
 	}
 	
+	
+	
 	public void actualizarPosicion(int posicion) {
 		lblFieldCodigo.setText(String.valueOf(posicion));
 	}
