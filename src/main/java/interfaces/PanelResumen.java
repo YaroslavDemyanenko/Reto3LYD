@@ -156,8 +156,9 @@ public class PanelResumen extends JPanel {
 		add(lblPrecio);
 		
 		textPrecio = new JTextField();
-		textPrecio.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textPrecio.setBounds(563, 448, 119, 41);
+		textPrecio.setHorizontalAlignment(SwingConstants.CENTER);
+		textPrecio.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textPrecio.setBounds(585, 448, 77, 41);
 		add(textPrecio);
 		textPrecio.setColumns(10);
 		
@@ -190,6 +191,11 @@ public class PanelResumen extends JPanel {
 		calendarioVuelta.setBounds(554, 341, 137, 27);
 		calendarioVuelta.setDateFormatString("dd-MM-yyyy");
 		add(calendarioVuelta);
+		
+		JLabel label = new JLabel("€");
+		label.setFont(new Font("Yu Gothic Medium", Font.BOLD, 20));
+		label.setBounds(672, 449, 29, 35);
+		add(label);
 
 	}
 	public void limpiar() {
