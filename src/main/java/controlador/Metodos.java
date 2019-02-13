@@ -135,8 +135,8 @@ public class Metodos {
 		
 
 		panel1.lblFieldLinea.setText(panel2.lblNombreLinea.getText());
-		panel1.lblFieldParadaInicio.setText(String.valueOf(panel3.listParadas.getSelectedValues()));
-		panel1.lblFieldParadaFin.setText(String.valueOf(panel2.listaDestinos.getSelectedValues()));		
+		panel1.lblFieldParadaInicio.setText(String.valueOf(panel3.listParadas.getSelectedValuesList()));
+		panel1.lblFieldParadaFin.setText(String.valueOf(panel2.listaDestinos.getSelectedValuesList()));		
 		panel1.fechaIda.setDate(panel2.calendarioIda.getDate());
 		panel1.fechaVuelta.setDate(panel2.calendarioVuelta.getDate());
 

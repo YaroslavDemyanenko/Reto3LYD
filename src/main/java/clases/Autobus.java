@@ -14,13 +14,15 @@ public class Autobus {
 	public double consumoKm;
 	public String color;
 
+	//constructor
 	public Autobus(int codigo, int numPlazas, double consumoKm, String color) {
 		this.codigo = codigo;
 		this.numPlazas = numPlazas;
 		this.consumoKm = consumoKm;
 		this.color = color;
 	}
-
+	
+	//constructor
 	public Autobus() {
 	}
 
