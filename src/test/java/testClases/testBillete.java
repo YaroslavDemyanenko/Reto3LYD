@@ -47,8 +47,7 @@ public class testBillete {
 		test2Billete.paradaFin.latitud= 42.8462700;
 		test2Billete.paradaFin.longitud= -2.6722500;
 		double consumo = 50.23;
-		int numeroPlazas =5;
-		assertEquals(test2Billete.precioTrayecto(test2Billete.paradaInic, test2Billete.paradaFin, consumo),482.44,0.1);
+		assertEquals(test2Billete.precioTrayecto(test2Billete.paradaInic, test2Billete.paradaFin, consumo),2412.20,0.01);
 	}
 	
 	@Test
