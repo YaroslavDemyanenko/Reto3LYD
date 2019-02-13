@@ -84,26 +84,26 @@ public class Billete {
 	 * @param autobus autobus para saber el consumo
 	 * @return
 	 */
-	public double precioTrayecto(Parada salida, Parada llegada, Double consumo, int numPlazas) {
+	public double precioTrayecto(Parada salida, Parada llegada, Double consumo) {
 		final double precioGasolina = 0.80;
 		double distancia = distanciaEnKmEntreDosParadas(salida, llegada);
-		return ((precioGasolina * consumo * distancia) * 1.20) / numPlazas;
+		return ((precioGasolina * consumo * distancia) * 1.20);
 	}
 
 	public double precioTotal(Modelo mod, int numeroBilletes) {
 		double precioTotal = 0;
 
-		String peticion = "SELECT N_plazas,Consumo_km FROM autobus WHERE Cod_bus=" + mod.billeteGeneralIda.codAutobus;
+		String peticion = "SELECT Consumo_km FROM autobus WHERE Cod_bus=" + mod.billeteGeneralIda.codAutobus;
 		ResultSet rs = mod.db.hacerPeticion(peticion);
 		try {
 			if (rs.next()) {
-				precioTotal += precioTrayecto(mod.billeteGeneralIda.paradaInic, mod.billeteGeneralIda.paradaFin, rs.getDouble("Consumo_km"), rs.getInt("N_plazas"));
+				precioTotal += precioTrayecto(mod.billeteGeneralIda.paradaInic, mod.billeteGeneralIda.paradaFin, rs.getDouble("Consumo_km"));
 			}
 			if (mod.isIdaYVuelta()) {
 				peticion = "SELECT N_plazas,Consumo_km FROM autobus WHERE Cod_bus=" + mod.billeteGeneralVuelta.codAutobus;
 				rs = mod.db.hacerPeticion(peticion);
 				if (rs.next()) {
-					precioTotal += precioTrayecto(mod.billeteGeneralIda.paradaInic, mod.billeteGeneralIda.paradaFin, rs.getDouble("Consumo_km"), rs.getInt("N_plazas"));
+					precioTotal += precioTrayecto(mod.billeteGeneralIda.paradaInic, mod.billeteGeneralIda.paradaFin, rs.getDouble("Consumo_km"));
 				}
 			}
 			precioTotal=precioTotal*numeroBilletes;
@@ -133,7 +133,7 @@ public class Billete {
 			if (mod.arrayParadas.get(i).nombreParada.equals(destino)) {
 				paradaDest = mod.arrayParadas.get(i);
 				break;
-			} else if (mod.arrayParadas.get(i).nombreParada == salida) {
+			} else if (mod.arrayParadas.get(i).nombreParada.equals(salida)) {
 				paradaInic = mod.arrayParadas.get(i);
 			}
 		}

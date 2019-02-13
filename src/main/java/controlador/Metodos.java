@@ -133,19 +133,13 @@ public class Metodos {
 		panel1.lblFieldApellidos.setText(mod.arrayClientes.get(posicion).apellido);
 		panel1.lblFieldDNI.setText(mod.arrayClientes.get(posicion).dni);
 		
-<<<<<<< HEAD
+
 		panel1.lblFieldLinea.setText(panel2.lblNombreLinea.getText());
 		panel1.lblFieldParadaInicio.setText(String.valueOf(panel3.listParadas.getSelectedValues()));
 		panel1.lblFieldParadaFin.setText(String.valueOf(panel2.listaDestinos.getSelectedValues()));		
 		panel1.fechaIda.setDate(panel2.calendarioIda.getDate());
 		panel1.fechaVuelta.setDate(panel2.calendarioVuelta.getDate());
-=======
-		vis.panelConfirmacion.lblFieldLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
-		vis.panelConfirmacion.lblFieldParadaInicio.setText(String.valueOf(vis.panelLineas1.listParadas.getSelectedValuesList()));
-		vis.panelConfirmacion.lblFieldParadaFin.setText(String.valueOf(vis.panelLineas2.listaDestinos.getSelectedValuesList()));		
-		vis.panelConfirmacion.fechaIda.setDate(vis.panelLineas2.calendarioIda.getDate());
-		vis.panelConfirmacion.fechaVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
->>>>>>> 1bf7a03e6eeb890f54e77ef1bdc9302b81559002
+
 		if(mod.isIdaYVuelta()==true) {
 			panel1.lblFieldTipoTrayecto.setText("Ida y vuelta");
 		}

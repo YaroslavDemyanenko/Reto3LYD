@@ -48,12 +48,12 @@ public class testBillete {
 		test2Billete.paradaFin.longitud= -2.6722500;
 		double consumo = 50.23;
 		int numeroPlazas =5;
-		assertEquals(test2Billete.precioTrayecto(test2Billete.paradaInic, test2Billete.paradaFin, consumo, numeroPlazas),482.44,0.1);
+		assertEquals(test2Billete.precioTrayecto(test2Billete.paradaInic, test2Billete.paradaFin, consumo),482.44,0.1);
 	}
 	
 	@Test
 	public void testConsBillete() {
-		Billete test3Billete = new Billete(fecha,linea,paradaInic,paradaFin);
+		Billete test3Billete = new Billete(linea,paradaInic,paradaFin);
 		assertEquals(test3Billete.getLinea(), null);
 		assertEquals(test3Billete.getParadaInic(), paradaInic);
 		assertEquals(test3Billete.getParadaFin(), paradaFin);
