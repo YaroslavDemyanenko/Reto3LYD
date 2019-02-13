@@ -15,6 +15,9 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import com.toedter.calendar.JDateChooser;
+
+import clases.Modelo;
+
 import com.toedter.calendar.JCalendar;
 import java.util.Date;
 import com.toedter.calendar.IDateEditor;
@@ -189,7 +192,10 @@ public class PanelConfirmacion extends JPanel {
 		fechaVuelta = new JDateChooser((JCalendar) null, (Date) null, (String) null, (IDateEditor) null);
 		fechaVuelta.setBounds(549, 278, 137, 27);
 		add(fechaVuelta);
+		
+
 	}
+	
 	public void limpiar() {
 		lblFieldCodigo.setText("");
 		lblFieldApellidos.setText("");
@@ -200,4 +206,56 @@ public class PanelConfirmacion extends JPanel {
 		lblFieldParadaInicio.setText("");
 		lblFieldTipoTrayecto.setText("");
 	}
+	
+	
+	
+	public void actualizarPosicion(int posicion) {
+		lblFieldCodigo.setText(String.valueOf(posicion));
+	}
+	
+	public void actualizarNombre(Modelo mod, int posicion) {
+		lblFieldNombre.setText(mod.arrayClientes.get(posicion).nombre);
+	}
+	
+	public void actualizarApellido(Modelo mod, int posicion) {
+		lblFieldApellidos.setText(mod.arrayClientes.get(posicion).apellido);
+	}
+	
+	public void actualizarDni(Modelo mod, int posicion) {
+		lblFieldDNI.setText(mod.arrayClientes.get(posicion).dni);
+	}
+	
+	public void actualizarLinea(PanelLineas2 panel2) {
+		lblFieldLinea.setText(panel2.lblNombreLinea.getText());
+	}
+	
+	public void actualizarParadaInicio(PanelLineas1 panel3) {
+		lblFieldParadaInicio.setText(String.valueOf(panel3.listParadas.getSelectedValuesList()));
+	}
+	
+	public void actualizarParadaFin(PanelLineas2 panel2) {
+		lblFieldParadaFin.setText(String.valueOf(panel2.listaDestinos.getSelectedValuesList()));
+	}
+	
+	public void actualizarFechaIda(PanelLineas2 panel2) {
+		fechaIda.setDate(panel2.calendarioIda.getDate());
+	}
+	
+	public void actualizarFechaVuelta(PanelLineas2 panel2) {
+		fechaVuelta.setDate(panel2.calendarioVuelta.getDate());
+	}
+	
+	public void actualizarTipoTrayecto(Modelo mod) {
+		if(mod.isIdaYVuelta()==true) {
+			lblFieldTipoTrayecto.setText("Ida y vuelta");
+		}
+		else
+			lblFieldTipoTrayecto.setText("Ida");
+	}
+	
+	public int getPasajeros() {
+		return this.comboBoxPasajeros.getSelectedIndex();
+	}
+	
+
 }

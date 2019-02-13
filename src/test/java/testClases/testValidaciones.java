@@ -1,5 +1,5 @@
 package testClases;
-
+import static org.mockito.Mockito.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -35,6 +35,27 @@ public class testValidaciones {
 	private PanelLineas1 panel3 = new PanelLineas1();
 	private Modelo mod = new Modelo();
 	
+	@Test
+	public void testConfirmacionDatos() {
+		Metodos metodosTest2 = new Metodos();
+		PanelConfirmacion panel1Mock = mock(PanelConfirmacion.class);
+		PanelLineas2 panel2Mock = mock(PanelLineas2.class);
+		PanelLineas1 panel3Mock = mock(PanelLineas1.class);
+		Modelo modeloMock = mock(Modelo.class);
+		when(panel1Mock.getPasajeros()).thenReturn(18);
+		metodosTest.confirmacionDatos(panel1Mock, panel2Mock, panel3Mock, modeloMock);
+		verify(panel1Mock, times(1)).getPasajeros();
+		verify(panel1Mock, times(1)).actualizarPosicion(18);
+		verify(panel1Mock, times(1)).actualizarNombre(modeloMock, 18);
+		verify(panel1Mock, times(1)).actualizarApellido(modeloMock, 18);
+		verify(panel1Mock, times(1)).actualizarLinea(panel2Mock);
+		verify(panel1Mock, times(1)).actualizarParadaInicio(panel3Mock);
+		verify(panel1Mock, times(1)).actualizarParadaFin(panel2Mock);
+		verify(panel1Mock, times(1)).actualizarFechaIda(panel2Mock);
+		verify(panel1Mock, times(1)).actualizarFechaVuelta(panel2Mock);
+		verify(panel1Mock, times(1)).actualizarTipoTrayecto(modeloMock);
+		
+	}
 	
 	@Test
 	public void testValidarLetras() {
@@ -95,24 +116,5 @@ public class testValidaciones {
 	}
 	
 
-	@Test
-	public void testPasajeroExtra() {
-		Cliente[] cliente = new Cliente[1];
-		panel.textFieldNombre.setText("TestNombre");
-		panel.textFieldApellido.setText("TestApellido");
-		panel.textFieldDNI.setText("TestDNI");
-		panel.textFieldSexo.setSelectedItem("Hombre");
-		metodosTest.pasajeroExtra(panel, cliente);
-		assertEquals(cliente[1].nombre,"TestNombre");
-		assertEquals(cliente[1].apellido,"TestApellido");
-		assertEquals(cliente[1].dni,"TestDNI");
-		assertEquals(cliente[1].sexo,'V');
-	}
-	
-	@Test
-	public void testConfirmacionDatos() {
-		panel1.lblFieldCodigo.setText("00008");
-		assertEquals(panel1.lblFieldCodigo,"00008");
-	}
 	
 }

@@ -127,25 +127,28 @@ public class Metodos {
 	 * @param mod
 	 * @param cliente
 	 */
-	public void confirmacionDatos(PanelConfirmacion panel1,PanelLineas2 panel2, PanelLineas1 panel3, Modelo mod) {		
-		int posicion = panel1.comboBoxPasajeros.getSelectedIndex();
-		panel1.lblFieldCodigo.setText(String.valueOf(posicion));
-		panel1.lblFieldNombre.setText(mod.arrayClientes.get(posicion).nombre);
-		panel1.lblFieldApellidos.setText(mod.arrayClientes.get(posicion).apellido);
-		panel1.lblFieldDNI.setText(mod.arrayClientes.get(posicion).dni);
-		
 
+<<<<<<< HEAD
+	public void confirmacionDatos(PanelConfirmacion panel1, PanelLineas2 panel2, PanelLineas1 panel3, Modelo mod) {		
+		int posicion = panel1.getPasajeros();
+		panel1.actualizarPosicion(posicion);
+		panel1.actualizarNombre(mod, posicion);
+		panel1.actualizarApellido(mod, posicion);
+		panel1.actualizarDni(mod, posicion);	
+		panel1.actualizarLinea(panel2);
+		panel1.actualizarParadaInicio(panel3);
+		panel1.actualizarParadaFin(panel2);
+		panel1.actualizarFechaIda(panel2);
+		panel1.actualizarFechaVuelta(panel2);
+		panel1.actualizarTipoTrayecto(mod);
+=======
 		panel1.lblFieldLinea.setText(panel2.lblNombreLinea.getText());
-		panel1.lblFieldParadaInicio.setText(String.valueOf(panel3.listParadas.getSelectedValues()));
-		panel1.lblFieldParadaFin.setText(String.valueOf(panel2.listaDestinos.getSelectedValues()));		
+		panel1.lblFieldParadaInicio.setText(String.valueOf(panel3.listParadas.getSelectedValuesList()));
+		panel1.lblFieldParadaFin.setText(String.valueOf(panel2.listaDestinos.getSelectedValuesList()));		
 		panel1.fechaIda.setDate(panel2.calendarioIda.getDate());
 		panel1.fechaVuelta.setDate(panel2.calendarioVuelta.getDate());
+>>>>>>> 9d8a7ad144ee509ca86f80b5d1efd9a055c2e1e1
 
-		if(mod.isIdaYVuelta()==true) {
-			panel1.lblFieldTipoTrayecto.setText("Ida y vuelta");
-		}
-		else
-			panel1.lblFieldTipoTrayecto.setText("Ida");
 		
 	}
 	
