@@ -34,6 +34,7 @@ public class PanelLineas1 extends JPanel {
 		setBackground(new Color(193, 240, 240));
 		setBounds(0, 0, 800, 600);
 		setLayout(null);
+		setName("panelLineas1");
 	
 		btnSignUP = new JButton("Sign Up");
 		btnSignUP.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
@@ -111,8 +112,8 @@ public class PanelLineas1 extends JPanel {
 		add(btnConfirmar);
 	}
 	public void limpiar() {
-		modeloLineas.clear();;
-		modeloParadas.clear();;
+		modeloLineas.clear();
+		modeloParadas.clear();
 		lblUsuario.setText("Usuario");
 		rdbtnIda.setSelected(true);
 		rdbtnIdayVuelta.setSelected(false);

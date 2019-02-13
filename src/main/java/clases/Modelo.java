@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import conexion.ConexionAMySQL;
 import controlador.Metodos;
 import controlador.MetodosLoginYRegistro;
+import controlador.MetodosPago;
 
 public class Modelo {
 
@@ -21,6 +22,7 @@ public class Modelo {
 	public ConexionAMySQL db;
 	public Metodos metodo;
 	public MetodosLoginYRegistro metodosLogin;
+	public MetodosPago metodosPago;
 	
 	public ArrayList<Linea> lineas = new ArrayList<Linea>();
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
@@ -46,6 +48,7 @@ public class Modelo {
 		this.parada=new Parada();
 		this.metodo=new Metodos();
 		this.metodosLogin=new MetodosLoginYRegistro();
+		this.metodosPago=new MetodosPago();
 		this.db=db;
 		db.inicializarLineas(this);
 	}

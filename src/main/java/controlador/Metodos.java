@@ -3,6 +3,7 @@ package controlador;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -147,5 +148,8 @@ public class Metodos {
 			panel1.lblFieldTipoTrayecto.setText("Ida");
 		
 	}
+	
+	
+	
 	
 }
