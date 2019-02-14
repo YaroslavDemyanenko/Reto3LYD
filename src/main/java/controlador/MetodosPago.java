@@ -8,11 +8,13 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import interfaces.PanelPago;
+
 
 
 public class MetodosPago {
 
-	NumberFormat nf = NumberFormat.getNumberInstance(Locale.UK);
+	private NumberFormat nf = NumberFormat.getNumberInstance(Locale.UK);
 	private DecimalFormat dosDec = (DecimalFormat) nf;
 
 	/**
@@ -52,50 +54,39 @@ public class MetodosPago {
 
 	
 	
-	public void sumarDinero(JButton btn, JTextField dnrPagado, JTextField dnrAPagar, JButton btnSig) {
-		float dineroPagadoGuardado= Float.parseFloat(dnrPagado.getText());
-		float dineroAPagarGuardado= Float.parseFloat(dnrAPagar.getText());
+	public void sumarDinero(PanelPago panel,JButton btn) {
+		float dineroPagadoGuardado= Float.parseFloat(panel.textDineroMetido.getText());
+		float dineroAPagarGuardado= Float.parseFloat(panel.textAPagar.getText());
 		float valorBoton = Float.valueOf(btn.getText());
 		dineroPagadoGuardado = dineroPagadoGuardado + valorBoton;
 		dineroAPagarGuardado = dineroAPagarGuardado - valorBoton;
 		dosDecFormato(dosDec);
 		if (dineroAPagarGuardado <= 0 && btn.isEnabled() == true) {
-			dineroAPagarGuardado = Math.abs(dineroAPagarGuardado);
-			btnSig.setEnabled(true);
-			dnrAPagar.setText(String.valueOf(dosDec.format(dineroAPagarGuardado)));
-			dnrPagado.setText(String.valueOf(dosDec.format(dineroPagadoGuardado)));
+			float dineroCambio=Math.abs(dineroAPagarGuardado);
+			panel.textVueltas.setText(String.valueOf(dosDec.format(dineroCambio)));
+			panel.btnConfirmar.setEnabled(true);
+			panel.ActDesBotones(false);
+			panel.textAPagar.setText("0.00");
+			panel.textDineroMetido.setText(String.valueOf(dosDec.format(dineroPagadoGuardado)));
 		} else if (btn.isEnabled() == true) {
-			dnrAPagar.setText(String.valueOf(dineroAPagarGuardado));
-			dnrPagado.setText(String.valueOf(dineroPagadoGuardado));
+			panel.textAPagar.setText(String.valueOf(dineroAPagarGuardado));
+			panel.textDineroMetido.setText(String.valueOf(dineroPagadoGuardado));
 		}
 	}
 	
-	public void restarDinero(JButton btn, JTextField dnrPagado, JTextField dnrAPagar, JButton btnSig) {
-		float dineroPagadoGuardado= Float.parseFloat(dnrPagado.getText());
-		float dineroAPagarGuardado= Float.parseFloat(dnrAPagar.getText());
+	public void restarDinero(PanelPago panel,JButton btn) {
+		float dineroPagadoGuardado= Float.parseFloat(panel.textDineroMetido.getText());
+		float dineroAPagarGuardado= Float.parseFloat(panel.textAPagar.getText());
 		float valorBoton = Float.valueOf(btn.getText());
 		if ((dineroPagadoGuardado - valorBoton) >= 0) {
 			dineroPagadoGuardado = dineroPagadoGuardado - valorBoton;
 			dineroAPagarGuardado = dineroAPagarGuardado + valorBoton;
 		}
 		dosDecFormato(dosDec);
-		dnrAPagar.setText(String.valueOf(dosDec.format(dineroAPagarGuardado)));
-		dnrPagado.setText(String.valueOf(dosDec.format(dineroPagadoGuardado)));
-		if (dineroAPagarGuardado > 0) {
-			btnSig.setEnabled(false);
-		}
+		panel.textAPagar.setText(String.valueOf(dosDec.format(dineroAPagarGuardado)));
+		panel.textDineroMetido.setText(String.valueOf(dosDec.format(dineroPagadoGuardado)));
+		
 	}
 
-	/**
-	 * Activa o desactiva el array de botones que se le pasa por parametro
-	 * 
-	 * @param array  El array de botones que se activa/desactiva
-	 * @param estado El estado que se quiere tener para el array de botones (true =
-	 *               activado y false = desactivado)
-	 */
-	public void ActDesBotones(JButton[] array, boolean estado) {
-		for (int i = 0; i < array.length; i++) {
-			array[i].setEnabled(estado);
-		}
-	}
+	
 }

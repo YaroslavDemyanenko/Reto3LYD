@@ -36,6 +36,8 @@ public class Modelo {
 	public JPanel ultimoPanel;
 	public Parada paradaSalida, paradaDestino;
 	public Color colorCalendario;
+	public Double dineroPagado=0.0,dineroAPagar=0.0,dineroCambio=0.0;
+	
 	
 	public Modelo() {}
 	

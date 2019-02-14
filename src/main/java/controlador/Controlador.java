@@ -149,10 +149,10 @@ public class Controlador {
 			}
 			if (e.getSource() instanceof JButton) {
 				if (SwingUtilities.isLeftMouseButton(e)) {
-					mod.metodosPago.sumarDinero((JButton)e.getSource(), vis.panelPago.textDineroMetido, vis.panelPago.textAPagar, vis.panelPago.btnConfirmar);
+					mod.metodosPago.sumarDinero(vis.panelPago,(JButton)e.getSource());
 
 				} else if (SwingUtilities.isRightMouseButton(e) && ((JButton) e.getSource()).isEnabled()==true) {
-					mod.metodosPago.restarDinero((JButton)e.getSource(), vis.panelPago.textDineroMetido, vis.panelPago.textAPagar, vis.panelPago.btnConfirmar);
+					mod.metodosPago.restarDinero(vis.panelPago,(JButton)e.getSource());
 				}
 			}
 		}
