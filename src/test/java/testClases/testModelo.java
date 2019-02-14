@@ -4,11 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
-import java.awt.Color;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-
 import javax.swing.JPanel;
 
 import org.junit.Test;

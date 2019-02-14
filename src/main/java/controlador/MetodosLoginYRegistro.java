@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import clases.Cliente;
 import clases.Modelo;
+import interfaces.PanelPasajeroExtra;
 import interfaces.Ventana;
 
 public class MetodosLoginYRegistro {
@@ -62,6 +63,15 @@ public class MetodosLoginYRegistro {
 			if (rs.next()) {
 				String contraBase = rs.getString("Contraseña");
 				if (contraBase.equals(contraUsuario)) {
+					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
+					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
+					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
+					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
+					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
+					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
+					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
+					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
+
 					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fecha_nac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Contraseña")));
 				} else {
 					System.out.println("Contraseña erronea");
@@ -104,7 +114,7 @@ public class MetodosLoginYRegistro {
 	 */
 
 	public Cliente registroUsuario(Ventana vis, Modelo mod) {
-		String dni = vis.panelLogin.textFieldDNI.getText();
+		JTextField dni = vis.panelLogin.textFieldDNI;
 		String nombre = vis.panelLogin.textFieldNombre.getText();
 		String apellido = vis.panelLogin.textFieldApellido.getText();
 		Date fechaNac = vis.panelLogin.calendarioFechaNac.getDate();
@@ -112,7 +122,7 @@ public class MetodosLoginYRegistro {
 		final char[] contra = vis.panelLogin.passFieldContrasenia.getPassword();
 		if (nombre.length() > 0 && apellido.length() > 0 && validarDNI(dni) == true && fechaNac.before(Calendar.getInstance().getTime()) && validarContrasenia(contra)) {
 			if (comprobarDNIenBD(vis.panelLogin.textFieldDNI.getText(), mod) == false) {
-				return (new Cliente(dni, nombre, apellido, fechaNac, sexo, encriptarContra(contra)));
+				return (new Cliente(dni.getText(), nombre, apellido, fechaNac, sexo, encriptarContra(contra)));
 			} else {
 				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -134,7 +144,7 @@ public class MetodosLoginYRegistro {
 		// mayuscula, un numero y minimo 8 caracteres de longitud
 
 		Pattern p = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$");
-		String contraString=new String(contra);
+		String contraString = new String(contra);
 		Matcher m = p.matcher(contraString);
 		System.out.println(contraString);
 
@@ -153,8 +163,15 @@ public class MetodosLoginYRegistro {
 	 * @param DNI
 	 * @return
 	 */
-	public boolean validarDNI(String DNI) {
-		return DNI.matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
+	public boolean validarDNI(JTextField DNI) {
+		if (!(DNI.getText().matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$"))) {
+			JOptionPane.showMessageDialog(null, "El DNI introducido es invalido", "Error", JOptionPane.ERROR_MESSAGE);
+			DNI.setBackground(new Color(240, 128, 128));
+			return false;
+		} else {
+			DNI.setBackground(new JTextField().getBackground());
+			return true;
+		}
 	}
 
 	/**
@@ -168,10 +185,10 @@ public class MetodosLoginYRegistro {
 			JOptionPane.showMessageDialog(null, "Este campo solo admite letras", "Error", JOptionPane.ERROR_MESSAGE);
 			campoTexto.setBackground(new Color(240, 128, 128));
 			return false;
-		} else
+		} else {
 			campoTexto.setBackground(new JTextField().getBackground());
-		return true;
-
+			return true;
+		}
 	}
 
 	/**
@@ -181,13 +198,25 @@ public class MetodosLoginYRegistro {
 	 * @param campoTexto
 	 * @return
 	 */
-	public char cambiarSexoAChar(JComboBox campoTexto) {
+	public char cambiarSexoAChar(@SuppressWarnings("rawtypes") JComboBox campoTexto) {
 		String sexo = campoTexto.getSelectedItem().toString();
 		if (sexo == "Hombre") {
 			return 'V';
 		} else
 			return 'M';
+	}
 
+	public Cliente pasajeroExtra(PanelPasajeroExtra panel) {
+		JTextField nombre, apellido, dni;
+		nombre = panel.textFieldNombre;
+		apellido = panel.textFieldApellido;
+		dni = panel.textFieldDNI;
+
+		if (validarSoloLetras(nombre) && validarSoloLetras(apellido) && validarDNI(dni)) {
+			return new Cliente(panel.textFieldNombre.getText(), panel.textFieldApellido.getText(), panel.textFieldDNI.getText(), cambiarSexoAChar(panel.textFieldSexo));
+		} else {
+			return null;
+		}
 	}
 
 }

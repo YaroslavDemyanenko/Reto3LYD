@@ -36,7 +36,6 @@ public class Modelo {
 	public JPanel ultimoPanel;
 	public Parada paradaSalida, paradaDestino;
 	public Color colorCalendario;
-	public Double dineroPagado=0.0,dineroAPagar=0.0,dineroCambio=0.0;
 	
 	
 	public Modelo() {}
@@ -57,6 +56,13 @@ public class Modelo {
 
 	public boolean isIdaYVuelta() {
 		return this.idaYVuelta;
+	}
+	
+	public boolean estaLogeado() {
+		if (clienteRegistrado==null) {
+			return false;
+		} else return true;
+		
 	}
 
 	public void setIdaYVuelta(boolean idaYVuelta) {

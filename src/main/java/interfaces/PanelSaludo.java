@@ -2,15 +2,12 @@ package interfaces;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.imageio.IIOImage;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import com.sun.javafx.iio.ImageFrame;
 import java.awt.Component;
 import javax.swing.border.BevelBorder;
 

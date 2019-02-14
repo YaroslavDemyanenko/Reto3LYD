@@ -1,23 +1,16 @@
 package controlador;
 
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JSpinner;
 
 import clases.Cliente;
 import clases.Modelo;
 import clases.Parada;
-import interfaces.PanelPasajeroExtra;
-import interfaces.Ventana;
 import interfaces.PanelConfirmacion;
-import interfaces.PanelLineas2;
 import interfaces.PanelLineas1;
+import interfaces.PanelLineas2;
+import interfaces.Ventana;
 
 public class Metodos {
 
@@ -56,26 +49,10 @@ public class Metodos {
 
 	}	
 	
-	public double round(double value, int places) {
-	    if (places < 0) throw new IllegalArgumentException();
-	    BigDecimal bd = new BigDecimal(value);
-	    bd = bd.setScale(places, RoundingMode.HALF_UP);
-	    return bd.doubleValue();
-	}
+	
 
 	
-	  public void pasajeroExtra(PanelPasajeroExtra panel, Cliente [] cliente) {		  
-		  for (int i = 0; i < cliente.length; i++) {
-			  cliente[i].setNombre(panel.textFieldNombre.getText());
-			  cliente[i].setApellido(panel.textFieldApellido.getText());
-			  cliente[i].setDni(panel.textFieldDNI.getText());
-			  if(panel.textFieldSexo.getSelectedItem().toString()=="Hombre") {
-				  cliente[i].setSexo('V');
-			  } else {
-				  cliente[i].setSexo('M');
-			  }
-		  }	  
-	  }
+	  
 
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
@@ -96,14 +73,7 @@ public class Metodos {
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
 
-	@Deprecated
-	public static double distanciaLineas(Parada salida, Parada llegada) {
-		double latitudX = (salida.getLatitud() - llegada.getLatitud()) * (salida.getLatitud() - llegada.getLatitud());
-		double altitudX = (salida.getLongitud() - llegada.getLongitud()) * (salida.getLongitud() - llegada.getLongitud());
-		double distancia = Math.sqrt(latitudX + altitudX);
 
-		return distancia;
-	}
 	
 	/**
 	 * Inserta los clientes en el array

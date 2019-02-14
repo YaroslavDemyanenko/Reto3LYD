@@ -1,13 +1,11 @@
 package controlador;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -51,11 +49,11 @@ public class Controlador {
 		this.vis.panelLogin.btnConfirmarLogin.addActionListener(new btnListener());
 		this.vis.panelLogin.btnConfirmarRegistro.addActionListener(new btnListener());
 
-		//botones de pago
-		for(int i=0;i<vis.panelPago.arrayBtn.length;i++) {
+		// botones de pago
+		for (int i = 0; i < vis.panelPago.arrayBtn.length; i++) {
 			this.vis.panelPago.arrayBtn[i].addMouseListener(new mseListener());
 		}
-		
+
 		this.vis.panelLineas1.btnCancelar.addActionListener(new cancelListener());
 		this.vis.panelLineas2.btnCancelar.addActionListener(new cancelListener());
 		this.vis.panelResumen.btnCancelar.addActionListener(new cancelListener());
@@ -84,9 +82,11 @@ public class Controlador {
 					mod.parada.paradasLlegadaAModelo(mod, vis);
 				}
 			} else if (e.getSource() == vis.panelLineas2.btnConfirmar) {
-				vis.panelResumen.textPrecio.setText(Double.toString(mod.billete.precioTotal(mod, (int) (vis.panelLineas2.spnNumeroDeBilletes.getModel().getValue()))));
-				vis.setContentPane(vis.panelResumen);
-				mod.metodo.mostrarResumenTrayecto(vis, mod);
+				if (!vis.panelLineas2.listaDestinos.isSelectionEmpty()) {
+					vis.panelResumen.textPrecio.setText(mod.metodosPago.precioTotal(mod, (int) (vis.panelLineas2.spnNumeroDeBilletes.getModel().getValue())));
+					vis.setContentPane(vis.panelResumen);
+					mod.metodo.mostrarResumenTrayecto(vis, mod);
+				}
 
 			} else if (((JButton) e.getSource()).getName() == "botonLogin") {
 				mod.ultimoPanel = (JPanel) ((JButton) e.getSource()).getParent();
@@ -102,37 +102,30 @@ public class Controlador {
 					mod.db.insertarUsuarioEnBaseDeDatos(mod.clienteRegistrado, mod);
 					vis.setContentPane(mod.ultimoPanel);
 				}
-			} else if(e.getSource() == vis.panelResumen.btnConfirmar) {
+			} else if (e.getSource() == vis.panelResumen.btnConfirmar) {
 				vis.panelPago.textAPagar.setText(vis.panelResumen.textPrecio.getText());
-				vis.setContentPane(vis.panelPago);
+				if (mod.estaLogeado()) {
+					vis.setContentPane(vis.panelPago);
+				} else {
+					mod.ultimoPanel = vis.panelPago;
+					vis.setContentPane(vis.panelLogin);
+				}
 			}
-		
+
 		}
 	}
-	
-	
 
 	private class cancelListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			vis.panelConfirmacion.limpiar();
+			vis.panelPago.limpiar();
+			vis.panelPasajeroExtra.limpiar();
+			vis.panelLogin.limpiar();
+			vis.panelResumen.limpiar();
+			vis.panelLineas2.limpiar();
+			vis.panelLineas1.limpiar();
 			vis.setContentPane(vis.panelSaludo);
 			mod.reset();
-			switch ((((JButton) e.getSource()).getParent().getName())) {
-			case "panelConfirmacion":
-				vis.panelConfirmacion.limpiar();
-			case "panelPago":
-				vis.panelPago.limpiar();
-			case "panelPasajeroExtra":
-				vis.panelPasajeroExtra.limpiar();
-			case "panelLogin":
-				vis.panelLogin.limpiar();
-			case "panelResumen":
-				vis.panelResumen.limpiar();
-			case "panelLineas2":
-				vis.panelLineas2.limpiar();
-			case "panelLineas1":
-				vis.panelLineas1.limpiar();
-				break;
-			}
 		}
 	}
 
@@ -149,35 +142,29 @@ public class Controlador {
 			}
 			if (e.getSource() instanceof JButton) {
 				if (SwingUtilities.isLeftMouseButton(e)) {
-					mod.metodosPago.sumarDinero(vis.panelPago,(JButton)e.getSource());
+					mod.metodosPago.sumarDinero(vis.panelPago, (JButton) e.getSource());
+					
 
-				} else if (SwingUtilities.isRightMouseButton(e) && ((JButton) e.getSource()).isEnabled()==true) {
-					mod.metodosPago.restarDinero(vis.panelPago,(JButton)e.getSource());
+				} else if (SwingUtilities.isRightMouseButton(e) && ((JButton) e.getSource()).isEnabled() == true) {
+					mod.metodosPago.restarDinero(vis.panelPago, (JButton) e.getSource());
 				}
 			}
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 
 	}

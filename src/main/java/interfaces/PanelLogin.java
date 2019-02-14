@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SpinnerDateModel;
 import javax.swing.border.BevelBorder;
 
 import com.toedter.calendar.JDateChooser;
