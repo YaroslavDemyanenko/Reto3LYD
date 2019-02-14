@@ -1,25 +1,18 @@
 package interfaces;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Font;
 
 import javax.swing.DefaultListModel;
-import javax.swing.DropMode;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.ImageIcon;
-import java.awt.Cursor;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 /**
  * @wbp.parser.entryPoint
  */
@@ -36,7 +29,6 @@ public class PanelPago extends JPanel{
 	
 	public PanelPago() {
 		setLayout(null);
-		setVisible(false);
 		setBounds(0, 0, 800, 600);
 		setBackground(new Color(193, 240, 240));
 

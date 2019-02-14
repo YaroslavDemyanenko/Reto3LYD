@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -45,10 +47,15 @@ public class Controlador {
 		this.vis.panelLineas1.btnSignUP.addActionListener(new btnListener());
 		this.vis.panelLineas2.btnLogIn.addActionListener(new btnListener());
 		this.vis.panelResumen.btnSignUp.addActionListener(new btnListener());
-
+		this.vis.panelResumen.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelLogin.btnConfirmarLogin.addActionListener(new btnListener());
 		this.vis.panelLogin.btnConfirmarRegistro.addActionListener(new btnListener());
 
+		//botones de pago
+		for(int i=0;i<vis.panelPago.arrayBtn.length;i++) {
+			this.vis.panelPago.arrayBtn[i].addMouseListener(new mseListener());
+		}
+		
 		this.vis.panelLineas1.btnCancelar.addActionListener(new cancelListener());
 		this.vis.panelLineas2.btnCancelar.addActionListener(new cancelListener());
 		this.vis.panelResumen.btnCancelar.addActionListener(new cancelListener());
@@ -95,9 +102,15 @@ public class Controlador {
 					mod.db.insertarUsuarioEnBaseDeDatos(mod.clienteRegistrado, mod);
 					vis.setContentPane(mod.ultimoPanel);
 				}
+			} else if(e.getSource() == vis.panelResumen.btnConfirmar) {
+				vis.panelPago.textAPagar.setText(vis.panelResumen.textPrecio.getText());
+				vis.setContentPane(vis.panelPago);
 			}
+		
 		}
 	}
+	
+	
 
 	private class cancelListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -133,6 +146,14 @@ public class Controlador {
 			if (e.getSource() == vis.panelSaludo) {
 				vis.setContentPane(vis.panelLineas1);
 				mod.db.llenarModeloConLinea(vis, mod);
+			}
+			if (e.getSource() instanceof JButton) {
+				if (SwingUtilities.isLeftMouseButton(e)) {
+					mod.metodosPago.sumarDinero((JButton)e.getSource(), vis.panelPago.textDineroMetido, vis.panelPago.textAPagar, vis.panelPago.btnConfirmar);
+
+				} else if (SwingUtilities.isRightMouseButton(e) && ((JButton) e.getSource()).isEnabled()==true) {
+					mod.metodosPago.restarDinero((JButton)e.getSource(), vis.panelPago.textDineroMetido, vis.panelPago.textAPagar, vis.panelPago.btnConfirmar);
+				}
 			}
 		}
 

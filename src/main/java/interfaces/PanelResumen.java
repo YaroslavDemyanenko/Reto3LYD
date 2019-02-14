@@ -209,4 +209,6 @@ public class PanelResumen extends JPanel {
 		calendarioVuelta.setVisible(true);
 		lblFechaVuelta.setVisible(true);
 	}
+	
+	
 }

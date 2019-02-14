@@ -3,6 +3,7 @@ package controlador;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -126,26 +127,26 @@ public class Metodos {
 	 * @param mod
 	 * @param cliente
 	 */
-	public void confirmacionDatos(PanelConfirmacion panel1,PanelLineas2 panel2, PanelLineas1 panel3, Modelo mod) {		
-		int posicion = panel1.comboBoxPasajeros.getSelectedIndex();
-		panel1.lblFieldCodigo.setText(String.valueOf(posicion));
-		panel1.lblFieldNombre.setText(mod.arrayClientes.get(posicion).nombre);
-		panel1.lblFieldApellidos.setText(mod.arrayClientes.get(posicion).apellido);
-		panel1.lblFieldDNI.setText(mod.arrayClientes.get(posicion).dni);
-		
 
-		panel1.lblFieldLinea.setText(panel2.lblNombreLinea.getText());
-		panel1.lblFieldParadaInicio.setText(String.valueOf(panel3.listParadas.getSelectedValuesList()));
-		panel1.lblFieldParadaFin.setText(String.valueOf(panel2.listaDestinos.getSelectedValuesList()));		
-		panel1.fechaIda.setDate(panel2.calendarioIda.getDate());
-		panel1.fechaVuelta.setDate(panel2.calendarioVuelta.getDate());
 
-		if(mod.isIdaYVuelta()==true) {
-			panel1.lblFieldTipoTrayecto.setText("Ida y vuelta");
-		}
-		else
-			panel1.lblFieldTipoTrayecto.setText("Ida");
+	public void confirmacionDatos(PanelConfirmacion panel1, PanelLineas2 panel2, PanelLineas1 panel3, Modelo mod) {		
+		int posicion = panel1.getPasajeros();
+		panel1.actualizarPosicion(posicion);
+		panel1.actualizarNombre(mod, posicion);
+		panel1.actualizarApellido(mod, posicion);
+		panel1.actualizarDni(mod, posicion);	
+		panel1.actualizarLinea(panel2);
+		panel1.actualizarParadaInicio(panel3);
+		panel1.actualizarParadaFin(panel2);
+		panel1.actualizarFechaIda(panel2);
+		panel1.actualizarFechaVuelta(panel2);
+		panel1.actualizarTipoTrayecto(mod);
+
+
 		
 	}
+	
+	
+	
 	
 }
