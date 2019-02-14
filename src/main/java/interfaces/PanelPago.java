@@ -85,7 +85,7 @@ public class PanelPago extends JPanel{
 
 
 		btn2 = new JButton("2");
-		btn2.setBackground(new Color(0, 0, 0));
+		btn2.setBackground(new Color(193, 240, 240));
 		btn2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn2.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2euros.png")));
 		btn2.setFont(btn2.getFont().deriveFont(0f));
@@ -135,7 +135,7 @@ public class PanelPago extends JPanel{
 		add(btn50);
 
 		btn1 = new JButton("1");
-		btn1.setBackground(new Color(0, 0, 0));
+		btn1.setBackground(new Color(193, 240, 240));
 		btn1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn1.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1euro.png")));
 		btn1.setFont(btn1.getFont().deriveFont(0f));
@@ -143,7 +143,7 @@ public class PanelPago extends JPanel{
 		add(btn1);
 
 		btn050 = new JButton("0.50");
-		btn050.setBackground(new Color(0, 0, 0));
+		btn050.setBackground(new Color(193, 240, 240));
 		btn050.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn050.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50centimos.png")));
 		btn050.setFont(btn050.getFont().deriveFont(0f));
@@ -151,7 +151,7 @@ public class PanelPago extends JPanel{
 		add(btn050);
 
 		btn020 = new JButton("0.20");
-		btn020.setBackground(new Color(0, 0, 0));
+		btn020.setBackground(new Color(193, 240, 240));
 		btn020.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn020.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20centimos.png")));
 		btn020.setFont(btn020.getFont().deriveFont(0f));
@@ -159,7 +159,7 @@ public class PanelPago extends JPanel{
 		add(btn020);
 
 		btn010 = new JButton("0.10");
-		btn010.setBackground(new Color(0, 0, 0));
+		btn010.setBackground(new Color(193, 240, 240));
 		btn010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn010.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10centimos.png")));
 		btn010.setFont(btn010.getFont().deriveFont(0f));
@@ -167,7 +167,7 @@ public class PanelPago extends JPanel{
 		add(btn010);
 
 		btn005 = new JButton("0.05");
-		btn005.setBackground(new Color(0, 0, 0));
+		btn005.setBackground(new Color(193, 240, 240));
 		btn005.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn005.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5centimos.png")));
 		btn005.setFont(btn005.getFont().deriveFont(0f));
@@ -175,7 +175,7 @@ public class PanelPago extends JPanel{
 		add(btn005);
 
 		btn002 = new JButton("0.02");
-		btn002.setBackground(new Color(0, 0, 0));
+		btn002.setBackground(new Color(193, 240, 240));
 		btn002.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn002.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2centimos.png")));
 		btn002.setFont(btn002.getFont().deriveFont(0f));
@@ -183,7 +183,7 @@ public class PanelPago extends JPanel{
 		add(btn002);
 
 		btn001 = new JButton("0.01");
-		btn001.setBackground(new Color(0, 0, 0));
+		btn001.setBackground(new Color(193, 240, 240));
 		btn001.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn001.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1centimo.png")));
 		btn001.setFont(btn001.getFont().deriveFont(0f));
