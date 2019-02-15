@@ -110,6 +110,12 @@ public class Controlador {
 					mod.ultimoPanel = vis.panelPago;
 					vis.setContentPane(vis.panelLogin);
 				}
+			} else if (e.getSource() == vis.panelPago.btnConfirmar) {
+				if (mod.numeroBilletes > 1) {
+					vis.setContentPane(vis.panelPasajeroExtra);
+				} else {
+					vis.setContentPane(vis.panelConfirmacion);
+				}
 			}
 
 		}
@@ -143,7 +149,6 @@ public class Controlador {
 			if (e.getSource() instanceof JButton) {
 				if (SwingUtilities.isLeftMouseButton(e)) {
 					mod.metodosPago.sumarDinero(vis.panelPago, (JButton) e.getSource());
-					
 
 				} else if (SwingUtilities.isRightMouseButton(e) && ((JButton) e.getSource()).isEnabled() == true) {
 					mod.metodosPago.restarDinero(vis.panelPago, (JButton) e.getSource());
