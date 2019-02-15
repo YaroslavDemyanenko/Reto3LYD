@@ -1,6 +1,6 @@
 package controlador;
 
-
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -47,12 +47,7 @@ public class Metodos {
 		vis.panelLineas2.calendarioVuelta.setSelectableDateRange(vis.panelLineas2.calendarioVuelta.getDate(), fechaLimite);
 		vis.panelLineas2.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getMinSelectableDate());
 
-	}	
-	
-	
-
-	
-	  
+	}
 
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
@@ -73,49 +68,43 @@ public class Metodos {
 		vis.panelResumen.calendarioVuelta.setDate(vis.panelLineas2.calendarioVuelta.getDate());
 	}
 
-
-	
 	/**
 	 * Inserta los clientes en el array
+	 * 
 	 * @param vis
 	 * @param cliente
 	 * @param mod
 	 */
-	public void eleccionCliente(Ventana vis, Modelo mod, Cliente[] cliente) {	
+	public void meterClientesEnComboBox(Ventana vis, Modelo mod, ArrayList<Cliente> cliente) {
 		vis.panelConfirmacion.modeloPasajero.removeAllElements();
-		if(cliente!=null) {
-			for(int i=0; i>cliente.length;i++) {
-				mod.arrayClientes.add(cliente[i]);
-			}
-		}		
-		
+		for (int i = 0; i < cliente.size(); i++) {
+			vis.panelConfirmacion.modeloPasajero.addElement(cliente.get(i).nombre);
+		}
 	}
-	
+
 	/**
 	 * Enseñar datos de cada cliente
+	 * 
 	 * @param vis
 	 * @param mod
 	 * @param cliente
 	 */
-	public void confirmacionDatos(PanelConfirmacion panel1, PanelLineas2 panel2, PanelLineas1 panel3, Modelo mod) {		
-		int posicion = panel1.getPasajeros();
-		panel1.actualizarPosicion(posicion);
-		panel1.actualizarNombre(mod, posicion);
-		panel1.actualizarApellido(mod, posicion);
-		panel1.actualizarDni(mod, posicion);	
-		panel1.actualizarLinea(panel2);
-		
+	public void confirmacionDatos(PanelConfirmacion panelConf, PanelLineas2 panelLin2, Modelo mod) {
+		int posicion = panelConf.getPasajeros();
+		panelConf.actualizarPosicion(posicion);
+		panelConf.actualizarNombre(mod, posicion);
+		panelConf.actualizarApellido(mod, posicion);
+		panelConf.actualizarDni(mod, posicion);
+		panelConf.actualizarLinea(panelLin2);
+
 	}
-	public void confirmacionTrayecto(PanelConfirmacion panel1, PanelLineas2 panel2, PanelLineas1 panel3, Modelo mod) {
-		panel1.actualizarParadaInicio(panel3);
-		panel1.actualizarParadaFin(panel2);
-		panel1.actualizarFechaIda(panel2);
-		panel1.actualizarFechaVuelta(panel2);
-		panel1.actualizarTipoTrayecto(mod);
+
+	public void confirmacionTrayecto(PanelConfirmacion panelConf, PanelLineas2 panelLin2, PanelLineas1 panelLin1, Modelo mod) {
+		panelConf.actualizarParadaInicio(panelLin1);
+		panelConf.actualizarParadaFin(panelLin2);
+		panelConf.actualizarFechaIda(panelLin2);
+		panelConf.actualizarFechaVuelta(panelLin2);
+		panelConf.actualizarTipoTrayecto(mod);
 	}
-	
-	
-	
-	
-	
+
 }

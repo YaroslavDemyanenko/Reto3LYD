@@ -2,12 +2,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
@@ -37,8 +40,9 @@ public class Controlador {
 		this.vis.panelLineas1.listLineas.addListSelectionListener(new lstListener());
 		this.vis.panelLineas2.listaDestinos.addListSelectionListener(new lstListener());
 
-		this.vis.panelLineas2.calendarioIda.addPropertyChangeListener("date", new calendarListener());
-		this.vis.panelLineas2.calendarioVuelta.addPropertyChangeListener("date", new calendarListener());
+		this.vis.panelLineas2.calendarioIda.addPropertyChangeListener("date", new changeListener());
+		this.vis.panelLineas2.calendarioVuelta.addPropertyChangeListener("date", new changeListener());
+		this.vis.panelConfirmacion.comboBoxPasajeros.addPropertyChangeListener(new changeListener());
 
 		this.vis.panelLineas1.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelLineas2.btnConfirmar.addActionListener(new btnListener());
@@ -51,6 +55,9 @@ public class Controlador {
 		this.vis.panelLogin.btnConfirmarRegistro.addActionListener(new btnListener());
 		this.vis.panelPago.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelPasajeroExtra.btnConfirmar.addActionListener(new btnListener());
+		
+		
+		this.vis.panelConfirmacion.comboBoxPasajeros.addItemListener(new comboListener());
 
 		// botones de pago
 		for (int i = 0; i < vis.panelPago.arrayBtn.length; i++) {
@@ -118,6 +125,8 @@ public class Controlador {
 					vis.setContentPane(vis.panelPasajeroExtra);
 				} else {
 					vis.setContentPane(vis.panelConfirmacion);
+					mod.metodo.confirmacionTrayecto(vis.panelConfirmacion, vis.panelLineas2, vis.panelLineas1, mod);
+					mod.metodo.confirmacionDatos(vis.panelConfirmacion, vis.panelLineas2, mod);
 				}
 				mod.arrayClientes.clear();
 				mod.arrayClientes.add(mod.clienteRegistrado);
@@ -128,7 +137,9 @@ public class Controlador {
 					vis.panelPasajeroExtra.limpiar();
 					if(mod.numeroBilletes==mod.arrayClientes.size()) {
 						vis.setContentPane(vis.panelConfirmacion);
-						vis.panelPasajeroExtra.limpiar();
+						mod.metodo.meterClientesEnComboBox(vis, mod, mod.arrayClientes);
+						mod.metodo.confirmacionTrayecto(vis.panelConfirmacion, vis.panelLineas2, vis.panelLineas1, mod);
+						mod.metodo.confirmacionDatos(vis.panelConfirmacion, vis.panelLineas2, mod);
 					}
 				} 	
 			}
@@ -208,7 +219,7 @@ public class Controlador {
 
 	}
 
-	private class calendarListener implements PropertyChangeListener {
+	private class changeListener implements PropertyChangeListener {
 
 		@Override
 		public void propertyChange(PropertyChangeEvent e) {
@@ -219,10 +230,21 @@ public class Controlador {
 				vis.panelLineas2.spnNumeroDeBilletes.setValue(1);
 				mod.billete.fechasGeneralBilletes(mod, vis);
 				vis.panelLineas2.spnNumeroDeBilletes.setModel(new SpinnerNumberModel(1, 0, mod.autobus.numeroPlazasRestantes(mod, vis), 1));
-			}
-
+			} 
 		}
 
 	}
 
+	private class comboListener implements ItemListener{
+
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				mod.metodo.confirmacionTrayecto(vis.panelConfirmacion, vis.panelLineas2, vis.panelLineas1, mod);
+				mod.metodo.confirmacionDatos(vis.panelConfirmacion, vis.panelLineas2, mod);
+		       }
+			
+		}
+		
+	}
 }
