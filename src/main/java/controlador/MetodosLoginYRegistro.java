@@ -112,7 +112,6 @@ public class MetodosLoginYRegistro {
 	 * @param mod
 	 * @return
 	 */
-
 	public Cliente registroUsuario(Ventana vis, Modelo mod) {
 		JTextField dni = vis.panelLogin.textFieldDNI;
 		JTextField nombre = vis.panelLogin.textFieldNombre;
@@ -126,9 +125,10 @@ public class MetodosLoginYRegistro {
 			} else {
 				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
 			}
-		}return null;
+		}
+		return null;
 	}
-	
+
 	public boolean validarFecha(Date fecha) {
 		return fecha.before(Calendar.getInstance().getTime());
 	}
@@ -192,7 +192,7 @@ public class MetodosLoginYRegistro {
 	}
 
 	/**
-	 * Pasa los parametros del comboBox de la interfaz a caracteres char para poder
+	 * Pasa los parametros del comboBox de la interfaz a caracteres para poder
 	 * enviarselo posteriormente a la BD
 	 * 
 	 * @param campoTexto
@@ -214,9 +214,10 @@ public class MetodosLoginYRegistro {
 
 		if (validarSoloLetras(nombre) && validarSoloLetras(apellido) && validarDNI(dni)) {
 			return new Cliente(panel.textFieldNombre.getText(), panel.textFieldApellido.getText(), panel.textFieldDNI.getText(), cambiarSexoAChar(panel.textFieldSexo));
-		} else {
+
+		} else
 			return null;
-		}
+
 	}
 
 }
