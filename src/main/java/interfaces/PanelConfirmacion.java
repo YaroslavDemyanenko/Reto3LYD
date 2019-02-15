@@ -43,7 +43,7 @@ public class PanelConfirmacion extends JPanel {
 		btnLogIn.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnLogIn.setBackground(new Color(192, 192, 192));
 		btnLogIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnLogIn.setBounds(689, 12, 89, 23);
+		btnLogIn.setBounds(676, 12, 102, 23);
 		add(btnLogIn);
 		
 		lblUsuario = new JLabel("Usuario");
@@ -58,7 +58,8 @@ public class PanelConfirmacion extends JPanel {
 		add(lblCdigo);
 		
 		lblFieldCodigo = new JLabel();
-		lblFieldCodigo.setBounds(49, 193, 201, 35);
+		lblFieldCodigo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFieldCodigo.setBounds(53, 193, 201, 35);
 		add(lblFieldCodigo);
 		
 		
@@ -68,7 +69,8 @@ public class PanelConfirmacion extends JPanel {
 		add(lblNombre);
 		
 		lblFieldNombre = new JLabel();
-		lblFieldNombre.setBounds(48, 278, 201, 35);
+		lblFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFieldNombre.setBounds(53, 278, 201, 35);
 		add(lblFieldNombre);
 		
 		
@@ -78,7 +80,8 @@ public class PanelConfirmacion extends JPanel {
 		add(lblApellidos);
 		
 		lblFieldApellidos = new JLabel();
-		lblFieldApellidos.setBounds(49, 360, 201, 35);
+		lblFieldApellidos.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFieldApellidos.setBounds(53, 360, 201, 35);
 		add(lblFieldApellidos);
 		
 		
@@ -88,7 +91,8 @@ public class PanelConfirmacion extends JPanel {
 		add(lblDni);
 		
 		lblFieldDNI = new JLabel();
-		lblFieldDNI.setBounds(49, 445, 201, 35);
+		lblFieldDNI.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFieldDNI.setBounds(53, 445, 201, 35);
 		add(lblFieldDNI);
 		
 		
@@ -98,6 +102,7 @@ public class PanelConfirmacion extends JPanel {
 		add(lblLnea);
 		
 		lblFieldLinea = new JLabel();
+		lblFieldLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFieldLinea.setBounds(299, 193, 201, 35);
 		add(lblFieldLinea);
 		
@@ -108,6 +113,7 @@ public class PanelConfirmacion extends JPanel {
 		add(lblSalida);
 		
 		lblFieldParadaInicio = new JLabel();
+		lblFieldParadaInicio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFieldParadaInicio.setBounds(297, 278, 201, 35);
 		add(lblFieldParadaInicio);
 		
@@ -118,6 +124,7 @@ public class PanelConfirmacion extends JPanel {
 		add(lblLlegada);
 		
 		lblFieldParadaFin = new JLabel();
+		lblFieldParadaFin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFieldParadaFin.setBounds(299, 360, 201, 35);
 		add(lblFieldParadaFin);
 		
@@ -128,6 +135,7 @@ public class PanelConfirmacion extends JPanel {
 		add(lblTipoDeTrayecto);
 		
 		lblFieldTipoTrayecto = new JLabel();
+		lblFieldTipoTrayecto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFieldTipoTrayecto.setBounds(299, 445, 201, 35);
 		add(lblFieldTipoTrayecto);
 		
