@@ -6,9 +6,9 @@
 	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
 	<classpathentry kind="lib" path="librerias/mysql-connector-java-8.0.13.jar"/>
 	<classpathentry kind="lib" path="librerias/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="librerias/mockito-all-1.8.4.jar"/>
+	<classpathentry kind="lib" path="librerias/mockito-core-2.7.22.jar"/>
+	<classpathentry kind="lib" path="librerias/powermock-mockito-release-full-1.5.4-full.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/workspace/Reto3LYD/librerias/mockito-all-1.8.4.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/Reto3LYD/librerias/mockito-core-2.7.22.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/Reto3LYD/librerias/powermock-mockito-release-full-1.5.4-full.jar"/>
 	<classpathentry kind="output" path="bin/main"/>
 </classpath>

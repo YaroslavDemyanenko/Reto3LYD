@@ -1,25 +1,17 @@
 package interfaces;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 import java.awt.Cursor;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 /**
  * @wbp.parser.entryPoint
  */
@@ -109,5 +101,10 @@ public class PanelPasajeroExtra extends JPanel{
 		textFieldApellido.setText("");
 		textFieldDNI.setText("");
 		textFieldNombre.setText("");
+		textFieldSexo.setSelectedIndex(0);
+		Color colorCaja=new JTextField().getBackground();
+		textFieldApellido.setBackground(colorCaja);
+		textFieldDNI.setBackground(colorCaja);
+		textFieldNombre.setBackground(colorCaja);
 	}
 }

@@ -1,15 +1,11 @@
 package interfaces;
 
-import java.awt.EventQueue;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JList;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Component;

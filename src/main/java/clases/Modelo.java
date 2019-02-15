@@ -37,6 +37,7 @@ public class Modelo {
 	public Parada paradaSalida, paradaDestino;
 	public Color colorCalendario;
 	
+	
 	public Modelo() {}
 	
 	public Modelo(ConexionAMySQL db) {
@@ -55,6 +56,13 @@ public class Modelo {
 
 	public boolean isIdaYVuelta() {
 		return this.idaYVuelta;
+	}
+	
+	public boolean estaLogeado() {
+		if (clienteRegistrado==null) {
+			return false;
+		} else return true;
+		
 	}
 
 	public void setIdaYVuelta(boolean idaYVuelta) {

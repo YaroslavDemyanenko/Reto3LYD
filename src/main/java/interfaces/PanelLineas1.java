@@ -3,13 +3,12 @@ package interfaces;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import javax.swing.ListSelectionModel;
 import javax.swing.JList;
 
 import java.awt.Color;
@@ -87,12 +86,14 @@ public class PanelLineas1 extends JPanel {
 		modeloLineas = new DefaultListModel();
 		listLineas = new JList(modeloLineas);
 		listLineas.setBounds(83, 153, 200, 233);
+		listLineas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		add(listLineas);
 		
 		modeloParadas = new DefaultListModel();
 		listParadas = new JList(modeloParadas);
 		listParadas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		listParadas.setBounds(433, 153, 258, 274);
+		listParadas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		add(listParadas);
 		
 		btnCancelar = new JButton("Cancelar");

@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import clases.Modelo;
 import controlador.Metodos;
 
 public class testMetodos {

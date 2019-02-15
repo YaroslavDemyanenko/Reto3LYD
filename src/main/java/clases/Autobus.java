@@ -2,8 +2,6 @@ package clases;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
-
 import javax.swing.JOptionPane;
 
 import interfaces.Ventana;

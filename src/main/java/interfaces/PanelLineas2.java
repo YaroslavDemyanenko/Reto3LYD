@@ -4,17 +4,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFormattedTextField;
-
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 
-import clases.Parada;
-
 import javax.swing.JSpinner;
-import javax.swing.JSpinner.DefaultEditor;
-import javax.swing.JTextField;
 import javax.swing.JList;
 
 import java.awt.Color;
@@ -25,7 +18,6 @@ import java.util.Calendar;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.SpinnerNumberModel;
-import java.awt.ComponentOrientation;
 
 /**
  * @wbp.parser.entryPoint

@@ -66,6 +66,8 @@ public class PanelPago extends JPanel{
 		textVueltas.setBounds(581, 108, 104, 41);
 		add(textVueltas);
 		textVueltas.setColumns(10);
+		
+		
 
 		btn5 = new JButton("5");
 		btn5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -258,12 +260,30 @@ public class PanelPago extends JPanel{
 		btnLogOut.setBounds(676, 12, 102, 23);
 		add(btnLogOut);
 		
-				
+		textDineroMetido.setText("0.00");
+		textAPagar.setText("0.00");
+		textVueltas.setText("--------");
+		btnConfirmar.setEnabled(false);
 	}
 	public void limpiar() {
-		textDineroMetido.setText("");
-		textAPagar.setText("");
-		textVueltas.setText("");
+		textDineroMetido.setText("0.00");
+		textAPagar.setText("0.00");
+		textVueltas.setText("--------");
 		modeloCambio.clear();
+		ActDesBotones(true);
+		btnConfirmar.setEnabled(false);
+	}
+	
+	/**
+	 * Activa o desactiva el array de botones que se le pasa por parametro
+	 * 
+	 * @param array  El array de botones que se activa/desactiva
+	 * @param estado El estado que se quiere tener para el array de botones (true =
+	 *               activado y false = desactivado)
+	 */
+	public void ActDesBotones(boolean estado) {
+		for (int i = 0; i < arrayBtn.length; i++) {
+			arrayBtn[i].setEnabled(estado);
+		}
 	}
 }

@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SpinnerDateModel;
 import javax.swing.border.BevelBorder;
 
 import com.toedter.calendar.JDateChooser;
@@ -165,7 +164,9 @@ public class PanelLogin extends JPanel {
 		calendarioFechaNac = new JDateChooser(null, null, null, spinnerFechaNac);
 		calendarioFechaNac.setDateFormatString("dd-MM-yyyy");
 		calendarioFechaNac.setBounds(215, 250, 137, 27);
+		calendarioFechaNac.setDate(Calendar.getInstance().getTime());
 		add(calendarioFechaNac);
+		
 		
 
 	

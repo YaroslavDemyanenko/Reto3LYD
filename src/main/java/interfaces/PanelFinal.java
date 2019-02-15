@@ -1,17 +1,11 @@
 package interfaces;
 
 import java.awt.Color;
-import java.awt.EventQueue;
-
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
-import javax.swing.JButton;
 /**
  * @wbp.parser.entryPoint
  */

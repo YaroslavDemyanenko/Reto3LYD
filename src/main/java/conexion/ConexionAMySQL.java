@@ -1,5 +1,8 @@
 package conexion;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,26 +15,50 @@ import javax.swing.JOptionPane;
 import clases.Cliente;
 import clases.Linea;
 import clases.Modelo;
-import clases.Parada;
-import controlador.Metodos;
 import interfaces.Ventana;
 
 public class ConexionAMySQL {
 	private Connection conexion;
 
+	public String[] leerArchivoDDBB() {
+		try {
+			
+//			String pathArchivo = JOptionPane.showInputDialog("Introduce la direccion del archivo");
+//			if (pathArchivo==null) {
+//				System.exit(0);
+//			}
+//			pathArchivo.replace((char)92, (char)47);
+//			meter patharchivo al new filereader
+			BufferedReader reader = new BufferedReader(new FileReader(("C:/Users/IN1DM3B_08/Desktop/ddbb.txt").replace((char)92, (char)47)));
+			String[] datosDB = new String[5];	
+			for(int i=0;datosDB.length>i;i++) {
+				String line = reader.readLine();
+				datosDB[i]=line;
+			}
+			reader.close();
+			return datosDB;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	/**
 	 * Conecta la aplicacion a la base de datos
-	 * @param ip IP de la base de datos
-	 * @param puerto Puerto que usa para conectarse
+	 * 
+	 * @param ip        IP de la base de datos
+	 * @param puerto    Puerto que usa para conectarse
 	 * @param baseDatos Base de datos de la cual se pedira informacion
-	 * @param user Usuario que pueda acceder a la base de datos
-	 * @param pass Contraseña del usuario
+	 * @param user      Usuario que pueda acceder a la base de datos
+	 * @param pass      Contraseña del usuario
 	 */
-	public ConexionAMySQL(String ip, String puerto, String baseDatos, String user, String pass) {
+	public ConexionAMySQL() {
 		try {
-			this.conexion=(DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + baseDatos + "?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, pass));
+			String[] datosDB = leerArchivoDDBB();
+			this.conexion = (DriverManager.getConnection("jdbc:mysql://" + datosDB[0] + ":" + datosDB[1] + "/" + datosDB[2] + "?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC", datosDB[3], datosDB[4]));
 		} catch (SQLException e) {
-			
+			JOptionPane.showMessageDialog(null, "Conexion a la base de datos no conseguida, revisa el archivo de texto ddbb.txt y asegurate de que este en el escritorio o crea uno nuevo e introduce los datos", "", 0);
+			System.exit(0);
 		}
 	}
 
@@ -63,11 +90,12 @@ public class ConexionAMySQL {
 			JOptionPane.showMessageDialog(null, "Error al rellenar el modelo con las lineas", "Error", JOptionPane.WARNING_MESSAGE);
 		}
 	}
-	
+
 	/**
 	 * Inserta la informacion del usuario en la base de datos
+	 * 
 	 * @param usuario el cliente que se registrara en la base de datos
-	 * @param mod modelo con la conexion a la base de datos
+	 * @param mod     modelo con la conexion a la base de datos
 	 */
 	public void insertarUsuarioEnBaseDeDatos(Cliente usuario, Modelo mod) {
 		try {
@@ -76,7 +104,7 @@ public class ConexionAMySQL {
 			insertartUsuario.setString(1, usuario.dni);
 			insertartUsuario.setString(2, usuario.nombre);
 			insertartUsuario.setString(3, usuario.apellido);
-			insertartUsuario.setDate(4,new java.sql.Date( usuario.fechaNac.getTime()));
+			insertartUsuario.setDate(4, new java.sql.Date(usuario.fechaNac.getTime()));
 			insertartUsuario.setString(5, String.valueOf(usuario.sexo));
 			insertartUsuario.setString(6, usuario.getContrasenia());
 			insertartUsuario.executeUpdate();
@@ -85,7 +113,7 @@ public class ConexionAMySQL {
 		}
 	}
 
-	public void inicializarLineas(Modelo mod){
+	public void inicializarLineas(Modelo mod) {
 		String peticion = "SELECT Cod_Linea FROM `linea`";
 		ResultSet resul = mod.db.hacerPeticion(peticion);
 		try {
@@ -98,5 +126,5 @@ public class ConexionAMySQL {
 		mod.municipio.crearYMeterMunicipios(mod);
 		mod.autobus.crearYMeterAutobuses(mod);
 	}
-	
+
 }
