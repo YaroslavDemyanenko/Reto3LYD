@@ -49,13 +49,27 @@ public class testValidaciones {
 		verify(panel1Mock, times(1)).actualizarNombre(modeloMock, 18);
 		verify(panel1Mock, times(1)).actualizarApellido(modeloMock, 18);
 		verify(panel1Mock, times(1)).actualizarLinea(panel2Mock);
+	}
+	
+	@Test
+	public void testConfirmacionTrayectos() {
+		Metodos metodosTest2 = new Metodos();
+		PanelConfirmacion panel1Mock = mock(PanelConfirmacion.class);
+		PanelLineas2 panel2Mock = mock(PanelLineas2.class);
+		PanelLineas1 panel3Mock = mock(PanelLineas1.class);
+		Modelo modeloMock = mock(Modelo.class);
+		when(panel1Mock.getPasajeros()).thenReturn(18);
+		metodosTest.confirmacionTrayecto(panel1Mock, panel2Mock, panel3Mock, modeloMock);
 		verify(panel1Mock, times(1)).actualizarParadaInicio(panel3Mock);
 		verify(panel1Mock, times(1)).actualizarParadaFin(panel2Mock);
 		verify(panel1Mock, times(1)).actualizarFechaIda(panel2Mock);
 		verify(panel1Mock, times(1)).actualizarFechaVuelta(panel2Mock);
 		verify(panel1Mock, times(1)).actualizarTipoTrayecto(modeloMock);
 		
+		
 	}
+	
+	
 	
 	@Test
 	public void testValidarLetras() {
@@ -72,8 +86,10 @@ public class testValidaciones {
 	
 	@Test
 	public void testvalidarDNI() {
-		assertEquals(metodosLoginTest.validarDNI("7777777B"),true);
-		assertEquals(metodosLoginTest.validarDNI("500PP"),false);
+		JTextField valid = new JTextField("22758295W");
+		assertEquals(metodosLoginTest.validarDNI(valid),true);
+		valid.setText("500PP"); 
+		assertEquals(metodosLoginTest.validarDNI(valid),false);
 	}
 	
 	

@@ -13,6 +13,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
+import javax.swing.SwingConstants;
 /**
  * @wbp.parser.entryPoint
  */
@@ -48,6 +49,7 @@ public class PanelPago extends JPanel{
 		add(lblDineroMetido);
 		
 		textDineroMetido = new JTextField();
+		textDineroMetido.setHorizontalAlignment(SwingConstants.CENTER);
 		textDineroMetido.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textDineroMetido.setBounds(309, 110, 130, 41);
 		add(textDineroMetido);
@@ -59,6 +61,7 @@ public class PanelPago extends JPanel{
 		add(lblPagado);
 		
 		textVueltas = new JTextField();
+		textVueltas.setHorizontalAlignment(SwingConstants.CENTER);
 		textVueltas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textVueltas.setBounds(581, 110, 104, 41);
 		add(textVueltas);
@@ -141,7 +144,7 @@ public class PanelPago extends JPanel{
 		btn050.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn050.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50centimos.png")));
 		btn050.setFont(btn050.getFont().deriveFont(0f));
-		btn050.setBounds(374, 279, 59, 54);
+		btn050.setBounds(296, 279, 59, 54);
 		add(btn050);
 
 		btn020 = new JButton("0.20");
@@ -149,7 +152,7 @@ public class PanelPago extends JPanel{
 		btn020.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn020.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20centimos.png")));
 		btn020.setFont(btn020.getFont().deriveFont(0f));
-		btn020.setBounds(296, 279, 59, 54);
+		btn020.setBounds(374, 279, 59, 54);
 		add(btn020);
 
 		btn010 = new JButton("0.10");
@@ -157,7 +160,7 @@ public class PanelPago extends JPanel{
 		btn010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn010.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10centimos.png")));
 		btn010.setFont(btn010.getFont().deriveFont(0f));
-		btn010.setBounds(374, 360, 59, 54);
+		btn010.setBounds(296, 360, 59, 54);
 		add(btn010);
 
 		btn005 = new JButton("0.05");
@@ -165,7 +168,7 @@ public class PanelPago extends JPanel{
 		btn005.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn005.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5centimos.png")));
 		btn005.setFont(btn005.getFont().deriveFont(0f));
-		btn005.setBounds(296, 360, 59, 54);
+		btn005.setBounds(374, 360, 59, 54);
 		add(btn005);
 
 		btn002 = new JButton("0.02");
@@ -173,7 +176,7 @@ public class PanelPago extends JPanel{
 		btn002.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn002.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2centimos.png")));
 		btn002.setFont(btn002.getFont().deriveFont(0f));
-		btn002.setBounds(374, 439, 59, 54);
+		btn002.setBounds(296, 439, 59, 54);
 		add(btn002);
 
 		btn001 = new JButton("0.01");
@@ -181,7 +184,7 @@ public class PanelPago extends JPanel{
 		btn001.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn001.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1centimo.png")));
 		btn001.setFont(btn001.getFont().deriveFont(0f));
-		btn001.setBounds(296, 439, 59, 54);
+		btn001.setBounds(374, 439, 59, 54);
 		add(btn001);
 
 		btnCancelar = new JButton("Cancelar");
@@ -234,6 +237,7 @@ public class PanelPago extends JPanel{
 		add(lblAPagar);
 		
 		textAPagar = new JTextField();
+		textAPagar.setHorizontalAlignment(SwingConstants.CENTER);
 		textAPagar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textAPagar.setBounds(52, 109, 104, 42);
 		add(textAPagar);
@@ -242,7 +246,7 @@ public class PanelPago extends JPanel{
 		modeloCambio= new DefaultListModel<String>();
 		
 		listaCambio = new JList(modeloCambio);
-		listaCambio.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		listaCambio.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		listaCambio.setBounds(524, 185, 254, 308);
 		add(listaCambio);
 		
@@ -251,13 +255,13 @@ public class PanelPago extends JPanel{
 		lblUsuario.setBounds(506, 12, 173, 25);
 		add(lblUsuario);
 		
-		btnLogOut = new JButton("Log out");
+		btnLogOut = new JButton("Sign Up");
 		btnLogOut.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnLogOut.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnLogOut.setBackground(new Color(192, 192, 192));
 		btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnLogOut.setBounds(689, 12, 89, 23);
+		btnLogOut.setBounds(676, 12, 102, 23);
 		add(btnLogOut);
 		
 		textDineroMetido.setText("0.00");

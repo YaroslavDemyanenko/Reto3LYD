@@ -2,8 +2,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
@@ -12,6 +15,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
@@ -53,11 +57,16 @@ public class Controlador {
 		this.vis.panelResumen.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelLogin.btnConfirmarLogin.addActionListener(new btnListener());
 		this.vis.panelLogin.btnConfirmarRegistro.addActionListener(new btnListener());
+
+		
+		this.vis.panelLogin.passwordFieldRepContrasenia.addFocusListener(new passListener());
+
 		this.vis.panelPago.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelPasajeroExtra.btnConfirmar.addActionListener(new btnListener());
 		
 		
 		this.vis.panelConfirmacion.comboBoxPasajeros.addItemListener(new comboListener());
+
 
 		// botones de pago
 		for (int i = 0; i < vis.panelPago.arrayBtn.length; i++) {
@@ -217,6 +226,24 @@ public class Controlador {
 
 		}
 
+	}
+	
+	private class passListener implements FocusListener {
+
+		@Override
+		public void focusGained(FocusEvent arg0) {
+			char passwordChar = new JPasswordField().getEchoChar();
+			vis.panelLogin.passwordFieldRepContrasenia.setText("");
+			vis.panelLogin.passwordFieldRepContrasenia.setEchoChar(passwordChar);
+			
+		}
+
+		@Override
+		public void focusLost(FocusEvent arg0) {
+			
+			
+		}
+		
 	}
 
 	private class changeListener implements PropertyChangeListener {
