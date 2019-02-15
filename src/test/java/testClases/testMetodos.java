@@ -5,17 +5,18 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import controlador.Metodos;
+import controlador.MetodosPago;
 
 public class testMetodos {
 
 	@Test
-	public void testRound() {
+	public void testRedondear() {
 		int numDecimales = 2;
 		double numero = 3.25564;
 		
-		Metodos testMetodos = new Metodos();
+		MetodosPago testMetodos = new MetodosPago();
 		
-		assertEquals(testMetodos.round(numero, numDecimales),3.25,0.01);
+		assertEquals(testMetodos.redondear(numero, numDecimales),3.25,0.01);
 	}
 
 }

@@ -178,6 +178,10 @@ public class PanelLogin extends JPanel {
 		passwordFieldRepContrasenia.setText("Repita su contraseña"); 
 		add(passwordFieldRepContrasenia);
 		
+		JLabel lblRepitaLaContrasea = new JLabel("Repita la contraseña*");
+		lblRepitaLaContrasea.setBounds(357, 424, 176, 14);
+		add(lblRepitaLaContrasea);
+		
 		
 
 	
