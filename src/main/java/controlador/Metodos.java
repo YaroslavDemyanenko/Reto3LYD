@@ -104,12 +104,16 @@ public class Metodos {
 		panel1.actualizarApellido(mod, posicion);
 		panel1.actualizarDni(mod, posicion);	
 		panel1.actualizarLinea(panel2);
+		
+	}
+	public void confirmacionTrayecto(PanelConfirmacion panel1, PanelLineas2 panel2, PanelLineas1 panel3, Modelo mod) {
 		panel1.actualizarParadaInicio(panel3);
 		panel1.actualizarParadaFin(panel2);
 		panel1.actualizarFechaIda(panel2);
 		panel1.actualizarFechaVuelta(panel2);
 		panel1.actualizarTipoTrayecto(mod);
 	}
+	
 	
 	
 	

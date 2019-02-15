@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import clases.Cliente;
 import clases.Modelo;
 import interfaces.Ventana;
 
@@ -48,6 +49,8 @@ public class Controlador {
 		this.vis.panelResumen.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelLogin.btnConfirmarLogin.addActionListener(new btnListener());
 		this.vis.panelLogin.btnConfirmarRegistro.addActionListener(new btnListener());
+		this.vis.panelPago.btnConfirmar.addActionListener(new btnListener());
+		this.vis.panelPasajeroExtra.btnConfirmar.addActionListener(new btnListener());
 
 		// botones de pago
 		for (int i = 0; i < vis.panelPago.arrayBtn.length; i++) {
@@ -116,6 +119,18 @@ public class Controlador {
 				} else {
 					vis.setContentPane(vis.panelConfirmacion);
 				}
+				mod.arrayClientes.clear();
+				mod.arrayClientes.add(mod.clienteRegistrado);
+			} else if (e.getSource() == vis.panelPasajeroExtra.btnConfirmar) {
+				Cliente cliente = mod.metodosLogin.pasajeroExtra(vis.panelPasajeroExtra);
+				if (cliente != null) {
+					mod.arrayClientes.add(cliente);
+					vis.panelPasajeroExtra.limpiar();
+					if(mod.numeroBilletes==mod.arrayClientes.size()) {
+						vis.setContentPane(vis.panelConfirmacion);
+						vis.panelPasajeroExtra.limpiar();
+					}
+				} 	
 			}
 
 		}
