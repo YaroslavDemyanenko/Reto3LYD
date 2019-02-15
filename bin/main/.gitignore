@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-/conexion/
-/controlador/
->>>>>>> 5d62a8a3d2a65f4bd5aac5857dbee346ac362610
 /interfaces/
-/clases/
+/controlador/
+/conexion/

@@ -74,19 +74,19 @@ public class PanelResumen extends JPanel {
 		lblNombreLinea = new JLabel("Nombre linea");
 		lblNombreLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNombreLinea.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNombreLinea.setBounds(234, 183, 216, 31);
+		lblNombreLinea.setBounds(215, 183, 317, 31);
 		add(lblNombreLinea);
 		
 		lblNombrePardaInicio = new JLabel("Nombre parda inicio");
 		lblNombrePardaInicio.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNombrePardaInicio.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNombrePardaInicio.setBounds(234, 233, 216, 32);
+		lblNombrePardaInicio.setBounds(215, 233, 349, 32);
 		add(lblNombrePardaInicio);
 		
 		lblNombreParadaFin = new JLabel("Nombre parada fin");
 		lblNombreParadaFin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNombreParadaFin.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNombreParadaFin.setBounds(234, 295, 216, 32);
+		lblNombreParadaFin.setBounds(215, 295, 349, 32);
 		add(lblNombreParadaFin);
 		
 		lblIdaYVuelta = new JLabel("Ida / Ida y vuelta");
@@ -125,7 +125,7 @@ public class PanelResumen extends JPanel {
 		lblFechaIda = new JLabel("Fecha Ida");
 		lblFechaIda.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFechaIda.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
-		lblFechaIda.setBounds(570, 170, 104, 24);
+		lblFechaIda.setBounds(604, 164, 104, 24);
 		add(lblFechaIda);
 		
 		
@@ -141,7 +141,7 @@ public class PanelResumen extends JPanel {
 		lblFechaVuelta = new JLabel("Fecha Vuelta");
 		lblFechaVuelta.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblFechaVuelta.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFechaVuelta.setBounds(564, 295, 115, 24);
+		lblFechaVuelta.setBounds(599, 304, 115, 24);
 		add(lblFechaVuelta);
 		
 		lblPrecio = new JLabel("Precio:");
@@ -153,7 +153,7 @@ public class PanelResumen extends JPanel {
 		textPrecio = new JTextField();
 		textPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		textPrecio.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textPrecio.setBounds(585, 448, 77, 41);
+		textPrecio.setBounds(588, 448, 77, 41);
 		add(textPrecio);
 		textPrecio.setColumns(10);
 		
@@ -161,20 +161,23 @@ public class PanelResumen extends JPanel {
 		
 		
 		spinnerDateEditorIda = new JSpinnerDateEditor();
+		spinnerDateEditorIda.setLocation(608, 0);
 		spinnerDateEditorIda.setEnabled(false);
 		((JSpinner.DefaultEditor) spinnerDateEditorIda.getEditor()).getTextField().setEditable(false);
 		((JSpinner.DefaultEditor) spinnerDateEditorIda.getEditor()).getTextField().setEnabled(true);
 		spinnerDateEditorIda.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		calendarioIda = new JDateChooser(null, null, null, spinnerDateEditorIda);
+		calendarioIda.getCalendarButton().setLocation(656, 0);
 		calendarioIda.getCalendarButton().setEnabled(false);
 		calendarioIda.getCalendarButton().setDisabledIcon(new ImageIcon(PanelResumen.class.getResource("/imagenes/JCalendarColor16.gif")));
-		calendarioIda.setBounds(554, 202, 137, 27);
+		calendarioIda.setBounds(588, 200, 137, 27);
 		calendarioIda.setDateFormatString("dd-MM-yyyy");
 		add(calendarioIda);
 		
 		
 		spinnerDateEditorVuelta = new JSpinnerDateEditor();
+		spinnerDateEditorVuelta.setLocation(608, 0);
 		spinnerDateEditorVuelta.setEnabled(false);
 		((JSpinner.DefaultEditor) spinnerDateEditorVuelta.getEditor()).getTextField().setEditable(false);
 		((JSpinner.DefaultEditor) spinnerDateEditorVuelta.getEditor()).getTextField().setEnabled(true);
@@ -183,7 +186,7 @@ public class PanelResumen extends JPanel {
 		calendarioVuelta = new JDateChooser(null, null, null, spinnerDateEditorVuelta);
 		calendarioVuelta.getCalendarButton().setEnabled(false);
 		calendarioVuelta.getCalendarButton().setDisabledIcon(new ImageIcon(PanelResumen.class.getResource("/imagenes/JCalendarColor16.gif")));
-		calendarioVuelta.setBounds(554, 341, 137, 27);
+		calendarioVuelta.setBounds(588, 339, 137, 27);
 		calendarioVuelta.setDateFormatString("dd-MM-yyyy");
 		add(calendarioVuelta);
 		

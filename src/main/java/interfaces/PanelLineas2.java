@@ -44,7 +44,7 @@ public class PanelLineas2 extends JPanel{
 		lblUsuario.setBounds(506, 12, 173, 25);
 		add(lblUsuario);
 
-		btnLogIn = new JButton("Log in");
+		btnLogIn = new JButton("Sign Up");
 		btnLogIn.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnLogIn.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnLogIn.setBackground(new Color(192, 192, 192));
@@ -140,7 +140,8 @@ public class PanelLineas2 extends JPanel{
 		add(lblLlegada);
 		
 		listaDestinos = new JList(modeloListaDestinos);
-		listaDestinos.setBounds(447, 237, 231, 199);
+		listaDestinos.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		listaDestinos.setBounds(447, 237, 270, 218);
 		add(listaDestinos);
 	}
 	public void limpiar() {

@@ -31,6 +31,7 @@ public class PanelLogin extends JPanel {
 	public JButton btnConfirmarRegistro, btnConfirmarLogin, btnCancelar;
 	public JSpinnerDateEditor spinnerFechaNac;
 	public JDateChooser calendarioFechaNac;
+	public JPasswordField passwordFieldRepContrasenia;
 	
 	
 	public PanelLogin() {
@@ -166,6 +167,16 @@ public class PanelLogin extends JPanel {
 		calendarioFechaNac.setBounds(215, 250, 137, 27);
 		calendarioFechaNac.setDate(Calendar.getInstance().getTime());
 		add(calendarioFechaNac);
+		
+		passwordFieldRepContrasenia = new JPasswordField();
+		passwordFieldRepContrasenia.setForeground(Color.BLACK);
+		passwordFieldRepContrasenia.setHorizontalAlignment(SwingConstants.LEFT);
+		passwordFieldRepContrasenia.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		passwordFieldRepContrasenia.setBounds(357, 439, 192, 39);
+		
+		passwordFieldRepContrasenia.setEchoChar ((char) 0); 
+		passwordFieldRepContrasenia.setText("Repita su contraseña"); 
+		add(passwordFieldRepContrasenia);
 		
 		
 

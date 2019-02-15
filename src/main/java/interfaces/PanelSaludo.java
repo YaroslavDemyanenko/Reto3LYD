@@ -34,7 +34,7 @@ public class PanelSaludo extends JPanel {
 		
 		
 		
-		btnSignUP = new JButton("Sign UP");
+		btnSignUP = new JButton("Sign Up");
 		btnSignUP.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnSignUP.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnSignUP.setBackground(new Color(192, 192, 192));
@@ -47,7 +47,7 @@ public class PanelSaludo extends JPanel {
 		lblTocaParaContinuar = new JLabel();
 		lblTocaParaContinuar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblTocaParaContinuar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTocaParaContinuar.setText("Toca para continuar");
+		lblTocaParaContinuar.setText("Toque la pantalla para continuar");
 		lblTocaParaContinuar.setBounds(255, 358, 293, 44);
 		add(lblTocaParaContinuar);
 		
@@ -66,10 +66,11 @@ public class PanelSaludo extends JPanel {
 		add(lblLogo);
 		lblLogo.setIcon(new ImageIcon(PanelSaludo.class.getResource("/imagenes/logo-termibus.png")));
 		
-		lblLogo2 = new JLabel("test");
-		lblLogo2.setBounds(10, 438, 286, 110);
+		lblLogo2 = new JLabel("");
+		lblLogo2.setBounds(10, 438, 156, 124);
+		lblLogo2.setIcon(new ImageIcon(PanelSaludo.class.getResource("/imagenes/LYD_opt (4).png")));
 		add(lblLogo2);
-		lblLogo2.setIcon(new ImageIcon(PanelSaludo.class.getResource("/imagenes/LYD.png")));
+		
 		
 		
 

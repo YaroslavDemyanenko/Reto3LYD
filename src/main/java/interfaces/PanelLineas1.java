@@ -85,14 +85,15 @@ public class PanelLineas1 extends JPanel {
 		
 		modeloLineas = new DefaultListModel();
 		listLineas = new JList(modeloLineas);
-		listLineas.setBounds(83, 153, 200, 233);
+		listLineas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		listLineas.setBounds(83, 153, 268, 267);
 		listLineas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		add(listLineas);
 		
 		modeloParadas = new DefaultListModel();
 		listParadas = new JList(modeloParadas);
 		listParadas.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		listParadas.setBounds(433, 153, 258, 274);
+		listParadas.setBounds(433, 153, 268, 274);
 		listParadas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		add(listParadas);
 		
