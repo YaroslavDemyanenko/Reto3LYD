@@ -92,7 +92,7 @@ public class Metodos {
 	}
 	
 	/**
-	 * Ensear datos de cada cliente
+	 * Enseñar datos de cada cliente
 	 * @param vis
 	 * @param mod
 	 * @param cliente

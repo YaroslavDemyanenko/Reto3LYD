@@ -164,7 +164,9 @@ public class PanelLogin extends JPanel {
 		calendarioFechaNac = new JDateChooser(null, null, null, spinnerFechaNac);
 		calendarioFechaNac.setDateFormatString("dd-MM-yyyy");
 		calendarioFechaNac.setBounds(215, 250, 137, 27);
+		calendarioFechaNac.setDate(Calendar.getInstance().getTime());
 		add(calendarioFechaNac);
+		
 		
 
 	

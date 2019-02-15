@@ -29,7 +29,7 @@ public class ConexionAMySQL {
 //			}
 //			pathArchivo.replace((char)92, (char)47);
 //			meter patharchivo al new filereader
-			BufferedReader reader = new BufferedReader(new FileReader("C:/Users/Yaros/Desktop/ddbb.txt"));
+			BufferedReader reader = new BufferedReader(new FileReader(("C:/Users/IN1DM3B_08/Desktop/ddbb.txt").replace((char)92, (char)47)));
 			String[] datosDB = new String[5];	
 			for(int i=0;datosDB.length>i;i++) {
 				String line = reader.readLine();

@@ -113,8 +113,8 @@ public class MetodosPago {
 	
 	@SuppressWarnings("unchecked")
 	public void Cambios(PanelPago panel) {
-		int euros = Integer.valueOf(panel.textVueltas.getText().replace(".", ","));
-		int decimales = Math.round((Integer.valueOf(panel.textVueltas.getText().replace(".", ",")) - euros) * 100);
+		int euros = (int)(Float.parseFloat(panel.textVueltas.getText()));
+		int decimales = Math.round(((Float.parseFloat(panel.textVueltas.getText()))-euros) * 100);
 		int[] billetesMonedas = { 500, 200, 100, 50, 20, 10, 5, 2, 1 };
 		
 

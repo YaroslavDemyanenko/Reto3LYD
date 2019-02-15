@@ -115,22 +115,22 @@ public class MetodosLoginYRegistro {
 
 	public Cliente registroUsuario(Ventana vis, Modelo mod) {
 		JTextField dni = vis.panelLogin.textFieldDNI;
-		String nombre = vis.panelLogin.textFieldNombre.getText();
-		String apellido = vis.panelLogin.textFieldApellido.getText();
+		JTextField nombre = vis.panelLogin.textFieldNombre;
+		JTextField apellido = vis.panelLogin.textFieldApellido;
 		Date fechaNac = vis.panelLogin.calendarioFechaNac.getDate();
 		char sexo = cambiarSexoAChar(vis.panelLogin.cmbBoxSexo);
 		final char[] contra = vis.panelLogin.passFieldContrasenia.getPassword();
-		if (nombre.length() > 0 && apellido.length() > 0 && validarDNI(dni) == true && fechaNac.before(Calendar.getInstance().getTime()) && validarContrasenia(contra)) {
+		if (validarSoloLetras(nombre) && validarSoloLetras(apellido) && (nombre.getText().length() > 0) && (apellido.getText().length() > 0) && validarDNI(dni) && validarFecha(fechaNac) && validarContrasenia(contra)) {
 			if (comprobarDNIenBD(vis.panelLogin.textFieldDNI.getText(), mod) == false) {
-				return (new Cliente(dni.getText(), nombre, apellido, fechaNac, sexo, encriptarContra(contra)));
+				return (new Cliente(dni.getText(), nombre.getText(), apellido.getText(), fechaNac, sexo, encriptarContra(contra)));
 			} else {
 				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
 			}
-
-		} else if (validarContrasenia(contra) == true)
-			JOptionPane.showMessageDialog(null, "Porfavor, rellena todos los campos", "Campos sin completar", JOptionPane.WARNING_MESSAGE);
-		;
-		return null;
+		}return null;
+	}
+	
+	public boolean validarFecha(Date fecha) {
+		return fecha.before(Calendar.getInstance().getTime());
 	}
 
 	/**
