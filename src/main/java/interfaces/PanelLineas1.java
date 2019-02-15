@@ -41,7 +41,7 @@ public class PanelLineas1 extends JPanel {
 		btnSignUP.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnSignUP.setBackground(new Color(192, 192, 192));
 		btnSignUP.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnSignUP.setBounds(689, 12, 89, 23);
+		btnSignUP.setBounds(676, 12, 102, 23);
 		add(btnSignUP);
 		btnSignUP.setName("botonLogin");
 		

@@ -255,7 +255,7 @@ public class PanelPago extends JPanel{
 		btnLogOut.setBackground(new Color(192, 192, 192));
 		btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnLogOut.setBounds(689, 12, 89, 23);
+		btnLogOut.setBounds(676, 12, 102, 23);
 		add(btnLogOut);
 		
 				

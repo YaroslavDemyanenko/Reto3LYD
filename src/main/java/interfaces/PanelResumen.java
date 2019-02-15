@@ -43,7 +43,7 @@ public class PanelResumen extends JPanel {
 		btnSignUp.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnSignUp.setBackground(new Color(192, 192, 192));
 		btnSignUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnSignUp.setBounds(689, 12, 89, 23);
+		btnSignUp.setBounds(676, 12, 102, 23);
 		add(btnSignUp);
 		btnSignUp.setName("botonLogin");
 		
