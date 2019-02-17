@@ -45,7 +45,7 @@ public class PanelResumen extends JPanel {
 		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblUsuario.setBounds(506, 12, 173, 25);
-		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
 		add(lblUsuario);
 		
 		lblResumen = new JLabel("Resumen De Trayecto");
@@ -111,7 +111,7 @@ public class PanelResumen extends JPanel {
 		btnCancelar.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnCancelar.setBackground(new Color(192, 192, 192));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnCancelar.setBounds(80, 519, 140, 41);
+		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
@@ -119,7 +119,7 @@ public class PanelResumen extends JPanel {
 		btnConfirmar.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnConfirmar.setBackground(new Color(192, 192, 192));
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConfirmar.setBounds(638, 519, 140, 41);
+		btnConfirmar.setBounds(655, 527, 129, 35);
 		add(btnConfirmar);
 		
 		lblFechaIda = new JLabel("Fecha Ida");
@@ -154,8 +154,10 @@ public class PanelResumen extends JPanel {
 		textPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		textPrecio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textPrecio.setBounds(588, 448, 77, 41);
-		add(textPrecio);
 		textPrecio.setColumns(10);
+		textPrecio.setEditable(false);
+		add(textPrecio);
+		
 		
 		
 		

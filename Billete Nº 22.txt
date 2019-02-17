@@ -1,0 +1,7 @@
+INFORMACIÓN DEL RECORRIDO
+Codigo de billete: 22 Linea: L1 Codigo de autobus: 1001
+Origen: Metro Larrabasterra Destino: Ayuntamiento Plentzia
+Fecha: 17-02-2019 Precio: 1.43
+INFORMACION DEL CLIENTE
+Nombre: yars asdas
+DNI: 67362289G Sexo: V

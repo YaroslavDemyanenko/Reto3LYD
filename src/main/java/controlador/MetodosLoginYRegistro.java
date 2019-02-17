@@ -63,25 +63,25 @@ public class MetodosLoginYRegistro {
 			if (rs.next()) {
 				String contraBase = rs.getString("Contraseña");
 				if (contraBase.equals(contraUsuario)) {
-					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
-					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
-					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
-					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
-					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
-					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
-					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
-					vis.panelSaludo.lblUsuario.setText(rs.getString("Nombre"));
-
+					actualizarLabelUsuario(vis,rs.getString("Nombre"));
 					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fecha_nac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Contraseña")));
 				} else {
-					System.out.println("Contraseña erronea");
+					JOptionPane.showMessageDialog(null, "Contrasela incorrecta", null, JOptionPane.INFORMATION_MESSAGE);
 				}
 			} else
-				System.out.println("El usuario no existe");
+				JOptionPane.showMessageDialog(null, "Este usuario no esta registrado, por favor introduzca sus datos a la izquierda", null, JOptionPane.INFORMATION_MESSAGE);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public void actualizarLabelUsuario(Ventana vis,String nombre) {
+		vis.panelSaludo.lblUsuario.setText(nombre);
+		vis.panelLineas1.lblUsuario.setText(nombre);
+		vis.panelLineas2.lblUsuario.setText(nombre);
+		vis.panelPago.lblUsuario.setText(nombre);
+		vis.panelResumen.lblUsuario.setText(nombre);
 	}
 
 	/**
@@ -146,8 +146,6 @@ public class MetodosLoginYRegistro {
 		Pattern p = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$");
 		String contraString = new String(contra);
 		Matcher m = p.matcher(contraString);
-		System.out.println(contraString);
-
 		if (m.matches()) {
 			return true;
 		} else {

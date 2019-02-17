@@ -1,12 +1,22 @@
 package controlador;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JPanel;
+
+import clases.Billete;
 import clases.Cliente;
 import clases.Modelo;
-import clases.Parada;
 import interfaces.PanelConfirmacion;
 import interfaces.PanelLineas1;
 import interfaces.PanelLineas2;
@@ -69,7 +79,7 @@ public class Metodos {
 	}
 
 	/**
-	 * Inserta los clientes en el array
+	 * Inserta los clientes en el combobox
 	 * 
 	 * @param vis
 	 * @param cliente
@@ -106,5 +116,35 @@ public class Metodos {
 		panelConf.actualizarFechaVuelta(panelLin2);
 		panelConf.actualizarTipoTrayecto(mod);
 	}
+	
+	public void imprimirBillete(Modelo mod,Billete bill, Cliente usuario,int codBill,boolean Vuelta) {
+		PrintWriter writer;
+		SimpleDateFormat formatoFecha=new SimpleDateFormat("dd-MM-yyyy");
+		try {
+			writer = new PrintWriter("Billete Nº "+codBill+".txt", "UTF-8");
+			writer.println("INFORMACIÓN DEL RECORRIDO");
+			writer.println("Codigo de billete: "+codBill+" Linea: "+bill.linea.codigo+" Codigo de autobus: "+bill.codAutobus);
+			if(Vuelta) {
+				writer.println("Origen: "+bill.paradaFin.nombreParada+" Destino: "+bill.paradaInic.nombreParada);
+			}else writer.println("Origen: "+bill.paradaInic.nombreParada+" Destino: "+bill.paradaFin.nombreParada);
+			writer.println("Fecha: "+formatoFecha.format(bill.fecha)+ " Precio: "+mod.metodosPago.dosDec.format(bill.precioTrayecto));
+			writer.println("INFORMACION DEL CLIENTE");
+			writer.println("Nombre: "+usuario.nombre+" "+usuario.apellido);
+			writer.println("DNI: "+usuario.dni+" Sexo: "+usuario.sexo);
+			writer.close();
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void esperar(int milliS) {
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
 
 }

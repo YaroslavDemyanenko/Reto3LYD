@@ -17,6 +17,7 @@ import java.util.Calendar;
 
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.text.JTextComponent;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -79,6 +80,8 @@ public class PanelLineas2 extends JPanel{
 		lblNumeroDeBilletes.setBounds(79, 383, 166, 27);
 		add(lblNumeroDeBilletes);
 
+		
+		
 		spinnerDateEditorIda = new JSpinnerDateEditor();
 		((JSpinner.DefaultEditor) spinnerDateEditorIda.getEditor()).getTextField().setEditable(false);
 		spinnerDateEditorIda.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -87,6 +90,8 @@ public class PanelLineas2 extends JPanel{
 		calendarioIda.setDateFormatString("dd-MM-yyyy");
 		calendarioIda.setBounds(205, 212, 137, 27);
 		add(calendarioIda);
+		
+		
 		
 		spinnerDateEditorVuelta = new JSpinnerDateEditor();
 		((JSpinner.DefaultEditor) spinnerDateEditorVuelta.getEditor()).getTextField().setEditable(false);
@@ -97,12 +102,14 @@ public class PanelLineas2 extends JPanel{
 		calendarioVuelta.setBounds(205, 301, 137, 27);
 		add(calendarioVuelta);
 		
+		
+		
 		spnNumeroDeBilletes = new JSpinner();
-
 		spnNumeroDeBilletes.setModel(new SpinnerNumberModel(new Integer(1), new Integer(0), null, new Integer(1)));
-
 		spnNumeroDeBilletes.setBounds(255, 381, 70, 30);
-		((JSpinner.DefaultEditor) spnNumeroDeBilletes.getEditor()).getTextField().setEditable(false);
+		
+		
+		spnNumeroDeBilletes.setEditor(new JSpinner.DefaultEditor(spnNumeroDeBilletes));
 		add(spnNumeroDeBilletes);
 		
 		btnCancelar = new JButton("Cancelar");

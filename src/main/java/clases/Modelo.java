@@ -3,6 +3,7 @@ package clases;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.swing.JPanel;
 
@@ -28,6 +29,8 @@ public class Modelo {
 	public ArrayList<Parada> arrayParadas=new ArrayList<Parada>();
 	public ArrayList<Cliente> arrayClientes = new  ArrayList<Cliente>();
 	public Billete billeteGeneralIda = new Billete(),billeteGeneralVuelta=new Billete(),billeteIda,billeteVuelta;
+	
+	public final Cliente clienteExtra=new Cliente("11111111A","Cliente","Extra",new GregorianCalendar(2000, 1, 1).getTime(),'X',"");
 	
 	public Date fechaIda,fechaVuelta;
 	private boolean idaYVuelta=false;
@@ -80,5 +83,6 @@ public class Modelo {
 		this.paradaSalida=new Parada();
 		this.paradaDestino=new Parada();
 		this.idaYVuelta=false;
+		
 	}
 }

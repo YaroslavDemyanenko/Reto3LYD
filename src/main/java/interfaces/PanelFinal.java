@@ -16,7 +16,6 @@ public class PanelFinal extends JPanel {
 	
 	public PanelFinal() {
 		setLayout(null);
-		setVisible(false);
 		setBounds(0,0,800,600);
 		setBackground(new Color(193, 240, 240));
 		

@@ -1,16 +1,20 @@
 package interfaces;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JSpinnerDateEditor;
+import com.toedter.calendar.JTextFieldDateEditor;
 
 import clases.Modelo;
 
@@ -19,14 +23,15 @@ import java.util.Date;
 import com.toedter.calendar.IDateEditor;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.text.JTextComponent;
 /**
  * @wbp.parser.entryPoint
  */
 public class PanelConfirmacion extends JPanel {
 
 	public JLabel lblFieldCodigo, lblFieldNombre, lblFieldApellidos, lblFieldDNI, lblFieldParadaFin, lblFieldParadaInicio, lblFieldLinea, lblFieldTipoTrayecto, lblFieldPrecioBillete;
-	public JButton btnLogIn, btnCancelar, btnImprimir;
-	public JLabel lblUsuario, lblCdigo, lblNombre, lblApellidos, lblDni, lblLnea, lblSalida, lblLlegada, lblTipoDeTrayecto, lblFechaIda, lblFechaVuelta, lblPrecioBillete, lblPasajerosas;
+	public JButton btnCancelar, btnImprimir;
+	public JLabel lblCdigo, lblNombre, lblApellidos, lblDni, lblLnea, lblSalida, lblLlegada, lblTipoDeTrayecto, lblFechaIda, lblFechaVuelta, lblPrecioBillete, lblPasajerosas;
 	public JDateChooser fechaIda,fechaVuelta;
 	public JComboBox comboBoxPasajeros;
 	public JTextField textFieldPrecioBillete;
@@ -36,21 +41,6 @@ public class PanelConfirmacion extends JPanel {
 		setLayout(null);
 		setBounds(0,0,800,600);
 		setBackground(new Color(193, 240, 240));
-		
-		btnLogIn = new JButton("Log out");
-		btnLogIn.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnLogIn.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
-		btnLogIn.setAlignmentY(Component.TOP_ALIGNMENT);
-		btnLogIn.setBackground(new Color(192, 192, 192));
-		btnLogIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnLogIn.setBounds(676, 12, 102, 23);
-		add(btnLogIn);
-		
-		lblUsuario = new JLabel("Usuario");
-		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
-		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario.setBounds(506, 12, 173, 25);
-		add(lblUsuario);
 		
 		lblCdigo = new JLabel("C\u00F3digo:");
 		lblCdigo.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
@@ -103,7 +93,7 @@ public class PanelConfirmacion extends JPanel {
 		
 		lblFieldLinea = new JLabel();
 		lblFieldLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFieldLinea.setBounds(299, 193, 201, 35);
+		lblFieldLinea.setBounds(299, 193, 276, 35);
 		add(lblFieldLinea);
 		
 		
@@ -114,7 +104,7 @@ public class PanelConfirmacion extends JPanel {
 		
 		lblFieldParadaInicio = new JLabel();
 		lblFieldParadaInicio.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFieldParadaInicio.setBounds(297, 278, 201, 35);
+		lblFieldParadaInicio.setBounds(297, 278, 276, 35);
 		add(lblFieldParadaInicio);
 		
 		
@@ -125,7 +115,7 @@ public class PanelConfirmacion extends JPanel {
 		
 		lblFieldParadaFin = new JLabel();
 		lblFieldParadaFin.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFieldParadaFin.setBounds(299, 360, 201, 35);
+		lblFieldParadaFin.setBounds(299, 360, 276, 35);
 		add(lblFieldParadaFin);
 		
 		
@@ -142,12 +132,12 @@ public class PanelConfirmacion extends JPanel {
 		
 		lblFechaIda = new JLabel("Fecha Ida:");
 		lblFechaIda.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
-		lblFechaIda.setBounds(549, 164, 104, 23);
+		lblFechaIda.setBounds(585, 164, 104, 23);
 		add(lblFechaIda);
 		
 		lblFechaVuelta = new JLabel("Fecha Vuelta:");
 		lblFechaVuelta.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
-		lblFechaVuelta.setBounds(549, 249, 130, 23);
+		lblFechaVuelta.setBounds(585, 249, 130, 23);
 		add(lblFechaVuelta);
 		
 		lblPrecioBillete = new JLabel("Precio Billete:");
@@ -157,6 +147,8 @@ public class PanelConfirmacion extends JPanel {
 		
 		textFieldPrecioBillete = new JTextField();
 		textFieldPrecioBillete.setColumns(10);
+		textFieldPrecioBillete.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldPrecioBillete.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textFieldPrecioBillete.setBounds(592, 411, 130, 35);
 		add(textFieldPrecioBillete);
 		
@@ -169,7 +161,7 @@ public class PanelConfirmacion extends JPanel {
 		btnCancelar.setBounds(56, 527, 129, 35);
 		add(btnCancelar);
 		
-		btnImprimir = new JButton("Imprimir Billete");
+		btnImprimir = new JButton("Imprimir Billete/s");
 		btnImprimir.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnImprimir.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnImprimir.setBackground(new Color(192, 192, 192));
@@ -189,13 +181,24 @@ public class PanelConfirmacion extends JPanel {
 		comboBoxPasajeros.setBounds(53, 100, 132, 35);
 		add(comboBoxPasajeros);
 		
-		fechaIda = new JDateChooser((JCalendar) null, (Date) null, (String) null, (IDateEditor) null);
-		fechaIda.setBounds(549, 198, 137, 27);
+		fechaIda = new JDateChooser();
+		fechaIda.setBounds(585, 198, 137, 27);
+		fechaIda.setDateFormatString("dd-MM-yyyy");
+		((JTextFieldDateEditor) fechaIda.getDateEditor()).setEditable(false);
+		fechaIda.getCalendarButton().setEnabled(false);
+		fechaIda.getCalendarButton().setForeground(new JDateChooser().getCalendarButton().getForeground());
+		fechaIda.getCalendarButton().setDisabledIcon(new JDateChooser().getCalendarButton().getIcon());
 		add(fechaIda);
 		
-		fechaVuelta = new JDateChooser((JCalendar) null, (Date) null, (String) null, (IDateEditor) null);
-		fechaVuelta.setBounds(549, 278, 137, 27);
+		fechaVuelta = new JDateChooser();
+		fechaVuelta.setBounds(585, 278, 137, 27);
+		fechaVuelta.setDateFormatString("dd-MM-yyyy");
+		((JTextFieldDateEditor) fechaVuelta.getDateEditor()).setEditable(false);
+		fechaVuelta.getCalendarButton().setEnabled(false);
+		fechaVuelta.getCalendarButton().setForeground(new JDateChooser().getCalendarButton().getForeground());
+		fechaVuelta.getCalendarButton().setDisabledIcon(new JDateChooser().getCalendarButton().getIcon());
 		add(fechaVuelta);
+		
 		
 
 	}
@@ -214,7 +217,7 @@ public class PanelConfirmacion extends JPanel {
 	
 	
 	public void actualizarPosicion(int posicion) {
-		lblFieldCodigo.setText(String.valueOf(posicion));
+		lblFieldCodigo.setText(String.valueOf(posicion+1));
 	}
 	
 	public void actualizarNombre(Modelo mod, int posicion) {
@@ -234,11 +237,13 @@ public class PanelConfirmacion extends JPanel {
 	}
 	
 	public void actualizarParadaInicio(PanelLineas1 panel3) {
-		lblFieldParadaInicio.setText(String.valueOf(panel3.listParadas.getSelectedValuesList()));
+		String x=String.valueOf(panel3.listParadas.getSelectedValuesList());
+		lblFieldParadaInicio.setText(x.substring(1, x.length()-1));
 	}
 	
 	public void actualizarParadaFin(PanelLineas2 panel2) {
-		lblFieldParadaFin.setText(String.valueOf(panel2.listaDestinos.getSelectedValuesList()));
+		String x=String.valueOf(panel2.listaDestinos.getSelectedValuesList());
+		lblFieldParadaFin.setText(x.substring(1, x.length()-1));
 	}
 	
 	public void actualizarFechaIda(PanelLineas2 panel2) {

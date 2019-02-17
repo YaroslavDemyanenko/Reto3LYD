@@ -47,7 +47,7 @@ public class PanelLineas1 extends JPanel {
 		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblUsuario.setBounds(506, 12, 173, 25);
-		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
 		add(lblUsuario);
 		
 		lblLinea = new JLabel();

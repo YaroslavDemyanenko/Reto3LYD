@@ -2,22 +2,18 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -47,6 +43,7 @@ public class Controlador {
 		this.vis.panelLineas2.calendarioIda.addPropertyChangeListener("date", new changeListener());
 		this.vis.panelLineas2.calendarioVuelta.addPropertyChangeListener("date", new changeListener());
 		this.vis.panelConfirmacion.comboBoxPasajeros.addPropertyChangeListener(new changeListener());
+		this.vis.panelConfirmacion.btnImprimir.addActionListener(new btnListener());
 
 		this.vis.panelLineas1.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelLineas2.btnConfirmar.addActionListener(new btnListener());
@@ -59,8 +56,6 @@ public class Controlador {
 		this.vis.panelLogin.btnConfirmarRegistro.addActionListener(new btnListener());
 
 		
-		this.vis.panelLogin.passwordFieldRepContrasenia.addFocusListener(new passListener());
-
 		this.vis.panelPago.btnConfirmar.addActionListener(new btnListener());
 		this.vis.panelPasajeroExtra.btnConfirmar.addActionListener(new btnListener());
 		
@@ -99,9 +94,14 @@ public class Controlador {
 					mod.metodo.limitarFechasIda(vis, 4);
 					mod.metodo.limitarFechasVuelta(vis, 4);
 					mod.parada.paradasLlegadaAModelo(mod, vis);
+					vis.panelLineas2.listaDestinos.setSelectedIndex(0);
+					mod.billete.informacionGeneralBilletes(mod, vis);
+					mod.billete.fechasGeneralBilletes(mod, vis);
+					vis.panelLineas2.spnNumeroDeBilletes.setValue(1);
+					vis.panelLineas2.spnNumeroDeBilletes.setModel(new SpinnerNumberModel(1, 0, mod.autobus.numeroPlazasRestantes(mod, vis), 1));
 				}
 			} else if (e.getSource() == vis.panelLineas2.btnConfirmar) {
-				if (!vis.panelLineas2.listaDestinos.isSelectionEmpty()) {
+				if (!vis.panelLineas2.listaDestinos.isSelectionEmpty() && (int) vis.panelLineas2.spnNumeroDeBilletes.getValue()>0) {
 					vis.panelResumen.textPrecio.setText(mod.metodosPago.precioTotal(mod, (int) (vis.panelLineas2.spnNumeroDeBilletes.getModel().getValue())));
 					vis.setContentPane(vis.panelResumen);
 					mod.metodo.mostrarResumenTrayecto(vis, mod);
@@ -118,11 +118,12 @@ public class Controlador {
 			} else if (e.getSource() == vis.panelLogin.btnConfirmarRegistro) {
 				mod.clienteRegistrado = mod.metodosLogin.registroUsuario(vis, mod);
 				if (mod.clienteRegistrado != null) {
-					mod.db.insertarUsuarioEnBaseDeDatos(mod.clienteRegistrado, mod);
+					mod.db.insertarUsuarioEnBaseDeDatos(mod.clienteRegistrado);
 					vis.setContentPane(mod.ultimoPanel);
 				}
 			} else if (e.getSource() == vis.panelResumen.btnConfirmar) {
 				vis.panelPago.textAPagar.setText(vis.panelResumen.textPrecio.getText());
+				vis.panelConfirmacion.textFieldPrecioBillete.setText(vis.panelResumen.textPrecio.getText());
 				if (mod.estaLogeado()) {
 					vis.setContentPane(vis.panelPago);
 				} else {
@@ -130,15 +131,17 @@ public class Controlador {
 					vis.setContentPane(vis.panelLogin);
 				}
 			} else if (e.getSource() == vis.panelPago.btnConfirmar) {
+				mod.arrayClientes.clear();
+				mod.arrayClientes.add(mod.clienteRegistrado);
 				if (mod.numeroBilletes > 1) {
 					vis.setContentPane(vis.panelPasajeroExtra);
 				} else {
 					vis.setContentPane(vis.panelConfirmacion);
+					mod.metodo.meterClientesEnComboBox(vis, mod, mod.arrayClientes);
 					mod.metodo.confirmacionTrayecto(vis.panelConfirmacion, vis.panelLineas2, vis.panelLineas1, mod);
 					mod.metodo.confirmacionDatos(vis.panelConfirmacion, vis.panelLineas2, mod);
 				}
-				mod.arrayClientes.clear();
-				mod.arrayClientes.add(mod.clienteRegistrado);
+				
 			} else if (e.getSource() == vis.panelPasajeroExtra.btnConfirmar) {
 				Cliente cliente = mod.metodosLogin.pasajeroExtra(vis.panelPasajeroExtra);
 				if (cliente != null) {
@@ -149,8 +152,41 @@ public class Controlador {
 						mod.metodo.meterClientesEnComboBox(vis, mod, mod.arrayClientes);
 						mod.metodo.confirmacionTrayecto(vis.panelConfirmacion, vis.panelLineas2, vis.panelLineas1, mod);
 						mod.metodo.confirmacionDatos(vis.panelConfirmacion, vis.panelLineas2, mod);
+						
 					}
 				} 	
+			}else if (e.getSource() == vis.panelConfirmacion.btnImprimir){
+				vis.setContentPane(vis.panelFinal);
+				for (int i=0, contBilletes=mod.db.codigoDeBillete();i<mod.arrayClientes.size();i++,contBilletes++){
+					mod.metodo.imprimirBillete(mod,mod.billeteGeneralIda, mod.arrayClientes.get(i),contBilletes,false);
+					mod.db.insertarBilleteIdaDB(mod.arrayClientes.get(i), mod.billeteGeneralIda);
+					if(mod.isIdaYVuelta()) {
+						contBilletes++;
+						mod.metodo.imprimirBillete(mod,mod.billeteGeneralVuelta, mod.arrayClientes.get(i),contBilletes,true);
+						mod.db.insertarBilleteVueltaDB(mod.arrayClientes.get(i), mod.billeteGeneralVuelta);
+					}
+				}
+				Timer timer = new Timer(5000, new ActionListener() {
+
+				    @Override
+				    public void actionPerformed(ActionEvent arg0) {            
+				    	mod.reset();
+						vis.panelConfirmacion.limpiar();
+						vis.panelPago.limpiar();
+						vis.panelPasajeroExtra.limpiar();
+						vis.panelLogin.limpiar();
+						vis.panelResumen.limpiar();
+						vis.panelLineas2.limpiar();
+						vis.panelLineas1.limpiar();
+						vis.panelSaludo.limpiar();
+						vis.setContentPane(vis.panelSaludo);
+				    }
+				});
+				timer.setRepeats(false);
+				timer.start();
+				
+				
+				
 			}
 
 		}
@@ -165,6 +201,7 @@ public class Controlador {
 			vis.panelResumen.limpiar();
 			vis.panelLineas2.limpiar();
 			vis.panelLineas1.limpiar();
+			vis.panelSaludo.limpiar();
 			vis.setContentPane(vis.panelSaludo);
 			mod.reset();
 		}
@@ -228,23 +265,7 @@ public class Controlador {
 
 	}
 	
-	private class passListener implements FocusListener {
 
-		@Override
-		public void focusGained(FocusEvent arg0) {
-			char passwordChar = new JPasswordField().getEchoChar();
-			vis.panelLogin.passwordFieldRepContrasenia.setText("");
-			vis.panelLogin.passwordFieldRepContrasenia.setEchoChar(passwordChar);
-			
-		}
-
-		@Override
-		public void focusLost(FocusEvent arg0) {
-			
-			
-		}
-		
-	}
 
 	private class changeListener implements PropertyChangeListener {
 

@@ -7,7 +7,7 @@ import interfaces.Ventana;
 public class Billete {
 
 	public int codigoBillete, codAutobus;
-	public float precioTrayecto;
+	public double precioTrayecto;
 	public Date fecha;
 	public Linea linea;
 	public Parada paradaInic, paradaFin;
@@ -41,10 +41,6 @@ public class Billete {
 		this.paradaFin = paradaFin;
 	}
 
-	
-
-	
-
 	public void informacionGeneralBilletes(Modelo mod, Ventana vis) {
 
 		Linea linea = new Linea();
@@ -67,13 +63,15 @@ public class Billete {
 				paradaInic = mod.arrayParadas.get(i);
 			}
 		}
-		mod.billeteGeneralIda=new Billete(linea,paradaInic,paradaDest);
-		
+		mod.billeteGeneralIda.linea=linea;
+		mod.billeteGeneralIda.paradaInic=paradaInic;
+		mod.billeteGeneralIda.paradaFin=paradaDest;
 	}
 	
 	public void fechasGeneralBilletes(Modelo mod, Ventana vis) {
 		Date fechaIda, fechaVuelta;
 		fechaIda = vis.panelLineas2.calendarioIda.getDate();
+	
 		mod.billeteGeneralIda.fecha=fechaIda;
 		if (mod.isIdaYVuelta()) {
 			fechaVuelta = vis.panelLineas2.calendarioVuelta.getDate();
@@ -83,7 +81,7 @@ public class Billete {
 	}
 	
 	public Date getFecha() {
-		return this. fecha;
+		return this.fecha;
 	}
 
 	public void setFecha(Date fecha) {
@@ -106,11 +104,11 @@ public class Billete {
 		this.codAutobus = codAutobusIda;
 	}
 
-	public float getPrecioTrayecto() {
+	public double getPrecioTrayecto() {
 		return this.precioTrayecto;
 	}
 
-	public void setPrecioTrayecto(float precioTrayecto) {
+	public void setPrecioTrayecto(double precioTrayecto) {
 		this.precioTrayecto = precioTrayecto;
 	}
 

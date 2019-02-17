@@ -12,6 +12,9 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import com.sun.org.apache.regexp.internal.RESyntaxException;
+
+import clases.Billete;
 import clases.Cliente;
 import clases.Linea;
 import clases.Modelo;
@@ -30,7 +33,7 @@ public class ConexionAMySQL {
 //			pathArchivo.replace((char)92, (char)47);
 //			meter patharchivo al new filereader
 
-			BufferedReader reader = new BufferedReader(new FileReader(("C:/Users/IN1DM3B_18/Desktop/ddbb.txt").replace((char)92, (char)47)));
+			BufferedReader reader = new BufferedReader(new FileReader(("C:/Users/Yaros/Desktop/ddbb.txt").replace((char)92, (char)47)));
 
 			String[] datosDB = new String[5];	
 			for(int i=0;datosDB.length>i;i++) {
@@ -99,22 +102,81 @@ public class ConexionAMySQL {
 	 * @param usuario el cliente que se registrara en la base de datos
 	 * @param mod     modelo con la conexion a la base de datos
 	 */
-	public void insertarUsuarioEnBaseDeDatos(Cliente usuario, Modelo mod) {
+	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
 		try {
 			String query = "insert into cliente (DNI,Nombre,Apellidos,Fecha_nac,Sexo,Contraseña) values(?,?,?,?,?,?);";
-			PreparedStatement insertartUsuario = this.conexion.prepareStatement(query);
-			insertartUsuario.setString(1, usuario.dni);
-			insertartUsuario.setString(2, usuario.nombre);
-			insertartUsuario.setString(3, usuario.apellido);
-			insertartUsuario.setDate(4, new java.sql.Date(usuario.fechaNac.getTime()));
-			insertartUsuario.setString(5, String.valueOf(usuario.sexo));
-			insertartUsuario.setString(6, usuario.getContrasenia());
-			insertartUsuario.executeUpdate();
+			PreparedStatement insertarUsuario = this.conexion.prepareStatement(query);
+			insertarUsuario.setString(1, usuario.dni);
+			insertarUsuario.setString(2, usuario.nombre);
+			insertarUsuario.setString(3, usuario.apellido);
+			insertarUsuario.setDate(4, new java.sql.Date(usuario.fechaNac.getTime()));
+			insertarUsuario.setString(5, String.valueOf(usuario.sexo));
+			insertarUsuario.setString(6, usuario.getContrasenia());
+			insertarUsuario.executeUpdate();
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
+		}
+	}
+	
+	public void insertarBilleteIdaDB(Cliente usuario,Billete billete) {
+		try {
+			String query = "INSERT INTO `billete` (`Cod_Billete`, `NTrayecto`, `Cod_Linea`, `Cod_Bus`, `Cod_Parada_Inicio`, `Cod_Parada_Fin`, `Fecha`, `Hora`, `DNI`, `Precio`) VALUES (?,?,?,?,?,?,?,?,?,?);";
+			PreparedStatement insertarBillete = this.conexion.prepareStatement(query);
+			insertarBillete.setInt(1, 0);
+			//el 1 para la ida
+			insertarBillete.setInt(2, 1);
+			insertarBillete.setString(3, billete.linea.codigo);
+			insertarBillete.setInt(4, billete.codAutobus);
+			insertarBillete.setInt(5, billete.paradaInic.codigo);
+			insertarBillete.setInt(6, billete.paradaFin.codigo);
+			insertarBillete.setDate(7,  new java.sql.Date(billete.fecha.getTime()));
+			insertarBillete.setString(8,"12:00:00");
+			if (usuario.getContrasenia()==null) {
+				insertarBillete.setString(9,"11111111A");
+			}else insertarBillete.setString(9, usuario.dni);
+			insertarBillete.setFloat(10, (float) billete.precioTrayecto);
+			insertarBillete.executeUpdate();
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
+		}
+	}
+	
+	public void insertarBilleteVueltaDB(Cliente usuario,Billete billete) {
+		try {
+			String query = "INSERT INTO `billete` (`Cod_Billete`, `NTrayecto`, `Cod_Linea`, `Cod_Bus`, `Cod_Parada_Inicio`, `Cod_Parada_Fin`, `Fecha`, `Hora`, `DNI`, `Precio`) VALUES (?,?,?,?,?,?,?,?,?,?);";
+			PreparedStatement insertarBillete = this.conexion.prepareStatement(query);
+			insertarBillete.setInt(1, 0);
+			//el 2 para la vuelta
+			insertarBillete.setInt(2, 2);
+			insertarBillete.setString(3, billete.linea.codigo);
+			insertarBillete.setInt(4, billete.codAutobus);
+			insertarBillete.setInt(5, billete.paradaFin.codigo);
+			insertarBillete.setInt(6, billete.paradaInic.codigo);
+			insertarBillete.setDate(7, new java.sql.Date(billete.fecha.getTime()));
+			insertarBillete.setString(8,"12:00:00");
+			if (usuario.getContrasenia()==null) {
+				insertarBillete.setString(9,"11111111A");
+			}else insertarBillete.setString(9, usuario.dni);
+			insertarBillete.setFloat(10, (float) billete.precioTrayecto);
+			insertarBillete.executeUpdate();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 	}
 
+	public int codigoDeBillete() {
+		String peticion="SELECT MAX(Cod_Billete) FROM billete";
+		ResultSet result=hacerPeticion(peticion);
+		try {
+			if (result.next()) {
+				return result.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 	public void inicializarLineas(Modelo mod) {
 		String peticion = "SELECT Cod_Linea FROM `linea`";
 		ResultSet resul = mod.db.hacerPeticion(peticion);

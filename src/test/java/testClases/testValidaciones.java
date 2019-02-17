@@ -37,13 +37,12 @@ public class testValidaciones {
 	
 	@Test
 	public void testConfirmacionDatos() {
-		Metodos metodosTest2 = new Metodos();
 		PanelConfirmacion panel1Mock = mock(PanelConfirmacion.class);
 		PanelLineas2 panel2Mock = mock(PanelLineas2.class);
 		PanelLineas1 panel3Mock = mock(PanelLineas1.class);
 		Modelo modeloMock = mock(Modelo.class);
 		when(panel1Mock.getPasajeros()).thenReturn(18);
-		metodosTest.confirmacionDatos(panel1Mock, panel2Mock, panel3Mock, modeloMock);
+		metodosTest.confirmacionDatos(panel1Mock, panel2Mock, modeloMock);
 		verify(panel1Mock, times(1)).getPasajeros();
 		verify(panel1Mock, times(1)).actualizarPosicion(18);
 		verify(panel1Mock, times(1)).actualizarNombre(modeloMock, 18);

@@ -1,0 +1,7 @@
+INFORMACIÓN DEL RECORRIDO
+Codigo de billete: 13 Linea: L2 Codigo de autobus: 2001
+Origen: Termibus-Bilbao Destino: Ayuntamiento Trapaga
+Fecha: 17-02-2019 Precio: 3.46
+INFORMACION DEL CLIENTE
+Nombre: yars asdas
+DNI: 67362289G Sexo: V

@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
  */
 public class PanelPago extends JPanel{
 
-	public JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001, btnLogOut, btnConfirmar, btnCancelar;
+	public JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001, btnConfirmar, btnCancelar;
 	public JButton[] arrayBtn= new JButton[15];
 	public JLabel label, label_1, label_2, lblAPagar, lblUsuario, lblPagado, lblDineroMetido;
 	public JTextField textAPagar, textDineroMetido, textVueltas;
@@ -254,15 +254,6 @@ public class PanelPago extends JPanel{
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblUsuario.setBounds(506, 12, 173, 25);
 		add(lblUsuario);
-		
-		btnLogOut = new JButton("Sign Up");
-		btnLogOut.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
-		btnLogOut.setAlignmentY(Component.TOP_ALIGNMENT);
-		btnLogOut.setBackground(new Color(192, 192, 192));
-		btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnLogOut.setBounds(676, 12, 102, 23);
-		add(btnLogOut);
 		
 		textDineroMetido.setText("0.00");
 		textAPagar.setText("0.00");

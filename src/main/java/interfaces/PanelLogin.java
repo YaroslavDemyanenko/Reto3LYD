@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
@@ -31,7 +32,6 @@ public class PanelLogin extends JPanel {
 	public JButton btnConfirmarRegistro, btnConfirmarLogin, btnCancelar;
 	public JSpinnerDateEditor spinnerFechaNac;
 	public JDateChooser calendarioFechaNac;
-	public JPasswordField passwordFieldRepContrasenia;
 	
 	
 	public PanelLogin() {
@@ -160,27 +160,14 @@ public class PanelLogin extends JPanel {
 		add(lblFechaNacimiento);
 		
 		spinnerFechaNac = new JSpinnerDateEditor();
-		spinnerFechaNac.setEnabled(false);
+		((JSpinner.DefaultEditor) spinnerFechaNac.getEditor()).getTextField().setEditable(false);
+		spinnerFechaNac.setFont(new Font("Tahoma", Font.BOLD, 12));
 		spinnerFechaNac.setDateFormatString("dd/mm/yyyy");
 		calendarioFechaNac = new JDateChooser(null, null, null, spinnerFechaNac);
 		calendarioFechaNac.setDateFormatString("dd-MM-yyyy");
 		calendarioFechaNac.setBounds(215, 250, 137, 27);
 		calendarioFechaNac.setDate(Calendar.getInstance().getTime());
 		add(calendarioFechaNac);
-		
-		passwordFieldRepContrasenia = new JPasswordField();
-		passwordFieldRepContrasenia.setForeground(Color.BLACK);
-		passwordFieldRepContrasenia.setHorizontalAlignment(SwingConstants.LEFT);
-		passwordFieldRepContrasenia.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		passwordFieldRepContrasenia.setBounds(357, 439, 192, 39);
-		
-		passwordFieldRepContrasenia.setEchoChar ((char) 0); 
-		passwordFieldRepContrasenia.setText("Repita su contraseña"); 
-		add(passwordFieldRepContrasenia);
-		
-		JLabel lblRepitaLaContrasea = new JLabel("Repita la contraseña*");
-		lblRepitaLaContrasea.setBounds(357, 424, 176, 14);
-		add(lblRepitaLaContrasea);
 		
 		
 

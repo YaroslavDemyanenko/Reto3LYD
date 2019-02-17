@@ -21,7 +21,7 @@ import interfaces.PanelPago;
 public class MetodosPago {
 
 	private DecimalFormatSymbols simbolos = new DecimalFormatSymbols(Locale.getDefault());
-	private DecimalFormat dosDec;
+	public DecimalFormat dosDec;
 
 	/**
 	 * Indica al decimal format como se quiere formatear los numeros
@@ -91,6 +91,8 @@ public class MetodosPago {
 		try {
 			if (rs.next()) {
 				precioTotal += precioTrayecto(mod.billeteGeneralIda.paradaInic, mod.billeteGeneralIda.paradaFin, rs.getDouble("Consumo_km"));
+				mod.billeteGeneralIda.setPrecioTrayecto(precioTotal);
+				mod.billeteGeneralVuelta.setPrecioTrayecto(precioTotal);
 			}
 			if (mod.isIdaYVuelta()) {
 				peticion = "SELECT N_plazas,Consumo_km FROM autobus WHERE Cod_bus=" + mod.billeteGeneralVuelta.codAutobus;

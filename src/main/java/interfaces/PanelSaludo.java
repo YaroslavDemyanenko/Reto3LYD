@@ -28,7 +28,7 @@ public class PanelSaludo extends JPanel {
 		
 		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
 		lblUsuario.setBounds(506, 12, 173, 25);
 		add(lblUsuario);
 		
@@ -74,5 +74,8 @@ public class PanelSaludo extends JPanel {
 		
 		
 
+	}
+	public void limpiar() {
+		lblUsuario.setText("");
 	}
 }
