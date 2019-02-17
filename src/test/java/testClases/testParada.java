@@ -16,7 +16,7 @@ public class testParada {
 	
 	private Parada testParada = new Parada();
 	private Parada testcons2parada = new Parada(codigo, calle, nombParada, latitud, longitud);
-	private Parada testcons3parada = new Parada(codigo, calle, nombParada);
+
 	
 	@Test
 	public void testCodigo() {
@@ -57,12 +57,7 @@ public class testParada {
 		assertEquals(testcons2parada.getLongitud(), longitud, 0.000001);
 	}
 	
-	@Test
-	public void testConstructor3() {
-		assertEquals(testcons3parada.getCodigo(), 458);
-		assertEquals(testcons3parada.getCalle(), "San Miguel");
-		assertEquals(testcons3parada.getnombreParada(), "Norte");
-	}
+
 	
 	@Test
 	public void testConstructor1() {

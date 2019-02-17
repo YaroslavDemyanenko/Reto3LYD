@@ -20,10 +20,15 @@ import clases.Modelo;
 import interfaces.PanelPasajeroExtra;
 import interfaces.Ventana;
 
+/**
+ * Metodos para registrar/logear al usuario
+ * @author Yaros
+ *
+ */
 public class MetodosLoginYRegistro {
 
 	/**
-	 * Metodo de incripatcion de la contraseña
+	 * Metodo para la incripatcion de la contraseña
 	 * 
 	 * @return
 	 */
@@ -44,15 +49,14 @@ public class MetodosLoginYRegistro {
 	}
 
 	/**
-	 * Metodo para loguearse
+	 * Metodo para loguearse al usuario en la aplicacion
 	 * 
 	 * @param mod
 	 * @param vis
 	 * @param dni
 	 * @param contrasenia
 	 * @param CantidadPasajeros
-	 * @return
-	 * @throws SQLException
+	 * @return un objeto cliente con los datos del usuario
 	 */
 	public Cliente iniciarSesion(Modelo mod, Ventana vis) {
 		String dniUsuario = vis.panelLogin.textFieldDNILogin.getText();
@@ -76,6 +80,11 @@ public class MetodosLoginYRegistro {
 		return null;
 	}
 
+	/**
+	 * Actualiza los paneles de la interfaz con el nombre del usuario, tambien limpia las interfaces si se le pasa un string vacio
+	 * @param vis
+	 * @param nombre
+	 */
 	public void actualizarLabelUsuario(Ventana vis,String nombre) {
 		vis.panelSaludo.lblUsuario.setText(nombre);
 		vis.panelLineas1.lblUsuario.setText(nombre);
@@ -129,12 +138,17 @@ public class MetodosLoginYRegistro {
 		return null;
 	}
 
+	/**
+	 * Comprueba que la fecha sea anterior a hoy
+	 * @param fecha
+	 * @return
+	 */
 	public boolean validarFecha(Date fecha) {
 		return fecha.before(Calendar.getInstance().getTime());
 	}
 
 	/**
-	 * Comprueba que has introducido la contrase�a segun los criterios requeridos
+	 * Comprueba que has introducido la contraseña segun los criterios requeridos (letra mayus,letra minus, numero y almenos 8 caracteres)
 	 * 
 	 * @param contra
 	 * @return
@@ -156,7 +170,7 @@ public class MetodosLoginYRegistro {
 	}
 
 	/**
-	 * Comprueba que el DNI cumple con los parametros de un DNI
+	 * Comprueba que el DNI cumple con los parametros de un DNI (8 numeros y una letra)
 	 * 
 	 * @param DNI
 	 * @return
@@ -204,6 +218,11 @@ public class MetodosLoginYRegistro {
 			return 'M';
 	}
 
+	/**
+	 * Devuelte un objeto Cliente con los datos de un pasajero extra
+	 * @param panel
+	 * @return
+	 */
 	public Cliente pasajeroExtra(PanelPasajeroExtra panel) {
 		JTextField nombre, apellido, dni;
 		nombre = panel.textFieldNombre;

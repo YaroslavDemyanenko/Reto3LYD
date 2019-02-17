@@ -23,17 +23,20 @@ import interfaces.Ventana;
 public class ConexionAMySQL {
 	private Connection conexion;
 
+	/**
+	 * Lee el archivo con la direccion de la base de datos
+	 * @return array de String con la informacion
+	 */
 	public String[] leerArchivoDDBB() {
 		try {
 			
-//			String pathArchivo = JOptionPane.showInputDialog("Introduce la direccion del archivo");
-//			if (pathArchivo==null) {
-//				System.exit(0);
-//			}
-//			pathArchivo.replace((char)92, (char)47);
-//			meter patharchivo al new filereader
-
-			BufferedReader reader = new BufferedReader(new FileReader(("C:/Users/Yaros/Desktop/ddbb.txt").replace((char)92, (char)47)));
+			String pathArchivo = JOptionPane.showInputDialog("Introduce la direccion del archivo");
+			if (pathArchivo==null) {
+				System.exit(0);
+			}
+			pathArchivo.replace((char)92, (char)47);
+			//meter patharchivo al new filereader
+			BufferedReader reader = new BufferedReader(new FileReader((pathArchivo)));
 
 			String[] datosDB = new String[5];	
 			for(int i=0;datosDB.length>i;i++) {
@@ -84,6 +87,11 @@ public class ConexionAMySQL {
 		return null;
 	}
 
+	/**
+	 * Llena el modelo con las lineas
+	 * @param vis
+	 * @param mod
+	 */
 	public void llenarModeloConLinea(Ventana vis, Modelo mod) {
 		String peticion = "SELECT * FROM `linea`";
 		ResultSet resul = mod.db.hacerPeticion(peticion);
@@ -118,6 +126,11 @@ public class ConexionAMySQL {
 		}
 	}
 	
+	/**
+	 * Inserta el billete de ida en la base de datos
+	 * @param usuario usuario del cual se cojen los datos
+	 * @param billete objeto billete que contiene la informacion de billete
+	 */
 	public void insertarBilleteIdaDB(Cliente usuario,Billete billete) {
 		try {
 			String query = "INSERT INTO `billete` (`Cod_Billete`, `NTrayecto`, `Cod_Linea`, `Cod_Bus`, `Cod_Parada_Inicio`, `Cod_Parada_Fin`, `Fecha`, `Hora`, `DNI`, `Precio`) VALUES (?,?,?,?,?,?,?,?,?,?);";
@@ -140,7 +153,11 @@ public class ConexionAMySQL {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
 		}
 	}
-	
+	/**
+	 * Inserta el billete de ida en la base de datos
+	 * @param usuario usuario del cual se cojen los datos
+	 * @param billete objeto billete que contiene la informacion de billete
+	 */
 	public void insertarBilleteVueltaDB(Cliente usuario,Billete billete) {
 		try {
 			String query = "INSERT INTO `billete` (`Cod_Billete`, `NTrayecto`, `Cod_Linea`, `Cod_Bus`, `Cod_Parada_Inicio`, `Cod_Parada_Fin`, `Fecha`, `Hora`, `DNI`, `Precio`) VALUES (?,?,?,?,?,?,?,?,?,?);";
@@ -164,6 +181,10 @@ public class ConexionAMySQL {
 		}
 	}
 
+	/**
+	 * Consulta en la base de datos cual es el codigo de billete mas alto
+	 * @return
+	 */
 	public int codigoDeBillete() {
 		String peticion="SELECT MAX(Cod_Billete) FROM billete";
 		ResultSet result=hacerPeticion(peticion);
@@ -177,6 +198,10 @@ public class ConexionAMySQL {
 		return 0;
 	}
 	
+	/**
+	 * Rellena las lineas del modelo
+	 * @param mod Modelo donde se guardan todas las variables
+	 */
 	public void inicializarLineas(Modelo mod) {
 		String peticion = "SELECT Cod_Linea FROM `linea`";
 		ResultSet resul = mod.db.hacerPeticion(peticion);

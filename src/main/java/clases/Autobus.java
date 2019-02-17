@@ -6,13 +6,24 @@ import javax.swing.JOptionPane;
 
 import interfaces.Ventana;
 
+/**
+ * Clase autobus con la informacion y metodos relacionados
+ * @author Yaros
+ *
+ */
 public class Autobus {
 	public int codigo;
 	public int numPlazas;
 	public double consumoKm;
 	public String color;
 
-	//constructor
+	/**
+	 * Constructor de autobus con todos los parametros
+	 * @param codigo
+	 * @param numPlazas
+	 * @param consumoKm
+	 * @param color
+	 */
 	public Autobus(int codigo, int numPlazas, double consumoKm, String color) {
 		this.codigo = codigo;
 		this.numPlazas = numPlazas;
@@ -20,10 +31,16 @@ public class Autobus {
 		this.color = color;
 	}
 	
-	//constructor
+	/**
+	 * Constructor vacio
+	 */
 	public Autobus() {
 	}
 
+	/**
+	 * Saca la informacion de la base de datos y lo mete en objetos
+	 * @param mod
+	 */
 	public void crearYMeterAutobuses(Modelo mod) {
 		for (int i = 0; i < mod.lineas.size(); i++) {
 			String consulta = "SELECT * FROM autobus WHERE Cod_bus IN(SELECT Cod_bus FROM `linea_autobus` WHERE cod_Linea IN(SELECT Cod_Linea FROM `linea` WHERE Cod_Linea=\"" + mod.lineas.get(i).getCodigo() + "\"))";
@@ -39,6 +56,12 @@ public class Autobus {
 		}
 	}
 
+	/**
+	 * Calcula el numero de plazas que quedan en un autobus en un dia especifico
+	 * @param mod
+	 * @param vis
+	 * @return el numero de plazas disponibles
+	 */
 	public int numeroPlazasRestantes(Modelo mod, Ventana vis) {
 		try {
 			mod.billete.informacionGeneralBilletes(mod, vis);

@@ -1,6 +1,12 @@
 package clases;
 
 import java.util.Date;
+
+/**
+ * Objeto Cliente hecho para guardar la informacion de los clientes
+ * @author Yaros
+ *
+ */
 public class Cliente {
 	public String dni;
 	public String nombre;
@@ -9,6 +15,15 @@ public class Cliente {
 	public char sexo;
 	private String contrasenia;
 	
+	/**
+	 * Constructor Con toda la informacion de cliente
+	 * @param dni
+	 * @param nombre
+	 * @param apellido
+	 * @param fechaNac
+	 * @param sexo
+	 * @param contrasenia
+	 */
 	public Cliente(String dni, String nombre, String apellido, Date fechaNac, char sexo, String contrasenia) {
 		this.dni = dni;
 		this.nombre = nombre;
@@ -18,10 +33,18 @@ public class Cliente {
 		this.contrasenia=contrasenia;
 
 	}
-	
+	/**
+	 * Contructor vacio
+	 */
 	public Cliente() {	
 	}
-	
+	/**
+	 * Contructor para los clientes extra solo con informacion basica
+	 * @param nombre
+	 * @param apellido
+	 * @param dni
+	 * @param sexo
+	 */
 	public Cliente(String nombre, String apellido, String dni, char sexo) {
 		
 		this.nombre = nombre;

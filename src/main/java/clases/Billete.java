@@ -4,6 +4,12 @@ import java.util.Date;
 
 import interfaces.Ventana;
 
+
+/**
+ * Clase billete con la informacion y metodos relacionados
+ * @author Yaros
+ *
+ */
 public class Billete {
 
 	public int codigoBillete, codAutobus;
@@ -35,12 +41,23 @@ public class Billete {
 		this.paradaFin = paradaFin;
 	}
 
+	/**
+	 * Constructor de informacion general
+	 * @param linea Objeto Linea
+	 * @param paradaInic Objeto Parada
+	 * @param paradaFin Objeto Parada
+	 */
 	public Billete(Linea linea, Parada paradaInic, Parada paradaFin) {
 		this.linea = linea;
 		this.paradaInic = paradaInic;
 		this.paradaFin = paradaFin;
 	}
 
+	/**
+	 * Sala la informacion general del trayecto y lo mete en un objeto Billete
+	 * @param mod
+	 * @param vis
+	 */
 	public void informacionGeneralBilletes(Modelo mod, Ventana vis) {
 
 		Linea linea = new Linea();
@@ -68,6 +85,11 @@ public class Billete {
 		mod.billeteGeneralIda.paradaFin=paradaDest;
 	}
 	
+	/**
+	 * Saca las fechas del trayecto y lo mete en un objeto Billete
+	 * @param mod
+	 * @param vis
+	 */
 	public void fechasGeneralBilletes(Modelo mod, Ventana vis) {
 		Date fechaIda, fechaVuelta;
 		fechaIda = vis.panelLineas2.calendarioIda.getDate();
@@ -96,12 +118,12 @@ public class Billete {
 		this.codigoBillete = codigoBillete;
 	}
 
-	public int getCodAutobusIda() {
+	public int getCodAutobus() {
 		return this.codAutobus;
 	}
 
-	public void setCodAutobusIda(int codAutobusIda) {
-		this.codAutobus = codAutobusIda;
+	public void setCodAutobus(int codAutobus) {
+		this.codAutobus = codAutobus;
 	}
 
 	public double getPrecioTrayecto() {
@@ -112,13 +134,7 @@ public class Billete {
 		this.precioTrayecto = precioTrayecto;
 	}
 
-	public Date getFechaIda() {
-		return fecha;
-	}
 
-	public void setFechaIda(Date fechaIda) {
-		this.fecha = fechaIda;
-	}
 
 	public Linea getLinea() {
 		return this.linea;

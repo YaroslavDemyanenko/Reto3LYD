@@ -12,6 +12,11 @@ import controlador.Metodos;
 import controlador.MetodosLoginYRegistro;
 import controlador.MetodosPago;
 
+/**
+ * Clase modelo,Aqui se guardan todas las variables
+ * @author Yaros
+ *
+ */
 public class Modelo {
 
 	public Autobus autobus;
@@ -40,9 +45,15 @@ public class Modelo {
 	public Parada paradaSalida, paradaDestino;
 	public Color colorCalendario;
 	
-	
+	/**
+	 * Constructor vacio de modelo
+	 */
 	public Modelo() {}
 	
+	/**
+	 * Constructor de modelo el cual requiere una conexion a la base de datos
+	 * @param db
+	 */
 	public Modelo(ConexionAMySQL db) {
 		this.autobus=new Autobus();
 		this.billete=new Billete();
@@ -57,10 +68,25 @@ public class Modelo {
 		db.inicializarLineas(this);
 	}
 
+	/**
+	 * Indica si el trayecto elegido es de ida o ida yvuelta
+	 * @return true si es ida y vuelta, false si es solo ida
+	 */
 	public boolean isIdaYVuelta() {
 		return this.idaYVuelta;
 	}
+	/**
+	 * Establece el tipo de trayecto mediante un booleano
+	 * @param idaYVuelta true para indicar que es de ida y vuelta, false para indicar que es solo ida
+	 */
+	public void setIdaYVuelta(boolean idaYVuelta) {
+		this.idaYVuelta = idaYVuelta;
+	}
 	
+	/**
+	 * Comprueba que el usuario esta logeado
+	 * @return true si el usuario esta logeado, false si no lo esta
+	 */
 	public boolean estaLogeado() {
 		if (clienteRegistrado==null) {
 			return false;
@@ -68,10 +94,10 @@ public class Modelo {
 		
 	}
 
-	public void setIdaYVuelta(boolean idaYVuelta) {
-		this.idaYVuelta = idaYVuelta;
-	}
 	
+	/**
+	 * Restablece el modelo para la n vuelta del programa
+	 */
 	public void reset() {
 		this.billeteIda=new Billete();
 		this.billeteGeneralIda=new Billete();

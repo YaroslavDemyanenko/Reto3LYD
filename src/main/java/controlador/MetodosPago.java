@@ -17,7 +17,11 @@ import clases.Parada;
 import interfaces.PanelPago;
 
 
-
+/**
+ * Metodos relacionados con el pago del billete
+ * @author Yaros
+ *
+ */
 public class MetodosPago {
 
 	private DecimalFormatSymbols simbolos = new DecimalFormatSymbols(Locale.getDefault());
@@ -36,10 +40,16 @@ public class MetodosPago {
 		this.dosDec.setMaximumFractionDigits(2);
 	}
 	
-	public double redondear(double value, int places) {
-	    if (places < 0) throw new IllegalArgumentException();
+	/**
+	 * Redondea un double a n numero de decimales
+	 * @param value numero que se desea redondear
+	 * @param numDec numero de decimales
+	 * @return el numero redondeado
+	 */
+	public double redondear(double value, int numDec) {
+	    if (numDec < 0) throw new IllegalArgumentException();
 	    BigDecimal bd = new BigDecimal(value);
-	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    bd = bd.setScale(numDec, RoundingMode.HALF_UP);
 	    return bd.doubleValue();
 	}
 	
@@ -83,6 +93,12 @@ public class MetodosPago {
 		return ((precioGasolina * consumo * distancia) * 1.20);
 	}
 
+	/**
+	 * Calcula el precio total del trayecto y lo pasa a string para meter en textfield
+	 * @param mod
+	 * @param numeroBilletes
+	 * @return precio total del trayecto en string
+	 */
 	public String precioTotal(Modelo mod, int numeroBilletes) {
 		double precioTotal = 0;
 
@@ -112,7 +128,10 @@ public class MetodosPago {
 	}
 	
 	
-	
+	/**
+	 * Calcula el cambio de la forma mas optima en lo referente al numero de monedas a devolver
+	 * @param panel
+	 */
 	@SuppressWarnings("unchecked")
 	public void Cambios(PanelPago panel) {
 		int euros = (int)(Float.parseFloat(panel.textVueltas.getText()));
@@ -140,7 +159,11 @@ public class MetodosPago {
 	}
 
 	
-	
+	/**
+	 * Metodo para sumar dinero con un boton
+	 * @param panel donde se encuentra los textfielda editar y los botones
+	 * @param btn boton del cual se mira el texto y pasa a string para sumar esa cantidad
+	 */
 	public void sumarDinero(PanelPago panel,JButton btn) {
 		float dineroPagadoGuardado= Float.parseFloat(panel.textDineroMetido.getText());
 		float dineroAPagarGuardado= Float.parseFloat(panel.textAPagar.getText());
@@ -160,7 +183,11 @@ public class MetodosPago {
 			panel.textDineroMetido.setText(String.valueOf(dosDec.format(dineroPagadoGuardado)));
 		}
 	}
-	
+	/**
+	 * Metodo para restar dinero con un boton
+	 * @param panel donde se encuentra los textfielda editar y los botones
+	 * @param btn boton del cual se mira el texto y pasa a string para restar esa cantidad
+	 */
 	public void restarDinero(PanelPago panel,JButton btn) {
 		float dineroPagadoGuardado= Float.parseFloat(panel.textDineroMetido.getText());
 		float dineroAPagarGuardado= Float.parseFloat(panel.textAPagar.getText());

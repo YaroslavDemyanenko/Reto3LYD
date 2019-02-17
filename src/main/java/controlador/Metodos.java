@@ -22,6 +22,11 @@ import interfaces.PanelLineas1;
 import interfaces.PanelLineas2;
 import interfaces.Ventana;
 
+/**
+ * Metodos de uso no especifico
+ * @author Yaros
+ *
+ */
 public class Metodos {
 
 	/**
@@ -59,6 +64,11 @@ public class Metodos {
 
 	}
 
+	/**
+	 * Metodo para mostrar el resumen del trayecto en la interfaz
+	 * @param vis
+	 * @param mod
+	 */
 	public void mostrarResumenTrayecto(Ventana vis, Modelo mod) {
 		vis.panelResumen.lblNombreLinea.setText(vis.panelLineas2.lblNombreLinea.getText());
 		vis.panelResumen.lblNombrePardaInicio.setText(vis.panelLineas2.lblSal.getText());
@@ -109,6 +119,13 @@ public class Metodos {
 
 	}
 
+	/**
+	 * Enseña los datos generales de trayecto, como la fecha y paradas
+	 * @param panelConf
+	 * @param panelLin2
+	 * @param panelLin1
+	 * @param mod
+	 */
 	public void confirmacionTrayecto(PanelConfirmacion panelConf, PanelLineas2 panelLin2, PanelLineas1 panelLin1, Modelo mod) {
 		panelConf.actualizarParadaInicio(panelLin1);
 		panelConf.actualizarParadaFin(panelLin2);
@@ -117,6 +134,15 @@ public class Metodos {
 		panelConf.actualizarTipoTrayecto(mod);
 	}
 	
+	
+	/**
+	 * Crea e imprime los billetes
+	 * @param mod
+	 * @param bill
+	 * @param usuario
+	 * @param codBill
+	 * @param Vuelta
+	 */
 	public void imprimirBillete(Modelo mod,Billete bill, Cliente usuario,int codBill,boolean Vuelta) {
 		PrintWriter writer;
 		SimpleDateFormat formatoFecha=new SimpleDateFormat("dd-MM-yyyy");

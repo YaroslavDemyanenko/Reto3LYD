@@ -2,7 +2,8 @@ package testClases;
 
 import static org.junit.Assert.*;
 
-import java.sql.Date;
+import java.util.Date;
+
 import org.junit.Test;
 
 import clases.Billete;
@@ -15,8 +16,6 @@ public class testBillete {
 	private int codAutobusIda =0;
 	private int codAutobusVuelta =0;
 	private float precioTrayecto = 0;
-	private Date fechaIda;
-	private Date fechaVuelta;
 	private Date fecha;
 	private Linea linea;
 	private Parada paradaInic=new Parada();
@@ -71,36 +70,24 @@ public class testBillete {
 	
 	@Test
 	public void testFecha() {
-		testBillete.setCodAutobusIda(codAutobusIda);
-		assertEquals(testBillete.getCodAutobusIda(),codAutobusIda);	
+		fecha=new Date();
+		testBillete.setFecha(fecha); 
+		assertEquals(testBillete.getFecha(),fecha);	
 	}
 
-	/*
+	
 	@Test
 	public void testCodAutobusVuelta() {
-		testBillete.setCodAutobusVuelta(codAutobusVuelta);
-		assertEquals(testBillete.getCodAutobusVuelta(),codAutobusVuelta);	
+		testBillete.setCodAutobus(codAutobusVuelta);
+		assertEquals(testBillete.getCodAutobus(),codAutobusVuelta);	
 	}
-	*/
+	
 	@Test
 	public void testPrecioTrayecto() {
 		testBillete.setPrecioTrayecto(precioTrayecto);
 		assertEquals(testBillete.getPrecioTrayecto(),precioTrayecto, 0.005);	
 	}
-	
-	@Test
-	public void testFechaIda() {
-		testBillete.setFechaIda(fechaIda);
-		assertEquals(testBillete.getFechaIda(),fechaIda);
-	}
-	
-	/*
-	@Test
-	public void testFechaVuelta() {
-		testBillete.setFechaVuelta(fechaVuelta);
-		assertEquals(testBillete.getFechaVuelta(),fechaVuelta);
-	}
-	*/
+
 	
 	@Test
 	public void testLinea() {

@@ -20,12 +20,21 @@ import javax.swing.event.ListSelectionListener;
 import clases.Cliente;
 import clases.Modelo;
 import interfaces.Ventana;
-
+/**
+ * Clase de eventos y variables, el cerebro del programa
+ * @author Yaros
+ *
+ */
 public class Controlador {
 
 	public Modelo mod;
 	public Ventana vis;
 
+	/**
+	 * Constructor que junta la interfaz con el programa e inicializa los eventos
+	 * @param modelo
+	 * @param vista
+	 */
 	public Controlador(Modelo modelo, Ventana vista) {
 		this.mod = modelo;
 		this.vis = vista;
@@ -33,6 +42,9 @@ public class Controlador {
 		inicializarEventos();
 	}
 
+	/**
+	 * Inicializa los eventos metiendo listeners a todos los objetos necesarios
+	 */
 	public void inicializarEventos() {
 		this.vis.panelSaludo.addMouseListener(new mseListener());
 		this.vis.panelLineas2.spnNumeroDeBilletes.addMouseListener(new mseListener());
@@ -77,6 +89,11 @@ public class Controlador {
 		this.vis.panelPago.btnCancelar.addActionListener(new cancelListener());
 	}
 
+	/**
+	 * Clase listner para los botones
+	 * @author Yaros
+	 *
+	 */
 	private class btnListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -192,6 +209,11 @@ public class Controlador {
 		}
 	}
 
+	/**
+	 * Clase listener para los botones que cancelan/reinician el programa
+	 * @author Yaros
+	 *
+	 */
 	private class cancelListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			vis.panelConfirmacion.limpiar();
@@ -207,6 +229,11 @@ public class Controlador {
 		}
 	}
 
+	/**
+	 * Clase listener para el raton
+	 * @author Yaros
+	 *
+	 */
 	private class mseListener implements MouseListener {
 
 		/**
@@ -246,6 +273,11 @@ public class Controlador {
 
 	}
 
+	/**
+	 * Clase listener que escucha los cambios en las listas
+	 * @author Yaros
+	 *
+	 */
 	private class lstListener implements ListSelectionListener {
 
 		@Override
@@ -267,6 +299,11 @@ public class Controlador {
 	
 
 
+	/**
+	 * Clase listener que escuchas los cambios de propiedades en calendarios
+	 * @author Yaros
+	 *
+	 */
 	private class changeListener implements PropertyChangeListener {
 
 		@Override
@@ -283,6 +320,11 @@ public class Controlador {
 
 	}
 
+	/**
+	 * Clase listener que escuchas los cambios en los comboBox
+	 * @author Yaros
+	 *
+	 */
 	private class comboListener implements ItemListener{
 
 		@Override

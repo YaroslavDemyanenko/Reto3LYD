@@ -6,17 +6,27 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Clase del objeto municipio
+ * @author Yaros
+ *
+ */
 public class Municipio {
 
 	public String nombre;
 	public int codigoPostal;
+	public ArrayList<Parada> paradas = new ArrayList<Parada>();
 
-	ArrayList<Parada> paradas = new ArrayList<Parada>();
+	/**
+	 * Constructor vacio
+	 */
+	public Municipio() {}
 
-	public Municipio() {
-
-	}
-
+	/**
+	 * Constructor con nombre y codigo postal
+	 * @param nombre
+	 * @param codigoPostal
+	 */
 	public Municipio(String nombre, int codigoPostal) {
 		this.nombre = nombre;
 		this.codigoPostal = codigoPostal;
@@ -25,7 +35,7 @@ public class Municipio {
 	/**
 	 * Busca y mete los municipios de cada linea en su respectivo array, ademas, rellena los municipios con las paradas que lo componen
 	 * @param lineas el arraylist donde se guardan las lineas
-	 * @param mod modelo para utilizar funciones
+	 * @param mod
 	 * @throws NumberFormatException 
 	 * @throws SQLException
 	 */

@@ -4,6 +4,11 @@ import clases.Modelo;
 import conexion.ConexionAMySQL;
 import interfaces.Ventana;
 
+/**
+ * Main del programa que inicializa todos los elementos del mismo
+ * @author Yaros
+ *
+ */
 public class Launcher {
 
 	public static void main(String[] args) {
