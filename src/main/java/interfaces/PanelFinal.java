@@ -1,36 +1,35 @@
 package interfaces;
 
-import java.awt.EventQueue;
-
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import java.awt.Color;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
-public class PanelFinal {
+@SuppressWarnings("serial")
+public class PanelFinal extends JPanel {
 
-	JPanel panelProcesar = new JPanel();	
-	JLabel lblImpresion, lblEspereUnMomento;
+	public JLabel lblImpresion, lblEspereUnMomento;
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
-	public void Impresion() {
-		panelProcesar.setLayout(null);
-		panelProcesar.setBounds(0,0,800,600);
+	
+	public PanelFinal() {
+		setLayout(null);
+		setBounds(0,0,800,600);
+		setBackground(new Color(193, 240, 240));
 		
 		lblImpresion = new JLabel("Imprimiendo billete/s...");
-		lblImpresion.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblImpresion.setBounds(249, 183, 443, 83);
-		panelProcesar.add(lblImpresion);
+		lblImpresion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblImpresion.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblImpresion.setBounds(184, 183, 443, 83);
+		add(lblImpresion);
 		
-		lblEspereUnMomento = new JLabel("Espere un momento");
+		lblEspereUnMomento = new JLabel();
+		lblEspereUnMomento.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblEspereUnMomento.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEspereUnMomento.setIcon(new ImageIcon(PanelFinal.class.getResource("/imagenes/cargando.gif")));
 		lblEspereUnMomento.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblEspereUnMomento.setBounds(249, 277, 443, 48);
-		panelProcesar.add(lblEspereUnMomento);
-
+		lblEspereUnMomento.setBounds(115, 250, 578, 311);
+		add(lblEspereUnMomento);
 	}
 }
