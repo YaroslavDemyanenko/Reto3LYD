@@ -12,9 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 import java.awt.Cursor;
-/**
- * @wbp.parser.entryPoint
- */
+
 public class PanelPasajeroExtra extends JPanel{
 	
 	public JTextField textFieldNombre, textFieldApellido, textFieldDNI;

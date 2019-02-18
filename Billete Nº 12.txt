@@ -1,7 +1,0 @@
-INFORMACIÓN DEL RECORRIDO
-Codigo de billete: 12 Linea: L2 Codigo de autobus: 2001
-Origen: Estacion Renfe Muskiz Destino: Ayuntamiento Trapaga
-Fecha: 18-02-2019 Precio: 2.55
-INFORMACION DEL CLIENTE
-Nombre: asd asdasdasd
-DNI: 67362289G Sexo: V

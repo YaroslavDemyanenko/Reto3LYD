@@ -15,9 +15,7 @@ import javax.swing.border.BevelBorder;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
-/**
- * @wbp.parser.entryPoint
- */
+
 
 public class PanelResumen extends JPanel {
 

@@ -1,7 +1,0 @@
-INFORMACIÓN DEL RECORRIDO
-Codigo de billete: 18 Linea: L3 Codigo de autobus: 3001
-Origen: Balmaseda Centro Destino: Estacion Renfe Sodupe - Güeñes
-Fecha: 17-02-2019 Precio: 3.70
-INFORMACION DEL CLIENTE
-Nombre: yars asdas
-DNI: 67362289G Sexo: V

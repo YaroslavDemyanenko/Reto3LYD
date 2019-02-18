@@ -70,7 +70,7 @@ public class MetodosLoginYRegistro {
 					actualizarLabelUsuario(vis,rs.getString("Nombre"));
 					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fecha_nac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Contraseña")));
 				} else {
-					JOptionPane.showMessageDialog(null, "Contrasela incorrecta", null, JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Contraseña incorrecta", null, JOptionPane.INFORMATION_MESSAGE);
 				}
 			} else
 				JOptionPane.showMessageDialog(null, "Este usuario no esta registrado, por favor introduzca sus datos a la izquierda", null, JOptionPane.INFORMATION_MESSAGE);
@@ -144,7 +144,10 @@ public class MetodosLoginYRegistro {
 	 * @return
 	 */
 	public boolean validarFecha(Date fecha) {
-		return fecha.before(Calendar.getInstance().getTime());
+		if(!fecha.before(Calendar.getInstance().getTime())) {
+			JOptionPane.showMessageDialog(null, "La fecha introducida es invalida","Fecha invalida", JOptionPane.INFORMATION_MESSAGE);
+			return false;
+		}else return true; 
 	}
 
 	/**

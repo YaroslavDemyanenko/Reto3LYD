@@ -200,10 +200,7 @@ public class Controlador {
 				    }
 				});
 				timer.setRepeats(false);
-				timer.start();
-				
-				
-				
+				timer.start();	
 			}
 
 		}

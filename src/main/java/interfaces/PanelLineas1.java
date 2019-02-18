@@ -14,9 +14,7 @@ import javax.swing.JList;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-/**
- * @wbp.parser.entryPoint 
- */
+
 public class PanelLineas1 extends JPanel {
 	
 

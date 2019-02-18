@@ -1,7 +1,0 @@
-INFORMACIÓN DEL RECORRIDO
-Codigo de billete: 20 Linea: L3 Codigo de autobus: 3001
-Origen: Estacion Renfe Sodupe - Güeñes Destino: Estacion Renfe La cuadra - Güeñes
-Fecha: 17-02-2019 Precio: 0.99
-INFORMACION DEL CLIENTE
-Nombre: yars asdas
-DNI: 67362289G Sexo: V

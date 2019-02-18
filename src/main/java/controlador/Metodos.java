@@ -24,6 +24,7 @@ import interfaces.Ventana;
 
 /**
  * Metodos de uso no especifico
+ * 
  * @author Yaros
  *
  */
@@ -66,6 +67,7 @@ public class Metodos {
 
 	/**
 	 * Metodo para mostrar el resumen del trayecto en la interfaz
+	 * 
 	 * @param vis
 	 * @param mod
 	 */
@@ -121,6 +123,7 @@ public class Metodos {
 
 	/**
 	 * Enseña los datos generales de trayecto, como la fecha y paradas
+	 * 
 	 * @param panelConf
 	 * @param panelLin2
 	 * @param panelLin1
@@ -130,47 +133,43 @@ public class Metodos {
 		panelConf.actualizarParadaInicio(panelLin1);
 		panelConf.actualizarParadaFin(panelLin2);
 		panelConf.actualizarFechaIda(panelLin2);
-		panelConf.actualizarFechaVuelta(panelLin2);
+		if (mod.isIdaYVuelta()) {
+			panelConf.actualizarFechaVuelta(panelLin2);
+		}else {
+			panelConf.lblFechaVuelta.setVisible(false);
+			panelConf.fechaVuelta.setVisible(false);
+		}
 		panelConf.actualizarTipoTrayecto(mod);
 	}
-	
-	
+
 	/**
 	 * Crea e imprime los billetes
+	 * 
 	 * @param mod
 	 * @param bill
 	 * @param usuario
 	 * @param codBill
 	 * @param Vuelta
 	 */
-	public void imprimirBillete(Modelo mod,Billete bill, Cliente usuario,int codBill,boolean Vuelta) {
+	public void imprimirBillete(Modelo mod, Billete bill, Cliente usuario, int codBill, boolean Vuelta) {
 		PrintWriter writer;
-		SimpleDateFormat formatoFecha=new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 		try {
-			writer = new PrintWriter("Billete Nº "+codBill+".txt", "UTF-8");
+			writer = new PrintWriter("Billete Nº " + codBill + ".txt", "UTF-8");
 			writer.println("INFORMACIÓN DEL RECORRIDO");
-			writer.println("Codigo de billete: "+codBill+" Linea: "+bill.linea.codigo+" Codigo de autobus: "+bill.codAutobus);
-			if(Vuelta) {
-				writer.println("Origen: "+bill.paradaFin.nombreParada+" Destino: "+bill.paradaInic.nombreParada);
-			}else writer.println("Origen: "+bill.paradaInic.nombreParada+" Destino: "+bill.paradaFin.nombreParada);
-			writer.println("Fecha: "+formatoFecha.format(bill.fecha)+ " Precio: "+mod.metodosPago.dosDec.format(bill.precioTrayecto));
+			writer.println("Codigo de billete: " + codBill + " Linea: " + bill.linea.codigo + " Codigo de autobus: " + bill.codAutobus);
+			if (Vuelta) {
+				writer.println("Origen: " + bill.paradaFin.nombreParada + " Destino: " + bill.paradaInic.nombreParada);
+			} else
+				writer.println("Origen: " + bill.paradaInic.nombreParada + " Destino: " + bill.paradaFin.nombreParada);
+			writer.println("Fecha: " + formatoFecha.format(bill.fecha) + " Precio: " + mod.metodosPago.dosDec.format(bill.precioTrayecto));
 			writer.println("INFORMACION DEL CLIENTE");
-			writer.println("Nombre: "+usuario.nombre+" "+usuario.apellido);
-			writer.println("DNI: "+usuario.dni+" Sexo: "+usuario.sexo);
+			writer.println("Nombre: " + usuario.nombre + " " + usuario.apellido);
+			writer.println("DNI: " + usuario.dni + " Sexo: " + usuario.sexo);
 			writer.close();
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public void esperar(int milliS) {
-		try {
-			TimeUnit.SECONDS.sleep(5);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-	}
-	
 
 }

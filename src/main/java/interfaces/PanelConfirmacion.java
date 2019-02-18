@@ -24,9 +24,7 @@ import com.toedter.calendar.IDateEditor;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.text.JTextComponent;
-/**
- * @wbp.parser.entryPoint
- */
+
 public class PanelConfirmacion extends JPanel {
 
 	public JLabel lblFieldCodigo, lblFieldNombre, lblFieldApellidos, lblFieldDNI, lblFieldParadaFin, lblFieldParadaInicio, lblFieldLinea, lblFieldTipoTrayecto, lblFieldPrecioBillete;
@@ -42,7 +40,7 @@ public class PanelConfirmacion extends JPanel {
 		setBounds(0,0,800,600);
 		setBackground(new Color(193, 240, 240));
 		
-		lblCdigo = new JLabel("C\u00F3digo:");
+		lblCdigo = new JLabel("Nº de pasajero:");
 		lblCdigo.setFont(new Font("Yu Gothic Medium", Font.BOLD, 16));
 		lblCdigo.setBounds(53, 158, 132, 35);
 		add(lblCdigo);
@@ -212,6 +210,8 @@ public class PanelConfirmacion extends JPanel {
 		lblFieldParadaFin.setText("");
 		lblFieldParadaInicio.setText("");
 		lblFieldTipoTrayecto.setText("");
+		lblFechaVuelta.setVisible(true);
+		fechaVuelta.setVisible(true);
 	}
 	
 	

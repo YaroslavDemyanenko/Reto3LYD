@@ -20,9 +20,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.text.JTextComponent;
 import javax.swing.SpinnerNumberModel;
 
-/**
- * @wbp.parser.entryPoint
- */
+
 public class PanelLineas2 extends JPanel{
 
 	public JLabel lblUsuario, lblSalida,lblLinea,lblNumeroDeBilletes,lblNombreLinea,lblFechaIda,lblFechaVuelta,lblLleg,lblSal;

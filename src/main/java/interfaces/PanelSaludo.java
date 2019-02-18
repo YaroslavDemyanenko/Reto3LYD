@@ -11,9 +11,7 @@ import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.border.BevelBorder;
 
-/**
- * @wbp.parser.entryPoint
- */
+
 public class PanelSaludo extends JPanel {
 
 	public JLabel lblBienvenidoATermibus,lblTocaParaContinuar, lblUsuario,lblLogo, lblLogo2;

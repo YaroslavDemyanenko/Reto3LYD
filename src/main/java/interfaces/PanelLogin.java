@@ -19,9 +19,7 @@ import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 import javax.swing.SwingConstants;
 
-/**
- * @wbp.parser.entryPoint
- */
+
 public class PanelLogin extends JPanel {
 	
 
@@ -181,5 +179,12 @@ public class PanelLogin extends JPanel {
 		passFieldContrasenia.setText("");
 		passFieldContraseniaLogin.setText("");
 		textFieldDNILogin.setText("");
+		textFieldNombre.setBackground(new JTextField().getBackground());
+		textFieldApellido.setBackground(new JTextField().getBackground());
+		textFieldDNI.setBackground(new JTextField().getBackground());
+		passFieldContrasenia.setText("");
+		passFieldContraseniaLogin.setText("");
+		textFieldDNILogin.setText("");
+		
 	}
 }
