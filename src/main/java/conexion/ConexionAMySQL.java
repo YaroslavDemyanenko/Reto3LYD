@@ -12,8 +12,6 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-import com.sun.org.apache.regexp.internal.RESyntaxException;
-
 import clases.Billete;
 import clases.Cliente;
 import clases.Linea;

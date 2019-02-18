@@ -23,14 +23,7 @@ import controlador.MetodosLoginYRegistro;
 
 public class testModelo {
 
-	private Billete billeteIda,billeteVuelta;
 	private boolean idaYVuelta = false;
-	private int numeroBilletes = 0;
-	private Cliente clienteRegistrado;
-	private JPanel ultimoPanel;
-	private Parada paradaSalida, paradaDestino;
-	private ConexionAMySQL db;
-	
 	private Modelo testModeloConstrutor = new Modelo();
 	private ConexionAMySQL dbMock = mock(ConexionAMySQL.class);
 	private Modelo testModeloConstructor2 = new Modelo(dbMock);

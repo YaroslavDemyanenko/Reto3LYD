@@ -1,24 +1,24 @@
 package testClases;
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.awt.Color;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import org.junit.Test;
 
+import clases.Modelo;
 import controlador.Metodos;
 import controlador.MetodosLoginYRegistro;
 import interfaces.PanelConfirmacion;
 import interfaces.PanelLineas1;
 import interfaces.PanelLineas2;
-import interfaces.PanelPasajeroExtra;
-import clases.Cliente;
-import clases.Modelo;
 
 
 
@@ -26,20 +26,14 @@ public class testValidaciones {
 	private MetodosLoginYRegistro metodosLoginTest = new MetodosLoginYRegistro();
 	private Metodos metodosTest = new Metodos();
 	private JTextField campoTextoTest=new JTextField();
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private JComboBox campoTextoTest1=new JComboBox(new String[] {"Hombre", "Mujer"});
-	private DefaultComboBoxModel<String> modeloPasajero;
-	private Cliente cliente = new Cliente();
-	private PanelPasajeroExtra panel = new PanelPasajeroExtra();
-	private PanelConfirmacion panel1 = new PanelConfirmacion();
-	private PanelLineas2 panel2 = new PanelLineas2();
-	private PanelLineas1 panel3 = new PanelLineas1();
-	private Modelo mod = new Modelo();
+	
 	
 	@Test
 	public void testConfirmacionDatos() {
 		PanelConfirmacion panel1Mock = mock(PanelConfirmacion.class);
 		PanelLineas2 panel2Mock = mock(PanelLineas2.class);
-		PanelLineas1 panel3Mock = mock(PanelLineas1.class);
 		Modelo modeloMock = mock(Modelo.class);
 		when(panel1Mock.getPasajeros()).thenReturn(18);
 		metodosTest.confirmacionDatos(panel1Mock, panel2Mock, modeloMock);
@@ -52,7 +46,6 @@ public class testValidaciones {
 	
 	@Test
 	public void testConfirmacionTrayectos() {
-		Metodos metodosTest2 = new Metodos();
 		PanelConfirmacion panel1Mock = mock(PanelConfirmacion.class);
 		PanelLineas2 panel2Mock = mock(PanelLineas2.class);
 		PanelLineas1 panel3Mock = mock(PanelLineas1.class);

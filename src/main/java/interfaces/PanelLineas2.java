@@ -1,37 +1,38 @@
 package interfaces;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JSpinnerDateEditor;
-
-import javax.swing.JSpinner;
-import javax.swing.JList;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.util.Calendar;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.text.JTextComponent;
-import javax.swing.SpinnerNumberModel;
+
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JSpinnerDateEditor;
 
 
+@SuppressWarnings("serial")
 public class PanelLineas2 extends JPanel{
 
 	public JLabel lblUsuario, lblSalida,lblLinea,lblNumeroDeBilletes,lblNombreLinea,lblFechaIda,lblFechaVuelta,lblLleg,lblSal;
 	public JDateChooser calendarioIda,calendarioVuelta;
 	public JLabel lblLlegada;
+	@SuppressWarnings("rawtypes")
 	public JList listaDestinos;
 	public DefaultListModel<String> modeloListaDestinos;
 	public JButton btnLogIn, btnCancelar, btnConfirmar;
 	public JSpinner spnNumeroDeBilletes;
 	public JSpinnerDateEditor spinnerDateEditorVuelta, spinnerDateEditorIda;
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public PanelLineas2() {
 	
 		setBounds(0, 0, 800, 600);

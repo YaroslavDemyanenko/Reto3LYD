@@ -17,6 +17,7 @@ import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 
 
+@SuppressWarnings("serial")
 public class PanelResumen extends JPanel {
 
 	public JLabel lblUsuario,lblResumen, lblLinea, lblPardaInicio, lblPardaFin, lblTipoDeTrayecto, lblNombreLinea, lblNombrePardaInicio, lblNombreParadaFin, lblIdaYVuelta, lblNumBill, lblNumeroDeBilletes, lblFechaIda, lblFechaVuelta, lblPrecio ;

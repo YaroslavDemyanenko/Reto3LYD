@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class Ventana extends JFrame {
 	public PanelSaludo panelSaludo;
 	public PanelConfirmacion panelConfirmacion;

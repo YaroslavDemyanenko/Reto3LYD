@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class PanelFinal extends JPanel {
 
 	public JLabel lblImpresion, lblEspereUnMomento;

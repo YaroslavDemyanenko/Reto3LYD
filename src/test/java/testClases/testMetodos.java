@@ -1,10 +1,9 @@
 package testClases;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import controlador.Metodos;
 import controlador.MetodosPago;
 
 public class testMetodos {

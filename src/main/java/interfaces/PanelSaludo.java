@@ -12,6 +12,7 @@ import java.awt.Component;
 import javax.swing.border.BevelBorder;
 
 
+@SuppressWarnings("serial")
 public class PanelSaludo extends JPanel {
 
 	public JLabel lblBienvenidoATermibus,lblTocaParaContinuar, lblUsuario,lblLogo, lblLogo2;

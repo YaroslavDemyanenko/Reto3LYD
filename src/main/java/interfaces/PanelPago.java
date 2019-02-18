@@ -15,17 +15,21 @@ import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class PanelPago extends JPanel{
 
 	public JButton btn500, btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn050, btn020, btn010, btn005, btn002, btn001, btnConfirmar, btnCancelar;
 	public JButton[] arrayBtn= new JButton[15];
 	public JLabel label, label_1, label_2, lblAPagar, lblUsuario, lblPagado, lblDineroMetido;
 	public JTextField textAPagar, textDineroMetido, textVueltas;
+	@SuppressWarnings("rawtypes")
 	public JList listaCambio;
+	@SuppressWarnings("rawtypes")
 	public DefaultListModel modeloCambio;
 
 
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public PanelPago() {
 		setLayout(null);
 		setBounds(0, 0, 800, 600);

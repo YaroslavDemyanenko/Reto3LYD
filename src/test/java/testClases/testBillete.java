@@ -9,11 +9,11 @@ import org.junit.Test;
 import clases.Billete;
 import clases.Linea;
 import clases.Parada;
+import controlador.MetodosPago;
 
 public class testBillete {
 
 	private int codigoBillete =0;
-	private int codAutobusIda =0;
 	private int codAutobusVuelta =0;
 	private float precioTrayecto = 0;
 	private Date fecha;
@@ -22,8 +22,7 @@ public class testBillete {
 	private Parada paradaFin=new Parada();
 	 
 	private Billete testBillete = new Billete();
-	private Billete test3Billete = new Billete();
-	
+	private MetodosPago metPago=new MetodosPago();
 	
 	@Test
 	public void testDistanciaEnKmEntreDosParadas() {
@@ -32,8 +31,8 @@ public class testBillete {
 		test2Billete.paradaInic.longitud= -2.92344;
 		test2Billete.paradaFin.latitud= 42.8462700;
 		test2Billete.paradaFin.longitud= -2.6722500;
-		//test2Billete.distanciaEnKmEntreDosParadas(this.paradaInic, this.paradaFin);
-		//assertEquals(test2Billete.distanciaEnKmEntreDosParadas(this.paradaInic, this.paradaFin), 50.01,0.1);
+		metPago.distanciaEnKmEntreDosParadas(this.paradaInic, this.paradaFin);
+		assertEquals(metPago.distanciaEnKmEntreDosParadas(this.paradaInic, this.paradaFin), 50.01,0.1);
 	}
 	
 	@Test
@@ -44,7 +43,8 @@ public class testBillete {
 		test2Billete.paradaFin.latitud= 42.8462700;
 		test2Billete.paradaFin.longitud= -2.6722500;
 		double consumo = 50.23;
-		//assertEquals(test2Billete.precioTrayecto(test2Billete.paradaInic, test2Billete.paradaFin, consumo),2412.20,0.01);
+		
+		assertEquals(metPago.precioTrayecto(test2Billete.paradaInic, test2Billete.paradaFin, consumo),2412.20,0.01);
 	}
 	
 	@Test

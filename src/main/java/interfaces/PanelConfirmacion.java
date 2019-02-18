@@ -1,40 +1,37 @@
 package interfaces;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Font;
+
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+
 import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JSpinnerDateEditor;
 import com.toedter.calendar.JTextFieldDateEditor;
 
 import clases.Modelo;
 
-import com.toedter.calendar.JCalendar;
-import java.util.Date;
-import com.toedter.calendar.IDateEditor;
-import javax.swing.SwingConstants;
-import javax.swing.border.BevelBorder;
-import javax.swing.text.JTextComponent;
-
+@SuppressWarnings("serial")
 public class PanelConfirmacion extends JPanel {
 
 	public JLabel lblFieldCodigo, lblFieldNombre, lblFieldApellidos, lblFieldDNI, lblFieldParadaFin, lblFieldParadaInicio, lblFieldLinea, lblFieldTipoTrayecto, lblFieldPrecioBillete;
 	public JButton btnCancelar, btnImprimir;
 	public JLabel lblCdigo, lblNombre, lblApellidos, lblDni, lblLnea, lblSalida, lblLlegada, lblTipoDeTrayecto, lblFechaIda, lblFechaVuelta, lblPrecioBillete, lblPasajerosas;
 	public JDateChooser fechaIda,fechaVuelta;
+	@SuppressWarnings("rawtypes")
 	public JComboBox comboBoxPasajeros;
 	public JTextField textFieldPrecioBillete;
 	public DefaultComboBoxModel<String> modeloPasajero;
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public PanelConfirmacion() {
 		setLayout(null);
 		setBounds(0,0,800,600);

@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 
+@SuppressWarnings("serial")
 public class PanelLineas1 extends JPanel {
 	
 
@@ -22,11 +23,13 @@ public class PanelLineas1 extends JPanel {
 	public JLabel lblUsuario, lblLinea, lblParadaInicio;
 	public JRadioButton rdbtnIda, rdbtnIdayVuelta;
 	public ButtonGroup grupoTipoViaje;
+	@SuppressWarnings("rawtypes")
 	public JList listLineas,listParadas;
 	public DefaultListModel<String> modeloLineas,modeloParadas;
 	public JButton btnCancelar, btnConfirmar;
 	
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelLineas1() {
 		setBackground(new Color(193, 240, 240));
 		setBounds(0, 0, 800, 600);

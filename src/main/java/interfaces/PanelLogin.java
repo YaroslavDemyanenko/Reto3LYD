@@ -20,10 +20,12 @@ import com.toedter.calendar.JSpinnerDateEditor;
 import javax.swing.SwingConstants;
 
 
+@SuppressWarnings("serial")
 public class PanelLogin extends JPanel {
 	
 
 	public JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldDNILogin;
+	@SuppressWarnings("rawtypes")
 	public JComboBox cmbBoxSexo;
 	public JPasswordField passFieldContrasenia,passFieldContraseniaLogin;
 	public JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblLogin, lblDniLogin, lblContraseaLogin, lblContrasea, lblFechaNacimiento;
@@ -32,6 +34,7 @@ public class PanelLogin extends JPanel {
 	public JDateChooser calendarioFechaNac;
 	
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelLogin() {
 		setLayout(null);
 		setBounds(0,0,800,600);

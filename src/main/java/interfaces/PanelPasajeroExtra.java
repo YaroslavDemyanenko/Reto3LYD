@@ -13,14 +13,17 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 import java.awt.Cursor;
 
+@SuppressWarnings("serial")
 public class PanelPasajeroExtra extends JPanel{
 	
 	public JTextField textFieldNombre, textFieldApellido, textFieldDNI;
+	@SuppressWarnings("rawtypes")
 	public JComboBox textFieldSexo;
 	public JButton btnCancelar, btnConfirmar;
 	public JLabel lblSexo, lblDni, lblApellido, lblNombre, lblRegistroUsuario;
 
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelPasajeroExtra() {
 		setLayout(null);
 		setBounds(0,0,800,600);
